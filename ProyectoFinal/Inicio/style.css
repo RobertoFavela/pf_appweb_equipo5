@@ -12,19 +12,37 @@ header {
     color: white;
 }
 
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative; 
+    height: 4vh;
+    border-radius: 10px;
+    margin: 10px 50vh;
+}
+
 .icono-casa {
+    
     font-size: 30px;
+    position: absolute;
+    left: 45%;
 }
 
 .usuario {
     font-size: 18px;
+    position: absolute;
+    right: 10px;
 }
 
 .agregadas-recientemente,
 .mejor-calificadas,
 .resenas-recientes {
+    
     background-color: #0099ff;
-    margin: 20px 0;
+    margin: 10px 50vh;
+
     padding: 20px;
     border-radius: 10px;
 }
