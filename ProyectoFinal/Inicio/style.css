@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0eef0;
+}
+
+header {
+    background-color: #0099ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+}
+
+.icono-casa {
+    font-size: 30px;
+}
+
+.usuario {
+    font-size: 18px;
+}
+
+.agregadas-recientemente,
+.mejor-calificadas,
+.resenas-recientes {
+    background-color: #0099ff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.contenedor-peliculas {
+    display: flex;
+    gap: 10px;
+}
+
+.pelicula {
+    background-color: #e0e0e0;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pelicula .info {
+    text-align: center;
+    font-size: 14px;
+    color: black;
+}
+
+.mejor-calificadas .contenedor-peliculas .pelicula {
+    background-color: #e0e0e0;
+}
+
+.resena {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-resena {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info-resena {
+    display: flex;
+    justify-content: space-between;
+}
+
+.texto-resena {
+    flex: 2;
+    padding-right: 15px;
+}
+
+.imagen-resena {
+    background-color: #ccc;
+    flex: 1;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #555;
+}
