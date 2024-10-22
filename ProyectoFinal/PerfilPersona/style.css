@@ -45,12 +45,12 @@ body {
     grid-column-end: 2;
 }
 
-.peliculas-recientes {
+.series-recientes {
     display: flex;
     gap: 10px;
 }
 
-.pelicula {
+.serie {
     width: 60px;
     height: 100px;
     background-color: #e0e0e0;
@@ -145,7 +145,7 @@ body {
     grid-row-end: 5;
 }
 
-.pelicula-favorita {
+.serie-favorita {
     width: 75px;
     height: 200px;
     background-color: #e0e0e0;
