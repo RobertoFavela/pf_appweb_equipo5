@@ -14,7 +14,6 @@ import org.bson.types.ObjectId;
  * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class Usuario {
-    
     private ObjectId id;
     private String correo, usuario, contrasena;
 
