@@ -1,0 +1,9 @@
+Entidades\Reseña.class
+Entidades\Serie.class
+DAOs\ComentarioDAO.class
+DAOs\UsuarioDAO.class
+DAOs\ReseñaDAO.class
+Entidades\Usuario.class
+conexion\Conexion.class
+DAOs\SerieDAO.class
+Entidades\Comentario.class
