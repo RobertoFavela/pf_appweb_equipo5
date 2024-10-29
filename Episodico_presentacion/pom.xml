@@ -5,7 +5,7 @@
     <artifactId>Episodico_presentacion</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Episodico_presentacion-1.0-SNAPSHOT</name>
+    <name>Episodico_presentacion</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

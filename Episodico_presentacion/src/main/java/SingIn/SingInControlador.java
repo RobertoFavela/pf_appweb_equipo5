@@ -21,7 +21,11 @@ import observers.IEventoRespuestaRegistro;
  */
 public class SingInControlador extends HttpServlet {
 
-    SingInModel modelo = new SingInModel();
+    SingInModel modelo = SingInModel.getInstance();
+
+    public SingInControlador() {
+        
+    }
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -66,6 +70,8 @@ public class SingInControlador extends HttpServlet {
             String usuario = request.getParameter("txtUsuario");
             String contra = request.getParameter("txtContra");
             
+            modelo.agregarEventoRespuesta(new ObtenerRespuesta(request,response));
+            
             modelo.notificarSolicitudRegistro(new UsuarioDto(correo, usuario, contra));
         }
         
@@ -107,6 +113,7 @@ public class SingInControlador extends HttpServlet {
             }else{
                 try {
                     request.getRequestDispatcher("SingInView.jsp").forward(request, response);
+                    System.out.println("no jalo");
                 } catch (ServletException ex) {
                     Logger.getLogger(SingInControlador.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {

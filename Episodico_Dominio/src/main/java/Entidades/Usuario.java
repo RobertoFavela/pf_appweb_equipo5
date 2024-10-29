@@ -20,13 +20,22 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(ObjectId id, String correo, String usuario, String contrasena) {
-        this.id = id;
+    public Usuario(String correo, String usuario, String contrasena) {
         this.correo = correo;
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    
+    
     public String getCorreo() {
         return correo;
     }

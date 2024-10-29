@@ -32,9 +32,9 @@ public class UsuarioDAO {
     }
 
     // Método para insertar un nuevo usuario
-    public void insertarUsuario(Usuario usuario) {
-        usuariosCollection.insertOne(usuario);
-        System.out.println("Usuario insertado: " + usuario);
+    public boolean insertarUsuario(Usuario usuario) {
+        var resultado = usuariosCollection.insertOne(usuario);
+        return resultado.wasAcknowledged();
     }
 
     // Método para buscar un usuario por su ID
