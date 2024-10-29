@@ -1,0 +1,72 @@
+<%-- 
+    Document   : UserProfileView
+    Created on : 28 oct 2024, 11:58:31 p.m.
+    Author     : favel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <title>Perfil de Persona</title>
+</head>
+<body>
+    <header>
+        <div class="icono-casa"><a href="/Inicio/index.html">🏠</a></div>
+        <div class="usuario">😊Usuario</div>
+    </header>
+
+    <div class="gridContainer">
+
+        <div class="perfil">
+            <div class="foto-perfil"></div>
+            <div class="descripcion">
+                <h2>Perfil de persona</h2>
+                <p>Esta es la descripcion del perfil de esta persona</p>
+            </div>
+        </div>
+
+        <div class="vistas-recientes">
+            <h3>Vistas Recientemente</h3>
+            <div class="series-recientes">
+                <div class="serie"><a href="/PerfilSerie/perfilSerie.html"></a></div>
+                <div class="serie"></div>
+                <div class="serie"></div>
+                <div class="serie"></div>
+                <div class="serie"></div>
+            </div>
+        </div>
+
+        <div class="nueva-resena">
+            <input type="text" placeholder="Escribe una reseña...">
+            <button>➤</button>
+        </div>
+
+        <div class="resenas">
+            <div class="resena">
+                <h4>Reseña hecha por mi</h4>
+                <div class="contenido-resena">
+                    <p>Esta es una reseña escrita por una persona acerca de una serie...</p>
+                    <div class="imagen-resena"></div>
+                </div>
+                <div class="rating">
+                    ⭐⭐⭐⭐
+                </div>
+                <div class="acciones-resena">
+                    <button>🖊️</button>
+                    <button>🗑️</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="favoritas">
+            <h4>Favoritas</h4>
+            <div class="serie-favorita"></div>
+            <div class="serie-favorita"></div>
+        </div>
+    </div>
+</body>
+</html>
