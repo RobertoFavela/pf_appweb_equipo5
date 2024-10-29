@@ -7,7 +7,6 @@ package logicaRegistro;
 import DAOs.UsuarioDAO;
 import Entidades.Usuario;
 import dtos.UsuarioDto;
-import observers.IEventoRegistrarUsuario;
 
 /**
  *
