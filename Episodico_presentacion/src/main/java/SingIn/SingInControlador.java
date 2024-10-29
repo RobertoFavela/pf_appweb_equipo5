@@ -68,6 +68,7 @@ public class SingInControlador extends HttpServlet {
             String usuario = request.getParameter("txtUsuario");
             String contra = request.getParameter("txtContra");
             
+            
         }
         
     }
