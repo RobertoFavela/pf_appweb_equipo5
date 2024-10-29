@@ -5,6 +5,7 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import org.bson.types.ObjectId;
 
@@ -20,18 +21,38 @@ public class Serie {
     private String titulo, descripcion;
     private int calificacion, vistas;
     private Date lanzamiento;
+    private List<Reseña> reseñas;
 
     public Serie() {
     }
 
-    public Serie(ObjectId id, String titulo, String descripcion, int calificacion, int vistas, Date lanzamiento) {
+    public Serie(ObjectId id, String titulo, String descripcion, int calificacion, int vistas, Date lanzamiento, List<Reseña> reseñas) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.calificacion = calificacion;
         this.vistas = vistas;
         this.lanzamiento = lanzamiento;
+        this.reseñas = reseñas;
     }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public List<Reseña> getReseñas() {
+        return reseñas;
+    }
+
+    public void setReseñas(List<Reseña> reseñas) {
+        this.reseñas = reseñas;
+    }
+
+    
     
     public String getTitulo() {
         return titulo;
