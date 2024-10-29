@@ -18,9 +18,8 @@ import java.util.List;
 
 /**
  *
- * @authors 
- * Luis Roberto Favela Castro - 00000246853
- * Jesus Alberto Morales Ronjas - 00000245335
+ * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales
+ * Ronjas - 00000245335
  */
 public class UsuarioDAO {
 
@@ -61,11 +60,9 @@ public class UsuarioDAO {
     }
 
     // Método para validar las credenciales del usuario (inicio de sesión)
-    public boolean validarCredenciales(String correo, String contrasena) {
-        Usuario usuario = usuariosCollection.find(
-                and(eq("correo", correo), eq("contrasena", contrasena))
-        ).first();
-
-        return usuario != null;
+    public Usuario validarCredenciales(String correo, String contrasena) {
+        Usuario encontrado = usuariosCollection.find(and(eq("correo", correo), eq("contrasena", contrasena))).first();  
+        return encontrado;
     }
+
 }
