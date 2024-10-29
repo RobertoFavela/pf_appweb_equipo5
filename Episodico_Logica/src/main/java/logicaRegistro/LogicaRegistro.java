@@ -6,7 +6,6 @@ package logicaRegistro;
 
 import DAOs.UsuarioDAO;
 import Entidades.Usuario;
-import SingIn.SingInModel;
 import dtos.UsuarioDto;
 import observers.IEventoRegistrarUsuario;
 
@@ -16,13 +15,11 @@ import observers.IEventoRegistrarUsuario;
  */
 public class LogicaRegistro implements ILogicaRegistro {
     
-    private SingInModel modelo = SingInModel.getInstance();
     
     private UsuarioDAO daoUsuario;
     
     public LogicaRegistro() {
         daoUsuario = new UsuarioDAO();
-        modelo.agregarEventoRegistrarse(new EventoSolicitudRegistrarse());
         
     }
     
@@ -34,20 +31,6 @@ public class LogicaRegistro implements ILogicaRegistro {
         boolean respuesta = daoUsuario.insertarUsuario(usuarioARegistrar);
         
         return respuesta;
-    }
-    
-    public class EventoSolicitudRegistrarse implements IEventoRegistrarUsuario {
-        
-        @Override
-        public void solicitudDeRegistro(UsuarioDto usuario) {
-            
-            boolean respuesta = resgitrarUsuario(usuario);
-            
-            if (respuesta) {
-                modelo.actualizarUsuario(usuario);
-            }
-            modelo.notificarSolicitudRespuesta(respuesta);
-        }
     }
     
 }
