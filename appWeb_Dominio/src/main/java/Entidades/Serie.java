@@ -6,6 +6,7 @@ package Entidades;
 
 import java.util.Date;
 import java.util.Objects;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -14,6 +15,8 @@ import java.util.Objects;
  * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class Serie {
+    
+    private ObjectId id;
     private String titulo, descripcion;
     private int calificacion, vistas;
     private Date lanzamiento;
@@ -21,14 +24,15 @@ public class Serie {
     public Serie() {
     }
 
-    public Serie(String titulo, String descripcion, int calificacion, int vistas, Date lanzamiento) {
+    public Serie(ObjectId id, String titulo, String descripcion, int calificacion, int vistas, Date lanzamiento) {
+        this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.calificacion = calificacion;
         this.vistas = vistas;
         this.lanzamiento = lanzamiento;
     }
-
+    
     public String getTitulo() {
         return titulo;
     }

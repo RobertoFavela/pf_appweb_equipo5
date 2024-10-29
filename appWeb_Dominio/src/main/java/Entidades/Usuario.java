@@ -5,6 +5,7 @@
 package Entidades;
 
 import java.util.Objects;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -13,12 +14,15 @@ import java.util.Objects;
  * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class Usuario {
+    
+    private ObjectId id;
     private String correo, usuario, contrasena;
 
     public Usuario() {
     }
 
-    public Usuario(String correo, String usuario, String contrasena) {
+    public Usuario(ObjectId id, String correo, String usuario, String contrasena) {
+        this.id = id;
         this.correo = correo;
         this.usuario = usuario;
         this.contrasena = contrasena;

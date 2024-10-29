@@ -5,7 +5,9 @@
 package Entidades;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -14,19 +16,42 @@ import java.util.Objects;
  * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class Reseña {
+    
+    private ObjectId id;
     private String titulo, reseña;
     private int califiacion;
     private Date creacion;
+    private List<Comentario> comentarios;
 
-    public Reseña() {
-    }
-
-    public Reseña(String titulo, String reseña, int califiacion, Date creacion) {
+    public Reseña(ObjectId id, String titulo, String reseña, int califiacion, Date creacion, List<Comentario> comentarios) {
+        this.id = id;
         this.titulo = titulo;
         this.reseña = reseña;
         this.califiacion = califiacion;
         this.creacion = creacion;
+        this.comentarios = comentarios;
     }
+
+    public Reseña() {
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+    
+    
 
     public String getTitulo() {
         return titulo;
