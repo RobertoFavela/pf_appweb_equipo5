@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//import logicaRegistro.LogicaRegistro;
 import observers.IEventoRespuestaRegistro;
 
 /**
@@ -21,10 +22,9 @@ import observers.IEventoRespuestaRegistro;
  */
 public class SingInControlador extends HttpServlet {
 
-    SingInModel modelo = SingInModel.getInstance();
-
+    private SingInModel modelo = SingInModel.getInstance();
+    
     public SingInControlador() {
-        
     }
     
     /**

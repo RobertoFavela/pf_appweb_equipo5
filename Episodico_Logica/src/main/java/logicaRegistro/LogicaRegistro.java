@@ -17,11 +17,13 @@ import observers.IEventoRegistrarUsuario;
 public class LogicaRegistro implements ILogicaRegistro {
     
     private SingInModel modelo = SingInModel.getInstance();
+    
     private UsuarioDAO daoUsuario;
     
     public LogicaRegistro() {
         daoUsuario = new UsuarioDAO();
         modelo.agregarEventoRegistrarse(new EventoSolicitudRegistrarse());
+        
     }
     
     @Override
