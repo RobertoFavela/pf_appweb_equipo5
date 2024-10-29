@@ -38,42 +38,59 @@ body {
 }
 
 
-button{
-    background:#fe9000;
-    color:#fff;
-    border:none;
-    position:relative;
-    height:40px;
-    font-size:15px;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-    border-radius: 5px;
-    width: 100%;
-  }
+.btn, .btnRegistro {
+  background: #fe9000;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 40px;
+  font-size: 15px;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+}
 
-  button:hover{
-    background:#fff;
-    color:#fe9000;
-  }
-  button:before,button:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: #fe9000;
-    transition:400ms ease all;
-  }
-  button:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  button:hover:before,button:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
+.btn:hover, .btnRegistro:hover {
+  background: #fff;
+  color: #fe9000;
+}
+
+.btn:before, .btn:after, .btnRegistro:before, .btnRegistro:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #fe9000;
+  transition: 400ms ease all;
+}
+
+.btn:after, .btnRegistro:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+.btn:hover:before, .btn:hover:after, .btnRegistro:hover:before, .btnRegistro:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+input[type="text"], input[type="password"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  background-color: #fff;
+  color: #fe9000; /* Cambia el color del texto si deseas un efecto */
+}

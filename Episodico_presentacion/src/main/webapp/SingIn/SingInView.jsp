@@ -16,20 +16,20 @@
 <body>
     <div class="mainContainer">
         <h2>Registrarse</h2>
-        <form>
+        <form action="SingInControlador" method="POST">
             <div class="textbox">
                 <label for="correo">Correo:</label>
-                <input type="correo" id="correo" placeholder="correo" required>
+                <input type="correo" name="txtCorreo" placeholder="correo" required>
             </div>
             <div class="textbox">
                 <label for="usuario">Nombre de usuario:</label>
-                <input type="text" id="usuario" placeholder="Nombre de usuario" required>
+                <input type="text" name="txtUsuario" placeholder="Nombre de usuario" required>
             </div>
             <div class="textbox">
                 <label for="contra">Contraseña:</label>
-                <input type="password" id="contra" placeholder="Contraseña" required>
+                <input type="password" name="txtContra" placeholder="Contraseña" required>
             </div>
-            <button type="submit" class="btn"><a href="/LogIn/LogIn.html">Aceptar</a></button>
+            <input type="button" class="btnRegistro" name="RegistrarUsuario" value="Registrarse">
         </form>
         
     </div>

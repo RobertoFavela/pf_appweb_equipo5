@@ -45,8 +45,7 @@ body {
     font-size: 16px;
 }
 
-
-button{
+.btnRegistro{
     background:#fe9000;
     color:#fff;
     border:none;
@@ -61,11 +60,11 @@ button{
     width: 100%;
   }
 
-  button:hover{
+  .btnRegistro:hover{
     background:#fff;
     color:#fe9000;
   }
-  button:before,button:after{
+  .btnRegistro:before,.btnRegistro:after{
     content:'';
     position:absolute;
     top:0;
@@ -75,13 +74,13 @@ button{
     background: #fe9000;
     transition:400ms ease all;
   }
-  button:after{
+  .btnRegistro:after{
     right:inherit;
     top:inherit;
     left:0;
     bottom:0;
   }
-  button:hover:before,button:hover:after{
+  .btnRegistro:hover:before,.btnRegistro:hover:after{
     width:100%;
     transition:800ms ease all;
   }
