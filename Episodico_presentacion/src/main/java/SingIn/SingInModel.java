@@ -5,17 +5,12 @@
 package SingIn;
 
 import dtos.UsuarioDto;
-import observers.IEventoRegistrarUsuario;
-import observers.IEventoRespuestaRegistro;
 
 /**
  *
  * @author tacot
  */
 public class SingInModel {
-
-    private IEventoRegistrarUsuario eventoRegistro;
-    private IEventoRespuestaRegistro eventoRespuesta;
 
     private static SingInModel instancia;
 
@@ -32,26 +27,10 @@ public class SingInModel {
         return instancia;
     }
 
-    //para logica
-    public void agregarEventoRegistrarse(IEventoRegistrarUsuario evento) {
-        this.eventoRegistro = evento;
-    }
-
-    public void notificarSolicitudRegistro(UsuarioDto usuario) {
-        this.eventoRegistro.solicitudDeRegistro(usuario);
-    }
 
     public void actualizarUsuario(UsuarioDto usuario) {
         this.usario = usuario;
     }
 
-    //para controlador
-    public void agregarEventoRespuesta(IEventoRespuestaRegistro evento) {
-        this.eventoRespuesta = evento;
-    }
-
-    public void notificarSolicitudRespuesta(boolean respuesta) {
-        this.eventoRespuesta.actualizar(respuesta);
-    }
 
 }

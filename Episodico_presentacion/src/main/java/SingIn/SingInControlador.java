@@ -13,8 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import logicaRegistro.LogicaRegistro;
-import observers.IEventoRespuestaRegistro;
 
 /**
  *
@@ -70,9 +68,6 @@ public class SingInControlador extends HttpServlet {
             String usuario = request.getParameter("txtUsuario");
             String contra = request.getParameter("txtContra");
             
-            modelo.agregarEventoRespuesta(new ObtenerRespuesta(request,response));
-            
-            modelo.notificarSolicitudRegistro(new UsuarioDto(correo, usuario, contra));
         }
         
     }
@@ -87,39 +82,5 @@ public class SingInControlador extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
     
-    public class ObtenerRespuesta implements IEventoRespuestaRegistro {
-        
-        HttpServletRequest request;
-        HttpServletResponse response;
-        
-        public ObtenerRespuesta(HttpServletRequest request, HttpServletResponse response) {
-            this.request = request;
-            this.response = response;
-        }
-
-        @Override
-        public void actualizar(boolean respuesta)  {
-
-            if (respuesta) {
-                try {
-                    request.getRequestDispatcher("LogInView.jsp").forward(request, response);
-                } catch (ServletException ex) {
-                    Logger.getLogger(SingInControlador.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(SingInControlador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }else{
-                try {
-                    request.getRequestDispatcher("SingInView.jsp").forward(request, response);
-                    System.out.println("no jalo");
-                } catch (ServletException ex) {
-                    Logger.getLogger(SingInControlador.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(SingInControlador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
 }
