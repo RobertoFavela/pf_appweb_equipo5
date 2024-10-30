@@ -1,0 +1,178 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 oct 2024, 12:00:41 a.m.
+    Author     : favel
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #0099ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    position: relative; 
+    height: 4vh;
+    border-radius: 10px;
+    margin: 10px 50vh;
+}
+.icono-casa {
+    
+    font-size: 30px;
+    position: absolute;
+    left: 45%;
+}
+.usuario {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+}
+
+.gridContainer {
+    margin: 0px 50vh;
+    background-color: #0099ff;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto auto;
+    gap: 0px; 
+    padding: 30px;
+    justify-content: center;
+
+}
+
+.Perfilserie {
+
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-content: center;
+}
+
+.foto-Perfilserie {
+
+    width: 25%;
+    height: 100%;
+    background-color: #c0c0c0;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.descripcion {
+    color: white;
+    width: 65%;
+}
+
+.serie {
+    width: 60px;
+    height: 100px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.nueva-resena {
+    display: flex;
+    grid-column: 1;
+    height: 60px;
+    
+}
+
+.nueva-resena input {
+    justify-content: center;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    width: 310px;
+}
+
+.nueva-resena button {
+    padding: 10px 10px;
+    background-color: #ff9900;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    color: white;
+    width: 60px;
+}
+
+.resenas {
+    background-color: white;
+    width: 72%;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 10px;
+    grid-column: 1;
+}
+
+.resena {
+
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contenido-resena {
+    display: flex;
+    justify-content: space-between;
+}
+
+.imagen-resena {
+    width: 130px;
+    height: 100px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.rating {
+    margin-top: 10px;
+}
+
+.acciones-resena {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.acciones-resena button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.similares {
+    margin-left: 0px;
+    background-color: white;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    grid-column: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.serie-similar {
+    width: 75px;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-top: 10px;
+}

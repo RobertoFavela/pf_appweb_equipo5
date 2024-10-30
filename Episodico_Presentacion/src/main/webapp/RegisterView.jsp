@@ -10,16 +10,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Register/Style.css">
     <title>Registrarse</title>
 </head>
 <body>
     <div class="mainContainer">
         <h2>Registrarse</h2>
-        <form action="SingInControlador" method="POST">
+        <form action="RegisterController" method="POST">
+            <input type="hidden" name="RegistrarUsuario" value="Registrarse">
             <div class="textbox">
                 <label for="correo">Correo:</label>
-                <input type="correo" name="txtCorreo" placeholder="correo" required>
+                <input type="text" name="txtCorreo" placeholder="correo" required>
             </div>
             <div class="textbox">
                 <label for="usuario">Nombre de usuario:</label>
@@ -29,9 +30,10 @@
                 <label for="contra">Contraseña:</label>
                 <input type="password" name="txtContra" placeholder="Contraseña" required>
             </div>
-            <input type="button" class="btnRegistro" name="RegistrarUsuario" value="Registrarse">
+            <input type="submit" class="btnRegistro" name="RegistrarUsuario" value="Registrarse">
         </form>
-        
     </div>
 </body>
 </html>
+
+

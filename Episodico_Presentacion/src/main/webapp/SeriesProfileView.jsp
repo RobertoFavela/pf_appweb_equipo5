@@ -11,7 +11,7 @@
     <title>Perfil de Persona</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="SeriesProfile/Style.css">
     <title>Perfil de Persona</title>
 </head>
 <body>

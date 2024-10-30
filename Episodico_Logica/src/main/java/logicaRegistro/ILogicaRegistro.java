@@ -4,6 +4,7 @@
  */
 package logicaRegistro;
 
+import Entidades.Usuario;
 import dtos.UsuarioDto;
 
 /**
@@ -12,5 +13,5 @@ import dtos.UsuarioDto;
  */
 public interface ILogicaRegistro {
     public boolean resgitrarUsuario(UsuarioDto usuario);
-    
+    public Usuario convertirDtoAEntidad(UsuarioDto usuariodto);
 }

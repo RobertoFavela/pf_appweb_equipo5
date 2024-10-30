@@ -23,13 +23,18 @@ public class LogicaRegistro implements ILogicaRegistro {
     }
     
     @Override
-    public boolean resgitrarUsuario(UsuarioDto usuario) {
+    public boolean resgitrarUsuario(UsuarioDto usuariodto) {
         
-        Usuario usuarioARegistrar = new Usuario(usuario.getCorreo(), usuario.getUsuario(), usuario.getContrasena());
+        Usuario usuarioARegistrar = convertirDtoAEntidad(usuariodto);
         
         boolean respuesta = daoUsuario.insertarUsuario(usuarioARegistrar);
         
         return respuesta;
     }
     
+    @Override
+    public Usuario convertirDtoAEntidad(UsuarioDto usuariodto){
+    
+        return new Usuario(usuariodto.getCorreo(), usuariodto.getUsuario(), usuariodto.getContrasena());
+    }
 }
