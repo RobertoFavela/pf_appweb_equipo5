@@ -4,10 +4,26 @@
  */
 package logicaIniciarSesion;
 
+import DAOs.UsuarioDAO;
+import Entidades.Usuario;
+import dtos.UsuarioDto;
+
 /**
  *
  * @author Jesus Morales
  */
-public class LogicaIniciarSesion {
-    
+public class LogicaIniciarSesion implements ILogicaIniciarSesion {
+
+     private UsuarioDAO daoUsuario;
+
+     public LogicaIniciarSesion() {
+          daoUsuario = new UsuarioDAO();
+     }
+
+     @Override
+     public boolean iniciarSesion(String usuario, String contraseña) {
+          Usuario usuarioEncontrado = daoUsuario.validarCredenciales(usuario, contraseña);
+
+          return usuarioEncontrado != null;
+     }
 }

@@ -4,10 +4,13 @@
  */
 package logicaIniciarSesion;
 
+import Entidades.Usuario;
+import dtos.UsuarioDto;
+
 /**
  *
  * @author Jesus Morales
  */
 public interface ILogicaIniciarSesion {
-    
+    public boolean iniciarSesion(String usaurio, String contraseña);
 }

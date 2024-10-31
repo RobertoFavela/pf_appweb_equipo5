@@ -26,6 +26,11 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
+    public Usuario(String usuario, String contrasena) {
+         this.usuario = usuario;
+         this.contrasena = contrasena;
+    }
+    
     public ObjectId getId() {
         return id;
     }

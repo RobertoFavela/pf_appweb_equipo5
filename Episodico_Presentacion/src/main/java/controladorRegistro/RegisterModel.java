@@ -24,6 +24,4 @@ public class RegisterModel {
     
         return logicaRegistro.resgitrarUsuario(usuario);
     }
-
-
 }
