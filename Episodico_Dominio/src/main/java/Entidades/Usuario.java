@@ -15,15 +15,16 @@ import org.bson.types.ObjectId;
  */
 public class Usuario {
     private ObjectId id;
-    private String correo, usuario, contrasena;
+    private String correo, usuario, contrasena, rol;
 
     public Usuario() {
     }
 
-    public Usuario(String correo, String usuario, String contrasena) {
+    public Usuario(String correo, String usuario, String contrasena, String rol) {
         this.correo = correo;
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.rol = rol;
     }
 
     public Usuario(String usuario, String contrasena) {
@@ -63,6 +64,14 @@ public class Usuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     @Override

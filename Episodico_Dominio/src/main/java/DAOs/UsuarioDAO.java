@@ -28,7 +28,7 @@ public class UsuarioDAO {
     // Constructor: obtiene la colección "usuarios" desde la base de datos
     public UsuarioDAO() {
         MongoDatabase database = Conexion.getDatabase();
-        this.usuariosCollection = database.getCollection("Usuario", Usuario.class);
+        this.usuariosCollection = database.getCollection("Usuarios", Usuario.class);
     }
 
     // Método para insertar un nuevo usuario

@@ -10,6 +10,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import logicaRegistro.ILogicaRegistro;
+import logicaRegistro.LogicaRegistro;
 
 /**
  *
@@ -17,8 +19,9 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class RegisterController extends HttpServlet {
 
-
+    private final ILogicaRegistro logicaRegistro;
     public RegisterController() {
+        logicaRegistro = new LogicaRegistro();
     }
     
     /**
@@ -73,11 +76,11 @@ public class RegisterController extends HttpServlet {
                 String contra = request.getParameter("txtContra");
 
                 UsuarioDto usuario = new UsuarioDto(correo, nombre, contra);
-//                boolean respuesta = modelo.registrarUsuario(usuario);
-//                
-//                if (respuesta) {
-//                    url = "/LogInView.jsp";
-//                }
+                boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
+                
+                if (respuesta) {
+                    url = "/LogInView.jsp";
+                }
                 
             }
         }

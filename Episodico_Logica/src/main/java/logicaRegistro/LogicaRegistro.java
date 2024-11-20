@@ -35,6 +35,6 @@ public class LogicaRegistro implements ILogicaRegistro {
     @Override
     public Usuario convertirDtoAEntidad(UsuarioDto usuariodto){
     
-        return new Usuario(usuariodto.getCorreo(), usuariodto.getUsuario(), usuariodto.getContrasena());
+        return new Usuario(usuariodto.getCorreo(), usuariodto.getNombre(), usuariodto.getContrasena(), usuariodto.getRol());
     }
 }
