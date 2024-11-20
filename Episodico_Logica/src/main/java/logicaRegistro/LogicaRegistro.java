@@ -15,7 +15,7 @@ import dtos.UsuarioDto;
 public class LogicaRegistro implements ILogicaRegistro {
     
     
-    private UsuarioDAO daoUsuario;
+    private final UsuarioDAO daoUsuario;
     
     public LogicaRegistro() {
         daoUsuario = new UsuarioDAO();

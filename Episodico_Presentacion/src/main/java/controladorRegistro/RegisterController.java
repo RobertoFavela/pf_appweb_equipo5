@@ -17,10 +17,8 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class RegisterController extends HttpServlet {
 
-    private RegisterModel modelo;
 
     public RegisterController() {
-        modelo = new RegisterModel();
     }
     
     /**
@@ -63,7 +61,7 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/RegisterView.jsp";
+        String url = "/LogInView.jsp";
 
         String accion = request.getParameter("RegistrarUsuario");
 
@@ -75,11 +73,11 @@ public class RegisterController extends HttpServlet {
                 String contra = request.getParameter("txtContra");
 
                 UsuarioDto usuario = new UsuarioDto(correo, nombre, contra);
-                boolean respuesta = modelo.registrarUsuario(usuario);
-                
-                if (respuesta) {
-                    url = "/LogInView.jsp";
-                }
+//                boolean respuesta = modelo.registrarUsuario(usuario);
+//                
+//                if (respuesta) {
+//                    url = "/LogInView.jsp";
+//                }
                 
             }
         }

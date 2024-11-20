@@ -1,86 +1,151 @@
-
-body{
-
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #f0eef0;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: auto;
-}
-
-.mainContainer{
-
-    background-color: #2191fb;
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    width: 9cm;
-    margin-top: 5cm;
-
-
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-.textbox {
-  margin-bottom: 20px;
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #222;
+  color: #fff;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.textbox label {
-  color: white;
-  min-width: 120px;
-  text-align: left;
+.contenedor {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease-in-out;
 }
 
-.textbox input {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #e0e0e0; 
+/* Panel del logo */
+.panel-logo {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, #8c00ff, #00c6ff);
+
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+  position: absolute;
+  /* Posiciona el logo en una capa separada */
+  top: 0;
+  left: 0;
+  z-index: 2;
+  /* El logo está por encima del formulario */
+}
+
+.panel-logo .logo {
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+}
+
+.panel-logo p {
+  margin: 0;
   font-size: 16px;
 }
 
-button{
-    background:#fe9000;
-    color:#fff;
-    border:none;
-    position:relative;
-    height:40px;
-    font-size:1.6em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
-    border-radius: 5px;
-    width: 100%;
-  }
-  button:hover{
-    background:#fff;
-    color:#fe9000;
-  }
-  button:before,button:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: #fe9000;
-    transition:400ms ease all;
-  }
-  button:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  button:hover:before,button:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
+.panel-logo.mover-derecha {
+  transform: translateX(100%);
+}
+
+/* Panel de formularios */
+.panel-formulario {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* Posiciona el formulario en otra capa */
+  top: 0;
+  left: 50%;
+  /* Empieza en la mitad derecha */
+  z-index: 1;
+  /* El formulario está detrás del logo */
+  transition: transform 0.2s ease-in-out;
+}
+
+.panel-formulario.mover-izquierda {
+  transform: translateX(-100%);
+}
+
+.formulario {
+  width: 80%;
+  max-width: 300px;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.formulario.activo {
+  display: flex;
+  opacity: 1;
+}
+
+h2 {
+  margin: 0 0 20px;
+  color: #000;
+  text-align: center;
+  width: 100%;
+}
+
+label {
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #00c6ff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+button:hover {
+  background: #8c00ff;
+}
+
+p,
+label {
+  margin: 10px 0 0;
+  font-size: 14px;
+  width: 100%;
+  color: #000;
+}
+
+span {
+  color: #8c00ff;
+  cursor: pointer;
+}
+
+span:hover{
+  color: #00c6ff;
+
+}
