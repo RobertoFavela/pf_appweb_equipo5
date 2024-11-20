@@ -78,10 +78,6 @@ public class RegisterController extends HttpServlet {
                 UsuarioDto usuario = new UsuarioDto(correo, nombre, contra);
                 boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
                 
-                if (respuesta) {
-                    url = "/LogInView.jsp";
-                }
-                
             }
         }
         this.getServletContext().getRequestDispatcher(url).forward(request, response);
