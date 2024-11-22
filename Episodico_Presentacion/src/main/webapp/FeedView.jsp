@@ -118,12 +118,18 @@
 
             <div class="resena">
                 <div class="titulo-resena">📄 Título de reseña</div>
-                <div class="info-resena">
-                    <div class="texto-resena">Este es un ejemplo de texto de la reseña. Aquí puedes agregar el contenido
-                        de
-                        la reseña más reciente.</div>
+                    <div class="texto-resena"><p>Este es un ejemplo de texto de la reseña. Aquí puedes agregar el contenido
+                        de la reseña más reciente.</p></div>
                     <div class="imagen-resena">Imagen de serie</div>
-                </div>
+                
+            </div>
+
+            <div class="resena">
+                <div class="titulo-resena">📄 Título de reseña</div>
+                    <div class="texto-resena"><p>Este es un ejemplo de texto de la reseña. Aquí puedes agregar el contenido
+                        de la reseña más reciente.</p></div>
+                    <div class="imagen-resena">Imagen de serie</div>
+                
             </div>
         </section>
     </div>
