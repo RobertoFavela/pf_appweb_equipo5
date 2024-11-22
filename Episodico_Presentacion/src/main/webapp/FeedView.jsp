@@ -22,7 +22,7 @@
                 <form action="#">
                     <ul class="ul">
                         <input checked="" name="rad" class="radio" id="Inicio" type="radio" />
-                        <label for="choose1">
+                        <label for="Inicio">
                             <li class="li">
                                 <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
                                     xmlns="http://www.w3..org/2000/svg" aria-hidden="true" class="imgNav">
