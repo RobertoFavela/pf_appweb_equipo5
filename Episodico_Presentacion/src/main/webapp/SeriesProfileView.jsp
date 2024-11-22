@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="SeriesProfile/Style.css">
-    <title>Perfil de Persona</title>
+    <title>Perfil de Serie</title>
 </head>
 <body>
     <header>
