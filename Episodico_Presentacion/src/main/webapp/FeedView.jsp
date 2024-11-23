@@ -82,17 +82,11 @@
 
             <div class="contenedor-series">
                 <div class="serie">
-                    <div class="info">Star Wars<br>5 Temporadas<br>❤ 5K | 👁️ 25K</div>
+                    <div class="info">Daredevil</div>
+                    <img src="Posters/daredevil.jpeg" class="serie-img">
+                    <a href="/PerfilSerie/perfilSerie.html"></a>
                 </div>
-                <div class="serie"><a href="/PerfilSerie/perfilSerie.html"></a></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
+
             </div>
         </section>
 
@@ -100,16 +94,11 @@
         <section class="seccion">
 
             <div class="contenedor-series">
-                <div class="serie"><a href="/PerfilSerie/perfilSerie.html"></a></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
-                <div class="serie"></div>
+                <div class="serie">
+                    <div class="info">Daredevil</div>
+                    <img src="Posters/daredevil.jpeg" class="serie-img">
+                    <a href="/PerfilSerie/perfilSerie.html"></a>
+                </div>
             </div>
         </section>
 
@@ -118,18 +107,22 @@
 
             <div class="resena">
                 <div class="titulo-resena">📄 Título de reseña</div>
-                    <div class="texto-resena"><p>Este es un ejemplo de texto de la reseña. Aquí puedes agregar el contenido
-                        de la reseña más reciente.</p></div>
-                    <div class="imagen-resena">Imagen de serie</div>
-                
+                <div class="texto-resena">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere vero voluptate doloremque dignissimos consectetur repellendus enim maiores adipisci, amet est dolor incidunt inventore recusandae placeat reiciendis? Distinctio aspernatur veniam, incidunt rerum, nobis ipsum placeat totam magnam iusto blanditiis voluptas a doloremque inventore ducimus. Cupiditate soluta quibusdam nemo qui laboriosam! Cumque nobis aliquid officiis recusandae accusantium cum rerum perferendis aut provident deserunt amet ullam eaque nam quasi est maxime sunt a deleniti, consectetur tempora similique. Deleniti cupiditate minima unde officia fugiat dolore ipsum deserunt, voluptatibus corrupti tenetur atque ut ullam dignissimos, quis porro magni maxime voluptatum totam. Provident, commodi ea.</p>
+                </div>
+                <div class="imagen-resena">
+                    <img src="Posters/daredevil.jpeg" class="serie-img">
+                </div>
             </div>
 
             <div class="resena">
                 <div class="titulo-resena">📄 Título de reseña</div>
-                    <div class="texto-resena"><p>Este es un ejemplo de texto de la reseña. Aquí puedes agregar el contenido
-                        de la reseña más reciente.</p></div>
-                    <div class="imagen-resena">Imagen de serie</div>
-                
+                <div class="texto-resena">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere vero voluptate doloremque dignissimos consectetur repellendus enim maiores adipisci, amet est dolor incidunt inventore recusandae placeat reiciendis? Distinctio aspernatur veniam, incidunt rerum, nobis ipsum placeat totam magnam iusto blanditiis voluptas a doloremque inventore ducimus. Cupiditate soluta quibusdam nemo qui laboriosam! Cumque nobis aliquid officiis recusandae accusantium cum rerum perferendis aut provident deserunt amet ullam eaque nam quasi est maxime sunt a deleniti, consectetur tempora similique. Deleniti cupiditate minima unde officia fugiat dolore ipsum deserunt, voluptatibus corrupti tenetur atque ut ullam dignissimos, quis porro magni maxime voluptatum totam. Provident, commodi ea.</p>
+                </div>
+                <div class="imagen-resena">
+                    <img src="Posters/daredevil.jpeg" class="serie-img">
+                </div>
             </div>
         </section>
     </div>
