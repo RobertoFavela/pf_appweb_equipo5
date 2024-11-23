@@ -11,7 +11,7 @@
     <title>Perfil de Persona</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="SeriesProfile/Style.css">
+    <link rel="stylesheet" href="GestionSerie/style.css">
     <title>Perfil de Serie</title>
 </head>
 <body>
@@ -74,73 +74,58 @@
                 </form>
             </div>
         </header>
-
-        <div class="perfil">
-            <div class="foto-perfil">
-                <img src="Posters/daredevil.jpeg" class="serie-img-perfil">
+        <h2>Gestionar serie</h2>
+        <section class="gestionar-serie">
+            <div class="botones">
+                <button class="btn agregar-btn" id="btn-agregar">
+                    <div class="add-icon"></div>
+                    <div class="btn-txt">Agregar</div>
+                </button>
+                <button class="btn mod-btn" id="btn-mod">
+                    <div class="modify-icon"></div>
+                    <div class="btn-txt">Modificar</div>
+                </button>
+                <button class="btn ele-btn" id="btn-ele">
+                    <div class="delete-icon"></div>
+                    <div class="btn-txt">Eliminar</div>
+                </button>
             </div>
-            <div class="NombrePerfil">
-                <h2>Perfil de Serie</h2>
-            </div>
-            <div class="descripcion">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum optio dignissimos provident ad
-                    repellendus, repellat odit quis, id, labore eos nostrum. Dolorum adipisci nostrum et quia suscipit
-                    quidem optio assumenda fugit illo praesentium, commodi aut repudiandae nemo voluptatibus, est
-                    maxime! Cum dolores illum amet in quae, enim tenetur dignissimos quidem possimus laudantium aliquam
-                    voluptates consequatur ab blanditiis porro quibusdam. Accusamus est similique repellat fugit qui
-                    consequatur nam natus enim fugiat. Laudantium, distinctio porro, possimus cumque quibusdam sed et
-                    similique itaque atque quidem saepe. Dicta esse officia molestiae. Vero nostrum illum, laboriosam
-                    deserunt est doloremque nulla ipsam sint maiores, tenetur voluptates?
-                </p>
-            </div>
-        </div>
 
-        <h2>Escribe una reseña</h2>
-        <div class="nueva-resena">
-            <form class="form">
-                
+            <form id="form-serie" class="form-serie" action="/gestionarSerie" method="POST">
+                <label for="nombre">Nombre de la Serie:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Stranger Things" required>
 
-                <div class="titulo">Reseña</div>
-                <textarea placeholder="Tu reseña"></textarea>
-                <br>
-                <button type="submit">Aceptar</button>
+                <div id="extras">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Agrega una breve descripción..." rows="5"></textarea>
+
+                    <label for="genero">Género:</label>
+                    <select id="genero" name="genero">
+                        <option value="accion">Acción</option>
+                        <option value="drama">Drama</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="terror">Terror</option>
+                        <option value="fantasia">Fantasía</option>
+                        <option value="documental">Documental</option>
+                    </select>
+
+                    <label for="lanzamiento">Año de Lanzamiento:</label>
+                    <input type="number" id="lanzamiento" name="lanzamiento" min="1900" max="2100">
+
+                    <label for="portada">Imagen de Portada:</label>
+                    <input type="file" id="portada" name="portada" accept="image/*">
+                </div>
+
+                <div class="form-btn">
+                    <button type="submit" class="btn-guardar">Guardar</button>
+                    <button type="reset" class="btn-limpiar">Limpiar</button>
+                </div>
             </form>
-        </div>
-
-        <h2 class="fav">Similares</h2>
-        <section class="favoritas">
-
-            <div class="contenedor-series-fav">
-                <div class="serie">
-                    <div class="info">Daredevil</div>
-                    <img src="Posters/daredevil.jpeg" class="serie-img">
-                    <a href="/PerfilSerie/perfilSerie.html"></a>
-                </div>
-
-            </div>
         </section>
+    </div>
 
-        <h2>Reseñas</h2>
-        <section class="resenas-recientes">
+    <script src="GestionSerie/script.js"></script>
 
-            <div class="resena">
-                <div class="titulo-resena">📄 Título de reseña</div>
-                <div class="texto-resena">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere vero voluptate
-                        doloremque dignissimos consectetur repellendus enim maiores adipisci, amet est dolor incidunt
-                        inventore recusandae placeat reiciendis? Distinctio aspernatur veniam, incidunt rerum, nobis
-                        ipsum placeat totam magnam iusto blanditiis voluptas a doloremque inventore ducimus. Cupiditate
-                        soluta quibusdam nemo qui laboriosam! Cumque nobis aliquid officiis recusandae accusantium cum
-                        rerum perferendis aut provident deserunt amet ullam eaque nam quasi est maxime sunt a deleniti,
-                        consectetur tempora similique. Deleniti cupiditate minima unde officia fugiat dolore ipsum
-                        deserunt, voluptatibus corrupti tenetur atque ut ullam dignissimos, quis porro magni maxime
-                        voluptatum totam. Provident, commodi ea.</p>
-                </div>
-                <div class="imagen-resena">
-                    <img src="Posters/daredevil.jpeg" class="serie-img">
-                </div>
-            </div>
-        </section>
     </div>
 </body>
 </html>

@@ -1,0 +1,187 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #8c00ff, #00c6ff);
+}
+
+.Feed{
+    background-color: #222;
+    margin: 10px 50vh;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*navegacion*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    position: relative; 
+    height: 4vh;
+    border-radius: 10px;
+    padding-bottom: 1cm;
+    width: 95.7%;
+}
+
+#nav{
+    display: flex;
+    height: 60px;
+    border-radius: 40px;    
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.041);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 1cm;
+    width: 100%;
+  }
+  
+  .ul {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  
+  .ul .li {
+    display: inline-block;
+  }
+  
+  .radio {
+    display: none;
+  }
+  
+  .imgNav {
+    width: 50px;
+    height: 50px;
+    opacity: 80%;
+    cursor: pointer;
+    padding: 13px 20px;
+    transition: 0.2s;
+  }
+  
+  .ul .li .imgNav:hover {
+    transition: 0.1s;
+    color: #8c00ff;
+    position: relative;
+    margin-top: -4px;
+    opacity: 100%;
+  }
+
+  
+
+  .radio:checked + label .li .imgNav {
+    color: #00c6ff;
+    fill-rule: evenodd;
+  }
+  
+/* Título */
+h2 {
+    text-align: center;
+    color: #00c6ff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Formulario */
+
+label{
+    color: #00c6ff;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #555;
+}
+
+.agregar-btn {
+    background-color: #00c6ff;
+}
+
+.agregar-btn:hover {
+    background-color: #0054b4;
+}
+
+.mod-btn {
+   
+    background: linear-gradient(to right, #00c6ff, #8c00ff);
+    
+}
+
+.mod-btn:hover {
+    
+    background: linear-gradient(to right, #8c00ff, #00c6ff);
+}
+
+.ele-btn {
+    background-color: #8c00ff;
+}
+
+.ele-btn:hover {
+    background-color: #400074;
+}
+
+.gestionar-serie label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gestionar-serie input,
+.gestionar-serie select,
+.gestionar-serie textarea {
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #8c00ff;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.gestionar-serie select{
+    width: 100%;
+}
+
+.form-btn button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-guardar {
+    background-color: #00c6ff;
+}
+
+.btn-guardar:hover {
+    background-color: #8c00ff;
+}
+
+.btn-limpiar {
+    background-color: #8c00ff;
+}
+
+.btn-limpiar:hover {
+    background-color: #00c6ff;
+}

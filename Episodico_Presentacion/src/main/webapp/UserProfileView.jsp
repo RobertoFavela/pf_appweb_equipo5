@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="UserProfile/Style.css">
     <title>Perfil de Persona</title>
 </head>
-
 <body>
     <div class="Feed">
         <header>
@@ -104,7 +103,6 @@
                     <img src="Posters/daredevil.jpeg" class="serie-img">
                     <a href="/PerfilSerie/perfilSerie.html"></a>
                 </div>
-
             </div>
         </section>
 
