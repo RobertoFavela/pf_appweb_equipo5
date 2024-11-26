@@ -53,7 +53,9 @@ public class GestionSerieController extends HttpServlet {
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
           processRequest(request, response);
-
+          String url = "/GestionSerie.jsp";
+          
+          
           String action = request.getParameter("RegistrarSerie"); // Action de la solicitud
 
           // Recibir los datos del formulario

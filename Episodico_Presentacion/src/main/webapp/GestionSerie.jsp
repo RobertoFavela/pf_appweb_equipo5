@@ -91,7 +91,8 @@
                 </button>
             </div>
 
-            <form id="form-serie" class="form-serie" action="/gestionarSerie" method="POST">
+           <form id="form-serie" class="form-serie" action="GestionSerieController" method="POST">
+
                 <label for="nombre">Nombre de la Serie:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej: Stranger Things" required>
 
