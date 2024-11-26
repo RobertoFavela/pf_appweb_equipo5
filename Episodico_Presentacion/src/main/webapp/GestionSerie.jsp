@@ -1,10 +1,10 @@
-<!-- <%-- 
+ <%-- 
     Document   : SeriesProfile
     Created on : 29 oct 2024, 12:00:19 a.m.
     Author     : favel
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,10 +1,10 @@
-<!--<%-- 
+<%-- 
     Document   : UserProfileView
     Created on : 28 oct 2024, 11:58:31 p.m.
     Author     : favel
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,10 +1,10 @@
-<!-- <%-- 
+ <%-- 
     Document   : FeedView
     Created on : 29 oct 2024, 12:04:13 a.m.
     Author     : favel
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html lang="es">
 

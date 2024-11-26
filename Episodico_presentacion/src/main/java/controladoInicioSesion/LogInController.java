@@ -6,6 +6,7 @@ package controladoInicioSesion;
 
 import dtos.UsuarioDto;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,10 +16,10 @@ import logicaIniciarSesion.LogicaIniciarSesion;
 
 /**
  *
- * @authors 
- * Luis Roberto Favela Castro - 00000246853
- * Jesus Alberto Morales Ronjas - 00000245335
+ * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales
+ * Ronjas - 00000245335
  */
+@WebServlet(name = "LogInController", urlPatterns = {"/LogInController"})
 public class LogInController extends HttpServlet {
 
      private final ILogicaIniciarSesion logicaIniciarSesion;
@@ -81,7 +82,9 @@ public class LogInController extends HttpServlet {
                boolean respuesta = logicaIniciarSesion.iniciarSesion(usuario);
 
                if (respuesta) {
-                    url = "/FeedView.jsp";
+                   
+                    response.sendRedirect("FeedController");
+                    return;
                } else {
                     request.setAttribute("error", "Credenciales incorrectas.");
                }

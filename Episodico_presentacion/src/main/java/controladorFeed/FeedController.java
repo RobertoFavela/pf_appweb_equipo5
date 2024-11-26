@@ -17,9 +17,8 @@ import logicaSerie.LogicaSerie;
 
 /**
  *
- * @authors 
- * Luis Roberto Favela Castro - 00000246853
- * Jesus Alberto Morales Ronjas - 00000245335
+ * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales
+ * Ronjas - 00000245335
  */
 @WebServlet(name = "FeedController", urlPatterns = {"/FeedController"})
 public class FeedController extends HttpServlet {
@@ -40,9 +39,9 @@ public class FeedController extends HttpServlet {
           response.setContentType("text/html;charset=UTF-8");
 
           List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
-          System.out.println("Series recientes: " + seriesRecientes); 
-          
-          List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion(); 
+          System.out.println("Series recientes: " + seriesRecientes);
+
+          List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion();
 
           request.setAttribute("seriesRecientes", seriesRecientes);
           request.setAttribute("seriesMejorCalificadas", seriesMejorCalificadas);
@@ -66,9 +65,9 @@ public class FeedController extends HttpServlet {
           processRequest(request, response);
 
           List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
-          System.out.println("Series recientes: " + seriesRecientes); 
+          System.out.println("Series recientes: " + seriesRecientes);
 
-          List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion(); 
+          List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion();
 
           request.setAttribute("seriesRecientes", seriesRecientes);
           request.setAttribute("seriesMejorCalificadas", seriesMejorCalificadas);

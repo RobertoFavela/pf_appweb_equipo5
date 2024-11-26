@@ -1,10 +1,10 @@
-<!--<%-- 
+<%-- 
     Document   : LogIn-view
     Created on : 28 oct 2024, 22:31:35
     Author     : tacot
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
