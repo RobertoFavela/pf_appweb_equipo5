@@ -1,17 +1,19 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controladoInicioSesion;
+package controladorFeed;
 
-import dtos.UsuarioDto;
+import dtos.SerieDto;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import logicaIniciarSesion.ILogicaIniciarSesion;
-import logicaIniciarSesion.LogicaIniciarSesion;
+import java.util.List;
+import logicaSerie.LogicaSerie;
 
 /**
  *
@@ -19,13 +21,10 @@ import logicaIniciarSesion.LogicaIniciarSesion;
  * Luis Roberto Favela Castro - 00000246853
  * Jesus Alberto Morales Ronjas - 00000245335
  */
-public class LogInController extends HttpServlet {
+@WebServlet(name = "FeedController", urlPatterns = {"/FeedController"})
+public class FeedController extends HttpServlet {
 
-     private final ILogicaIniciarSesion logicaIniciarSesion;
-
-     public LogInController() {
-          logicaIniciarSesion = new LogicaIniciarSesion();
-     }
+     private final LogicaSerie logicaSerie = new LogicaSerie();
 
      /**
       * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,6 +38,16 @@ public class LogInController extends HttpServlet {
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
           response.setContentType("text/html;charset=UTF-8");
+
+          List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
+          System.out.println("Series recientes: " + seriesRecientes); 
+          
+          List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion(); 
+
+          request.setAttribute("seriesRecientes", seriesRecientes);
+          request.setAttribute("seriesMejorCalificadas", seriesMejorCalificadas);
+
+          request.getRequestDispatcher("/FeedView.jsp").forward(request, response);
 
      }
 
@@ -55,6 +64,16 @@ public class LogInController extends HttpServlet {
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
           processRequest(request, response);
+
+          List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
+          System.out.println("Series recientes: " + seriesRecientes); 
+
+          List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion(); 
+
+          request.setAttribute("seriesRecientes", seriesRecientes);
+          request.setAttribute("seriesMejorCalificadas", seriesMejorCalificadas);
+
+          request.getRequestDispatcher("/FeedView.jsp").forward(request, response);
      }
 
      /**
@@ -68,26 +87,7 @@ public class LogInController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String url = "/LogInView.jsp";
-
-          String accion = request.getParameter("AccionIniciarSesion");
-
-          if (accion != null && accion.equalsIgnoreCase("IniciarSesion")) {
-               String correo = request.getParameter("txtUsuario");
-               String contrasena = request.getParameter("txtContrasena");
-
-               UsuarioDto usuario = new UsuarioDto(contrasena, correo);
-
-               boolean respuesta = logicaIniciarSesion.iniciarSesion(usuario);
-
-               if (respuesta) {
-                    url = "/FeedView.jsp";
-               } else {
-                    request.setAttribute("error", "Credenciales incorrectas.");
-               }
-          }
-
-          this.getServletContext().getRequestDispatcher(url).forward(request, response);
+          processRequest(request, response);
      }
 
      /**

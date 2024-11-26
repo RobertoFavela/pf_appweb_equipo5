@@ -9,6 +9,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
+ */
 public class Serie {
 
     private ObjectId id;
@@ -16,7 +22,7 @@ public class Serie {
     private int calificacion, vistas;
     private int lanzamiento;
     private List<Reseña> reseñas;
-    private byte[] imagen; // Atributo para la imagen en formato byte array
+    private byte[] imagen;
 
     public Serie() {
     }
@@ -29,7 +35,7 @@ public class Serie {
         this.vistas = vistas;
         this.lanzamiento = lanzamiento;
         this.reseñas = reseñas;
-        this.imagen = imagen; // Inicialización del atributo imagen
+        this.imagen = imagen; 
     }
 
     public ObjectId getId() {

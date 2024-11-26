@@ -6,7 +6,9 @@ package logicaComentario;
 
 /**
  *
- * @author Jesus Morales
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class LogicaComentario {
     

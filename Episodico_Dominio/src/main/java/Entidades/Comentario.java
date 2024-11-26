@@ -7,27 +7,30 @@ package Entidades;
 import org.bson.types.ObjectId;
 import java.util.Date;
 
+/**
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
+ */
 public class Comentario {
 
-    private ObjectId id; // ID único del comentario
-    private String contenido; // Contenido del comentario
-    private String autor; // Nombre del autor del comentario
-    private Date fechaComentario; // Fecha en la que se realizó el comentario
+    private ObjectId id; 
+    private String contenido; 
+    private String autor; 
+    private Date fechaComentario; 
 
-    // Constructor vacío
     public Comentario() {
-        this.fechaComentario = new Date(); // Fecha actual al crear el comentario
+        this.fechaComentario = new Date(); 
     }
 
-    // Constructor con parámetros
     public Comentario(ObjectId id, String contenido, String autor) {
         this.id = id;
         this.contenido = contenido;
         this.autor = autor;
-        this.fechaComentario = new Date(); // Fecha actual al crear el comentario
+        this.fechaComentario = new Date(); 
     }
 
-    // Getters y Setters
     public ObjectId getId() {
         return id;
     }
@@ -54,6 +57,10 @@ public class Comentario {
 
     public Date getFechaComentario() {
         return fechaComentario;
+    }
+    
+    public void setFechaComentario(Date fecha) {
+         this.fechaComentario = fecha;
     }
 
     @Override

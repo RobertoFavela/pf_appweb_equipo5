@@ -9,35 +9,37 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
+ */
 public class Reseña {
 
-    private ObjectId id; // ID único de la reseña
-    private String titulo; // Título de la reseña
-    private String contenido; // Contenido de la reseña
-    private int calificacion; // Calificación entre 1 y 5
-    private Date fechaPublicacion; // Fecha de publicación
-    private ObjectId serieId; // ID de la serie a la que pertenece la reseña
-    private List<Comentario> comentarios; // Lista de comentarios asociados a la reseña
+    private ObjectId id;
+    private String titulo;
+    private String contenido; 
+    private int calificacion; 
+    private Date fechaPublicacion; 
+    private ObjectId serieId; 
+    private List<Comentario> comentarios; 
 
-    // Constructor vacío
     public Reseña() {
-        this.fechaPublicacion = new Date(); // Fecha actual al crear la reseña
+        this.fechaPublicacion = new Date(); 
         this.comentarios = new ArrayList<>();
     }
 
-    // Constructor con parámetros
     public Reseña(ObjectId id, String titulo, String contenido, int calificacion, ObjectId serieId) {
         this.id = id;
         this.titulo = titulo;
         this.contenido = contenido;
         setCalificacion(calificacion);
-        this.fechaPublicacion = new Date(); // Fecha actual al crear la reseña
+        this.fechaPublicacion = new Date(); 
         this.serieId = serieId;
         this.comentarios = new ArrayList<>();
     }
 
-    // Getters y Setters
     public ObjectId getId() {
         return id;
     }
@@ -76,6 +78,10 @@ public class Reseña {
     public Date getFechaPublicacion() {
         return fechaPublicacion;
     }
+    
+    public void setFechaPublicacion(Date fecha) {
+         this.fechaPublicacion = fecha;
+    }
 
     public ObjectId getSerieId() {
         return serieId;
@@ -92,6 +98,8 @@ public class Reseña {
     public void agregarComentario(Comentario comentario) {
         this.comentarios.add(comentario);
     }
+    
+    
 
     @Override
     public String toString() {

@@ -11,14 +11,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Clase que implementa la lógica de negocio relacionada con las series.
- * Implementa la interfaz ILogicaSerie y maneja las operaciones de negocio para las series.
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class LogicaSerie implements ILogicaSerie {
 
     private final SerieDAO serieDAO;
 
-    // Constructor que recibe el DAO para interactuar con la base de datos
     public LogicaSerie() {
         this.serieDAO = new SerieDAO();
     }
@@ -46,14 +47,14 @@ public class LogicaSerie implements ILogicaSerie {
     public boolean insertarSerie(SerieDto serieDTO) {
         Serie serie = convertirDtoAEntidad(serieDTO);
         serieDAO.insertarSerie(serie);
-        return true; // Asumiendo que la inserción se hace correctamente
+        return true; 
     }
 
     @Override
     public List<SerieDto> buscarSeriesPorNombre(String nombre) {
         List<Serie> series = serieDAO.obtenerSeriesPorNombre(nombre);
         return series.stream()
-                     .map(this::convertirEntidadADto) // Convertir cada Serie a SerieDTO
+                     .map(this::convertirEntidadADto) 
                      .collect(Collectors.toList());
     }
 
@@ -61,7 +62,7 @@ public class LogicaSerie implements ILogicaSerie {
     public List<SerieDto> obtenerTodasLasSeries() {
         List<Serie> series = serieDAO.obtenerTodasLasSeries();
         return series.stream()
-                     .map(this::convertirEntidadADto) // Convertir cada Serie a SerieDTO
+                     .map(this::convertirEntidadADto) 
                      .collect(Collectors.toList());
     }
 
@@ -69,7 +70,7 @@ public class LogicaSerie implements ILogicaSerie {
     public List<SerieDto> obtenerSeriesPorCalificacion() {
         List<Serie> series = serieDAO.obtenerSeriesPorCalificacion();
         return series.stream()
-                     .map(this::convertirEntidadADto) // Convertir cada Serie a SerieDTO
+                     .map(this::convertirEntidadADto) 
                      .collect(Collectors.toList());
     }
 
@@ -77,7 +78,7 @@ public class LogicaSerie implements ILogicaSerie {
     public List<SerieDto> obtenerSeriesPorVistas() {
         List<Serie> series = serieDAO.obtenerSeriesPorVistas();
         return series.stream()
-                     .map(this::convertirEntidadADto) // Convertir cada Serie a SerieDTO
+                     .map(this::convertirEntidadADto) 
                      .collect(Collectors.toList());
     }
 
@@ -85,7 +86,7 @@ public class LogicaSerie implements ILogicaSerie {
     public List<SerieDto> obtenerSeriesPorFechaDeLanzamiento() {
         List<Serie> series = serieDAO.obtenerSeriesPorFechaDeLanzamiento();
         return series.stream()
-                     .map(this::convertirEntidadADto) // Convertir cada Serie a SerieDTO
+                     .map(this::convertirEntidadADto) 
                      .collect(Collectors.toList());
     }
 
@@ -108,10 +109,10 @@ public class LogicaSerie implements ILogicaSerie {
      */
     private SerieDto convertirEntidadADto(Serie serie) {
         SerieDto serieDTO = new SerieDto();
+        serieDTO.setId(serie.getId().toString());
         serieDTO.setTitulo(serie.getTitulo());
         serieDTO.setDescripcion(serie.getDescripcion());
         serieDTO.setCalificacion(serie.getCalificacion());
-        serieDTO.setLanzamiento(serie.getLanzamiento());
         serieDTO.setVistas(serie.getVistas());
         serieDTO.setLanzamiento(serie.getLanzamiento());
 //        serieDTO.setImagen(serie.getImagen()); // Convertir de byte[] a formato adecuado si es necesario

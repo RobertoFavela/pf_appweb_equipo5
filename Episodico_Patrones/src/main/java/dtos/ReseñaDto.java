@@ -7,21 +7,25 @@ package dtos;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
+ */
 public class ReseñaDto {
 
-    private String id; // Usamos String en lugar de ObjectId para facilitar la manipulación
+    private String id;
     private String titulo;
     private String contenido;
     private int calificacion;
     private Date fechaPublicacion;
-    private String serieId; // ID de la serie a la que pertenece la reseña
-    private List<ComentarioDto> comentarios; // Lista de comentarios en formato DTO
+    private String serieId; 
+    private List<ComentarioDto> comentarios; 
 
-    // Constructor vacío
     public ReseñaDto() {
     }
 
-    // Constructor con parámetros
     public ReseñaDto(String id, String titulo, String contenido, int calificacion, Date fechaPublicacion, String serieId, List<ComentarioDto> comentarios) {
         this.id = id;
         this.titulo = titulo;
@@ -32,7 +36,6 @@ public class ReseñaDto {
         this.comentarios = comentarios;
     }
 
-    // Getters y Setters
     public String getId() {
         return id;
     }

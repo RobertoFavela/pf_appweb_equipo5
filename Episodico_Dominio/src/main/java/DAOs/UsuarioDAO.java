@@ -18,8 +18,9 @@ import java.util.List;
 
 /**
  *
- * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales
- * Ronjas - 00000245335
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class UsuarioDAO {
 

@@ -6,18 +6,22 @@ package dtos;
 
 import java.util.Date;
 
+/**
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
+ */
 public class ComentarioDto {
 
-    private String id; // Usamos String en lugar de ObjectId para facilitar la manipulación
+    private String id; 
     private String contenido;
     private String autor;
     private Date fechaComentario;
 
-    // Constructor vacío
     public ComentarioDto() {
     }
 
-    // Constructor con parámetros
     public ComentarioDto(String id, String contenido, String autor, Date fechaComentario) {
         this.id = id;
         this.contenido = contenido;
@@ -25,7 +29,6 @@ public class ComentarioDto {
         this.fechaComentario = fechaComentario;
     }
 
-    // Getters y Setters
     public String getId() {
         return id;
     }

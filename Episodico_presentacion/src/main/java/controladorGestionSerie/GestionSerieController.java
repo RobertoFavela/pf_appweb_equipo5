@@ -20,7 +20,9 @@ import logicaSerie.LogicaSerie;
 
 /**
  *
- * @author favel
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class GestionSerieController extends HttpServlet {
 
@@ -57,41 +59,19 @@ public class GestionSerieController extends HttpServlet {
           String url = "/GestionSerie.jsp";
           
           
-          String action = request.getParameter("RegistrarSerie"); // Action de la solicitud
+          String action = request.getParameter("RegistrarSerie"); 
 
-          // Recibir los datos del formulario
           String nombre = request.getParameter("nombre");
           String descripcion = request.getParameter("descripcion");
           String genero = request.getParameter("genero");
           int lanzamiento = Integer.parseInt(request.getParameter("lanzamiento"));
 
-          // Obtener el archivo de la imagen del formulario (se asume que se sube como parte de un formulario multipart)
-//          Part portadaPart = request.getPart("portada"); // Nombre del campo de la imagen en el formulario
-//
-//          byte[] portada = null;
-//
-//          // Verificar si el archivo fue subido
-//          if (portadaPart != null) {
-//               // Convertir la imagen a un arreglo de bytes
-//               try (InputStream inputStream = portadaPart.getInputStream()) {
-//                    portada = new byte[inputStream.available()];
-//                    inputStream.read(portada);
-//               } catch (IOException e) {
-//                    e.printStackTrace();
-//                    // Manejo de errores si la imagen no puede ser leída
-//               }
-//          }
-
-          // Crear el DTO de la serie
           SerieDto nuevaSerie = new SerieDto();
           nuevaSerie.setTitulo(nombre);
           nuevaSerie.setDescripcion(descripcion);
-//          nuevaSerie.setImagen(portada);
 
-          // Insertar la serie
           boolean exito = logicaSerie.insertarSerie(nuevaSerie);
 
-          // Redirigir o mostrar mensaje según el resultado
           if (exito) {
                response.sendRedirect("GestionSerie.jsp?mensaje=Serie agregada con éxito");
 

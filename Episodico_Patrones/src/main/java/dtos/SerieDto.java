@@ -7,10 +7,14 @@ package dtos;
 import java.util.Date;
 
 /**
- * @author favel
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class SerieDto {
 
+     private String id;
     private String titulo;
     private String descripcion;
     private int lanzamiento;
@@ -18,17 +22,18 @@ public class SerieDto {
     private int vistas;
 //    private byte[] imagen;  
 
-     public SerieDto(String titulo, String descripcion, int lanzamiento, int calificacion, int vistas) {
+     public SerieDto(String id, String titulo, String descripcion, int lanzamiento, int calificacion, int vistas) {
+          this.id = id;
           this.titulo = titulo;
           this.descripcion = descripcion;
           this.lanzamiento = lanzamiento;
           this.calificacion = calificacion;
           this.vistas = vistas;
      }
-
     
-    
-    // Constructor
+    /*
+     Constructor con el array de bytes para la imagen que aun no esta implementado
+     */
 //    public SerieDto(String titulo, String descripcion, int lanzamiento, int calificacion, int vistas, byte[] imagen) {
 //        this.titulo = titulo;
 //        this.descripcion = descripcion;
@@ -42,7 +47,14 @@ public class SerieDto {
          
     }
 
-    // Getters y setters
+     public String getId() {
+          return id;
+     }
+
+     public void setId(String id) {
+          this.id = id;
+     }
+   
     public String getTitulo() {
         return titulo;
     }
@@ -82,7 +94,10 @@ public class SerieDto {
     public void setVistas(int vistas) {
         this.vistas = vistas;
     }
-//
+
+    /*
+    Getter y setter para la imagen y el toString con la imagen
+    */
 //    public byte[] getImagen() {
 //        return imagen;
 //    }
@@ -90,9 +105,7 @@ public class SerieDto {
 //    public void setImagen(byte[] imagen) {
 //        this.imagen = imagen;
 //    }
-
-    
-    
+//
 //    @Override
 //    public String toString() {
 //        return "SerieDTO{" +

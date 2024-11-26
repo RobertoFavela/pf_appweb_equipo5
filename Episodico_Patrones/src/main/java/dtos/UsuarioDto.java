@@ -8,7 +8,9 @@ import java.io.Serializable;
 
 /**
  *
- * @author tacot
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class UsuarioDto implements Serializable{
     private static final long serialVersionUID = 1L;

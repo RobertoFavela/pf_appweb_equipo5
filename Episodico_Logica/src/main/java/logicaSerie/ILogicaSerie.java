@@ -8,8 +8,10 @@ import dtos.SerieDto;
 import java.util.List;
 
 /**
- * Interfaz que define la lógica de negocio relacionada con las series.
- * La implementación de esta interfaz se encargará de manejar las operaciones que se realizan sobre las series.
+ *
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public interface ILogicaSerie {
 
