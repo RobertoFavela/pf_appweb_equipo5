@@ -27,8 +27,8 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Usuario(String usuario, String contrasena) {
-         this.usuario = usuario;
+    public Usuario(String correo, String contrasena) {
+         this.correo = correo;
          this.contrasena = contrasena;
     }
     

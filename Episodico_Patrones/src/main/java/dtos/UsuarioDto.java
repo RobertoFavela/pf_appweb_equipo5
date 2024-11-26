@@ -62,6 +62,13 @@ public class UsuarioDto implements Serializable{
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+     @Override
+     public String toString() {
+          return "UsuarioDto{" + "nombre=" + nombre + ", contrasena=" + contrasena + ", correo=" + correo + ", rol=" + rol + '}';
+     }
+    
+    
     
     
 }

@@ -4,29 +4,24 @@
  */
 package Entidades;
 
+import org.bson.types.ObjectId;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import org.bson.types.ObjectId;
 
-/**
- *
- * @authors 
- * Luis Roberto Favela Castro - 00000246853
- * Jesus Alberto Morales Ronjas - 00000245335
- */
 public class Serie {
-    
+
     private ObjectId id;
     private String titulo, descripcion;
     private int calificacion, vistas;
-    private Date lanzamiento;
+    private int lanzamiento;
     private List<Reseña> reseñas;
+    private byte[] imagen; // Atributo para la imagen en formato byte array
 
     public Serie() {
     }
 
-    public Serie(ObjectId id, String titulo, String descripcion, int calificacion, int vistas, Date lanzamiento, List<Reseña> reseñas) {
+    public Serie(ObjectId id, String titulo, String descripcion, int calificacion, int vistas, int lanzamiento, List<Reseña> reseñas, byte[] imagen) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -34,6 +29,7 @@ public class Serie {
         this.vistas = vistas;
         this.lanzamiento = lanzamiento;
         this.reseñas = reseñas;
+        this.imagen = imagen; // Inicialización del atributo imagen
     }
 
     public ObjectId getId() {
@@ -52,8 +48,6 @@ public class Serie {
         this.reseñas = reseñas;
     }
 
-    
-    
     public String getTitulo() {
         return titulo;
     }
@@ -86,12 +80,20 @@ public class Serie {
         this.vistas = vistas;
     }
 
-    public Date getLanzamiento() {
+    public int getLanzamiento() {
         return lanzamiento;
     }
 
-    public void setLanzamiento(Date lanzamiento) {
+    public void setLanzamiento(int lanzamiento) {
         this.lanzamiento = lanzamiento;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 
     @Override
@@ -136,6 +138,5 @@ public class Serie {
     public String toString() {
         return "Serie{" + "titulo=" + titulo + ", descripcion=" + descripcion + ", calificacion=" + calificacion + ", vistas=" + vistas + ", lanzamiento=" + lanzamiento + '}';
     }
-    
-    
 }
+

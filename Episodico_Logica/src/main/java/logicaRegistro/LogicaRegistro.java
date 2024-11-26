@@ -26,7 +26,7 @@ public class LogicaRegistro implements ILogicaRegistro {
     public boolean resgitrarUsuario(UsuarioDto usuariodto) {
         
         Usuario usuarioARegistrar = convertirDtoAEntidad(usuariodto);
-        
+
         boolean respuesta = daoUsuario.insertarUsuario(usuarioARegistrar);
         
         return respuesta;
