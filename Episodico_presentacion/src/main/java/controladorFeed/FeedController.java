@@ -65,8 +65,6 @@ public class FeedController extends HttpServlet {
           processRequest(request, response);
 
           List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
-          System.out.println("Series recientes: " + seriesRecientes);
-
           List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion();
 
           request.setAttribute("seriesRecientes", seriesRecientes);

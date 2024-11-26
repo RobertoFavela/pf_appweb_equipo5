@@ -83,7 +83,7 @@
                     <c:forEach var="serie" items="${seriesRecientes}">
                         <div class="serie">
                             <div class="info">${serie.titulo}</div> 
-                            <a href="/PerfilSerie/perfilSerie.html?id=${serie.id}"></a> 
+                            <a href="/PerfilSerie/perfilSerie.html?titulo=${serie.titulo}"></a> 
                         </div>
                     </c:forEach>
                 </div>
@@ -95,7 +95,7 @@
                     <c:forEach var="serie" items="${seriesMejorCalificadas}">
                         <div class="serie">
                             <div class="info">${serie.titulo}</div> 
-                            <a href="/PerfilSerie/perfilSerie.html?id=${serie.id}"></a>
+                            <a href="/PerfilSerie/perfilSerie.html?titulo=${serie.titulo}"></a>
                         </div>
                     </c:forEach>
                 </div>
