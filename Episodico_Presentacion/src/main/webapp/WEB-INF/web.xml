@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    
     <servlet>
         <servlet-name>GestionSerieController</servlet-name>
         <servlet-class>controladorGestionSerie.GestionSerieController</servlet-class>
@@ -8,6 +9,7 @@
         <servlet-name>GestionSerieController</servlet-name>
         <url-pattern>/GestionSerieController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>FeedController</servlet-name>
         <servlet-class>controladorFeed.FeedController</servlet-class>
@@ -16,6 +18,7 @@
         <servlet-name>FeedController</servlet-name>
         <url-pattern>/FeedController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>LogInController</servlet-name>
         <servlet-class>controladoInicioSesion.LogInController</servlet-class>
@@ -24,40 +27,29 @@
         <servlet-name>LogInController</servlet-name>
         <url-pattern>/LogInController</url-pattern>
     </servlet-mapping>
-    <filter>
-        <filter-name>Autenticación</filter-name>
-        <filter-class>filtos.Autenticación</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>Autenticación</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    
     <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controladorRegistro.RegisterController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ServeletAutenticacion</servlet-name>
-        <servlet-class>filtrosServlet.ServeletAutenticacion</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/RegisterController</url-pattern>
     </servlet-mapping>
+    
     <dependency>
         <groupId>javax.servlet.jsp.jstl</groupId>
         <artifactId>javax.servlet.jsp.jstl-api</artifactId>
         <version>1.2.0</version>
     </dependency>
-    <servlet-mapping>
-        <servlet-name>ServeletAutenticacion</servlet-name>
-        <url-pattern>/ServeletAutenticacion</url-pattern>
-    </servlet-mapping>
+
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <error-page>
         <error-code>404</error-code>
         <location>/error_404.jsp</location>
@@ -66,4 +58,6 @@
         <error-code>500</error-code>
         <location>/error_500.jsp</location>
     </error-page>
+
+    
 </web-app>
