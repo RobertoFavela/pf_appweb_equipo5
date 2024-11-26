@@ -60,9 +60,12 @@ public class UsuarioDAO {
     }
 
     // Método para validar las credenciales del usuario (inicio de sesión)
-    public Usuario validarCredenciales(String usuario, String contrasena) {
-        Usuario encontrado = usuariosCollection.find(and(eq("usuario", usuario), eq("contrasena", contrasena))).first();  
-        return encontrado;
-    }
+    public Usuario validarCredenciales(Usuario usuario) {
+    Usuario encontrado = usuariosCollection.find(
+        and(eq("correo", usuario.getCorreo()), eq("contrasena", usuario.getContrasena()))
+    ).first();  
+    return encontrado;
+}
+
 
 }

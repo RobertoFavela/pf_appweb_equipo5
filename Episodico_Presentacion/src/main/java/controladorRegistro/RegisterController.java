@@ -76,6 +76,9 @@ public class RegisterController extends HttpServlet {
                 String contra = request.getParameter("txtContra");
 
                 UsuarioDto usuario = new UsuarioDto(correo, nombre, contra);
+                 System.out.println("Register Controller");
+                System.out.println("Insertando usuario: " + usuario.toString());
+
                 boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
                 
             }

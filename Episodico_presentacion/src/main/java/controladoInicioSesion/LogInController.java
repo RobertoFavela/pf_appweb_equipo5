@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import logicaIniciarSesion.ILogicaIniciarSesion;
+import logicaIniciarSesion.LogicaIniciarSesion;
 
 /**
  *
@@ -17,10 +19,10 @@ import java.io.IOException;
  */
 public class LogInController extends HttpServlet {
 
-     private LogInModel modelo;
+     private final ILogicaIniciarSesion logicaIniciarSesion;
 
      public LogInController() {
-          modelo = new LogInModel();
+          logicaIniciarSesion = new LogicaIniciarSesion();
      }
 
      /**
@@ -66,21 +68,23 @@ public class LogInController extends HttpServlet {
              throws ServletException, IOException {
           String url = "/LogInView.jsp";
 
-          String accion = request.getParameter("InicioDeSesion");
+          String accion = request.getParameter("AccionIniciarSesion");
 
           if (accion != null && accion.equalsIgnoreCase("IniciarSesion")) {
+               String correo = request.getParameter("txtUsuario");
+               String contrasena = request.getParameter("txtContrasena");
 
-               String nombre = request.getParameter("txtUsuario");
-               String contra = request.getParameter("txtContrasena");
+               UsuarioDto usuario = new UsuarioDto(contrasena, correo);
 
-               boolean respuesta = modelo.iniciarSesion(nombre, contra);
+               boolean respuesta = logicaIniciarSesion.iniciarSesion(usuario);
 
                if (respuesta) {
-                    url = "/FeedView,jsp";
+                    url = "/FeedView.jsp";
                } else {
                     request.setAttribute("error", "Credenciales incorrectas.");
                }
           }
+
           this.getServletContext().getRequestDispatcher(url).forward(request, response);
      }
 

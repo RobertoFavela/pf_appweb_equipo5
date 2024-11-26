@@ -21,9 +21,20 @@ public class LogicaIniciarSesion implements ILogicaIniciarSesion {
      }
 
      @Override
-     public boolean iniciarSesion(String usuario, String contraseña) {
-          Usuario usuarioEncontrado = daoUsuario.validarCredenciales(usuario, contraseña);
+     public boolean iniciarSesion(UsuarioDto usuariodto) {
+          // Convertir el UsuarioDto a Usuario
+          Usuario usuarioIniciarSesion = convertirDtoAEntidad(usuariodto);
 
+          // Validar las credenciales usando el Usuario convertido
+          Usuario usuarioEncontrado = daoUsuario.validarCredenciales(usuarioIniciarSesion);
+
+          // Retornar true si se encuentra el usuario, false si no
           return usuarioEncontrado != null;
+     }
+
+     @Override
+     public Usuario convertirDtoAEntidad(UsuarioDto usuariodto) {
+          // Asegúrate de que los atributos del UsuarioDto estén correctamente mapeados a Usuario
+          return new Usuario(usuariodto.getCorreo(),  usuariodto.getContrasena());
      }
 }

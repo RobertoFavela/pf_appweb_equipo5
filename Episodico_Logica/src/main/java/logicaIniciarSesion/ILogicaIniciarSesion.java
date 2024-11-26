@@ -12,5 +12,6 @@ import dtos.UsuarioDto;
  * @author Jesus Morales
  */
 public interface ILogicaIniciarSesion {
-    public boolean iniciarSesion(String usaurio, String contraseña);
+    public boolean iniciarSesion(UsuarioDto usuariodto);
+    public Usuario convertirDtoAEntidad(UsuarioDto usuariodto);
 }

@@ -10,6 +10,7 @@ import Entidades.Serie;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Sorts.*;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import conexion.Conexion;
@@ -26,13 +27,11 @@ import java.util.List;
 public class SerieDAO {
 
     private final MongoCollection<Serie> seriesCollection;
-    private final ReseñaDAO ReseñaDAO;
 
     // Constructor: obtiene la colección "series" desde la base de datos
-    public SerieDAO(DAOs.ReseñaDAO ReseñaDAO) {
+    public SerieDAO() {
         MongoDatabase database = Conexion.getDatabase();
         this.seriesCollection = database.getCollection("Serie", Serie.class);
-        this.ReseñaDAO = ReseñaDAO;
     }
 
     // Método para insertar una nueva serie
@@ -58,36 +57,28 @@ public class SerieDAO {
     }
 
     // Método para eliminar una serie por su ID
-    public boolean eliminarSerie(ObjectId id) {
+    public boolean eliminarSerie(String id) {
         DeleteResult result = seriesCollection.deleteOne(eq("_id", id));
         return result.getDeletedCount() > 0;
     }
 
-    // Obtener reseñas de una serie mediante el DAO de reseñas
-    public List<Reseña> obtenerReseñasDeSerie(ObjectId serieId) {
-        // Se obtiene la serie primero
-        Serie serie = buscarSeriePorId(serieId);
-        if (serie != null) {
-            // Instancia de ReseñaDAO se usa para filtrar las reseñas
-            List<Reseña> todasLasReseñas = ReseñaDAO.obtenerTodasLasReseñas();
-            List<Reseña> reseñasDeSerie = new ArrayList<>();
-            for (Reseña r : todasLasReseñas) {
-                if (r.getId().equals(serieId)) {
-                    reseñasDeSerie.add(r);
-                }
-            }
-            return reseñasDeSerie;
-        }
-        return new ArrayList<>();
+    // Métodos adicionales si se requieren para buscar series por ciertos criterios
+    public List<Serie> obtenerSeriesPorNombre(String nombre) {
+        return seriesCollection.find(eq("nombre", nombre)).into(new ArrayList<>());
     }
 
-    // Obtener comentarios de una reseña específica mediante el DAO de reseñas
-    public List<Comentario> obtenerComentariosDeReseña(ObjectId reseñaId) {
-        // Se delega la búsqueda al DAO de reseñas
-        Reseña reseña = ReseñaDAO.buscarReseñaPorId(reseñaId);
-        if (reseña != null) {
-            return reseña.getComentarios();  // Devuelve los comentarios si existe la reseña
-        }
-        return new ArrayList<>();
+    public List<Serie> obtenerSeriesPorCalificacion() {
+        // Aquí se puede agregar un filtro y ordenación si es necesario
+        return seriesCollection.find().sort(eq("calificacion", -1)).into(new ArrayList<>());
+    }
+
+    public List<Serie> obtenerSeriesPorVistas() {
+        return seriesCollection.find().sort(eq("vistas", -1)).into(new ArrayList<>());
+    }
+
+    public List<Serie> obtenerSeriesPorFechaDeLanzamiento() {
+        return seriesCollection.find().sort(eq("fechaDeLanzamiento", -1)).into(new ArrayList<>());
     }
 }
+
+
