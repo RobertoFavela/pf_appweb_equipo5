@@ -38,7 +38,7 @@ public class LogicaSerie implements ILogicaSerie {
         serie.setLanzamiento(serieDTO.getLanzamiento());
         serie.setVistas(serieDTO.getVistas());
         serie.setLanzamiento(serieDTO.getLanzamiento());
-        serie.setImagen(serieDTO.getImagen()); // Imagen como bytes
+//        serie.setImagen(serieDTO.getImagen()); // Imagen como bytes
         return serie;
     }
 
@@ -114,7 +114,7 @@ public class LogicaSerie implements ILogicaSerie {
         serieDTO.setLanzamiento(serie.getLanzamiento());
         serieDTO.setVistas(serie.getVistas());
         serieDTO.setLanzamiento(serie.getLanzamiento());
-        serieDTO.setImagen(serie.getImagen()); // Convertir de byte[] a formato adecuado si es necesario
+//        serieDTO.setImagen(serie.getImagen()); // Convertir de byte[] a formato adecuado si es necesario
         return serieDTO;
     }
 }

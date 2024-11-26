@@ -8,11 +8,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Perfil de Persona</title>
+    <title>Perfil de Serie</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="GestionSerie/style.css">
-    <title>Perfil de Serie</title>
 </head>
 <body>
     <div class="Feed">
@@ -91,7 +90,8 @@
                 </button>
             </div>
 
-           <form id="form-serie" class="form-serie" action="GestionSerieController" method="POST">
+           <form id="form-serie" class="form-serie" action="GestionSerieController" method="POST" enctype="multipart/form-data">
+
 
                 <label for="nombre">Nombre de la Serie:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej: Stranger Things" required>

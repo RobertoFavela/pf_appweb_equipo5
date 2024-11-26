@@ -4,37 +4,40 @@
  */
 package Entidades;
 
+import org.bson.types.ObjectId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
-import org.bson.types.ObjectId;
 
-/**
- *
- * @authors 
- * Luis Roberto Favela Castro - 00000246853
- * Jesus Alberto Morales Ronjas - 00000245335
- */
+
 public class Reseña {
-    
-    private ObjectId id;
-    private String titulo, reseña;
-    private int califiacion;
-    private Date creacion;
-    private List<Comentario> comentarios;
 
-    public Reseña(ObjectId id, String titulo, String reseña, int califiacion, Date creacion, List<Comentario> comentarios) {
+    private ObjectId id; // ID único de la reseña
+    private String titulo; // Título de la reseña
+    private String contenido; // Contenido de la reseña
+    private int calificacion; // Calificación entre 1 y 5
+    private Date fechaPublicacion; // Fecha de publicación
+    private ObjectId serieId; // ID de la serie a la que pertenece la reseña
+    private List<Comentario> comentarios; // Lista de comentarios asociados a la reseña
+
+    // Constructor vacío
+    public Reseña() {
+        this.fechaPublicacion = new Date(); // Fecha actual al crear la reseña
+        this.comentarios = new ArrayList<>();
+    }
+
+    // Constructor con parámetros
+    public Reseña(ObjectId id, String titulo, String contenido, int calificacion, ObjectId serieId) {
         this.id = id;
         this.titulo = titulo;
-        this.reseña = reseña;
-        this.califiacion = califiacion;
-        this.creacion = creacion;
-        this.comentarios = comentarios;
+        this.contenido = contenido;
+        setCalificacion(calificacion);
+        this.fechaPublicacion = new Date(); // Fecha actual al crear la reseña
+        this.serieId = serieId;
+        this.comentarios = new ArrayList<>();
     }
 
-    public Reseña() {
-    }
-
+    // Getters y Setters
     public ObjectId getId() {
         return id;
     }
@@ -42,16 +45,6 @@ public class Reseña {
     public void setId(ObjectId id) {
         this.id = id;
     }
-
-    public List<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
-    }
-    
-    
 
     public String getTitulo() {
         return titulo;
@@ -61,68 +54,52 @@ public class Reseña {
         this.titulo = titulo;
     }
 
-    public String getReseña() {
-        return reseña;
+    public String getContenido() {
+        return contenido;
     }
 
-    public void setReseña(String reseña) {
-        this.reseña = reseña;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
-    public int getCalifiacion() {
-        return califiacion;
+    public int getCalificacion() {
+        return calificacion;
     }
 
-    public void setCalifiacion(int califiacion) {
-        this.califiacion = califiacion;
-    }
-
-    public Date getCreacion() {
-        return creacion;
-    }
-
-    public void setCreacion(Date creacion) {
-        this.creacion = creacion;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.titulo);
-        hash = 37 * hash + Objects.hashCode(this.reseña);
-        hash = 37 * hash + this.califiacion;
-        hash = 37 * hash + Objects.hashCode(this.creacion);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public void setCalificacion(int calificacion) {
+        if (calificacion < 1 || calificacion > 5) {
+            throw new IllegalArgumentException("La calificación debe estar entre 1 y 5.");
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Reseña other = (Reseña) obj;
-        if (this.califiacion != other.califiacion) {
-            return false;
-        }
-        if (!Objects.equals(this.titulo, other.titulo)) {
-            return false;
-        }
-        if (!Objects.equals(this.reseña, other.reseña)) {
-            return false;
-        }
-        return Objects.equals(this.creacion, other.creacion);
+        this.calificacion = calificacion;
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public ObjectId getSerieId() {
+        return serieId;
+    }
+
+    public void setSerieId(ObjectId serieId) {
+        this.serieId = serieId;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void agregarComentario(Comentario comentario) {
+        this.comentarios.add(comentario);
     }
 
     @Override
     public String toString() {
-        return "Rese\u00f1a{" + "titulo=" + titulo + ", rese\u00f1a=" + reseña + ", califiacion=" + califiacion + ", creacion=" + creacion + '}';
+        return "Reseña{" + 
+               "titulo='" + titulo + '\'' +
+               ", calificacion=" + calificacion +
+               ", fechaPublicacion=" + fechaPublicacion +
+               '}';
     }
-    
-    
 }
+

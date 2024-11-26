@@ -2,37 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Entidades;
+package dtos;
 
-import org.bson.types.ObjectId;
 import java.util.Date;
 
-public class Comentario {
+public class ComentarioDto {
 
-    private ObjectId id; // ID único del comentario
-    private String contenido; // Contenido del comentario
-    private String autor; // Nombre del autor del comentario
-    private Date fechaComentario; // Fecha en la que se realizó el comentario
+    private String id; // Usamos String en lugar de ObjectId para facilitar la manipulación
+    private String contenido;
+    private String autor;
+    private Date fechaComentario;
 
     // Constructor vacío
-    public Comentario() {
-        this.fechaComentario = new Date(); // Fecha actual al crear el comentario
+    public ComentarioDto() {
     }
 
     // Constructor con parámetros
-    public Comentario(ObjectId id, String contenido, String autor) {
+    public ComentarioDto(String id, String contenido, String autor, Date fechaComentario) {
         this.id = id;
         this.contenido = contenido;
         this.autor = autor;
-        this.fechaComentario = new Date(); // Fecha actual al crear el comentario
+        this.fechaComentario = fechaComentario;
     }
 
     // Getters y Setters
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -56,12 +54,9 @@ public class Comentario {
         return fechaComentario;
     }
 
-    @Override
-    public String toString() {
-        return "Comentario{" + 
-               "autor='" + autor + '\'' +
-               ", fechaComentario=" + fechaComentario +
-               '}';
+    public void setFechaComentario(Date fechaComentario) {
+        this.fechaComentario = fechaComentario;
     }
 }
+
 

@@ -16,17 +16,27 @@ public class SerieDto {
     private int lanzamiento;
     private int calificacion;
     private int vistas;
-    private byte[] imagen;  
+//    private byte[] imagen;  
 
+     public SerieDto(String titulo, String descripcion, int lanzamiento, int calificacion, int vistas) {
+          this.titulo = titulo;
+          this.descripcion = descripcion;
+          this.lanzamiento = lanzamiento;
+          this.calificacion = calificacion;
+          this.vistas = vistas;
+     }
+
+    
+    
     // Constructor
-    public SerieDto(String titulo, String descripcion, int lanzamiento, int calificacion, int vistas, byte[] imagen) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.lanzamiento = lanzamiento;
-        this.calificacion = calificacion;
-        this.vistas = vistas;
-        this.imagen = imagen;
-    }
+//    public SerieDto(String titulo, String descripcion, int lanzamiento, int calificacion, int vistas, byte[] imagen) {
+//        this.titulo = titulo;
+//        this.descripcion = descripcion;
+//        this.lanzamiento = lanzamiento;
+//        this.calificacion = calificacion;
+//        this.vistas = vistas;
+//        this.imagen = imagen;
+//    }
     
     public SerieDto() {
          
@@ -72,25 +82,32 @@ public class SerieDto {
     public void setVistas(int vistas) {
         this.vistas = vistas;
     }
+//
+//    public byte[] getImagen() {
+//        return imagen;
+//    }
+//
+//    public void setImagen(byte[] imagen) {
+//        this.imagen = imagen;
+//    }
 
-    public byte[] getImagen() {
-        return imagen;
-    }
+    
+    
+//    @Override
+//    public String toString() {
+//        return "SerieDTO{" +
+//                "titulo='" + titulo + '\'' +
+//                ", descripcion='" + descripcion + '\'' +
+//                ", lanzamiento=" + lanzamiento +
+//                ", calificacion=" + calificacion +
+//                ", vistas=" + vistas +
+//                ", imagen=" + (imagen != null ? "Present" : "No Present") +  // Solo muestra un indicador si la imagen está presente
+//                '}';
+//    }
 
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
-    }
-
-    @Override
-    public String toString() {
-        return "SerieDTO{" +
-                "titulo='" + titulo + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", lanzamiento=" + lanzamiento +
-                ", calificacion=" + calificacion +
-                ", vistas=" + vistas +
-                ", imagen=" + (imagen != null ? "Present" : "No Present") +  // Solo muestra un indicador si la imagen está presente
-                '}';
-    }
+     @Override
+     public String toString() {
+          return "SerieDto{" + "titulo=" + titulo + ", descripcion=" + descripcion + ", lanzamiento=" + lanzamiento + ", calificacion=" + calificacion + ", vistas=" + vistas + '}';
+     }
 }
 
