@@ -1,62 +1,64 @@
 package DAOsSQL;
 
 import ConexionSQL.ConexionDB;
-import EntidadesSQL.Municipio;
+import EntidadesSQL.Post;
+import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
-import java.util.List;
-
-public class MunicipioDAO {
-
+/**
+ *
+ * @author tacot
+ */
+public class PostDAO {
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
-    public MunicipioDAO() {
+    public PostDAO() {
         this.conexion = ConexionDB.getInstancia();
         this.entityManager = conexion.getEntityManager();
     }
-
-    public void guardar(Municipio municipio) {
+    
+    public void guardar(Post post) {
         entityManager.getTransaction().begin();
-        entityManager.persist(municipio);
+        entityManager.persist(post);
         entityManager.getTransaction().commit();
     }
 
-    public List<Municipio> buscarTodos() {
+    public List<Post> buscarTodos() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Municipio> query = cb.createQuery(Municipio.class);
-        Root<Municipio> root = query.from(Municipio.class);
+        CriteriaQuery<Post> query = cb.createQuery(Post.class);
+        Root<Post> root = query.from(Post.class);
         query.select(root);
         return entityManager.createQuery(query).getResultList();
     }
 
-    public Municipio buscarPorId(Integer id) {
+    public Post buscarPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Municipio> query = cb.createQuery(Municipio.class);
-        Root<Municipio> root = query.from(Municipio.class);
+        CriteriaQuery<Post> query = cb.createQuery(Post.class);
+        Root<Post> root = query.from(Post.class);
         query.select(root).where(cb.equal(root.get("id"), id));
         return entityManager.createQuery(query).getSingleResult();
     }
 
-    public List<Municipio> buscarPorNombre(String nombre) {
+    public List<Post> buscarPorTitulo(String titulo) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Municipio> query = cb.createQuery(Municipio.class);
-        Root<Municipio> root = query.from(Municipio.class);
-        query.select(root).where(cb.like(root.get("nombre"), "%" + nombre + "%"));
+        CriteriaQuery<Post> query = cb.createQuery(Post.class);
+        Root<Post> root = query.from(Post.class);
+        query.select(root).where(cb.like(root.get("titulo"), "%" + titulo + "%"));
         return entityManager.createQuery(query).getResultList();
     }
 
-    public void actualizar(Municipio municipio) {
+    public void actualizar(Post post) {
         entityManager.getTransaction().begin();
-        entityManager.merge(municipio);
+        entityManager.merge(post);
         entityManager.getTransaction().commit();
     }
 
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
-        Municipio municipio = buscarPorId(id);
-        if (municipio != null) {
-            entityManager.remove(municipio);
+        Post post = buscarPorId(id);
+        if (post != null) {
+            entityManager.remove(post);
         }
         entityManager.getTransaction().commit();
     }
