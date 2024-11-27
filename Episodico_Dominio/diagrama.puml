@@ -1,0 +1,295 @@
+@startuml
+annotation java.lang.Override
+annotation javax.persistence.Basic
+annotation javax.persistence.Column
+annotation javax.persistence.Entity
+annotation javax.persistence.GeneratedValue
+annotation javax.persistence.Id
+annotation javax.persistence.JoinColumn
+annotation javax.persistence.Lob
+annotation javax.persistence.ManyToOne
+annotation javax.persistence.NamedQueries
+annotation javax.persistence.NamedQuery
+annotation javax.persistence.OneToMany
+annotation javax.persistence.OneToOne
+annotation javax.persistence.Table
+annotation javax.persistence.Temporal
+class ConexionSQL.ConexionBD
+class DAOs.ComentarioDAO
+class DAOs.SerieDAO
+class DAOs.UsuarioDAO
+class DAOs.exceptions.IllegalOrphanException
+class DAOs.exceptions.NonexistentEntityException
+class DAOs.exceptions.PreexistingEntityException
+class DAOsSQL.AdminController
+class DAOsSQL.AncladoController
+class DAOsSQL.ComentarioController
+class DAOsSQL.ComunController
+class DAOsSQL.EstadoController
+class DAOsSQL.MunicipioController
+class DAOsSQL.NormalController
+class DAOsSQL.PostController
+class DAOsSQL.SerieController
+class DAOsSQL.UsuarioController
+class Entidades.Comentario
+class Entidades.Serie
+class Entidades.Usuario
+class EntidadesSQL.Admin
+class EntidadesSQL.Anclado
+class EntidadesSQL.Comentario
+class EntidadesSQL.Comun
+class EntidadesSQL.Estado
+class EntidadesSQL.Municipio
+class EntidadesSQL.Normal
+class EntidadesSQL.Post
+class EntidadesSQL.Serie
+class EntidadesSQL.Usuario
+class com.mongodb.MongoClientSettings
+class com.mongodb.client.MongoClient
+class com.mongodb.client.MongoClients
+class com.mongodb.client.MongoCollection
+class com.mongodb.client.MongoCursor
+class com.mongodb.client.MongoDatabase
+class com.mongodb.client.model.Filters
+class com.mongodb.client.model.Sorts
+class com.mongodb.client.model.Updates
+class com.mongodb.client.result.DeleteResult
+class com.mongodb.client.result.UpdateResult
+class conexion.Conexion
+class java.lang.Exception
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.SQLException
+class java.util.ArrayList
+class java.util.Collection
+class java.util.Date
+class java.util.List
+class java.util.Objects
+class javax.persistence.CascadeType
+class javax.persistence.GenerationType
+class javax.persistence.TemporalType
+class org.bson.Document
+class org.bson.codecs.configuration.CodecRegistries
+class org.bson.codecs.configuration.CodecRegistry
+class org.bson.codecs.pojo.PojoCodecProvider
+class org.bson.types.ObjectId
+interface java.io.Serializable
+ConexionSQL.ConexionBD ..> java.sql.Connection
+ConexionSQL.ConexionBD ..> java.sql.DriverManager
+ConexionSQL.ConexionBD ..> java.sql.SQLException
+DAOs.ComentarioDAO ..> Entidades.Comentario
+DAOs.ComentarioDAO ..> com.mongodb.client.MongoCollection
+DAOs.ComentarioDAO ..> com.mongodb.client.MongoCursor
+DAOs.ComentarioDAO ..> com.mongodb.client.MongoDatabase
+DAOs.ComentarioDAO ..> com.mongodb.client.model.Filters
+DAOs.ComentarioDAO ..> com.mongodb.client.model.Updates
+DAOs.ComentarioDAO ..> com.mongodb.client.result.DeleteResult
+DAOs.ComentarioDAO ..> com.mongodb.client.result.UpdateResult
+DAOs.ComentarioDAO ..> java.util.ArrayList
+DAOs.ComentarioDAO ..> java.util.Date
+DAOs.ComentarioDAO ..> java.util.List
+DAOs.ComentarioDAO ..> org.bson.Document
+DAOs.ComentarioDAO ..> org.bson.types.ObjectId
+DAOs.SerieDAO ..> Entidades.Comentario
+DAOs.SerieDAO ..> Entidades.Serie
+DAOs.SerieDAO ..> com.mongodb.client.MongoCollection
+DAOs.SerieDAO ..> com.mongodb.client.MongoDatabase
+DAOs.SerieDAO ..> com.mongodb.client.model.Filters
+DAOs.SerieDAO ..> com.mongodb.client.model.Sorts
+DAOs.SerieDAO ..> com.mongodb.client.result.DeleteResult
+DAOs.SerieDAO ..> com.mongodb.client.result.UpdateResult
+DAOs.SerieDAO ..> conexion.Conexion
+DAOs.SerieDAO ..> java.util.ArrayList
+DAOs.SerieDAO ..> java.util.Date
+DAOs.SerieDAO ..> java.util.List
+DAOs.SerieDAO ..> org.bson.types.ObjectId
+DAOs.UsuarioDAO ..> Entidades.Usuario
+DAOs.UsuarioDAO ..> com.mongodb.client.MongoCollection
+DAOs.UsuarioDAO ..> com.mongodb.client.MongoDatabase
+DAOs.UsuarioDAO ..> com.mongodb.client.model.Filters
+DAOs.UsuarioDAO ..> com.mongodb.client.result.DeleteResult
+DAOs.UsuarioDAO ..> com.mongodb.client.result.UpdateResult
+DAOs.UsuarioDAO ..> conexion.Conexion
+DAOs.UsuarioDAO ..> java.util.ArrayList
+DAOs.UsuarioDAO ..> java.util.List
+DAOs.UsuarioDAO ..> org.bson.types.ObjectId
+DAOs.exceptions.IllegalOrphanException --|> java.lang.Exception
+DAOs.exceptions.IllegalOrphanException ..> java.util.ArrayList
+DAOs.exceptions.IllegalOrphanException ..> java.util.List
+DAOs.exceptions.NonexistentEntityException --|> java.lang.Exception
+DAOs.exceptions.PreexistingEntityException --|> java.lang.Exception
+Entidades.Comentario ..> java.lang.Override
+Entidades.Comentario ..> java.util.Date
+Entidades.Comentario ..> org.bson.types.ObjectId
+Entidades.Serie ..> java.lang.Override
+Entidades.Serie ..> java.util.Date
+Entidades.Serie ..> java.util.List
+Entidades.Serie ..> java.util.Objects
+Entidades.Serie ..> org.bson.types.ObjectId
+Entidades.Usuario ..> java.lang.Override
+Entidades.Usuario ..> java.util.Objects
+Entidades.Usuario ..> org.bson.types.ObjectId
+EntidadesSQL.Admin ..> java.lang.Override
+EntidadesSQL.Admin ..> javax.persistence.Basic
+EntidadesSQL.Admin ..> javax.persistence.Column
+EntidadesSQL.Admin ..> javax.persistence.Entity
+EntidadesSQL.Admin ..> javax.persistence.Id
+EntidadesSQL.Admin ..> javax.persistence.JoinColumn
+EntidadesSQL.Admin ..> javax.persistence.NamedQueries
+EntidadesSQL.Admin ..> javax.persistence.NamedQuery
+EntidadesSQL.Admin ..> javax.persistence.OneToMany
+EntidadesSQL.Admin ..> javax.persistence.OneToOne
+EntidadesSQL.Admin ..> javax.persistence.Table
+EntidadesSQL.Admin ..> java.util.Collection
+EntidadesSQL.Admin ..> javax.persistence.CascadeType
+EntidadesSQL.Admin --|> java.io.Serializable
+EntidadesSQL.Anclado ..> java.lang.Override
+EntidadesSQL.Anclado ..> javax.persistence.Basic
+EntidadesSQL.Anclado ..> javax.persistence.Column
+EntidadesSQL.Anclado ..> javax.persistence.Entity
+EntidadesSQL.Anclado ..> javax.persistence.Id
+EntidadesSQL.Anclado ..> javax.persistence.JoinColumn
+EntidadesSQL.Anclado ..> javax.persistence.ManyToOne
+EntidadesSQL.Anclado ..> javax.persistence.NamedQueries
+EntidadesSQL.Anclado ..> javax.persistence.NamedQuery
+EntidadesSQL.Anclado ..> javax.persistence.OneToOne
+EntidadesSQL.Anclado ..> javax.persistence.Table
+EntidadesSQL.Anclado --|> java.io.Serializable
+EntidadesSQL.Comentario ..> java.lang.Override
+EntidadesSQL.Comentario ..> javax.persistence.Basic
+EntidadesSQL.Comentario ..> javax.persistence.Column
+EntidadesSQL.Comentario ..> javax.persistence.Entity
+EntidadesSQL.Comentario ..> javax.persistence.GeneratedValue
+EntidadesSQL.Comentario ..> javax.persistence.Id
+EntidadesSQL.Comentario ..> javax.persistence.JoinColumn
+EntidadesSQL.Comentario ..> javax.persistence.Lob
+EntidadesSQL.Comentario ..> javax.persistence.ManyToOne
+EntidadesSQL.Comentario ..> javax.persistence.NamedQueries
+EntidadesSQL.Comentario ..> javax.persistence.NamedQuery
+EntidadesSQL.Comentario ..> javax.persistence.OneToMany
+EntidadesSQL.Comentario ..> javax.persistence.Table
+EntidadesSQL.Comentario ..> javax.persistence.Temporal
+EntidadesSQL.Comentario ..> java.util.Collection
+EntidadesSQL.Comentario ..> java.util.Date
+EntidadesSQL.Comentario ..> javax.persistence.GenerationType
+EntidadesSQL.Comentario ..> javax.persistence.TemporalType
+EntidadesSQL.Comentario --|> java.io.Serializable
+EntidadesSQL.Comun ..> java.lang.Override
+EntidadesSQL.Comun ..> javax.persistence.Basic
+EntidadesSQL.Comun ..> javax.persistence.Column
+EntidadesSQL.Comun ..> javax.persistence.Entity
+EntidadesSQL.Comun ..> javax.persistence.Id
+EntidadesSQL.Comun ..> javax.persistence.JoinColumn
+EntidadesSQL.Comun ..> javax.persistence.NamedQueries
+EntidadesSQL.Comun ..> javax.persistence.NamedQuery
+EntidadesSQL.Comun ..> javax.persistence.OneToOne
+EntidadesSQL.Comun ..> javax.persistence.Table
+EntidadesSQL.Comun --|> java.io.Serializable
+EntidadesSQL.Estado ..> java.lang.Override
+EntidadesSQL.Estado ..> javax.persistence.Basic
+EntidadesSQL.Estado ..> javax.persistence.Column
+EntidadesSQL.Estado ..> javax.persistence.Entity
+EntidadesSQL.Estado ..> javax.persistence.GeneratedValue
+EntidadesSQL.Estado ..> javax.persistence.Id
+EntidadesSQL.Estado ..> javax.persistence.NamedQueries
+EntidadesSQL.Estado ..> javax.persistence.NamedQuery
+EntidadesSQL.Estado ..> javax.persistence.OneToMany
+EntidadesSQL.Estado ..> javax.persistence.Table
+EntidadesSQL.Estado ..> java.util.Collection
+EntidadesSQL.Estado ..> javax.persistence.CascadeType
+EntidadesSQL.Estado ..> javax.persistence.GenerationType
+EntidadesSQL.Estado --|> java.io.Serializable
+EntidadesSQL.Municipio ..> java.lang.Override
+EntidadesSQL.Municipio ..> javax.persistence.Basic
+EntidadesSQL.Municipio ..> javax.persistence.Column
+EntidadesSQL.Municipio ..> javax.persistence.Entity
+EntidadesSQL.Municipio ..> javax.persistence.GeneratedValue
+EntidadesSQL.Municipio ..> javax.persistence.Id
+EntidadesSQL.Municipio ..> javax.persistence.JoinColumn
+EntidadesSQL.Municipio ..> javax.persistence.ManyToOne
+EntidadesSQL.Municipio ..> javax.persistence.NamedQueries
+EntidadesSQL.Municipio ..> javax.persistence.NamedQuery
+EntidadesSQL.Municipio ..> javax.persistence.OneToMany
+EntidadesSQL.Municipio ..> javax.persistence.Table
+EntidadesSQL.Municipio ..> java.util.Collection
+EntidadesSQL.Municipio ..> javax.persistence.CascadeType
+EntidadesSQL.Municipio ..> javax.persistence.GenerationType
+EntidadesSQL.Municipio --|> java.io.Serializable
+EntidadesSQL.Normal ..> java.lang.Override
+EntidadesSQL.Normal ..> javax.persistence.Basic
+EntidadesSQL.Normal ..> javax.persistence.Column
+EntidadesSQL.Normal ..> javax.persistence.Entity
+EntidadesSQL.Normal ..> javax.persistence.Id
+EntidadesSQL.Normal ..> javax.persistence.JoinColumn
+EntidadesSQL.Normal ..> javax.persistence.NamedQueries
+EntidadesSQL.Normal ..> javax.persistence.NamedQuery
+EntidadesSQL.Normal ..> javax.persistence.OneToOne
+EntidadesSQL.Normal ..> javax.persistence.Table
+EntidadesSQL.Normal --|> java.io.Serializable
+EntidadesSQL.Post ..> java.lang.Override
+EntidadesSQL.Post ..> javax.persistence.Basic
+EntidadesSQL.Post ..> javax.persistence.Column
+EntidadesSQL.Post ..> javax.persistence.Entity
+EntidadesSQL.Post ..> javax.persistence.GeneratedValue
+EntidadesSQL.Post ..> javax.persistence.Id
+EntidadesSQL.Post ..> javax.persistence.JoinColumn
+EntidadesSQL.Post ..> javax.persistence.Lob
+EntidadesSQL.Post ..> javax.persistence.ManyToOne
+EntidadesSQL.Post ..> javax.persistence.NamedQueries
+EntidadesSQL.Post ..> javax.persistence.NamedQuery
+EntidadesSQL.Post ..> javax.persistence.OneToMany
+EntidadesSQL.Post ..> javax.persistence.OneToOne
+EntidadesSQL.Post ..> javax.persistence.Table
+EntidadesSQL.Post ..> javax.persistence.Temporal
+EntidadesSQL.Post ..> java.util.Collection
+EntidadesSQL.Post ..> java.util.Date
+EntidadesSQL.Post ..> javax.persistence.CascadeType
+EntidadesSQL.Post ..> javax.persistence.GenerationType
+EntidadesSQL.Post ..> javax.persistence.TemporalType
+EntidadesSQL.Post --|> java.io.Serializable
+EntidadesSQL.Serie ..> java.lang.Override
+EntidadesSQL.Serie ..> javax.persistence.Basic
+EntidadesSQL.Serie ..> javax.persistence.Column
+EntidadesSQL.Serie ..> javax.persistence.Entity
+EntidadesSQL.Serie ..> javax.persistence.GeneratedValue
+EntidadesSQL.Serie ..> javax.persistence.Id
+EntidadesSQL.Serie ..> javax.persistence.Lob
+EntidadesSQL.Serie ..> javax.persistence.NamedQueries
+EntidadesSQL.Serie ..> javax.persistence.NamedQuery
+EntidadesSQL.Serie ..> javax.persistence.OneToMany
+EntidadesSQL.Serie ..> javax.persistence.Table
+EntidadesSQL.Serie ..> javax.persistence.Temporal
+EntidadesSQL.Serie ..> java.util.Collection
+EntidadesSQL.Serie ..> java.util.Date
+EntidadesSQL.Serie ..> javax.persistence.CascadeType
+EntidadesSQL.Serie ..> javax.persistence.GenerationType
+EntidadesSQL.Serie ..> javax.persistence.TemporalType
+EntidadesSQL.Serie --|> java.io.Serializable
+EntidadesSQL.Usuario ..> java.lang.Override
+EntidadesSQL.Usuario ..> javax.persistence.Basic
+EntidadesSQL.Usuario ..> javax.persistence.Column
+EntidadesSQL.Usuario ..> javax.persistence.Entity
+EntidadesSQL.Usuario ..> javax.persistence.GeneratedValue
+EntidadesSQL.Usuario ..> javax.persistence.Id
+EntidadesSQL.Usuario ..> javax.persistence.JoinColumn
+EntidadesSQL.Usuario ..> javax.persistence.ManyToOne
+EntidadesSQL.Usuario ..> javax.persistence.NamedQueries
+EntidadesSQL.Usuario ..> javax.persistence.NamedQuery
+EntidadesSQL.Usuario ..> javax.persistence.OneToMany
+EntidadesSQL.Usuario ..> javax.persistence.OneToOne
+EntidadesSQL.Usuario ..> javax.persistence.Table
+EntidadesSQL.Usuario ..> javax.persistence.Temporal
+EntidadesSQL.Usuario ..> java.util.Collection
+EntidadesSQL.Usuario ..> java.util.Date
+EntidadesSQL.Usuario ..> javax.persistence.CascadeType
+EntidadesSQL.Usuario ..> javax.persistence.GenerationType
+EntidadesSQL.Usuario ..> javax.persistence.TemporalType
+EntidadesSQL.Usuario --|> java.io.Serializable
+conexion.Conexion ..> com.mongodb.MongoClientSettings
+conexion.Conexion ..> com.mongodb.client.MongoClient
+conexion.Conexion ..> com.mongodb.client.MongoClients
+conexion.Conexion ..> com.mongodb.client.MongoDatabase
+conexion.Conexion ..> org.bson.codecs.configuration.CodecRegistries
+conexion.Conexion ..> org.bson.codecs.configuration.CodecRegistry
+conexion.Conexion ..> org.bson.codecs.pojo.PojoCodecProvider
+@enduml
