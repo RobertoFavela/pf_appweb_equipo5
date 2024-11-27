@@ -4,7 +4,6 @@
  */
 package controladorFeed;
 
-import dtos.SerieDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,17 +11,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import logicaSerie.LogicaSerie;
 
 /**
  *
- * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales Rojas - 00000245335
+ * @author tacot
  */
-@WebServlet(name = "FeedController", urlPatterns = {"/FeedController"})
-public class FeedController extends HttpServlet {
-
-    private final LogicaSerie logicaSerie = new LogicaSerie();
+@WebServlet(name = "UserRController", urlPatterns = {"/UserRController"})
+public class UserRController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,19 +30,19 @@ public class FeedController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
-        System.out.println("Series recientes: " + seriesRecientes);
-
-        List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion();
-
-        request.setAttribute("seriesRecientes", seriesRecientes);
-        request.setAttribute("seriesMejorCalificadas", seriesMejorCalificadas);
-
-        request.getRequestDispatcher("/FeedView.jsp").forward(request, response);
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet UserRController</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet UserRController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -62,16 +57,6 @@ public class FeedController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-        List<SerieDto> seriesRecientes = logicaSerie.obtenerTodasLasSeries();
-        System.out.println("Series recientes: " + seriesRecientes);
-
-        List<SerieDto> seriesMejorCalificadas = logicaSerie.obtenerSeriesPorCalificacion();
-
-        request.setAttribute("seriesRecientes", seriesRecientes);
-        request.setAttribute("seriesMejorCalificadas", seriesMejorCalificadas);
-
-        request.getRequestDispatcher("/FeedView.jsp").forward(request, response);
     }
 
     /**
@@ -85,30 +70,15 @@ public class FeedController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String selectedId = request.getParameter("rad");
+         String url = "/UserProfileView.jsp";
 
-        if (selectedId == null) {
-            response.getWriter().write("No se seleccionó ninguna opción.");
-            return;
-        }
+        String accion = request.getParameter("perfil");
 
-        switch (selectedId) {
-            case "Inicio":
-                response.sendRedirect("FeedView.jsp");
-                break;
-            case "buscar":
-                response.sendRedirect("BuscarView.jsp");
-                break;
-            case "favoritas":
-                response.sendRedirect("FavoritasView.jsp");
-                break;
-            case "perfil":
-                response.sendRedirect("UserProfileView.jsp");
-                break;
-            default:
-                response.getWriter().write("Opción seleccionada no es válida.");
-                break;
+        if (accion != null && accion.equalsIgnoreCase("perfil")) {
+
+            this.getServletContext().getRequestDispatcher(url).forward(request, response);
         }
+        
     }
 
     /**
