@@ -23,7 +23,7 @@ public class SerieBean {
           return instancia;
      }
 
-     public void init() {
+     public SerieBean() {
           serieDAO = new SerieDAO();
           serie = new Serie();
           listaSeries = serieDAO.buscarTodas();
@@ -46,6 +46,10 @@ public class SerieBean {
 
      public Serie buscarPorTitulo(String titulo) {
           return serieDAO.buscarPorTitulo(titulo);
+     }
+     
+     public List<Serie> buscarTodas() {
+           return serieDAO.buscarTodas();
      }
 
      public List<Serie> getListaSeries() {

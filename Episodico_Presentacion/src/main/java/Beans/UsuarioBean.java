@@ -27,9 +27,12 @@ public class UsuarioBean {
      public void guardar() {
           usuarioDAO.guardar(usuario);
           usuario = new Usuario();
-          listaUsuarios = usuarioDAO.buscarTodos();
      }
 
+     public boolean autenticacion(Usuario usuario) {
+          return usuarioDAO.autenticacion(usuario);
+     }
+     
      public void eliminar(int id) {
           usuarioDAO.eliminar(id);
           listaUsuarios = usuarioDAO.buscarTodos();
@@ -43,9 +46,6 @@ public class UsuarioBean {
           return usuarioDAO.buscarPorNombre(nombre);
      }
      
-     public boolean autenticacion(Usuario usuario) {
-          return usuarioDAO.autenticacion(usuario);
-     }
 
      public List<Usuario> getListaUsuarios() {
           return listaUsuarios;

@@ -27,6 +27,26 @@ public class UsuarioDAO implements IUsuarioDAO {
           entityManager.persist(usuario);
           entityManager.getTransaction().commit();
      }
+     @Override
+     public boolean autenticacion(Usuario usuario) {
+          try {
+               CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+               CriteriaQuery<Usuario> query = cb.createQuery(Usuario.class);
+               Root<Usuario> root = query.from(Usuario.class);
+
+               Predicate correoPredicate = cb.equal(root.get("correo"), usuario.getCorreo());
+               Predicate contraseniaPredicate = cb.equal(root.get("contrasenia"), usuario.getContrasenia());
+
+               query.select(root).where(cb.and(correoPredicate, contraseniaPredicate));
+
+               List<Usuario> usuarios = entityManager.createQuery(query).getResultList();
+
+               return !usuarios.isEmpty();
+          } catch (Exception e) {
+               e.printStackTrace();
+               return false;
+          }
+     }
 
      @Override
      public List<Usuario> buscarTodos() {
@@ -72,24 +92,4 @@ public class UsuarioDAO implements IUsuarioDAO {
           entityManager.getTransaction().commit();
      }
 
-     @Override
-     public boolean autenticacion(Usuario usuario) {
-          try {
-               CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-               CriteriaQuery<Usuario> query = cb.createQuery(Usuario.class);
-               Root<Usuario> root = query.from(Usuario.class);
-
-               Predicate correoPredicate = cb.equal(root.get("correo"), usuario.getCorreo());
-               Predicate contraseniaPredicate = cb.equal(root.get("contrasenia"), usuario.getContrasenia());
-
-               query.select(root).where(cb.and(correoPredicate, contraseniaPredicate));
-
-               List<Usuario> usuarios = entityManager.createQuery(query).getResultList();
-
-               return !usuarios.isEmpty();
-          } catch (Exception e) {
-               e.printStackTrace();
-               return false;
-          }
-     }
 }
