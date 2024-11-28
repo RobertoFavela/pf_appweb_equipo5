@@ -10,40 +10,49 @@ import interfaces.IComentarioDAO;
 import java.util.List;
 
 public class ComentarioBean {
-    private IComentarioDAO comentarioDAO;
-    private Comentario comentario;
-    private List<Comentario> listaComentarios;
 
-    public void init() {
-        comentarioDAO = new ComentarioDAO();
-        comentario = new Comentario();
-        listaComentarios = comentarioDAO.buscarTodos();
-    }
+     private static ComentarioBean instancia;
+     private IComentarioDAO comentarioDAO;
+     private Comentario comentario;
+     private List<Comentario> listaComentarios;
 
-    public void guardar() {
-        comentarioDAO.guardar(comentario);
-        comentario = new Comentario();
-        listaComentarios = comentarioDAO.buscarTodos();
-    }
+     public static synchronized ComentarioBean getInstancia() {
+          if (instancia == null) {
+               instancia = new ComentarioBean();
+          }
+          return instancia;
+     }
 
-    public void eliminar(int id) {
-        comentarioDAO.eliminar(id);
-        listaComentarios = comentarioDAO.buscarTodos();
-    }
+     public void init() {
+          comentarioDAO = new ComentarioDAO();
+          comentario = new Comentario();
+          listaComentarios = comentarioDAO.buscarTodos();
+     }
 
-    public Comentario buscarPorId(int id) {
-        return comentarioDAO.buscarPorId(id);
-    }
+     public void guardar() {
+          comentarioDAO.guardar(comentario);
+          comentario = new Comentario();
+          listaComentarios = comentarioDAO.buscarTodos();
+     }
 
-    public List<Comentario> getListaComentarios() {
-        return listaComentarios;
-    }
+     public void eliminar(int id) {
+          comentarioDAO.eliminar(id);
+          listaComentarios = comentarioDAO.buscarTodos();
+     }
 
-    public Comentario getComentario() {
-        return comentario;
-    }
+     public Comentario buscarPorId(int id) {
+          return comentarioDAO.buscarPorId(id);
+     }
 
-    public void setComentario(Comentario comentario) {
-        this.comentario = comentario;
-    }
+     public List<Comentario> getListaComentarios() {
+          return listaComentarios;
+     }
+
+     public Comentario getComentario() {
+          return comentario;
+     }
+
+     public void setComentario(Comentario comentario) {
+          this.comentario = comentario;
+     }
 }

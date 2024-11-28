@@ -3,50 +3,60 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Beans/Bean.java to edit this template
  */
 package Beans;
+
 import DAOsSQL.EstadoDAO;
 import EntidadesSQL.Estado;
 import interfaces.IEstadoDAO;
 import java.util.List;
 
 public class EstadoBean {
-    private IEstadoDAO estadoDAO;
-    private Estado estado;
-    private List<Estado> listaEstados;
-    
-    public void init() {
-        estadoDAO = new EstadoDAO();
-        estado = new Estado();
-        listaEstados = estadoDAO.buscarTodosLosEstados();
-    }
 
-    public void guardar() {
-        estadoDAO.guardar(estado);
-        estado = new Estado();
-        listaEstados = estadoDAO.buscarTodosLosEstados(); 
-    }
+     private static EstadoBean instancia;
+     private IEstadoDAO estadoDAO;
+     private Estado estado;
+     private List<Estado> listaEstados;
 
-    public void eliminar(int id) {
-        estadoDAO.eliminar(id);
-        listaEstados = estadoDAO.buscarTodosLosEstados(); 
-    }
+     public static synchronized EstadoBean getInstancia() {
+          if (instancia == null) {
+               instancia = new EstadoBean();
+          }
+          return instancia;
+     }
 
-    public Estado buscarPorId(int id) {
-        return estadoDAO.buscarEstadoPorId(id);
-    }
+     public void init() {
+          estadoDAO = new EstadoDAO();
+          estado = new Estado();
+          listaEstados = estadoDAO.buscarTodosLosEstados();
+     }
 
-    public Estado buscarPorNombre(String nombre) {
-        return estadoDAO.buscarEstadoPorNombre(nombre);
-    }
+     public void guardar() {
+          estadoDAO.guardar(estado);
+          estado = new Estado();
+          listaEstados = estadoDAO.buscarTodosLosEstados();
+     }
 
-    public List<Estado> getListaEstados() {
-        return listaEstados;
-    }
+     public void eliminar(int id) {
+          estadoDAO.eliminar(id);
+          listaEstados = estadoDAO.buscarTodosLosEstados();
+     }
 
-    public Estado getEstado() {
-        return estado;
-    }
+     public Estado buscarPorId(int id) {
+          return estadoDAO.buscarEstadoPorId(id);
+     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+     public Estado buscarPorNombre(String nombre) {
+          return estadoDAO.buscarEstadoPorNombre(nombre);
+     }
+
+     public List<Estado> getListaEstados() {
+          return listaEstados;
+     }
+
+     public Estado getEstado() {
+          return estado;
+     }
+
+     public void setEstado(Estado estado) {
+          this.estado = estado;
+     }
 }

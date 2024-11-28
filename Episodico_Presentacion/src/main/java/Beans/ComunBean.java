@@ -14,42 +14,49 @@ import java.util.List;
  * @author tacot
  */
 public class ComunBean {
-    
-    private IComunDAO comunDAO;
-    private Comun comun;
-    private List<Comun> listaComunes;
 
-    public void init() {
-        comunDAO = new ComunDAO();
-        comun = new Comun();
-        listaComunes = comunDAO.buscarTodos();
-    }
+     private static ComunBean instancia;
+     private IComunDAO comunDAO;
+     private Comun comun;
+     private List<Comun> listaComunes;
 
-    public void guardar() {
-        comunDAO.guardar(comun);
-        comun = new Comun();
-        listaComunes = comunDAO.buscarTodos();
-    }
+     public static synchronized ComunBean getInstancia() {
+          if (instancia == null) {
+               instancia = new ComunBean();
+          }
+          return instancia;
+     }
 
-    public void eliminar(int id) {
-        comunDAO.eliminar(id);
-        listaComunes = comunDAO.buscarTodos();
-    }
+     public void init() {
+          comunDAO = new ComunDAO();
+          comun = new Comun();
+          listaComunes = comunDAO.buscarTodos();
+     }
 
-    public Comun buscarPorId(int id) {
-        return comunDAO.buscarPorId(id);
-    }
+     public void guardar() {
+          comunDAO.guardar(comun);
+          comun = new Comun();
+          listaComunes = comunDAO.buscarTodos();
+     }
 
-    public List<Comun> getListaComunes() {
-        return listaComunes;
-    }
+     public void eliminar(int id) {
+          comunDAO.eliminar(id);
+          listaComunes = comunDAO.buscarTodos();
+     }
 
-    public Comun getComun() {
-        return comun;
-    }
+     public Comun buscarPorId(int id) {
+          return comunDAO.buscarPorId(id);
+     }
 
-    public void setComun(Comun comun) {
-        this.comun = comun;
-    }
+     public List<Comun> getListaComunes() {
+          return listaComunes;
+     }
+
+     public Comun getComun() {
+          return comun;
+     }
+
+     public void setComun(Comun comun) {
+          this.comun = comun;
+     }
 }
-

@@ -10,40 +10,49 @@ import interfaces.IPostDAO;
 import java.util.List;
 
 public class PostBean {
-    private IPostDAO postDAO;
-    private Post post;
-    private List<Post> listaPosts;
 
-    public void init() {
-        postDAO = new PostDAO();
-        post = new Post();
-        listaPosts = postDAO.buscarTodos();
-    }
+     private static PostBean instancia;
+     private IPostDAO postDAO;
+     private Post post;
+     private List<Post> listaPosts;
 
-    public void guardar() {
-        postDAO.guardar(post);
-        post = new Post();
-        listaPosts = postDAO.buscarTodos();
-    }
+     public static synchronized PostBean getInstancia() {
+          if (instancia == null) {
+               instancia = new PostBean();
+          }
+          return instancia;
+     }
 
-    public void eliminar(int id) {
-        postDAO.eliminar(id);
-        listaPosts = postDAO.buscarTodos();
-    }
+     public void init() {
+          postDAO = new PostDAO();
+          post = new Post();
+          listaPosts = postDAO.buscarTodos();
+     }
 
-    public Post buscarPorId(int id) {
-        return postDAO.buscarPorId(id);
-    }
+     public void guardar() {
+          postDAO.guardar(post);
+          post = new Post();
+          listaPosts = postDAO.buscarTodos();
+     }
 
-    public List<Post> getListaPosts() {
-        return listaPosts;
-    }
+     public void eliminar(int id) {
+          postDAO.eliminar(id);
+          listaPosts = postDAO.buscarTodos();
+     }
 
-    public Post getPost() {
-        return post;
-    }
+     public Post buscarPorId(int id) {
+          return postDAO.buscarPorId(id);
+     }
 
-    public void setPost(Post post) {
-        this.post = post;
-    }
+     public List<Post> getListaPosts() {
+          return listaPosts;
+     }
+
+     public Post getPost() {
+          return post;
+     }
+
+     public void setPost(Post post) {
+          this.post = post;
+     }
 }

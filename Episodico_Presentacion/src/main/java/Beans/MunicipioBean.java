@@ -15,44 +15,52 @@ import java.util.List;
  */
 public class MunicipioBean {
 
-    private IMunicipioDAO municipioDAO;
-    private Municipio municipio;
-    private List<Municipio> listaMunicipios;
+     private static MunicipioBean instancia;
+     private IMunicipioDAO municipioDAO;
+     private Municipio municipio;
+     private List<Municipio> listaMunicipios;
 
-    public void init() {
-        municipioDAO = new MunicipioDAO();
-        municipio = new Municipio();
-        listaMunicipios = municipioDAO.buscarTodos();
-    }
+     public static synchronized MunicipioBean getInstancia() {
+          if (instancia == null) {
+               instancia = new MunicipioBean();
+          }
+          return instancia;
+     }
 
-    public void guardar() {
-        municipioDAO.guardar(municipio);
-        municipio = new Municipio();
-        listaMunicipios = municipioDAO.buscarTodos();
-    }
+     public void init() {
+          municipioDAO = new MunicipioDAO();
+          municipio = new Municipio();
+          listaMunicipios = municipioDAO.buscarTodos();
+     }
 
-    public void eliminar(int id) {
-        municipioDAO.eliminar(id);
-        listaMunicipios = municipioDAO.buscarTodos();
-    }
+     public void guardar() {
+          municipioDAO.guardar(municipio);
+          municipio = new Municipio();
+          listaMunicipios = municipioDAO.buscarTodos();
+     }
 
-    public Municipio buscarPorId(int id) {
-        return municipioDAO.buscarPorId(id);
-    }
+     public void eliminar(int id) {
+          municipioDAO.eliminar(id);
+          listaMunicipios = municipioDAO.buscarTodos();
+     }
 
-    public Municipio buscarPorNombre(String nombre) {
-        return municipioDAO.buscarPorNombre(nombre);
-    }
+     public Municipio buscarPorId(int id) {
+          return municipioDAO.buscarPorId(id);
+     }
 
-    public List<Municipio> getListaMunicipios() {
-        return listaMunicipios;
-    }
+     public Municipio buscarPorNombre(String nombre) {
+          return municipioDAO.buscarPorNombre(nombre);
+     }
 
-    public Municipio getMunicipio() {
-        return municipio;
-    }
+     public List<Municipio> getListaMunicipios() {
+          return listaMunicipios;
+     }
 
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
-    }
+     public Municipio getMunicipio() {
+          return municipio;
+     }
+
+     public void setMunicipio(Municipio municipio) {
+          this.municipio = municipio;
+     }
 }

@@ -10,40 +10,49 @@ import interfaces.IAdminDAO;
 import java.util.List;
 
 public class AdminBean {
-    private IAdminDAO admorDAO;
-    private Admin admor;
-    private List<Admin> listaAdmor;
 
-    public void init() {
-        admorDAO = new AdminDAO();
-        admor = new Admin();
-        listaAdmor = admorDAO.buscarTodos();
-    }
+     private static AdminBean instancia;
+     private IAdminDAO admorDAO;
+     private Admin admor;
+     private List<Admin> listaAdmor;
 
-    public void guardar() {
-        admorDAO.guardar(admor);
-        admor = new Admin();
-        listaAdmor = admorDAO.buscarTodos();
-    }
+     public static synchronized AdminBean getInstancia() {
+          if (instancia == null) {
+               instancia = new AdminBean();
+          }
+          return instancia;
+     }
 
-    public void eliminar(int id) {
-        admorDAO.eliminar(id);
-        listaAdmor = admorDAO.buscarTodos();
-    }
+     public void init() {
+          admorDAO = new AdminDAO();
+          admor = new Admin();
+          listaAdmor = admorDAO.buscarTodos();
+     }
 
-    public Admin buscarPorId(int id) {
-        return admorDAO.buscarPorId(id);
-    }
+     public void guardar() {
+          admorDAO.guardar(admor);
+          admor = new Admin();
+          listaAdmor = admorDAO.buscarTodos();
+     }
 
-    public List<Admin> getListaAdmor() {
-        return listaAdmor;
-    }
+     public void eliminar(int id) {
+          admorDAO.eliminar(id);
+          listaAdmor = admorDAO.buscarTodos();
+     }
 
-    public Admin getAdmor() {
-        return admor;
-    }
+     public Admin buscarPorId(int id) {
+          return admorDAO.buscarPorId(id);
+     }
 
-    public void setAdmor(Admin admor) {
-        this.admor = admor;
-    }
+     public List<Admin> getListaAdmor() {
+          return listaAdmor;
+     }
+
+     public Admin getAdmor() {
+          return admor;
+     }
+
+     public void setAdmor(Admin admor) {
+          this.admor = admor;
+     }
 }

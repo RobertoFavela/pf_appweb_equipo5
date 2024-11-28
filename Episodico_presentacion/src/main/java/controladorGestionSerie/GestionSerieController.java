@@ -4,6 +4,8 @@
  */
 package controladorGestionSerie;
 
+import Beans.SerieBean;
+import EntidadesSQL.Serie;
 import dtos.SerieDto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,8 +17,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.InputStream;
 import java.util.List;
-import logicaSerie.ILogicaSerie;
-import logicaSerie.LogicaSerie;
 
 /**
  *
@@ -26,10 +26,10 @@ import logicaSerie.LogicaSerie;
  */
 public class GestionSerieController extends HttpServlet {
 
-     private final ILogicaSerie logicaSerie;
+     private final SerieBean serieBean;
 
      public GestionSerieController() {
-          logicaSerie = new LogicaSerie();
+          serieBean = new SerieBean();
      }
 
      /**
@@ -66,11 +66,12 @@ public class GestionSerieController extends HttpServlet {
           String genero = request.getParameter("genero");
           int lanzamiento = Integer.parseInt(request.getParameter("lanzamiento"));
 
-          SerieDto nuevaSerie = new SerieDto();
+          Serie nuevaSerie = new Serie();
           nuevaSerie.setTitulo(nombre);
           nuevaSerie.setDescripcion(descripcion);
-
-          boolean exito = logicaSerie.insertarSerie(nuevaSerie);
+          serieBean.setSerie(nuevaSerie);
+          
+          boolean exito = serieBean.guardar();
 
           if (exito) {
                response.sendRedirect("GestionSerie.jsp?mensaje=Serie agregada con éxito");
