@@ -65,7 +65,7 @@
                     <!-- Perfil -->
                     <form action="UserRController" method="post">
                         <input type="hidden" name="perfil" value="perfil" class="radio" >
-                        <button type="submit" title="Perfil" class="ul li" >
+                        <button type="submit" title="perfil" class="ul li" >
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="imgNav">
                                     <path

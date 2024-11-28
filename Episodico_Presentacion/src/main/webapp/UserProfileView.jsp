@@ -76,9 +76,9 @@
                 </header>
 
                 <div class="perfil">
-                    <form action="UserRController" method="post" class="foto-perfil">
+                    <form action="controladorPerfil" method="post" class="foto-perfil">
                         <input type="hidden" name="perfil" value="perfil">
-                        <button type="submit" title="Perfil" class="serie-img-perfil">
+                        <button type="submit" title="perfil" class="serie-img-perfil">
                             <img src="Posters/daredevil.jpeg" class="serie-img-perfil">
                         </button>
                     </form>

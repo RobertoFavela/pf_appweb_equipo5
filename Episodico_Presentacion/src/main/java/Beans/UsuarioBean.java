@@ -22,7 +22,6 @@ public class UsuarioBean {
      public UsuarioBean() {
           usuarioDAO = new UsuarioDAO();
           usuario = new Usuario();
-//          listaUsuarios = usuarioDAO.buscarTodos();
      }
 
      public void guardar() {

@@ -6,7 +6,6 @@ package controladorGestionSerie;
 
 import Beans.SerieBean;
 import EntidadesSQL.Serie;
-import dtos.SerieDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
