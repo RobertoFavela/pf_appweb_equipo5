@@ -229,11 +229,13 @@ nav {
 .ul .li {
     display: inline-block;
     background: none;
-    border: none;
 }
 
 .radio {
     display: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 .imgNav {
@@ -245,15 +247,16 @@ nav {
     transition: 0.2s;
 }
 
-button:hover {
+.checked+.li .imgNav:hover {
     transition: 0.1s;
-    color: #8c00ff;
     position: relative;
     margin-top: -4px;
     opacity: 100%;
 }
 
-
+.radio:hover{
+    color: #8c00ff;
+}
 
 .checked+.li .imgNav {
     color: #00c6ff;
@@ -415,6 +418,10 @@ h2 {
     border: 1px solid #8c00ff;
 }
 
+button {
+    border: none;
+}
+
 .form button {
     align-self: flex-end;
     padding: 8px;
@@ -428,7 +435,7 @@ h2 {
     cursor: pointer;
 }
 
-button:hover {
+.li:hover {
     background: #8c00ff;
 }
 

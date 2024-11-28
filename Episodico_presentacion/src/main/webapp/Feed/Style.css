@@ -59,6 +59,10 @@ header {
     height: 230px;
 }
 
+button {
+    border: none;
+}
+
 
 h2 {
     color: white;
@@ -208,7 +212,7 @@ nav {
     transition: 0.2s;
 }
 
-button:hover {
+.li:hover {
     transition: 0.1s;
     color: #8c00ff;
     position: relative;

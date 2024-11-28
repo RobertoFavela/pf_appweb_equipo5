@@ -21,8 +21,8 @@
                 <nav class="nav">
                     <!-- Inicio -->
                     <form action="InicioRController" method="post">
-                        <input type="hidden" name="Inicio" value="Inicio" class="radio" >
-                        <button type="submit" title="Inicio" class="ul li " >
+                        <input type="hidden" name="Inicio" value="Inicio" class="radio checked" >
+                        <button type="submit" title="Inicio" class="ul li" >
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
                                     xmlns="http://www.w3..org/2000/svg" aria-hidden="true" class=" imgNav">
                                     <path
