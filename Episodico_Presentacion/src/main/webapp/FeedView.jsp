@@ -82,26 +82,28 @@
             <h2>Agregadas recientemente</h2>
             <section class="seccion">
                 <div class="contenedor-series">
-
-                        <div class="serie">
-                            <div class="info">
-                                ${Serie.titulo}
-                                <form action="FeedController" method="post">
-                                    
-                                </form>
-                            </div> 
-                        </div>
-                    </c:forEach>
+                    <c:if test="${not empty seriesRecientes}">
+                        <c:forEach var="serie" items="${seriesRecientes}">
+                            <div class="serie">
+                                <div class="info">Serie: ${serie.titulo}</div>
+                                <a href="/PerfilSerie/perfilSerie.html?titulo=${serie.titulo}">${serie.titulo}</a>
+                            </div>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${empty seriesRecientes}">
+                        <p>No hay series recientes disponibles.</p>
+                    </c:if>
                 </div>
             </section>
 
-            <h2>Todas las series</h2>
+
+
+            <h2>Mejor calificadas</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:forEach var="serie" items="${seriesMejorCalificadas}">
                         <div class="serie">
                             <div class="info">${serie.titulo}</div> 
-                            <img src="Feed/home.png" alt="" class="serie-img">
                             <a href="/PerfilSerie/perfilSerie.html?titulo=${serie.titulo}"></a>
                         </div>
                     </c:forEach>

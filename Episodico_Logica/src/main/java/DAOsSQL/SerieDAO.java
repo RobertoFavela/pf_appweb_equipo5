@@ -59,25 +59,22 @@ public class SerieDAO implements ISerieDAO {
             return entityManager.createQuery(query).getSingleResult();
       }
 
-    @Override
-    public void actualizar(Serie serie) {
-        Serie serieAux = buscarPorTitulo(serie.getTitulo());
-        serie.setId(serieAux.getId());
-        entityManager.getTransaction().begin();
-        entityManager.merge(serie);
-        entityManager.getTransaction().commit();
-    }
+      @Override
+      public void actualizar(Serie serie) {
+            entityManager.getTransaction().begin();
+            entityManager.merge(serie);
+            entityManager.getTransaction().commit();
+      }
 
-    @Override
-    public void eliminar(String titulo) {
-        entityManager.getTransaction().begin();
-        
-        Serie serie = buscarPorTitulo(titulo);
-        if (serie != null) {
-            entityManager.remove(serie);
-        }
-        entityManager.getTransaction().commit();
-    }
+      @Override
+      public void eliminar(Integer id) {
+            entityManager.getTransaction().begin();
+            Serie serie = buscarPorId(id);
+            if (serie != null) {
+                  entityManager.remove(serie);
+            }
+            entityManager.getTransaction().commit();
+      }
 
       @Override
       public List<Serie> buscarPorGeneros(String genero) {

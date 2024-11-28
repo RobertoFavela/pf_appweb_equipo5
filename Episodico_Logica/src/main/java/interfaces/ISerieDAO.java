@@ -25,5 +25,5 @@ public interface ISerieDAO {
     
     public void actualizar(Serie serie);
     
-    public void eliminar(String titulo) ;
+    public void eliminar(Integer id) ;
 }

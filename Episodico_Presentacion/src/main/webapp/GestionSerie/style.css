@@ -3,7 +3,7 @@ body {
     background: linear-gradient(to right, #8c00ff, #00c6ff);
 }
 
-.Feed {
+.Feed{
     background-color: #222;
     margin: 10px 50vh;
 
@@ -18,13 +18,12 @@ header {
     align-items: center;
     padding: 10px 20px;
     color: white;
-    position: relative;
+    position: relative; 
     height: 4vh;
     border-radius: 10px;
     padding-bottom: 1cm;
     width: 95.7%;
 }
-
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #8c00ff, #00c6ff);
@@ -36,11 +35,6 @@ body {
 
     padding: 20px;
     border-radius: 10px;
-}
-
-
-button {
-    border: none;
 }
 
 header {
@@ -55,6 +49,150 @@ header {
     padding-bottom: 1cm;
     width: 95.7%;
 }
+
+.icono-casa {
+
+    font-size: 30px;
+    position: absolute;
+    left: 45%;
+}
+
+.usuario {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+}
+
+.seccion,
+.resenas-recientes {
+
+    padding: 20px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: inset 0 0 20px #ffffff42;
+}
+
+.seccion {
+
+    display: flex;
+    overflow-x: scroll;
+}
+
+.resenas-recientes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 230px;
+}
+
+
+h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.contenedor-series {
+    display: flex;
+    gap: 10px;
+}
+
+.serie {
+    background-color: #f0f0f0;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.serie .info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.serie-img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+
+.serie:hover .serie-img {
+    filter: blur(3px);
+}
+
+.serie:hover .info {
+    opacity: 1;
+}
+
+.resena {
+
+    display: grid;
+    grid-template-columns: 80% 10% 10%;
+    grid-template-rows: 20% 80%;
+    background-color: rgb(214, 212, 212);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+
+.titulo-resena {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.texto-resena {
+    padding-right: 15px;
+    margin-right: 15px;
+    margin-left: 10px;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: scroll;
+
+}
+
+
+.imagen-resena {
+
+    grid-column-start: 2;
+    grid-column-end: 4;
+    flex: 3;
+    display: flex;
+    font-size: 12px;
+    color: #555;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    margin-left: 6px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
 
 nav {
     display: flex;
@@ -96,7 +234,7 @@ nav {
     transition: 0.2s;
 }
 
-.li:hover {
+button:hover {
     transition: 0.1s;
     color: #8c00ff;
     position: relative;
@@ -110,7 +248,7 @@ nav {
     color: #00c6ff;
     fill-rule: evenodd;
 }
-
+  
 /* Título */
 h2 {
     text-align: center;
@@ -121,7 +259,7 @@ h2 {
 
 /* Formulario */
 
-label {
+label{
     color: #00c6ff;
 }
 
@@ -155,13 +293,13 @@ label {
 }
 
 .mod-btn {
-
+   
     background: linear-gradient(to right, #00c6ff, #8c00ff);
-
+    
 }
 
 .mod-btn:hover {
-
+    
     background: linear-gradient(to right, #8c00ff, #00c6ff);
 }
 
@@ -191,13 +329,10 @@ label {
     margin-bottom: 15px;
 }
 
-.gestionar-serie select {
-    width: 97%;
+.gestionar-serie select{
+    width: 100%;
 }
 
-.form-btn{
-    text-align: center;
-}
 .form-btn button {
     padding: 10px;
     font-size: 16px;
@@ -205,7 +340,6 @@ label {
     border: none;
     cursor: pointer;
     transition: all 0.3s;
-    margin-right: 1cm;
 }
 
 .btn-guardar {
