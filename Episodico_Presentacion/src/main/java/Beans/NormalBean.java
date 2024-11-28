@@ -23,10 +23,10 @@ public class NormalBean {
           return instancia;
      }
 
-     public void init() {
+     public NormalBean() {
           normalDAO = new NormalDAO();
           normal = new Normal();
-          listaNormales = normalDAO.buscarTodos();
+//          listaNormales = normalDAO.buscarTodos();
      }
 
      public void guardar() {

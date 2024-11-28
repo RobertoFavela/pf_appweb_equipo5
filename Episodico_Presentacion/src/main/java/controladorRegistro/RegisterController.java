@@ -4,7 +4,9 @@
  */
 package controladorRegistro;
 
+import Beans.NormalBean;
 import Beans.UsuarioBean;
+import EntidadesSQL.Normal;
 import EntidadesSQL.Usuario;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -20,10 +22,12 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class RegisterController extends HttpServlet {
 
-     private UsuarioBean usuarioBean;
+     private final UsuarioBean usuarioBean;
+     private final NormalBean normalBean;
      
     public RegisterController() {
-         usuarioBean = new UsuarioBean();
+         usuarioBean = UsuarioBean.getInstancia();
+         normalBean = NormalBean.getInstancia();
     }
     
     /**
@@ -70,25 +74,26 @@ public class RegisterController extends HttpServlet {
 
         String accion = request.getParameter("RegistrarUsuario");
 
-        if (accion != null) {
-            if (accion.equalsIgnoreCase("Registrarse")) {
-                
                 String correo = request.getParameter("txtCorreo");
                 String nombre = request.getParameter("txtUsuario");
                 String contra = request.getParameter("txtContra");
 
                 Usuario usuario = new Usuario();
-                usuario.setNombreCompleto(nombre);
                 usuario.setCorreo(correo);
+                usuario.setNombreCompleto(nombre);
                 usuario.setContrasenia(contra);
                 
                 usuarioBean.setUsuario(usuario);
                 usuarioBean.guardar();
-
-//                boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
                 
-            }
-        }
+                Normal normal = new Normal();
+                
+                normalBean.setNormal(normal);
+                
+                normalBean.setNormal(normal);
+                normalBean.guardar();
+
+                
         this.getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 

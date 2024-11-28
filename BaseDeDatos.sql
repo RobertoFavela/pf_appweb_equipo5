@@ -23,7 +23,7 @@ CREATE TABLE Usuario (
     ciudad VARCHAR(100),
     fechaNacimiento DATE,
     genero ENUM('Masculino', 'Femenino', 'Otro'),
-    municipio_id INT NOT NULL,
+    municipio_id INT,
     FOREIGN KEY (municipio_id) REFERENCES Municipio(id)
 );
 

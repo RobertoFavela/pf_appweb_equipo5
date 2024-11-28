@@ -30,8 +30,8 @@ public class Normal extends Usuario {
     
     // No se agregan campos adicionales
 
-    public Normal(String nombreCompleto, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero, Normal normal, Municipio municipioId) {
-        super(nombreCompleto, correo, contrasenia, telefono, avatar, ciudad, fechaNacimiento, genero, normal, municipioId);
+    public Normal(String nombreCompleto, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
+        super(nombreCompleto, correo, contrasenia, telefono, avatar, ciudad, fechaNacimiento, genero, municipioId);
     }
     
     

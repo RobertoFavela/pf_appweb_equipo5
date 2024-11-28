@@ -19,10 +19,10 @@ public class UsuarioBean {
           return instancia;
      }
 
-     public void init() {
+     public UsuarioBean() {
           usuarioDAO = new UsuarioDAO();
           usuario = new Usuario();
-          listaUsuarios = usuarioDAO.buscarTodos();
+//          listaUsuarios = usuarioDAO.buscarTodos();
      }
 
      public void guardar() {

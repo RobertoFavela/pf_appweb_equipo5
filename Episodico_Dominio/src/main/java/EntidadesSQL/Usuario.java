@@ -69,12 +69,12 @@ public class Usuario implements Serializable {
     private Date fechaNacimiento;
     @Column(name = "genero")
     private String genero;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private Normal normal;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+//    private Normal normal;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
     private Collection<Post> postCollection;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private Admin admin;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+//    private Admin admin;
     @JoinColumn(name = "municipio_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Municipio municipioId;
@@ -88,7 +88,7 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Usuario(String nombreCompleto, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero, Normal normal, Municipio municipioId) {
+    public Usuario(String nombreCompleto, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
         this.nombreCompleto = nombreCompleto;
         this.correo = correo;
         this.contrasenia = contrasenia;
@@ -97,7 +97,7 @@ public class Usuario implements Serializable {
         this.ciudad = ciudad;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
-        this.normal = normal;
+//        this.normal = normal;
         this.municipioId = municipioId;
     }
 
@@ -180,14 +180,14 @@ public class Usuario implements Serializable {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-
-    public Normal getNormal() {
-        return normal;
-    }
-
-    public void setNormal(Normal normal) {
-        this.normal = normal;
-    }
+//
+//    public Normal getNormal() {
+//        return normal;
+//    }
+//
+//    public void setNormal(Normal normal) {
+//        this.normal = normal;
+//    }
 
     public Collection<Post> getPostCollection() {
         return postCollection;
@@ -196,14 +196,14 @@ public class Usuario implements Serializable {
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
     }
-
-    public Admin getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
+//
+//    public Admin getAdmin() {
+//        return admin;
+//    }
+//
+//    public void setAdmin(Admin admin) {
+//        this.admin = admin;
+//    }
 
     public Municipio getMunicipioId() {
         return municipioId;
