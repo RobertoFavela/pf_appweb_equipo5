@@ -6,14 +6,8 @@ package EntidadesSQL;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,19 +15,20 @@ import javax.persistence.Table;
  * @author tacot
  */
 @Entity
-@Table(name = "normal")
+@Table(name = "Normal")
+@DiscriminatorValue("Normal")
 public class Normal extends Usuario {
 
     public Normal() {
     }
 
-    
-    // No se agregan campos adicionales
-
-    public Normal(String nombreCompleto, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
-        super(nombreCompleto, correo, contrasenia, telefono, avatar, ciudad, fechaNacimiento, genero, municipioId);
+    public Normal(String nombreCompleto, String correo, String contrasenia) {
+        super(nombreCompleto, correo, contrasenia);
     }
-    
+
+    public Normal(String nombreCompleto, String correo, String contrasenia, String telefono, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
+        super(nombreCompleto, correo, contrasenia, telefono, ciudad, fechaNacimiento, genero, municipioId);
+    }
     
 }
 

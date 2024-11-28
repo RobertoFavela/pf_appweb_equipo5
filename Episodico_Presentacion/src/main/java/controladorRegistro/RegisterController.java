@@ -83,13 +83,13 @@ public class RegisterController extends HttpServlet {
                 usuario.setNombreCompleto(nombre);
                 usuario.setContrasenia(contra);
                 
-                usuarioBean.setUsuario(usuario);
-                usuarioBean.guardar();
+//                usuarioBean.setUsuario(usuario);
+//                usuarioBean.guardar();
                 
                 Normal normal = new Normal();
-                
-                normalBean.setNormal(normal);
-                
+                normal.setNombreCompleto(nombre);
+                normal.setCorreo(correo);
+                normal.setContrasenia(contra);
                 normalBean.setNormal(normal);
                 normalBean.guardar();
 

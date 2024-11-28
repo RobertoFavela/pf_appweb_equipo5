@@ -24,7 +24,8 @@ CREATE TABLE Usuario (
     fechaNacimiento DATE,
     genero ENUM('Masculino', 'Femenino', 'Otro'),
     municipio_id INT,
-    FOREIGN KEY (municipio_id) REFERENCES Municipio(id)
+    FOREIGN KEY (municipio_id) REFERENCES Municipio(id),
+    DTYPE VARCHAR(31)
 );
 
 CREATE TABLE Normal (
@@ -32,7 +33,7 @@ CREATE TABLE Normal (
     FOREIGN KEY (id) REFERENCES Usuario(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Admin (
+CREATE TABLE Administrador (
     id INT PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES Usuario(id) ON DELETE CASCADE
 );
@@ -62,7 +63,7 @@ CREATE TABLE Anclado (
     id INT PRIMARY KEY,
     Admin_id INT NOT NULL, 
     FOREIGN KEY (id) REFERENCES Post(id) ON DELETE CASCADE,
-    FOREIGN KEY (Admin_id) REFERENCES Admin(id) ON DELETE CASCADE
+    FOREIGN KEY (Admin_id) REFERENCES Administrador(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Comun (
@@ -107,7 +108,7 @@ VALUES (
     'Guadalajara', '1985-11-30', 'Femenino', 2
 );
 
-INSERT INTO Admin (id) 
+INSERT INTO Administrador (id) 
 VALUES (LAST_INSERT_ID());
 
 INSERT INTO Serie (titulo, descripcion, fechaEstreno, genero) 
