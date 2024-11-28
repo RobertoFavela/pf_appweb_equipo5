@@ -4,14 +4,13 @@
  */
 package controladorRegistro;
 
-import dtos.UsuarioDto;
+import Beans.UsuarioBean;
+import EntidadesSQL.Usuario;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logicaRegistro.ILogicaRegistro;
-import logicaRegistro.LogicaRegistro;
 
 /**
  *
@@ -21,9 +20,10 @@ import logicaRegistro.LogicaRegistro;
  */
 public class RegisterController extends HttpServlet {
 
-    private final ILogicaRegistro logicaRegistro;
+     private UsuarioBean usuarioBean;
+     
     public RegisterController() {
-        logicaRegistro = new LogicaRegistro();
+         usuarioBean = new UsuarioBean();
     }
     
     /**
@@ -77,11 +77,15 @@ public class RegisterController extends HttpServlet {
                 String nombre = request.getParameter("txtUsuario");
                 String contra = request.getParameter("txtContra");
 
-                UsuarioDto usuario = new UsuarioDto(correo, nombre, contra);
-                 System.out.println("Register Controller");
-                System.out.println("Insertando usuario: " + usuario.toString());
+                Usuario usuario = new Usuario();
+                usuario.setNombreCompleto(nombre);
+                usuario.setCorreo(correo);
+                usuario.setContrasenia(contra);
+                
+                usuarioBean.setUsuario(usuario);
+                usuarioBean.guardar();
 
-                boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
+//                boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
                 
             }
         }

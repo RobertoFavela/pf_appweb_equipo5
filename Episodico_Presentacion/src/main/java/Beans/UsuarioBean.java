@@ -43,6 +43,10 @@ public class UsuarioBean {
      public Usuario buscarPorNombre(String nombre) {
           return usuarioDAO.buscarPorNombre(nombre);
      }
+     
+     public boolean autenticacion(Usuario usuario) {
+          return usuarioDAO.autenticacion(usuario);
+     }
 
      public List<Usuario> getListaUsuarios() {
           return listaUsuarios;

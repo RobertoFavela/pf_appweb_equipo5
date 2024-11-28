@@ -19,6 +19,8 @@ public interface IUsuarioDAO {
     public Usuario buscarPorId(Integer id);
  
     public Usuario buscarPorNombre(String nombre);
+    
+    public boolean autenticacion(Usuario usuario);
             
     public void actualizar(Usuario usuario);
     

@@ -4,15 +4,14 @@
  */
 package controladoInicioSesion;
 
-import dtos.UsuarioDto;
+import Beans.UsuarioBean;
+import EntidadesSQL.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import logicaIniciarSesion.ILogicaIniciarSesion;
-import logicaIniciarSesion.LogicaIniciarSesion;
 
 /**
  *
@@ -22,10 +21,10 @@ import logicaIniciarSesion.LogicaIniciarSesion;
 @WebServlet(name = "LogInController", urlPatterns = {"/LogInController"})
 public class LogInController extends HttpServlet {
 
-     private final ILogicaIniciarSesion logicaIniciarSesion;
-
+     private UsuarioBean usuarioBean;
+     
      public LogInController() {
-          logicaIniciarSesion = new LogicaIniciarSesion();
+          usuarioBean = new UsuarioBean();
      }
 
      /**
@@ -77,10 +76,13 @@ public class LogInController extends HttpServlet {
                String correo = request.getParameter("txtUsuario");
                String contrasena = request.getParameter("txtContrasena");
 
-               UsuarioDto usuario = new UsuarioDto(contrasena, correo);
-
-               boolean respuesta = logicaIniciarSesion.iniciarSesion(usuario);
-
+               Usuario usuario = new Usuario();
+               usuario.setCorreo(correo);
+               usuario.setContrasenia(contrasena);
+               
+               usuarioBean.setUsuario(usuario);
+               boolean respuesta = usuarioBean.autenticacion(usuario);
+               
                if (respuesta) {
                    
                     response.sendRedirect("FeedController");

@@ -71,14 +71,14 @@ public class GestionSerieController extends HttpServlet {
           nuevaSerie.setDescripcion(descripcion);
           serieBean.setSerie(nuevaSerie);
           
-          boolean exito = serieBean.guardar();
+          serieBean.guardar();
 
-          if (exito) {
-               response.sendRedirect("GestionSerie.jsp?mensaje=Serie agregada con éxito");
-
-          } else {
-               response.sendRedirect("gestionSerie.jsp?error=Error al agregar la serie");
-          }
+//          if (exito) {
+//               response.sendRedirect("GestionSerie.jsp?mensaje=Serie agregada con éxito");
+//
+//          } else {
+//               response.sendRedirect("gestionSerie.jsp?error=Error al agregar la serie");
+//          }
      }
 
      // </editor-fold>
