@@ -112,7 +112,8 @@
                        value="${fechaNacimiento}" required>
 
                 <!-- Botón de Modificar -->
-                <button type="submit" class="aceptar center">Modificar</button>
+                <input type="hidden" name="actualizar" value="actualizar" class="radio">
+                <button type="submit" name ="actualizar" class="aceptar center">Modificar</button>
 
             </form>
 
