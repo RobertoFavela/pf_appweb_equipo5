@@ -2,6 +2,7 @@ package DAOsSQL;
 
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Comentario;
+import interfaces.IComentarioDAO;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
@@ -9,7 +10,7 @@ import javax.persistence.criteria.*;
  *
  * @author tacot
  */
-public class ComentarioDAO {
+public class ComentarioDAO implements IComentarioDAO{
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
@@ -18,12 +19,14 @@ public class ComentarioDAO {
         this.entityManager = conexion.getEntityManager();
     }
 
+    @Override
     public void guardar(Comentario comentario) {
         entityManager.getTransaction().begin();
         entityManager.persist(comentario);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public List<Comentario> buscarTodos() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comentario> query = cb.createQuery(Comentario.class);
@@ -32,6 +35,7 @@ public class ComentarioDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
     public Comentario buscarPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comentario> query = cb.createQuery(Comentario.class);
@@ -40,12 +44,14 @@ public class ComentarioDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
 
+    @Override
     public void actualizar(Comentario comentario) {
         entityManager.getTransaction().begin();
         entityManager.merge(comentario);
         entityManager.getTransaction().commit();
     }
     
+    @Override
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
         Comentario comentario = buscarPorId(id);

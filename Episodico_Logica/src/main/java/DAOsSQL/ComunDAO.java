@@ -2,6 +2,7 @@ package DAOsSQL;
 
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Comun;
+import interfaces.IComunDAO;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
@@ -9,7 +10,7 @@ import javax.persistence.criteria.*;
  *
  * @author tacot
  */
-public class ComunDAO {
+public class ComunDAO implements IComunDAO{
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
@@ -18,12 +19,14 @@ public class ComunDAO {
         this.entityManager = conexion.getEntityManager();
     }
 
+    @Override
     public void guardar(Comun comun) {
         entityManager.getTransaction().begin();
         entityManager.persist(comun);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public List<Comun> buscarTodos() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comun> query = cb.createQuery(Comun.class);
@@ -32,6 +35,7 @@ public class ComunDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
     public Comun buscarPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comun> query = cb.createQuery(Comun.class);
@@ -40,12 +44,14 @@ public class ComunDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
 
+    @Override
     public void actualizar(Comun comun) {
         entityManager.getTransaction().begin();
         entityManager.merge(comun);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
         Comun comun = buscarPorId(id);

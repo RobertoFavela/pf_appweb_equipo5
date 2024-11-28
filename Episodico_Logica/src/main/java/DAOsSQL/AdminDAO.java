@@ -1,6 +1,7 @@
 package DAOsSQL;
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Admin;
+import interfaces.IAdminDAO;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
@@ -8,7 +9,7 @@ import javax.persistence.criteria.*;
  *
  * @author tacot
  */
-public class AdminDAO {
+public class AdminDAO implements IAdminDAO {
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
@@ -17,12 +18,14 @@ public class AdminDAO {
         this.entityManager = conexion.getEntityManager();
     }
 
+    @Override
     public void guardar(Admin admin) {
         entityManager.getTransaction().begin();
         entityManager.persist(admin);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public List<Admin> buscarTodos() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Admin> query = cb.createQuery(Admin.class);
@@ -31,6 +34,7 @@ public class AdminDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
     public Admin buscarPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Admin> query = cb.createQuery(Admin.class);
@@ -39,12 +43,14 @@ public class AdminDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
 
+    @Override
     public void actualizar(Admin admin) {
         entityManager.getTransaction().begin();
         entityManager.merge(admin);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
         Admin admin = buscarPorId(id);

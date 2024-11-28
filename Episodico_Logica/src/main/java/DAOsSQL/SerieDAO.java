@@ -1,14 +1,18 @@
 package DAOsSQL;
+
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Serie;
+import interfaces.ISerieDAO;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
+
 /**
  *
  * @author tacot
  */
-public class SerieDAO {
+public class SerieDAO implements ISerieDAO {
+
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
@@ -17,12 +21,14 @@ public class SerieDAO {
         this.entityManager = conexion.getEntityManager();
     }
 
+    @Override
     public void guardar(Serie serie) {
         entityManager.getTransaction().begin();
         entityManager.persist(serie);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public List<Serie> buscarTodas() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Serie> query = cb.createQuery(Serie.class);
@@ -31,6 +37,7 @@ public class SerieDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
     public Serie buscarPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Serie> query = cb.createQuery(Serie.class);
@@ -39,20 +46,23 @@ public class SerieDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
 
-    public List<Serie> buscarPorTitulo(String titulo) {
+    @Override
+    public Serie buscarPorTitulo(String titulo) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Serie> query = cb.createQuery(Serie.class);
         Root<Serie> root = query.from(Serie.class);
         query.select(root).where(cb.like(root.get("titulo"), "%" + titulo + "%"));
-        return entityManager.createQuery(query).getResultList();
+        return entityManager.createQuery(query).getSingleResult();
     }
 
+    @Override
     public void actualizar(Serie serie) {
         entityManager.getTransaction().begin();
         entityManager.merge(serie);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
         Serie serie = buscarPorId(id);
@@ -60,5 +70,14 @@ public class SerieDAO {
             entityManager.remove(serie);
         }
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public List<Serie> buscarPorGeneros(String genero) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Serie> query = cb.createQuery(Serie.class);
+        Root<Serie> root = query.from(Serie.class);
+        query.select(root).where(cb.like(root.get("genero"),genero));
+        return entityManager.createQuery(query).getResultList();
     }
 }

@@ -16,6 +16,10 @@ import javax.persistence.Table;
 @Table(name = "admin")
 public class Admin extends Usuario {
 
+    public Admin() {
+    }
+
+    
     public Admin(String nombreCompleto, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero, Normal normal, Municipio municipioId) {
         super(nombreCompleto, correo, contrasenia, telefono, avatar, ciudad, fechaNacimiento, genero, normal, municipioId);
     }

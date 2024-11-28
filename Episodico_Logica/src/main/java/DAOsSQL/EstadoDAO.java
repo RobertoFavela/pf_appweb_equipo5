@@ -2,6 +2,7 @@ package DAOsSQL;
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Estado;
 import EntidadesSQL.Municipio;
+import interfaces.IEstadoDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,7 +13,7 @@ import javax.persistence.criteria.Root;
  *
  * @author tacot
  */
-public class EstadoDAO {
+public class EstadoDAO implements IEstadoDAO{
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
@@ -21,12 +22,14 @@ public class EstadoDAO {
         this.entityManager = conexion.getEntityManager();
     }
  
+    @Override
     public void guardar(Estado estado) {
         entityManager.getTransaction().begin();
         entityManager.persist(estado);
         entityManager.getTransaction().commit();
     }
     
+    @Override
     public List<Estado> buscarTodosLosEstados() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Estado> query = cb.createQuery(Estado.class);
@@ -35,6 +38,7 @@ public class EstadoDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
     public Estado buscarEstadoPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Estado> query = cb.createQuery(Estado.class);
@@ -43,6 +47,7 @@ public class EstadoDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
     
+    @Override
     public Estado buscarEstadoPorNombre(String nombre) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Estado> query = cb.createQuery(Estado.class);
@@ -51,12 +56,14 @@ public class EstadoDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
     
+    @Override
     public void actualizar(Estado estado) {
         entityManager.getTransaction().begin();
         entityManager.merge(estado);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
         Estado estado = buscarEstadoPorId(id);

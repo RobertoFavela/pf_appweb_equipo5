@@ -2,11 +2,12 @@ package DAOsSQL;
 
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Municipio;
+import interfaces.IMunicipioDAO;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
 import java.util.List;
 
-public class MunicipioDAO {
+public class MunicipioDAO implements IMunicipioDAO{
 
     private final EntityManager entityManager;
     private final ConexionDB conexion;
@@ -16,12 +17,14 @@ public class MunicipioDAO {
         this.entityManager = conexion.getEntityManager();
     }
 
+    @Override
     public void guardar(Municipio municipio) {
         entityManager.getTransaction().begin();
         entityManager.persist(municipio);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public List<Municipio> buscarTodos() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Municipio> query = cb.createQuery(Municipio.class);
@@ -30,6 +33,7 @@ public class MunicipioDAO {
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
     public Municipio buscarPorId(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Municipio> query = cb.createQuery(Municipio.class);
@@ -38,20 +42,23 @@ public class MunicipioDAO {
         return entityManager.createQuery(query).getSingleResult();
     }
 
-    public List<Municipio> buscarPorNombre(String nombre) {
+    @Override
+    public Municipio buscarPorNombre(String nombre) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Municipio> query = cb.createQuery(Municipio.class);
         Root<Municipio> root = query.from(Municipio.class);
         query.select(root).where(cb.like(root.get("nombre"), "%" + nombre + "%"));
-        return entityManager.createQuery(query).getResultList();
+        return entityManager.createQuery(query).getSingleResult();
     }
 
+    @Override
     public void actualizar(Municipio municipio) {
         entityManager.getTransaction().begin();
         entityManager.merge(municipio);
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public void eliminar(Integer id) {
         entityManager.getTransaction().begin();
         Municipio municipio = buscarPorId(id);
