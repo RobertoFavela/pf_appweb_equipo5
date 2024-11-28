@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:sysml="http://www.omg.org/spec/SysML/20100301/SysML-profile" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+  <packagedElement xmi:id="p5a5b9cb217b24ae088536ca1c5aee944_557153158" xmi:type="uml:Model">
+    <name>Model1</name>
+    <packagedElement xmi:id="6872b51a440e4fe6b006d2a4799f3ced" xmi:type="uml:Package">
+      <name>ConexionSQL</name>
+      <visibility>public</visibility>
+      <name>ConexionSQL</name>
+    </packagedElement>
+    <packagedElement xmi:id="2adfce8749da4764b7f5e10b52fd0cbc" xmi:type="uml:Package">
+      <name>DAOsSQL</name>
+      <visibility>public</visibility>
+      <name>DAOsSQL</name>
+    </packagedElement>
+    <packagedElement xmi:id="ed5ea453934c4158bf58c1cb7443ffbc" xmi:type="uml:Package">
+      <name>EntidadesSQL</name>
+      <visibility>public</visibility>
+      <name>EntidadesSQL</name>
+    </packagedElement>
+    <name>Model1</name>
+  </packagedElement>
+</xmi:XMI>

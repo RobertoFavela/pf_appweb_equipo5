@@ -11,6 +11,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>FeedController</servlet-name>
+        <servlet-class>controladorFeed.FeedController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FeedController</servlet-name>
+        <url-pattern>/FeedController</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>LogInController</servlet-name>
         <servlet-class>controladoInicioSesion.LogInController</servlet-class>
     </servlet>
@@ -28,10 +37,27 @@
         <url-pattern>/RegisterController</url-pattern>
     </servlet-mapping>
     
+    <dependency>
+        <groupId>javax.servlet.jsp.jstl</groupId>
+        <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+        <version>1.2.0</version>
+    </dependency>
+
     
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error_404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error_500.jsp</location>
+    </error-page>
+
+    
 </web-app>

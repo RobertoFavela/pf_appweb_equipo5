@@ -4,24 +4,30 @@
  */
 package controladorRegistro;
 
-import dtos.UsuarioDto;
+import Beans.NormalBean;
+import Beans.UsuarioBean;
+import EntidadesSQL.Normal;
+import EntidadesSQL.Usuario;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logicaRegistro.ILogicaRegistro;
-import logicaRegistro.LogicaRegistro;
 
 /**
  *
- * @author tacot
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class RegisterController extends HttpServlet {
 
-    private final ILogicaRegistro logicaRegistro;
+     private final UsuarioBean usuarioBean;
+     private final NormalBean normalBean;
+     
     public RegisterController() {
-        logicaRegistro = new LogicaRegistro();
+         usuarioBean = UsuarioBean.getInstancia();
+         normalBean = NormalBean.getInstancia();
     }
     
     /**
@@ -68,21 +74,26 @@ public class RegisterController extends HttpServlet {
 
         String accion = request.getParameter("RegistrarUsuario");
 
-        if (accion != null) {
-            if (accion.equalsIgnoreCase("Registrarse")) {
-                
                 String correo = request.getParameter("txtCorreo");
                 String nombre = request.getParameter("txtUsuario");
                 String contra = request.getParameter("txtContra");
 
-                UsuarioDto usuario = new UsuarioDto(correo, nombre, contra);
-                 System.out.println("Register Controller");
-                System.out.println("Insertando usuario: " + usuario.toString());
-
-                boolean respuesta = logicaRegistro.resgitrarUsuario(usuario);
+                Usuario usuario = new Usuario();
+                usuario.setCorreo(correo);
+                usuario.setNombreCompleto(nombre);
+                usuario.setContrasenia(contra);
                 
-            }
-        }
+                usuarioBean.setUsuario(usuario);
+                usuarioBean.guardar();
+                
+                Normal normal = new Normal();
+                
+                normalBean.setNormal(normal);
+                
+                normalBean.setNormal(normal);
+                normalBean.guardar();
+
+                
         this.getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 

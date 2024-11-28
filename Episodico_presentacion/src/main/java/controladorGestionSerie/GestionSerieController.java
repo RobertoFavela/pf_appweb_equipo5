@@ -4,6 +4,8 @@
  */
 package controladorGestionSerie;
 
+import Beans.SerieBean;
+import EntidadesSQL.Serie;
 import dtos.SerieDto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,19 +17,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.InputStream;
 import java.util.List;
-import logicaSerie.ILogicaSerie;
-import logicaSerie.LogicaSerie;
 
 /**
  *
- * @author favel
+ * @authors 
+ * Luis Roberto Favela Castro - 00000246853
+ * Jesus Alberto Morales Ronjas - 00000245335
  */
 public class GestionSerieController extends HttpServlet {
 
-     private final ILogicaSerie logicaSerie;
+     private final SerieBean serieBean;
 
      public GestionSerieController() {
-          logicaSerie = new LogicaSerie();
+          serieBean = new SerieBean();
      }
 
      /**
@@ -40,6 +42,7 @@ public class GestionSerieController extends HttpServlet {
       */
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+          response.setContentType("text/html;charset=UTF-8");
      }
 
      // <editor-fold defaultstate="collapsed" desc="Métodos HTTP GET y POST">
@@ -56,46 +59,26 @@ public class GestionSerieController extends HttpServlet {
           String url = "/GestionSerie.jsp";
           
           
-          String action = request.getParameter("RegistrarSerie"); // Action de la solicitud
+          String action = request.getParameter("RegistrarSerie"); 
 
-          // Recibir los datos del formulario
           String nombre = request.getParameter("nombre");
           String descripcion = request.getParameter("descripcion");
           String genero = request.getParameter("genero");
           int lanzamiento = Integer.parseInt(request.getParameter("lanzamiento"));
 
-          // Obtener el archivo de la imagen del formulario (se asume que se sube como parte de un formulario multipart)
-          Part portadaPart = request.getPart("portada"); // Nombre del campo de la imagen en el formulario
-
-          byte[] portada = null;
-
-          // Verificar si el archivo fue subido
-          if (portadaPart != null) {
-               // Convertir la imagen a un arreglo de bytes
-               try (InputStream inputStream = portadaPart.getInputStream()) {
-                    portada = new byte[inputStream.available()];
-                    inputStream.read(portada);
-               } catch (IOException e) {
-                    e.printStackTrace();
-                    // Manejo de errores si la imagen no puede ser leída
-               }
-          }
-
-          // Crear el DTO de la serie
-          SerieDto nuevaSerie = new SerieDto();
+          Serie nuevaSerie = new Serie();
           nuevaSerie.setTitulo(nombre);
           nuevaSerie.setDescripcion(descripcion);
-          nuevaSerie.setImagen(portada);
+          serieBean.setSerie(nuevaSerie);
+          
+          serieBean.guardar();
 
-          // Insertar la serie
-          boolean exito = logicaSerie.insertarSerie(nuevaSerie);
-
-          // Redirigir o mostrar mensaje según el resultado
-          if (exito) {
-               response.sendRedirect("gestionSerie.jsp?mensaje=Serie agregada con éxito");
-          } else {
-               response.sendRedirect("gestionSerie.jsp?error=Error al agregar la serie");
-          }
+//          if (exito) {
+//               response.sendRedirect("GestionSerie.jsp?mensaje=Serie agregada con éxito");
+//
+//          } else {
+//               response.sendRedirect("gestionSerie.jsp?error=Error al agregar la serie");
+//          }
      }
 
      // </editor-fold>
