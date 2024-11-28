@@ -7,6 +7,7 @@ package controladorGestionPerfil;
 import Beans.NormalBean;
 import Beans.UsuarioBean;
 import EntidadesSQL.Normal;
+import EntidadesSQL.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,10 +21,10 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class gestionPerfilController extends HttpServlet {
 
-      private final NormalBean normalBean;
+      private final UsuarioBean usuarioBean;
 
       public gestionPerfilController() {
-            normalBean = NormalBean.getInstancia();
+            usuarioBean = UsuarioBean.getInstancia();
       }
 
       /**
@@ -65,15 +66,12 @@ public class gestionPerfilController extends HttpServlet {
       protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
 
-            Normal normal = normalBean.getNormal();
+            Usuario usuario = usuarioBean.getUsuario();
+            
+            request.setAttribute("nombreCompleto", usuario.getNombreCompleto());
+            request.setAttribute("telefono", usuario.getTelefono());
 
-            // Pasar el objeto al JSP
-            request.setAttribute("normal", normal);
-            request.setAttribute("nombreCompleto", normal.getNombreCompleto());
-            request.setAttribute("telefono", normal.getTelefono());
-
-            // Redirigir al JSP correspondiente
-            request.getRequestDispatcher("/ruta/a/tuFormulario.jsp").forward(request, response);
+            request.getRequestDispatcher("/GestionPerfil.jsp").forward(request, response);
       }
 
       /**

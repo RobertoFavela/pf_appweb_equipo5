@@ -77,49 +77,45 @@
                 <!-- Nombre Completo -->
                 <label for="nombreCompleto">Nombre Completo:</label>
                 <input type="text" id="nombreCompleto" name="nombreCompleto" 
-                       value="${normal.nombreCompleto}" required>
+                       value="${nombreCompleto}" required>
 
                 <!-- Teléfono -->
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" 
-                       value="${normal.telefono}" required>
+                       value="${telefono}" required>
 
                 <!-- Ciudad -->
                 <label for="ciudad">Ciudad:</label>
                 <input type="text" id="ciudad" name="ciudad" 
-                       value="${normal.ciudad}" required>
+                       value="${ciudad}" required>
 
                 <!-- Municipio -->
                 <label for="municipioId">Municipio:</label>
                 <select id="municipioId" name="municipioId" required>
                     <option value="">Seleccione</option>
-                    <option value="1" ${normal.municipioId.id == 1 ? 'selected' : ''}>Municipio 1</option>
-                    <option value="2" ${normal.municipioId.id == 2 ? 'selected' : ''}>Municipio 2</option>
+                    <option value="1" ${municipioId == 1 ? 'selected' : ''}>Municipio 1</option>
+                    <option value="2" ${municipioId == 2 ? 'selected' : ''}>Municipio 2</option>
                 </select>
 
                 <!-- Género -->
                 <label for="genero">Género:</label>
                 <select id="genero" name="genero" required>
                     <option value="">Seleccione</option>
-                    <option value="Masculino" ${normal.genero == 'Masculino' ? 'selected' : ''}>Masculino</option>
-                    <option value="Femenino" ${normal.genero == 'Femenino' ? 'selected' : ''}>Femenino</option>
-                    <option value="Otro" ${normal.genero == 'Otro' ? 'selected' : ''}>Otro</option>
+                    <option value="Masculino" ${genero == 'Masculino' ? 'selected' : ''}>Masculino</option>
+                    <option value="Femenino" ${genero == 'Femenino' ? 'selected' : ''}>Femenino</option>
+                    <option value="Otro" ${genero == 'Otro' ? 'selected' : ''}>Otro</option>
                 </select>
 
                 <!-- Fecha de Nacimiento -->
                 <label for="fechaNacimiento">Fecha de Nacimiento:</label>
                 <input type="date" id="fechaNacimiento" name="fechaNacimiento" 
-                       value="${normal.fechaNacimiento}" required>
+                       value="${fechaNacimiento}" required>
 
                 <!-- Botón de Modificar -->
                 <button type="submit" class="aceptar center">Modificar</button>
 
-                <c:if test="${not empty normal}">
-                    <input type="text" id="nombreCompleto" name="nombreCompleto" value="${normal.nombreCompleto}" required>
-                </c:if>
-
-
             </form>
+
 
 
     </body>
