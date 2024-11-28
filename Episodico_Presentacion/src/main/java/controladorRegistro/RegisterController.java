@@ -78,14 +78,6 @@ public class RegisterController extends HttpServlet {
                 String nombre = request.getParameter("txtUsuario");
                 String contra = request.getParameter("txtContra");
 
-                Usuario usuario = new Usuario();
-                usuario.setCorreo(correo);
-                usuario.setNombreCompleto(nombre);
-                usuario.setContrasenia(contra);
-                
-//                usuarioBean.setUsuario(usuario);
-//                usuarioBean.guardar();
-                
                 Normal normal = new Normal();
                 normal.setNombreCompleto(nombre);
                 normal.setCorreo(correo);

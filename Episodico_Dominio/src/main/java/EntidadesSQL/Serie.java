@@ -57,6 +57,10 @@ public class Serie implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "serieId")
     private Collection<Post> postCollection;
 
+    @Lob
+    @Column
+    private byte[] imagen;
+    
     public Serie() {
     }
 
@@ -75,6 +79,14 @@ public class Serie implements Serializable {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 
     public Integer getId() {
@@ -149,5 +161,5 @@ public class Serie implements Serializable {
     public String toString() {
         return "EntidadesSQL.Serie[ id=" + id + " ]";
     }
-    
+
 }
