@@ -83,7 +83,6 @@
             <section class="seccion">
                 <div class="contenedor-series">
 
-                    <c:forEach var="Serie" items="${seriesRecientes}">
                         <div class="serie">
                             <div class="info">
                                 ${Serie.titulo}

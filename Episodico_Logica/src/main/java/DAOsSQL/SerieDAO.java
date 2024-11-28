@@ -1,8 +1,8 @@
 package DAOsSQL;
 
-import interfaces.ISerieDAO;
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Serie;
+import interfaces.ISerieDAO;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
