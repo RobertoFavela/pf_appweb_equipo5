@@ -85,7 +85,7 @@ public class LogInController extends HttpServlet {
                
                if (respuesta) {
                    
-                    response.sendRedirect("FeedController");
+                    response.sendRedirect("FeedView.jsp");
                     return;
                } else {
                     request.setAttribute("error", "Credenciales incorrectas.");

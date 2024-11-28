@@ -18,7 +18,7 @@ public class ConexionDB {
 
      private ConexionDB() {
           try {
-               entityManagerFactory = Persistence.createEntityManagerFactory("ConecionPU");
+               entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
 
                this.entityManager = entityManagerFactory.createEntityManager();
           } catch (Exception e) {
