@@ -76,42 +76,36 @@
         <form action="GestionUsuario" method="post">
 
             <label for="nombreCompleto">Nombre Completo:</label>
-            <label for="correo" class="der"  >Correo Electrónico:</label>
-
-            <input type="text" id="nombreCompleto" name="nombreCompleto" class="izq" required>
-            <input type="email" id="correo" name="correo" required>
-
-
-            <label for="contrasenia" class="izq" >Contraseña:</label>
             <label for="telefono">Teléfono:</label>
 
             <input type="password" id="contrasenia" name="contrasenia" class="izq" required>
             <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}">
 
 
-            <label for="ciudad" class="izq" >Ciudad:</label>
-            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <label for="ciudad" class="izq">Ciudad:</label>
+            <label for="municipioId">Municipio:</label>
+
 
             <select id="genero" name="genero" required class="izq">
                 <option value="">Seleccione</option>
             </select>
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            <select id="municipioId" name="municipioId" required>
+                <option value="">Seleccione</option>
+                <option value="1">Municipio 1</option>
+                <option value="2">Municipio 2</option>
+            </select>
 
 
             <label for="genero">Género:</label>
-            <label for="municipioId">Municipio:</label>
-            <select id="genero" name="genero" required class="izq" >
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <select id="genero" name="genero" required class="izq">
                 <option value="">Seleccione</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
                 <option value="Otro">Otro</option>
             </select>
-            
-            <select id="municipioId" name="municipioId"  required>
-                <option value="">Seleccione</option>
-                <option value="1">Municipio 1</option>
-                <option value="2">Municipio 2</option>
-            </select>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+
 
 
             <button type="submit" class="aceptar center">Modificar</button>
