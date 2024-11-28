@@ -7,6 +7,8 @@ package Beans;
 import DAOsSQL.SerieDAO;
 import EntidadesSQL.Serie;
 import java.util.List;
+import interfaces.ISerieDAO;
+import java.util.List;
 
 public class SerieBean {
 
