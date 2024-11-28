@@ -12,40 +12,42 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 public class ConexionDB {
 
-    private static ConexionDB instancia;
-    private static EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
+     private static ConexionDB instancia;
+     private static EntityManagerFactory entityManagerFactory;
+     private EntityManager entityManager;
 
-    private ConexionDB() {
-        try {
-            entityManagerFactory = Persistence.createEntityManagerFactory("SeriesDB");
-            this.entityManager = entityManagerFactory.createEntityManager();
-        } catch (Exception e) {
-            throw new RuntimeException("Error al conectar con la base de datos", e);
-        }
-    }
+     private ConexionDB() {
+          try {
+//            entityManagerFactory = Persistence.createEntityManagerFactory("SeriesDB");
+               entityManagerFactory = Persistence.createEntityManagerFactory("com.mycompany_Episodico_Dominio_jar_1.0-SNAPSHOTPU2");
 
-    public static ConexionDB getInstancia() {
-        if (instancia == null) {
-            instancia = new ConexionDB();
-        }
-        return instancia;
-    }
+               this.entityManager = entityManagerFactory.createEntityManager();
+          } catch (Exception e) {
+               throw new RuntimeException("Error al conectar con la base de datos", e);
+          }
+     }
 
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
+     public static ConexionDB getInstancia() {
+          if (instancia == null) {
+               instancia = new ConexionDB();
+          }
+          return instancia;
+     }
 
-    public void cerrarConexion() {
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-        }
-        if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
-            entityManagerFactory.close();
-        }
-    }
+     public EntityManager getEntityManager() {
+          return entityManager;
+     }
 
-    public CriteriaBuilder obtenerCriteriaBuilder() {
-        return entityManager.getCriteriaBuilder();
-    }
+     public void cerrarConexion() {
+          if (entityManager != null && entityManager.isOpen()) {
+               entityManager.close();
+          }
+          if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
+               entityManagerFactory.close();
+          }
+     }
+
+     public CriteriaBuilder obtenerCriteriaBuilder() {
+          return entityManager.getCriteriaBuilder();
+     }
 }
