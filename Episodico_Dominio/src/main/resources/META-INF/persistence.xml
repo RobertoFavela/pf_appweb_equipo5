@@ -7,16 +7,16 @@
     <class>EntidadesSQL.Comentario</class>
     <class>EntidadesSQL.Comun</class>
     <class>EntidadesSQL.Estado</class>
+    <class>EntidadesSQL.Municipio</class>
     <class>EntidadesSQL.Normal</class>
     <class>EntidadesSQL.Post</class>
     <class>EntidadesSQL.Serie</class>
+    <class>EntidadesSQL.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3309/SeriesDB?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3309/SeriesDB"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="18931Mor"/>
     </properties>
-    <class>EntidadesSQL.Usuario</class>
-    <class>EntidadesSQL.Municipio</class>
   </persistence-unit>
 </persistence>

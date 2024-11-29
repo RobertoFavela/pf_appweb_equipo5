@@ -60,8 +60,6 @@ public class Post implements Serializable {
     @Basic(optional = false)
     @Column(name = "tipo")
     private String tipo;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "post")
-    private Anclado anclado;
     
     @JoinColumn(name = "serie_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -73,9 +71,6 @@ public class Post implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
     private Collection<Comentario> comentarioCollection;
-    
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "post")
-    private Comun comun;
 
     public Post() {
     }
@@ -137,14 +132,6 @@ public class Post implements Serializable {
         this.tipo = tipo;
     }
 
-    public Anclado getAnclado() {
-        return anclado;
-    }
-
-    public void setAnclado(Anclado anclado) {
-        this.anclado = anclado;
-    }
-
     public Serie getSerieId() {
         return serieId;
     }
@@ -169,12 +156,4 @@ public class Post implements Serializable {
         this.comentarioCollection = comentarioCollection;
     }
 
-    public Comun getComun() {
-        return comun;
-    }
-
-    public void setComun(Comun comun) {
-        this.comun = comun;
-    }
-    
 }
