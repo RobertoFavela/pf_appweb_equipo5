@@ -5,7 +5,6 @@
 package controladorRegistro;
 
 import Beans.NormalBean;
-import Beans.UsuarioBean;
 import EntidadesSQL.Normal;
 import EntidadesSQL.Usuario;
 import java.io.IOException;
@@ -22,11 +21,9 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class RegisterController extends HttpServlet {
 
-     private final UsuarioBean usuarioBean;
      private final NormalBean normalBean;
      
     public RegisterController() {
-         usuarioBean = UsuarioBean.getInstancia();
          normalBean = NormalBean.getInstancia();
     }
     
@@ -90,8 +87,7 @@ public class RegisterController extends HttpServlet {
                 normal.setNombreCompleto(nombre);
                 normal.setCorreo(correo);
                 normal.setContrasenia(contra);
-                normalBean.setNormal(normal);
-                normalBean.guardar();
+                normalBean.guardar(normal);
 
                 
         this.getServletContext().getRequestDispatcher(url).forward(request, response);

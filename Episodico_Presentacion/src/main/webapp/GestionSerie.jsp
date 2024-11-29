@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="form-btn">
-                    <input type="hidden" name="RegistrarSerie" value="RegistrarSerie">
+                    <input type="hidden" name="accion" value="RegistrarSerie">
                     <button type="submit" class="btn-guardar">Guardar</button>
                     <button type="reset" class="btn-limpiar">Limpiar</button>
                 </div>

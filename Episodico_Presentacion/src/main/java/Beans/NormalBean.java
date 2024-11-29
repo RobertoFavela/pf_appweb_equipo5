@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Beans;
 
 import DAOsSQL.NormalDAO;
@@ -12,9 +8,11 @@ import java.util.List;
 public class NormalBean {
 
      private static NormalBean instancia;
-     private INormalDAO normalDAO;
-     private Normal normal;
-     private List<Normal> listaNormales;
+     private final INormalDAO normalDAO;
+
+    private NormalBean() {
+        normalDAO = new NormalDAO();
+    }
 
      public static synchronized NormalBean getInstancia() {
           if (instancia == null) {
@@ -23,36 +21,23 @@ public class NormalBean {
           return instancia;
      }
 
-     public NormalBean() {
-          normalDAO = new NormalDAO();
-          normal = new Normal();
-//          listaNormales = normalDAO.buscarTodos();
+     public void guardar(Normal normal){
+         normalDAO.guardar(normal);
      }
-
-     public void guardar() {
-          normalDAO.guardar(normal);
-          normal = new Normal();
-          listaNormales = normalDAO.buscarTodos();
-     }
-
-     public void eliminar(int id) {
-          normalDAO.eliminar(id);
-          listaNormales = normalDAO.buscarTodos();
-     }
-
-     public Normal buscarPorId(int id) {
-          return normalDAO.buscarPorId(id);
-     }
-
-     public List<Normal> getListaNormales() {
-          return listaNormales;
-     }
-
-     public Normal getNormal() {
-          return normal;
-     }
-
-     public void setNormal(Normal normal) {
-          this.normal = normal;
-     }
+    
+    public List<Normal> buscarTodos(){
+    return normalDAO.buscarTodos();
+        }
+    
+    public Normal buscarPorNombre(String nombre){
+        return normalDAO.buscarPorNombre(nombre);
+    }
+           
+    public void actualizar(Normal normal){
+    normalDAO.actualizar(normal);
+    }
+    
+    public void eliminar(String nombre) {
+    normalDAO.eliminar(nombre);
+    }
 }

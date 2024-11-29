@@ -10,49 +10,41 @@ import interfaces.IAncladoDAO;
 import java.util.List;
 
 public class AncladoBean {
-
-     private static AncladoBean instancia;
-     private IAncladoDAO ancladoDAO;
-     private Anclado anclado;
-     private List<Anclado> listaAnclados;
-
-     public static synchronized AncladoBean getInstancia() {
-          if (instancia == null) {
-               instancia = new AncladoBean();
-          }
-          return instancia;
-     }
-
-     public void init() {
-          ancladoDAO = new AncladoDAO();
-          anclado = new Anclado();
-          listaAnclados = ancladoDAO.buscarTodos();
-     }
-
-     public void guardar() {
-          ancladoDAO.guardar(anclado);
-          anclado = new Anclado();
-          listaAnclados = ancladoDAO.buscarTodos();
-     }
-
-     public void eliminar(int id) {
-          ancladoDAO.eliminar(id);
-          listaAnclados = ancladoDAO.buscarTodos();
-     }
-
-     public Anclado buscarPorId(int id) {
-          return ancladoDAO.buscarPorId(id);
-     }
-
-     public List<Anclado> getListaAnclados() {
-          return listaAnclados;
-     }
-
-     public Anclado getAnclado() {
-          return anclado;
-     }
-
-     public void setAnclado(Anclado anclado) {
-          this.anclado = anclado;
-     }
+    
+    private static AncladoBean instancia;
+    private final IAncladoDAO ancladoDAO;
+    
+    public static synchronized AncladoBean getInstancia() {
+        if (instancia == null) {
+            instancia = new AncladoBean();
+        }
+        return instancia;
+    }
+    
+    private AncladoBean() {
+        ancladoDAO = new AncladoDAO();
+    }
+    
+    public void guardar(Anclado anclado) {
+        ancladoDAO.guardar(anclado);
+    }
+    
+    public void eliminar(String nombre) {
+        ancladoDAO.eliminar(nombre);
+    }
+    
+    public Anclado buscarPorTitulo(String nombre) {
+        return ancladoDAO.buscarPorTitulo(nombre);
+    }
+    
+    public List<Anclado> buscarTodos() {
+        return ancladoDAO.buscarTodos();
+    }
+    
+    public void actualizar(Anclado anclado) {
+        
+        ancladoDAO.actualizar(anclado);
+        
+    }
+    
 }

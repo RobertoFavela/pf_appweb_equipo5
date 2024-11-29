@@ -17,8 +17,6 @@ public class ComunBean {
 
      private static ComunBean instancia;
      private IComunDAO comunDAO;
-     private Comun comun;
-     private List<Comun> listaComunes;
 
      public static synchronized ComunBean getInstancia() {
           if (instancia == null) {
@@ -27,36 +25,28 @@ public class ComunBean {
           return instancia;
      }
 
-     public void init() {
+     private ComunBean() {
           comunDAO = new ComunDAO();
-          comun = new Comun();
-          listaComunes = comunDAO.buscarTodos();
      }
 
-     public void guardar() {
+     public void guardar(Comun comun) {
           comunDAO.guardar(comun);
-          comun = new Comun();
-          listaComunes = comunDAO.buscarTodos();
      }
 
-     public void eliminar(int id) {
-          comunDAO.eliminar(id);
-          listaComunes = comunDAO.buscarTodos();
+     public List<Comun> buscarTodos(){
+         return comunDAO.buscarTodos();
+     }
+     
+     public Comun buscarPorTitulo(String nombre){
+         return comunDAO.buscarPorTitulo(nombre);
+     }
+     
+     public void actualizar(Comun comun){
+         comunDAO.actualizar(comun);
+     }
+     
+     public void eliminar(String nombre) {
+          comunDAO.eliminar(nombre);
      }
 
-     public Comun buscarPorId(int id) {
-          return comunDAO.buscarPorId(id);
-     }
-
-     public List<Comun> getListaComunes() {
-          return listaComunes;
-     }
-
-     public Comun getComun() {
-          return comun;
-     }
-
-     public void setComun(Comun comun) {
-          this.comun = comun;
-     }
 }

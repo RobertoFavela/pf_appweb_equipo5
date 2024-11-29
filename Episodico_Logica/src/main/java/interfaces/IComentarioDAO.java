@@ -9,7 +9,7 @@ public interface IComentarioDAO {
 
     public List<Comentario> buscarTodos();
 
-    public Comentario buscarPorContenido(String nombre);
+    public Comentario buscarPorContenido(String contenido);
 
     public void actualizar(Comentario comentario);
 

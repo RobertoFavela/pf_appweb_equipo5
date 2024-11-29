@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Beans;
 
 import DAOsSQL.ComentarioDAO;
@@ -11,48 +7,45 @@ import java.util.List;
 
 public class ComentarioBean {
 
-     private static ComentarioBean instancia;
-     private IComentarioDAO comentarioDAO;
-     private Comentario comentario;
-     private List<Comentario> listaComentarios;
+    private static ComentarioBean instancia;
+    private final IComentarioDAO comentarioDAO;
 
-     public static synchronized ComentarioBean getInstancia() {
-          if (instancia == null) {
-               instancia = new ComentarioBean();
-          }
-          return instancia;
-     }
+    public static synchronized ComentarioBean getInstancia() {
+        if (instancia == null) {
+            instancia = new ComentarioBean();
+        }
+        return instancia;
+    }
 
-     public void init() {
-          comentarioDAO = new ComentarioDAO();
-          comentario = new Comentario();
-          listaComentarios = comentarioDAO.buscarTodos();
-     }
+    private ComentarioBean() {
+        comentarioDAO = new ComentarioDAO();
+    }
 
-     public void guardar() {
-          comentarioDAO.guardar(comentario);
-          comentario = new Comentario();
-          listaComentarios = comentarioDAO.buscarTodos();
-     }
+    public void guardar(Comentario comentario) {
+        comentarioDAO.guardar(comentario);
+    }
 
-     public void eliminar(int id) {
-          comentarioDAO.eliminar(id);
-          listaComentarios = comentarioDAO.buscarTodos();
-     }
+    public List<Comentario> buscarTodos() {
+        return comentarioDAO.buscarTodos();
+    }
 
-     public Comentario buscarPorId(int id) {
-          return comentarioDAO.buscarPorId(id);
-     }
+    public Comentario buscarPorContenido(String contenido) {
+        return comentarioDAO.buscarPorContenido(contenido);
+    }
 
-     public List<Comentario> getListaComentarios() {
-          return listaComentarios;
-     }
+    public void actualizar(Comentario comentario) {
+        comentarioDAO.actualizar(comentario);
+    }
 
-     public Comentario getComentario() {
-          return comentario;
-     }
+    public void eliminar(String nombre) {
+        comentarioDAO.eliminar(nombre);
+    }
 
-     public void setComentario(Comentario comentario) {
-          this.comentario = comentario;
-     }
+    public List<Comentario> buscarPorPostID(Integer id) {
+        return comentarioDAO.buscarPorPostID(id);
+    }
+
+    public List<Comentario> buscarPorUsuarioID(Integer id) {
+        return comentarioDAO.buscarPorUsuarioID(id);
+    }
 }

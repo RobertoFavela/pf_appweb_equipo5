@@ -28,7 +28,7 @@ public class GestionSerieController extends HttpServlet {
      private final SerieBean serieBean;
 
      public GestionSerieController() {
-          serieBean = new SerieBean();
+          serieBean = SerieBean.getInstancia();
      }
 
      /**
@@ -68,9 +68,8 @@ public class GestionSerieController extends HttpServlet {
           Serie nuevaSerie = new Serie();
           nuevaSerie.setTitulo(nombre);
           nuevaSerie.setDescripcion(descripcion);
-          serieBean.setSerie(nuevaSerie);
           
-          serieBean.guardar();
+          serieBean.guardar(nuevaSerie);
 
 //          if (exito) {
 //               response.sendRedirect("GestionSerie.jsp?mensaje=Serie agregada con éxito");

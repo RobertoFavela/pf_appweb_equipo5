@@ -11,48 +11,37 @@ import java.util.List;
 
 public class AdminBean {
 
-     private static AdminBean instancia;
-     private IAdminDAO admorDAO;
-     private Admin admor;
-     private List<Admin> listaAdmor;
+    private static AdminBean instancia;
+    private IAdminDAO adminDAO;
 
-     public static synchronized AdminBean getInstancia() {
-          if (instancia == null) {
-               instancia = new AdminBean();
-          }
-          return instancia;
-     }
+    public static synchronized AdminBean getInstancia() {
+        if (instancia == null) {
+            instancia = new AdminBean();
+        }
+        return instancia;
+    }
 
-     public void init() {
-          admorDAO = new AdminDAO();
-          admor = new Admin();
-          listaAdmor = admorDAO.buscarTodos();
-     }
+    private AdminBean() {
+        adminDAO = new AdminDAO();
+    }
 
-     public void guardar() {
-          admorDAO.guardar(admor);
-          admor = new Admin();
-          listaAdmor = admorDAO.buscarTodos();
-     }
+    public void guardar(Admin admin) {
+        adminDAO.guardar(admin);
+    }
 
-     public void eliminar(int id) {
-          admorDAO.eliminar(id);
-          listaAdmor = admorDAO.buscarTodos();
-     }
+    public void eliminar(String nombre) {
+        adminDAO.eliminar(nombre);
+    }
 
-     public Admin buscarPorId(int id) {
-          return admorDAO.buscarPorId(id);
-     }
+    public Admin buscarPorId(String nombre) {
+        return adminDAO.buscarPorNombre(nombre);
+    }
 
-     public List<Admin> getListaAdmor() {
-          return listaAdmor;
-     }
+    public List<Admin> buscarTodos() {
+        return adminDAO.buscarTodos();
+    }
 
-     public Admin getAdmor() {
-          return admor;
-     }
-
-     public void setAdmor(Admin admor) {
-          this.admor = admor;
-     }
+    public void actualizar(Admin admin) {
+        adminDAO.actualizar(admin);
+    }
 }

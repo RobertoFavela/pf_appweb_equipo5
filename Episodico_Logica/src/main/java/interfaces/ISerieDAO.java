@@ -19,6 +19,7 @@ public interface ISerieDAO {
     public Serie buscarPorTitulo(String titulo);
     
     public List<Serie> buscarPorGeneros(String genero);
+    
     public void actualizar(Serie serie);
     
     public List<Serie> buscarSeriesPorPeriodoDeTiempo(Date fechaInicio, Date fechaFin);

@@ -7,60 +7,54 @@ package Beans;
 import DAOsSQL.SerieDAO;
 import EntidadesSQL.Serie;
 import interfaces.ISerieDAO;
+import java.util.Date;
 import java.util.List;
 
 public class SerieBean {
 
-     private static SerieBean instancia;
-     private ISerieDAO serieDAO;
-     private Serie serie;
-     private List<Serie> listaSeries;
+    private static SerieBean instancia;
+    private ISerieDAO serieDAO;
 
-     public static synchronized SerieBean getInstancia() {
-          if (instancia == null) {
-               instancia = new SerieBean();
-          }
-          return instancia;
-     }
+    public static synchronized SerieBean getInstancia() {
+        if (instancia == null) {
+            instancia = new SerieBean();
+        }
+        return instancia;
+    }
 
-     public SerieBean() {
-          serieDAO = new SerieDAO();
-          serie = new Serie();
-          listaSeries = serieDAO.buscarTodas();
-     }
+    private SerieBean() {
+        serieDAO = new SerieDAO();
+    }
 
-     public void guardar() {
-          serieDAO.guardar(serie);
-          serie = new Serie();
-          listaSeries = serieDAO.buscarTodas();
-     }
+    public void guardar(Serie serie) {
+        serieDAO.guardar(serie);
+    }
 
-     public void eliminar(int id) {
-          serieDAO.eliminar(id);
-          listaSeries = serieDAO.buscarTodas();
-     }
+    public List<Serie> buscarTodas() {
+        return serieDAO.buscarTodas();
+    }
 
-     public Serie buscarPorId(int id) {
-          return serieDAO.buscarPorId(id);
-     }
+    public Serie buscarPorId(int id) {
+        return serieDAO.buscarPorId(id);
+    }
 
-     public Serie buscarPorTitulo(String titulo) {
-          return serieDAO.buscarPorTitulo(titulo);
-     }
-     
-     public List<Serie> buscarTodas() {
-           return serieDAO.buscarTodas();
-     }
+    public Serie buscarPorTitulo(String titulo) {
+        return serieDAO.buscarPorTitulo(titulo);
+    }
 
-     public List<Serie> getListaSeries() {
-          return listaSeries;
-     }
+    public List<Serie> buscarPorGeneros(String genero) {
+        return serieDAO.buscarPorGeneros(genero);
+    }
 
-     public Serie getSerie() {
-          return serie;
-     }
+    public void actualizar(Serie serie) {
+        serieDAO.actualizar(serie);
+    }
 
-     public void setSerie(Serie serie) {
-          this.serie = serie;
-     }
+    public List<Serie> buscarSeriesPorPeriodoDeTiempo(Date fechaInicio, Date fechaFin) {
+        return serieDAO.buscarSeriesPorPeriodoDeTiempo(fechaInicio, fechaFin);
+    }
+
+    public void eliminar(int id) {
+        serieDAO.eliminar(id);
+    }
 }
