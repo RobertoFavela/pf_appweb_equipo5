@@ -62,15 +62,17 @@ public class SerieDAO implements ISerieDAO {
 
       @Override
       public void actualizar(Serie serie) {
+            Serie serieAux = buscarPorTitulo(serie.getTitulo());
+            serie.setId(serieAux.getId());
             entityManager.getTransaction().begin();
             entityManager.merge(serie);
             entityManager.getTransaction().commit();
       }
 
       @Override
-      public void eliminar(Integer id) {
+      public void eliminar(String nombre) {
             entityManager.getTransaction().begin();
-            Serie serie = buscarPorId(id);
+            Serie serie = buscarPorTitulo(nombre);
             if (serie != null) {
                   entityManager.remove(serie);
             }

@@ -24,5 +24,5 @@ public interface ISerieDAO {
     
     public List<Serie> buscarSeriesPorPeriodoDeTiempo(Date fechaInicio, Date fechaFin);
     
-    public void eliminar(Integer id) ;
+    public void eliminar(String nombre) ;
 }

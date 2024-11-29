@@ -4,6 +4,8 @@
  */
 package controladoInicioSesion;
 
+import Beans.AdminBean;
+import Beans.NormalBean;
 import EntidadesSQL.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,10 +21,11 @@ import java.io.IOException;
  */
 public class LogInController extends HttpServlet {
 
-//      private UsuarioBean usuarioBean;
+      private NormalBean normalBean;
+      private AdminBean adminBean;
 
       public LogInController() {
-//            usuarioBean = UsuarioBean.getInstancia();
+          
       }
 
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -47,20 +50,8 @@ public class LogInController extends HttpServlet {
                   String correo = request.getParameter("txtUsuario");
                   String contrasena = request.getParameter("txtContrasena");
 
-                  Usuario usuario = new Usuario();
-                  usuario.setCorreo(correo);
-                  usuario.setContrasenia(contrasena);
-
-//                  usuarioBean.setUsuario(usuario);
-//                  boolean respuesta = usuarioBean.autenticacion(usuario);
-//
-//                  if (respuesta) {
-//                        response.sendRedirect("FeedView.jsp");
-//
-//                        return;
-//                  } else {
-//                        request.setAttribute("error", "Credenciales incorrectas.");
-//                  }
+                  
+                  
             }
 
             this.getServletContext().getRequestDispatcher(url).forward(request, response);

@@ -28,12 +28,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "serie")
-@NamedQueries({
-    @NamedQuery(name = "Serie.findAll", query = "SELECT s FROM Serie s"),
-    @NamedQuery(name = "Serie.findById", query = "SELECT s FROM Serie s WHERE s.id = :id"),
-    @NamedQuery(name = "Serie.findByTitulo", query = "SELECT s FROM Serie s WHERE s.titulo = :titulo"),
-    @NamedQuery(name = "Serie.findByFechaEstreno", query = "SELECT s FROM Serie s WHERE s.fechaEstreno = :fechaEstreno"),
-    @NamedQuery(name = "Serie.findByGenero", query = "SELECT s FROM Serie s WHERE s.genero = :genero")})
 public class Serie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,40 +36,41 @@ public class Serie implements Serializable {
     @Basic
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "titulo")
     private String titulo;
+    
     @Basic(optional = false)
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
+    
     @Column(name = "fechaEstreno")
     @Temporal(TemporalType.DATE)
     private Date fechaEstreno;
+    
     @Column(name = "genero")
     private String genero;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "serieId")
     private Collection<Post> postCollection;
 
+    @Lob
+    @Column
+    private byte[] imagen;
+    
     public Serie() {
     }
 
-    public Serie(Integer id) {
-        this.id = id;
+    public byte[] getImagen() {
+        return imagen;
     }
 
-    public Serie(String titulo, String descripcion, Date fechaEstreno, String genero) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.fechaEstreno = fechaEstreno;
-        this.genero = genero;
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 
-    public Serie(Integer id, String titulo, String descripcion) {
-        this.id = id;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-    }
 
     public Integer getId() {
         return id;

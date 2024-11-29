@@ -6,6 +6,7 @@ package EntidadesSQL;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -15,6 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "comun")
+@DiscriminatorValue("comun")
 public class Comun extends Post implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -7,19 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnAdd.addEventListener("click", (e) => {
         e.preventDefault();
-        form.action = "GestionSerieController?accion=agregar";
+        form.action = "GestionSerieController";
+        form.querySelector('input[name="accion"]').value = "agregar";
         extraFields.style.display = "block";
     });
 
     btnModify.addEventListener("click", (e) => {
         e.preventDefault();
-        form.action = "GestionSerieController?accion=modificar";
+        form.action = "GestionSerieController";
+        form.querySelector('input[name="accion"]').value = "modificar";
         extraFields.style.display = "block";
     });
 
     btnDelete.addEventListener("click", (e) => {
         e.preventDefault();
-        form.action = "GestionSerieController?accion=eliminar";
+        form.action = "GestionSerieController";
+        form.querySelector('input[name="accion"]').value = "eliminar";
         extraFields.style.display = "none";
     });
+
 });

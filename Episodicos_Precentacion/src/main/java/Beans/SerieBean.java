@@ -54,7 +54,7 @@ public class SerieBean {
         return serieDAO.buscarSeriesPorPeriodoDeTiempo(fechaInicio, fechaFin);
     }
 
-    public void eliminar(int id) {
-        serieDAO.eliminar(id);
+    public void eliminar(String titulo) {
+        serieDAO.eliminar(titulo);
     }
 }
