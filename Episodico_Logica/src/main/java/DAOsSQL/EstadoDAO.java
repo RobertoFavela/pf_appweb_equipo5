@@ -64,9 +64,9 @@ public class EstadoDAO implements IEstadoDAO{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(String nombre) {
         entityManager.getTransaction().begin();
-        Estado estado = buscarEstadoPorId(id);
+        Estado estado = buscarEstadoPorNombre(nombre);
         if (estado != null) {
             entityManager.remove(estado);
         }

@@ -3,6 +3,7 @@ package DAOsSQL;
 import ConexionSQL.ConexionDB;
 import EntidadesSQL.Serie;
 import interfaces.ISerieDAO;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
@@ -83,5 +84,21 @@ public class SerieDAO implements ISerieDAO {
             Root<Serie> root = query.from(Serie.class);
             query.select(root).where(cb.like(root.get("genero"), genero));
             return entityManager.createQuery(query).getResultList();
+      }
+      
+      public List<Serie> buscarSeriesPorPeriodoDeTiempo(Date fechaInicio, Date fechaFin) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<Serie> cq = cb.createQuery(Serie.class);
+
+        Root<Serie> root = cq.from(Serie.class);
+
+       Predicate condicion = cb.between(root.get("fechaEstreno"), fechaInicio, fechaFin);
+
+        cq.select(root).where(condicion);
+
+        TypedQuery<Serie> query = entityManager.createQuery(cq);
+
+        return query.getResultList();
       }
 }

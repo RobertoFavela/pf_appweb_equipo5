@@ -35,11 +35,11 @@ public class AdminDAO implements IAdminDAO {
     }
 
     @Override
-    public Admin buscarPorId(Integer id) {
+    public Admin buscarPorNombre(String nombre) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Admin> query = cb.createQuery(Admin.class);
         Root<Admin> root = query.from(Admin.class);
-        query.select(root).where(cb.equal(root.get("id"), id));
+        query.select(root).where(cb.equal(root.get("nombreCompleto"), nombre));
         return entityManager.createQuery(query).getSingleResult();
     }
 
@@ -51,9 +51,9 @@ public class AdminDAO implements IAdminDAO {
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(String nombre) {
         entityManager.getTransaction().begin();
-        Admin admin = buscarPorId(id);
+        Admin admin = buscarPorNombre(nombre);
         if (admin != null) {
             entityManager.remove(admin);
         }

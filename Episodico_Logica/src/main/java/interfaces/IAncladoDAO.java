@@ -9,9 +9,9 @@ public interface IAncladoDAO {
 
     public List<Anclado> buscarTodos();
 
-    public Anclado buscarPorId(Integer id);
+    public Anclado buscarPorTitulo(String nombre);
 
     public void actualizar(Anclado anclado);
 
-    public void eliminar(Integer id);
+    public void eliminar(String nombre);
 }

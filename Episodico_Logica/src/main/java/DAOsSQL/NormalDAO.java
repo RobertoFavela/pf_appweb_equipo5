@@ -35,11 +35,11 @@ public class NormalDAO implements INormalDAO{
     }
 
     @Override
-    public Normal buscarPorId(Integer id) {
+    public Normal buscarPorNombre(String nombre){
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Normal> query = cb.createQuery(Normal.class);
         Root<Normal> root = query.from(Normal.class);
-        query.select(root).where(cb.equal(root.get("id"), id));
+        query.select(root).where(cb.equal(root.get("nombreCompleto"), nombre));
         return entityManager.createQuery(query).getSingleResult();
     }
 
@@ -51,9 +51,9 @@ public class NormalDAO implements INormalDAO{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(String nombre) {
         entityManager.getTransaction().begin();
-        Normal normal = buscarPorId(id);
+        Normal normal = buscarPorNombre(nombre);
         if (normal != null) {
             entityManager.remove(normal);
         }

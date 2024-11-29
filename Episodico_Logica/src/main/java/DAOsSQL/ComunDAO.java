@@ -36,11 +36,11 @@ public class ComunDAO implements IComunDAO{
     }
 
     @Override
-    public Comun buscarPorId(Integer id) {
+    public Comun buscarPorTitulo(String nombre) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comun> query = cb.createQuery(Comun.class);
         Root<Comun> root = query.from(Comun.class);
-        query.select(root).where(cb.equal(root.get("id"), id));
+        query.select(root).where(cb.equal(root.get("titulo"), nombre));
         return entityManager.createQuery(query).getSingleResult();
     }
 
@@ -52,9 +52,9 @@ public class ComunDAO implements IComunDAO{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(String nombre) {
         entityManager.getTransaction().begin();
-        Comun comun = buscarPorId(id);
+        Comun comun = buscarPorTitulo(nombre);
         if (comun != null) {
             entityManager.remove(comun);
         }

@@ -225,7 +225,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "EntidadesSQL.Usuario[ id=" + id + " ]";
+        return "Usuario{" + "id=" + id + ", nombreCompleto=" + nombreCompleto + ", correo=" + correo + ", contrasenia=" + contrasenia + ", telefono=" + telefono + ", avatar=" + avatar + ", ciudad=" + ciudad + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", postCollection=" + postCollection + ", municipioId=" + municipioId + ", comentarioCollection=" + comentarioCollection + '}';
     }
 
 }

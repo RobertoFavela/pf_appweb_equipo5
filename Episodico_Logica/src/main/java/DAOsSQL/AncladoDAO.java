@@ -6,11 +6,13 @@ import interfaces.IAncladoDAO;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
+
 /**
  *
  * @author tacot
  */
-public class AncladoDAO implements IAncladoDAO{
+public class AncladoDAO implements IAncladoDAO {
+
     private final EntityManager entityManager;
     private final ConexionDB conexion;
 
@@ -21,9 +23,14 @@ public class AncladoDAO implements IAncladoDAO{
 
     @Override
     public void guardar(Anclado anclado) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(anclado);
-        entityManager.getTransaction().commit();
+
+        for (Anclado an : buscarTodos()) {
+            if (!an.getTitulo().equalsIgnoreCase(anclado.getTitulo())) {
+                entityManager.getTransaction().begin();
+                entityManager.persist(anclado);
+                entityManager.getTransaction().commit();
+            }
+        }
     }
 
     @Override
@@ -36,15 +43,6 @@ public class AncladoDAO implements IAncladoDAO{
     }
 
     @Override
-    public Anclado buscarPorId(Integer id) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Anclado> query = cb.createQuery(Anclado.class);
-        Root<Anclado> root = query.from(Anclado.class);
-        query.select(root).where(cb.equal(root.get("id"), id));
-        return entityManager.createQuery(query).getSingleResult();
-    }
-
-    @Override
     public void actualizar(Anclado anclado) {
         entityManager.getTransaction().begin();
         entityManager.merge(anclado);
@@ -52,12 +50,21 @@ public class AncladoDAO implements IAncladoDAO{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(String nombre) {
         entityManager.getTransaction().begin();
-        Anclado anclado = buscarPorId(id);
+        Anclado anclado = buscarPorTitulo(nombre);
         if (anclado != null) {
             entityManager.remove(anclado);
         }
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public Anclado buscarPorTitulo(String nombre) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Anclado> query = cb.createQuery(Anclado.class);
+        Root<Anclado> root = query.from(Anclado.class);
+        query.select(root).where(cb.equal(root.get("nombreCompleto"), nombre));
+        return entityManager.createQuery(query).getSingleResult();
     }
 }
