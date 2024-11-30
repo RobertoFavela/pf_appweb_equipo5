@@ -11,37 +11,47 @@ import java.util.List;
 
 public class AdminBean {
 
-    private static AdminBean instancia;
-    private IAdminDAO adminDAO;
+     private static AdminBean instancia;
+     private IAdminDAO adminDAO;
 
-    public static synchronized AdminBean getInstancia() {
-        if (instancia == null) {
-            instancia = new AdminBean();
-        }
-        return instancia;
-    }
+     public static synchronized AdminBean getInstancia() {
+          if (instancia == null) {
+               instancia = new AdminBean();
+          }
+          return instancia;
+     }
 
-    private AdminBean() {
-        adminDAO = new AdminDAO();
-    }
+     private AdminBean() {
+          adminDAO = new AdminDAO();
+     }
 
-    public void guardar(Admin admin) {
-        adminDAO.guardar(admin);
-    }
+     public void guardar(Admin admin) {
+          adminDAO.guardar(admin);
+     }
 
-    public void eliminar(String nombre) {
-        adminDAO.eliminar(nombre);
-    }
+     public void eliminar(String nombre) {
+          adminDAO.eliminar(nombre);
+     }
 
-    public Admin buscarPorId(String nombre) {
-        return adminDAO.buscarPorNombre(nombre);
-    }
+     public Admin buscarPorCredenciales(String correo, String contrasena) {
+          List<Admin> admins = adminDAO.buscarPorCorreo(correo);
+          for (Admin admin : admins) {
+               if (admin.getContrasenia().equals(contrasena)) {
+                    return admin;
+               }
+          }
+          return null;
+     }
 
-    public List<Admin> buscarTodos() {
-        return adminDAO.buscarTodos();
-    }
+     public Admin buscarPorId(String nombre) {
+          return adminDAO.buscarPorNombre(nombre);
+     }
 
-    public void actualizar(Admin admin) {
-        adminDAO.actualizar(admin);
-    }
+     public List<Admin> buscarTodos() {
+          return adminDAO.buscarTodos();
+     }
+
+     public void actualizar(Admin admin) {
+          adminDAO.actualizar(admin);
+     }
 }

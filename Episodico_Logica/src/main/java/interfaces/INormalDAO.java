@@ -9,6 +9,8 @@ public interface INormalDAO {
     
     public List<Normal> buscarTodos();
     
+    public List<Normal> buscarPorCorreo(String correo);
+    
     public Normal buscarPorNombre(String nombre);
            
     public void actualizar(Normal normal);

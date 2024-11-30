@@ -13,10 +13,10 @@
     <class>EntidadesSQL.Serie</class>
     <class>EntidadesSQL.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3309/SeriesDB"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SeriesDB"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="18931Mor"/>
+      <property name="javax.persistence.jdbc.password" value="favela"/>
     </properties>
   </persistence-unit>
 </persistence>

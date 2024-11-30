@@ -9,6 +9,8 @@ public interface IAdminDAO {
     
     public List<Admin> buscarTodos();
     
+    public List<Admin> buscarPorCorreo(String correo);
+    
     public Admin buscarPorNombre(String nombre);
     
     public void actualizar(Admin admin);
