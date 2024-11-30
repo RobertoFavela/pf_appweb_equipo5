@@ -68,15 +68,9 @@ public class RegisterController extends HttpServlet {
                String contra = request.getParameter("txtContra");
 
                try {
-                    
-                    Normal normal = new Normal(nombre, correo, contra);
-                    NormalBean normalBean = NormalBean.getInstancia();
-                    normalBean.guardar(normal);
-                    
-//                    Lineas para registrar un admin, pero esto no sera posible en el programa
-//                    Admin admin = new Admin(nombre, correo, contra);
-//                    AdminBean adminBean = AdminBean.getInstancia();
-//                    adminBean.guardar(admin);
+                    Admin admin = new Admin(nombre, correo, contra);
+                    AdminBean adminBean = AdminBean.getInstancia();
+                    adminBean.guardar(admin);
 
                     request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
                     url = "/LogInView.jsp";

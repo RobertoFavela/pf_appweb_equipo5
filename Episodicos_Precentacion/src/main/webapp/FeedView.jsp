@@ -47,7 +47,7 @@
                     </form>
 
                     <!-- serie -->
-                    <form action="SeriesController" method="get">
+                    <form action="SeriesController" method="post">
                         <input type="hidden" name="rad" value="serie" class="radio">
                         <button type="submit" title="serie" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"

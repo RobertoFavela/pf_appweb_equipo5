@@ -4,10 +4,6 @@
  */
 package controladorPerfil;
 
-import Beans.AdminBean;
-import Beans.NormalBean;
-import EntidadesSQL.Admin;
-import EntidadesSQL.Normal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -22,9 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class UserProfileController extends HttpServlet {
 
-     NormalBean normalBean;
-     AdminBean adminBean;
-     
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
       * Handles the HTTP <code>GET</code> method.
@@ -37,22 +30,6 @@ public class UserProfileController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          
-          adminBean = AdminBean.getInstancia();
-          Admin adminActual = adminBean.getAdminEnSesion();
-          
-          normalBean = NormalBean.getInstancia();
-          Normal normalActual = normalBean.getUsuarioEnSesion();
-          
-          
-          if (normalActual != null) {
-               request.setAttribute("nombreCompleto", normalActual.getNombreCompleto());
-               request.setAttribute("descripcion", normalActual.getDescripcion());
-          } else if (adminActual != null) {
-               request.setAttribute("nombreCompleto", adminActual.getNombreCompleto());
-               request.setAttribute("descripcion", adminActual.getDescripcion());
-          }
-          
           this.getServletContext().getRequestDispatcher("/UserProfileView.jsp").forward(request, response);
      }
 

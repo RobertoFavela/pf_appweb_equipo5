@@ -39,45 +39,35 @@ public class Usuario implements Serializable {
     @Basic
     @Column(name = "id")
     private Integer id;
-    
     @Basic(optional = false)
     @Column(name = "nombreCompleto")
     private String nombreCompleto;
-    
-    @Column(name = "descripcion")
-    private String descripcion;
-    
     @Basic(optional = false)
     @Column(name = "correo")
     private String correo;
-    
     @Basic(optional = false)
     @Column(name = "contrasenia")
     private String contrasenia;
-    
     @Column(name = "telefono")
     private String telefono;
-    
     @Column(name = "avatar")
     private String avatar;
-    
     @Column(name = "ciudad")
     private String ciudad;
-    
     @Column(name = "fechaNacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-    
     @Column(name = "genero")
     private String genero;
-    
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+//    private Normal normal;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
     private Collection<Post> postCollection;
-    
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+//    private Admin admin;
     @JoinColumn(name = "municipio_id", referencedColumnName = "id")
     @ManyToOne
     private Municipio municipioId;
-    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
     private Collection<Comentario> comentarioCollection;
 
@@ -90,9 +80,8 @@ public class Usuario implements Serializable {
         this.contrasenia = contrasenia;
     }
 
-    public Usuario(String nombreCompleto, String descripcion, String correo, String contrasenia, String telefono, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
+    public Usuario(String nombreCompleto, String correo, String contrasenia, String telefono, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
         this.nombreCompleto = nombreCompleto;
-        this.descripcion = descripcion;
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.telefono = telefono;
@@ -118,14 +107,6 @@ public class Usuario implements Serializable {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-    
     public String getCorreo() {
         return correo;
     }
@@ -181,6 +162,14 @@ public class Usuario implements Serializable {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+//
+//    public Normal getNormal() {
+//        return normal;
+//    }
+//
+//    public void setNormal(Normal normal) {
+//        this.normal = normal;
+//    }
 
     public Collection<Post> getPostCollection() {
         return postCollection;
@@ -189,6 +178,15 @@ public class Usuario implements Serializable {
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
     }
+//
+//    public Admin getAdmin() {
+//        return admin;
+//    }
+//
+//    public void setAdmin(Admin admin) {
+//        this.admin = admin;
+//    }
+
     public Municipio getMunicipioId() {
         return municipioId;
     }
@@ -225,9 +223,9 @@ public class Usuario implements Serializable {
         return true;
     }
 
-     @Override
-     public String toString() {
-          return "Usuario{" + "id=" + id + ", nombreCompleto=" + nombreCompleto + ", descripcion=" + descripcion + ", correo=" + correo + ", contrasenia=" + contrasenia + ", telefono=" + telefono + ", avatar=" + avatar + ", ciudad=" + ciudad + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", postCollection=" + postCollection + ", municipioId=" + municipioId + ", comentarioCollection=" + comentarioCollection + '}';
-     }
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombreCompleto=" + nombreCompleto + ", correo=" + correo + ", contrasenia=" + contrasenia + ", telefono=" + telefono + ", avatar=" + avatar + ", ciudad=" + ciudad + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", postCollection=" + postCollection + ", municipioId=" + municipioId + ", comentarioCollection=" + comentarioCollection + '}';
+    }
 
 }

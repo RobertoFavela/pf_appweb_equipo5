@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
     <head>
@@ -41,7 +40,7 @@
                     </form>
 
                     <!-- Series -->
-                    <form action="SeriesController" method="get">
+                    <form action="SeriesController" method="post">
                         <input type="hidden" name="rad" value="Series" class="radio">
                         <button type="submit" title="Series" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +72,7 @@
 
             <section class="Admin">
                 <c:if test="${esAdmin}">
-                    <form action="SeriesController" method="post">
+                    <form action="" method="post">
                         <button class="btn" type="submit">
                             <h2>Gestor de series</h2>
                         </button>
