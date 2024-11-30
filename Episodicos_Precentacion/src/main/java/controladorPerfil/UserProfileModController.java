@@ -64,7 +64,7 @@ public class UserProfileModController extends HttpServlet {
                request.setAttribute("fechaNacimiento", adminActual.getFechaNacimiento());
                request.setAttribute("municipioId", adminActual.getMunicipioId());
           }
-         response.sendRedirect("/UserProfileModView.jsp");
+         response.sendRedirect("UserProfileController");
      }
 
      /**
@@ -114,7 +114,7 @@ public class UserProfileModController extends HttpServlet {
                     adminBean.actualizar(adminActual);
                     adminBean.setAdminEnSesion(adminActual);
                }
-               response.sendRedirect("FeedController");
+               response.sendRedirect("UserProfileController");
           }
      }
 

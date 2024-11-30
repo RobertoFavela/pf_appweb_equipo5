@@ -84,7 +84,7 @@ public class FeedController extends HttpServlet {
 
           request.setAttribute("series", series != null ? series : new ArrayList<>());
 
-          response.sendRedirect("/FeedView.jsp");
+          response.sendRedirect("FeedController");
 
      }
 
@@ -111,10 +111,10 @@ public class FeedController extends HttpServlet {
                     response.sendRedirect("FeedController");
                     break;
                case "buscar":
-                    response.sendRedirect("");
+                    response.sendRedirect("BuscarView.jsp");
                     break;
                case "favoritas":
-                    response.sendRedirect("SeriesController");
+                    response.sendRedirect("FavoritasView.jsp");
                     break;
                case "perfil":
                     response.sendRedirect("UserProfileController");

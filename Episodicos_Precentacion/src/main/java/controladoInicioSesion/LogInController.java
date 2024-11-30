@@ -30,6 +30,11 @@ public class LogInController extends HttpServlet {
         adminBean = AdminBean.getInstancia();
     }
 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,8 +51,8 @@ public class LogInController extends HttpServlet {
             String correo = request.getParameter("txtUsuario");
             String contrasena = request.getParameter("txtContrasena");
 
-            adminBean = AdminBean.getInstancia();
-            normalBean = NormalBean.getInstancia();
+            AdminBean adminBean = AdminBean.getInstancia();
+            NormalBean normalBean = NormalBean.getInstancia();
 
             Admin adminEnSesion = AdminBean.getInstancia().buscarPorCredenciales(correo, contrasena);
             Normal normalEnSesion = NormalBean.getInstancia().buscarPorCredenciales(correo, contrasena);
@@ -64,7 +69,7 @@ public class LogInController extends HttpServlet {
                 response.sendRedirect("FeedController");
             } else {
                 request.setAttribute("error", "Correo o contraseña incorrectos.");
-                response.sendRedirect("LogInController");
+                this.getServletContext().getRequestDispatcher(url).forward(request, response);
             }
         }
     }
