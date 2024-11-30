@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -20,83 +21,87 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class gestionPerfilController extends HttpServlet {
 
-//      private final UsuarioBean usuarioBean;
+     private NormalBean normalBean;
+     String telefono;
+     String nombreCompleto;
 
-      public gestionPerfilController() {
-//            usuarioBean = UsuarioBean.getInstancia();
-      }
+     public gestionPerfilController() {
+          normalBean = NormalBean.getInstancia();
+     }
 
-      /**
-       * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-       * methods.
-       *
-       * @param request servlet request
-       * @param response servlet response
-       * @throws ServletException if a servlet-specific error occurs
-       * @throws IOException if an I/O error occurs
-       */
-      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-              throws ServletException, IOException {
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                  /* TODO output your page here. You may use following sample code. */
-                  out.println("<!DOCTYPE html>");
-                  out.println("<html>");
-                  out.println("<head>");
-                  out.println("<title>Servlet gestionPerfilController</title>");
-                  out.println("</head>");
-                  out.println("<body>");
-                  out.println("<h1>Servlet gestionPerfilController at " + request.getContextPath() + "</h1>");
-                  out.println("</body>");
-                  out.println("</html>");
-            }
-      }
+     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+     /**
+      * Handles the HTTP <code>GET</code> method.
+      *
+      * @param request servlet request
+      * @param response servlet response
+      * @throws ServletException if a servlet-specific error occurs
+      * @throws IOException if an I/O error occurs
+      */
+     @Override
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
+          Normal usuarioActual = normalBean.getUsuarioEnSesion();
+          System.out.println("Usuario en sesión: " + usuarioActual);
 
-      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-      /**
-       * Handles the HTTP <code>GET</code> method.
-       *
-       * @param request servlet request
-       * @param response servlet response
-       * @throws ServletException if a servlet-specific error occurs
-       * @throws IOException if an I/O error occurs
-       */
-      @Override
-      protected void doGet(HttpServletRequest request, HttpServletResponse response)
-              throws ServletException, IOException {
+          if (usuarioActual != null) {
+               String nombreCompleto = usuarioActual.getNombreCompleto();
+               request.setAttribute("nombreCompleto", usuarioActual.getNombreCompleto());
+               request.setAttribute("telefono", usuarioActual.getTelefono());
+               request.setAttribute("ciudad", usuarioActual.getCiudad());
+               request.setAttribute("genero", usuarioActual.getGenero());
+               request.setAttribute("fechaNacimiento", usuarioActual.getFechaNacimiento());
+               request.setAttribute("municipioId", usuarioActual.getMunicipioId());
+          }
+          request.getRequestDispatcher("/GestionPerfil.jsp").forward(request, response);
+     }
 
-//            Usuario usuario = usuarioBean.getUsuario();
-            
-//            request.setAttribute("nombreCompleto", usuario.getNombreCompleto());
-//            request.setAttribute("telefono", usuario.getTelefono());
+     /**
+      * Handles the HTTP <code>POST</code> method.
+      *
+      * @param request servlet request
+      * @param response servlet response
+      * @throws ServletException if a servlet-specific error occurs
+      * @throws IOException if an I/O error occurs
+      */
+     @Override
+     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
 
-            request.getRequestDispatcher("/GestionPerfil.jsp").forward(request, response);
-      }
+          String accion = request.getParameter("actualizar");
 
-      /**
-       * Handles the HTTP <code>POST</code> method.
-       *
-       * @param request servlet request
-       * @param response servlet response
-       * @throws ServletException if a servlet-specific error occurs
-       * @throws IOException if an I/O error occurs
-       */
-      @Override
-      protected void doPost(HttpServletRequest request, HttpServletResponse response)
-              throws ServletException, IOException {
-            processRequest(request, response);
-            
-            
-      }
+          if ("actualizar".equals(accion)) {
+               String nombreCompleto = request.getParameter("nombreCompleto");
+               String telefono = request.getParameter("telefono");
+               String ciudad = request.getParameter("ciudad");
+               String municipioId = request.getParameter("municipioId");
+               String genero = request.getParameter("genero");
+               String fechaNacimiento = request.getParameter("fechaNacimiento");
 
-      /**
-       * Returns a short description of the servlet.
-       *
-       * @return a String containing servlet description
-       */
-      @Override
-      public String getServletInfo() {
-            return "Short description";
-      }// </editor-fold>
+               Normal usuarioActual = normalBean.getUsuarioEnSesion();
+
+               if (usuarioActual != null) {
+                    usuarioActual.setNombreCompleto(nombreCompleto);
+                    usuarioActual.setTelefono(telefono);
+                    usuarioActual.setCiudad(ciudad);
+                    usuarioActual.setGenero(genero);
+                    usuarioActual.setFechaNacimiento(java.sql.Date.valueOf(fechaNacimiento));
+
+                    normalBean.actualizar(usuarioActual);
+                    normalBean.setUsuarioEnSesion(usuarioActual);
+               }
+               response.sendRedirect("GestionPerfil.jsp");
+          }
+     }
+
+     /**
+      * Returns a short description of the servlet.
+      *
+      * @return a String containing servlet description
+      */
+     @Override
+     public String getServletInfo() {
+          return "Short description";
+     }// </editor-fold>
 
 }

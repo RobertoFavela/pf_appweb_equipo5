@@ -1,3 +1,4 @@
+<%@page import="EntidadesSQL.Normal"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,22 +73,19 @@
             <h2>
                 ConfiguraciÃ³n de usuario
             </h2>
-            <form action="GestionUsuario" method="get">
+            <form action="gestionPerfilController" method="POST">
 
                 <!-- Nombre Completo -->
                 <label for="nombreCompleto">Nombre Completo:</label>
-                <input type="text" id="nombreCompleto" name="nombreCompleto" 
-                       value="${nombreCompleto}" required>
+                <input type="text" id="nombreCompleto" name="nombreCompleto"  value="${nombreCompleto}" required>
 
                 <!-- Teléfono -->
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" 
-                       value="${telefono}" required>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}"  value="${telefono}" required>
 
                 <!-- Ciudad -->
                 <label for="ciudad">Ciudad:</label>
-                <input type="text" id="ciudad" name="ciudad" 
-                       value="${ciudad}" required>
+                <input type="text" id="ciudad" name="ciudad"  value="${ciudad}" required>
 
                 <!-- Municipio -->
                 <label for="municipioId">Municipio:</label>
@@ -120,5 +118,4 @@
 
 
     </body>
-
 </html>

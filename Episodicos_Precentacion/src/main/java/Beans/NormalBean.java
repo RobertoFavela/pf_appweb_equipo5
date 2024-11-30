@@ -2,6 +2,7 @@ package Beans;
 
 import DAOsSQL.NormalDAO;
 import EntidadesSQL.Normal;
+import EntidadesSQL.Usuario;
 import interfaces.INormalDAO;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class NormalBean {
 
      private static NormalBean instancia;
      private final INormalDAO normalDAO;
+     private Normal usuarioEnSesion;
 
      private NormalBean() {
           normalDAO = new NormalDAO();
@@ -21,6 +23,14 @@ public class NormalBean {
           return instancia;
      }
 
+     public void setUsuarioEnSesion(Normal normal) {
+        this.usuarioEnSesion = normal;
+    }
+
+    public Normal getUsuarioEnSesion() {
+        return usuarioEnSesion;
+    }
+     
      public void guardar(Normal normal) {
           normalDAO.guardar(normal);
      }
