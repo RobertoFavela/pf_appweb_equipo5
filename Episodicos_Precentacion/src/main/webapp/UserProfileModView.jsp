@@ -73,7 +73,7 @@
             <h2>
                 Configuración de usuario
             </h2>
-            <form action="UserProfileModController" method="get">
+            <form action="UserProfileModController" method="post">
 
                 <!-- Nombre Completo -->
                 <label for="nombreCompleto">Nombre Completo:</label>
