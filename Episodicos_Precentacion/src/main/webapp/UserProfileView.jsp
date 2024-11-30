@@ -113,6 +113,10 @@
                             <img src="Posters/daredevil.jpeg" class="serie-img">
                             <a href="/PerfilSerie/perfilSerie.html"></a>
                         </div>
+                        <div class="serie">
+                            <div class="info">${serie.titulo}</div> 
+                            <a href="/PerfilSerie/perfilSerie.html?titulo=${serie.titulo}"></a>
+                        </div>
                     </div>
                 </section>
 

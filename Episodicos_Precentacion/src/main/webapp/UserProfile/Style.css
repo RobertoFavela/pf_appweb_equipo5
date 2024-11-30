@@ -122,19 +122,6 @@ button:hover {
 }
 
 
-.icono-casa {
-
-    font-size: 30px;
-    position: absolute;
-    left: 45%;
-}
-
-.usuario {
-    font-size: 18px;
-    position: absolute;
-    right: 10px;
-}
-
 .seccion,
 .resenas-recientes {
 
@@ -162,7 +149,7 @@ h2 {
     color: white;
     margin-bottom: 10px;
 }
-
+/* scroll a un lado */
 .contenedor-series {
     display: flex;
     gap: 10px;
@@ -211,6 +198,7 @@ h2 {
     opacity: 1;
 }
 
+/* scroll hacia a un lado*/
 .resena {
 
     display: grid;
