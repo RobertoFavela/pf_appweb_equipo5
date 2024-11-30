@@ -113,21 +113,19 @@
                             <img src="Posters/daredevil.jpeg" class="serie-img">
                             <a href="/PerfilSerie/perfilSerie.html"></a>
                         </div>
-                        <div class="serie">
-                            <div class="info">${serie.titulo}</div> 
-                            <a href="/PerfilSerie/perfilSerie.html?titulo=${serie.titulo}"></a>
-                        </div>
-                    </div>
                 </section>
 
                 <h2>Escribe una reseña</h2>
                 <div class="nueva-resena">
                     <form class="form">
-                        <div class="titulo">Pelicula</div>
-                        <input type="text" placeholder="Titulo de la pelicula" class="input">
+                        <div class="titulo">Titulo</div>
+                        <input type="text" placeholder="Titulo de la pelicula" class="input" name="titulo">
+
+                        <div class="titulo">Nombre de serie</div>
+                        <input type="text" placeholder="Titulo de la pelicula" class="input"  name="nombre">
 
                         <div class="titulo">Reseña</div>
-                        <textarea placeholder="Tu reseña"></textarea>
+                        <textarea placeholder="Tu reseña" name="contenido"></textarea>
                         <br>
                         <button type="submit" class="aceptar">Aceptar</button>
                     </form>
