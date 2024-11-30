@@ -39,13 +39,10 @@ public class UserProfileModController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          request.getRequestDispatcher("/UserProfileModView.jsp").forward(request, response);
+
           Normal usuarioActual = normalBean.getUsuarioEnSesion();
-          System.out.println("Usuario en sesión: " + usuarioActual);
 
           if (usuarioActual != null) {
-               String nombreCompleto = usuarioActual.getNombreCompleto();
-               System.out.println(nombreCompleto);
                request.setAttribute("nombreCompleto", usuarioActual.getNombreCompleto());
                request.setAttribute("telefono", usuarioActual.getTelefono());
                request.setAttribute("ciudad", usuarioActual.getCiudad());
@@ -53,6 +50,7 @@ public class UserProfileModController extends HttpServlet {
                request.setAttribute("fechaNacimiento", usuarioActual.getFechaNacimiento());
                request.setAttribute("municipioId", usuarioActual.getMunicipioId());
           }
+          request.getRequestDispatcher("/UserProfileModView.jsp").forward(request, response);
      }
 
      /**
@@ -104,4 +102,3 @@ public class UserProfileModController extends HttpServlet {
      }// </editor-fold>
 
 }
-
