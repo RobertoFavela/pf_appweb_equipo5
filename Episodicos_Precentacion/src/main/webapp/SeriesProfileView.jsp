@@ -46,7 +46,7 @@
                         </form>
 
                         <!-- Favoritas -->
-                        <form action="#" method="post">
+                        <form action="SeriesController" method="get">
                             <input type="hidden" name="rad" value="Series" class="radio checked">
                             <button type="submit" title="Series" class="ul li">
                                 <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
