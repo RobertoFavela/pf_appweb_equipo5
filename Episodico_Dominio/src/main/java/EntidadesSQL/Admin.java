@@ -7,6 +7,8 @@ package EntidadesSQL;
 import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Administrador")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("Administrador")
 public class Admin extends Usuario {
 
