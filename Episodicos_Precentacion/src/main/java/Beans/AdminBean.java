@@ -13,6 +13,7 @@ public class AdminBean {
 
      private static AdminBean instancia;
      private IAdminDAO adminDAO;
+     private Admin adminEnSesion;
 
      public static synchronized AdminBean getInstancia() {
           if (instancia == null) {
@@ -53,5 +54,13 @@ public class AdminBean {
 
      public void actualizar(Admin admin) {
           adminDAO.actualizar(admin);
+     }
+     
+     public void setAdminEnSesion(Admin admin) {
+          this.adminEnSesion = admin;
+     }
+     
+     public Admin getAdminEnSesion() {
+          return adminEnSesion;
      }
 }

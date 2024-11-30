@@ -4,7 +4,9 @@
  */
 package controladorRegistro;
 
+import Beans.AdminBean;
 import Beans.NormalBean;
+import EntidadesSQL.Admin;
 import EntidadesSQL.Normal;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -66,9 +68,9 @@ public class RegisterController extends HttpServlet {
                String contra = request.getParameter("txtContra");
 
                try {
-                    Normal normal = new Normal(nombre, correo, contra); 
-                    NormalBean normalBean = NormalBean.getInstancia();
-                    normalBean.guardar(normal);
+                    Admin admin = new Admin(nombre, correo, contra);
+                    AdminBean adminBean = AdminBean.getInstancia();
+                    adminBean.guardar(admin);
 
                     request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
                     url = "/LogInView.jsp";

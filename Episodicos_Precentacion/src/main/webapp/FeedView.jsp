@@ -46,10 +46,10 @@
                         </button>
                     </form>
 
-                    <!-- Favoritas -->
-                    <form action="#" method="post">
-                        <input type="hidden" name="rad" value="favoritas" class="radio">
-                        <button type="submit" title="Favoritas" class="ul li">
+                    <!-- serie -->
+                    <form action="SeriesController" method="post">
+                        <input type="hidden" name="rad" value="serie" class="radio">
+                        <button type="submit" title="serie" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
                                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="imgNav">
                             <path
