@@ -1,7 +1,6 @@
 <%-- Document : UserProfileView Created on : 28 oct 2024, 11:58:31 p.m. Author : favel --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
