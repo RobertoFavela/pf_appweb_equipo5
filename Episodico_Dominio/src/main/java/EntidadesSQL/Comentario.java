@@ -7,6 +7,7 @@ package EntidadesSQL;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -29,34 +28,36 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "comentario")
-@NamedQueries({
-    @NamedQuery(name = "Comentario.findAll", query = "SELECT c FROM Comentario c"),
-    @NamedQuery(name = "Comentario.findById", query = "SELECT c FROM Comentario c WHERE c.id = :id"),
-    @NamedQuery(name = "Comentario.findByFechaHora", query = "SELECT c FROM Comentario c WHERE c.fechaHora = :fechaHora")})
 public class Comentario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    @Basic
     @Column(name = "id")
     private Integer id;
+    
     @Basic(optional = false)
     @Column(name = "fechaHora")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHora;
+    
     @Basic(optional = false)
     @Lob
     @Column(name = "contenido")
     private String contenido;
+    
     @OneToMany(mappedBy = "comentarioPadreId")
-    private Collection<Comentario> comentarioCollection;
+    private List<Comentario> comentarioCollection;
+    
     @JoinColumn(name = "comentario_padre_id", referencedColumnName = "id")
     @ManyToOne
     private Comentario comentarioPadreId;
+    
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Post postId;
+    
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuario usuarioId;
@@ -110,7 +111,7 @@ public class Comentario implements Serializable {
         return comentarioCollection;
     }
 
-    public void setComentarioCollection(Collection<Comentario> comentarioCollection) {
+    public void setComentarioCollection(List<Comentario> comentarioCollection) {
         this.comentarioCollection = comentarioCollection;
     }
 

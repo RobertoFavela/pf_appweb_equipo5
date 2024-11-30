@@ -1,0 +1,248 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #8c00ff, #00c6ff);
+}
+
+.Feed{
+    background-color: #222;
+    margin: 10px 50vh;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*navegacion*/
+
+header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    position: relative;
+    height: 4vh;
+    border-radius: 10px;
+    padding-bottom: 1cm;
+    width: 90%;
+}
+
+nav {
+    display: flex;
+    border-radius: 40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 1cm;
+    width: 100%;
+    border: none;
+
+}
+
+.ul {
+    width: 90%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.ul .li {
+    display: inline-block
+}
+
+.ul {
+    align-items: center;
+    background-image: linear-gradient(144deg, #00DDEB, #5B42F3 50%, #AF40FF );
+    border: 0;
+    border-radius: 5px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 80px;
+}
+
+.ul active,
+.ul:hover {
+    outline: 0;
+}
+
+.ul span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    height: 100%;
+    transition: 300ms;
+}
+
+.ul:hover span {
+    background: none;
+}
+
+@media (min-width: 0) {
+    .ul {
+        font-size: 24px;
+        min-width: 160px;
+    }
+}
+
+.ul {
+    border: none;
+}
+
+.radio {
+    display: none;
+}
+
+.imgNav {
+    width: 50px;
+    height: 50px;
+    opacity: 80%;
+    cursor: pointer;
+    padding: 13px 20px;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 100%;
+}
+
+.li:hover {
+    transition: 0.1s;
+    color: #8c00ff;
+    position: relative;
+    margin-top: -4px;
+}
+
+.checked+.li .imgNav {
+    color: #00c6ff;
+    fill-rule: evenodd;
+}
+
+
+/* Título */
+h2 {
+    text-align: center;
+    color: #00c6ff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Formulario */
+
+label{
+    color: #00c6ff;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #555;
+}
+
+.agregar-btn {
+    background-color: #00c6ff;
+}
+
+.agregar-btn:hover {
+    background-color: #0054b4;
+}
+
+.mod-btn {
+   
+    background-color: #e9d4fa;
+    color: #222;
+}
+
+.mod-btn:hover {
+    background-color: #d4ecfa;
+}
+
+.ele-btn {
+    background-color: #8c00ff;
+}
+
+.ele-btn:hover {
+    background-color: #400074;
+}
+
+.agregar-btn:active, .ele-btn:active , .mod-btn:active{
+
+    background-color: goldenrod;
+}
+
+
+.gestionar-serie label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gestionar-serie input,
+.gestionar-serie select,
+.gestionar-serie textarea {
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #8c00ff;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.gestionar-serie select{
+    width: 100%;
+}
+
+.form-btn button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-guardar {
+    background-color: #00c6ff;
+}
+
+.btn-guardar:hover {
+    background-color: #8c00ff;
+}
+
+.btn-limpiar {
+    background-color: #8c00ff;
+}
+
+.btn-limpiar:hover {
+    background-color: #00c6ff;
+}

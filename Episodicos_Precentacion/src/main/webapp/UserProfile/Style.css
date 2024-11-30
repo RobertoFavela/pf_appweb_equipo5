@@ -1,0 +1,537 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 28 oct 2024, 11:59:23 p.m.
+    Author     : favel
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #8c00ff, #00c6ff);
+}
+
+.Feed {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 100px 250px 48px 210px 48px 300px 60px 300px;
+    background-color: #222;
+    margin: 0px 50vh;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+}
+
+/* barra de navegación*/
+header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    position: relative;
+    height: 4vh;
+    border-radius: 10px;
+    padding-bottom: 1cm;
+    width: 94%;
+}
+
+nav {
+    display: flex;
+    border-radius: 40px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 1cm;
+    width: 100%;
+    border: none;
+
+}
+
+.ul {
+    width: 90%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.ul .li {
+    display: inline-block
+}
+
+.ul {
+    align-items: center;
+    background-image: linear-gradient(144deg, #00DDEB, #5B42F3 50%, #AF40FF );
+    border: 0;
+    border-radius: 5px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 80px;
+}
+
+.ul active,
+.ul:hover {
+    outline: 0;
+}
+
+.ul span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    height: 100%;
+    transition: 300ms;
+}
+
+.ul:hover span {
+    background: none;
+}
+
+@media (min-width: 0) {
+    .ul {
+        font-size: 24px;
+        min-width: 160px;
+    }
+}
+
+.ul {
+    border: none;
+}
+
+.radio {
+    display: none;
+}
+
+.imgNav {
+    width: 50px;
+    height: 50px;
+    opacity: 80%;
+    cursor: pointer;
+    padding: 13px 20px;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 100%;
+}
+button{
+    border: none;
+}
+
+.li:hover {
+    transition: 0.1s;
+    color: #8c00ff;
+    position: relative;
+    margin-top: -4px;
+}
+
+.checked+.li .imgNav {
+    color: #00c6ff;
+    fill-rule: evenodd;
+}
+
+.seccion,
+.resenas-recientes {
+
+    padding: 20px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: inset 0 0 20px #ffffff42;
+}
+
+.seccion {
+
+    display: flex;
+    overflow-x: scroll;
+}
+
+.resenas-recientes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 230px;
+}
+
+
+h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+/* scroll a un lado */
+.contenedor-series {
+    display: flex;
+    gap: 10px;
+}
+
+.serie {
+    background-color: #f0f0f0;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.serie .info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.serie-img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+
+.serie:hover .serie-img {
+    filter: blur(3px);
+}
+
+.serie:hover .info {
+    opacity: 1;
+}
+
+/* scroll hacia a un lado*/
+.resena {
+
+    display: grid;
+    grid-template-columns: 80% 10% 10%;
+    grid-template-rows: 20% 80%;
+    background-color: rgb(214, 212, 212);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+
+.titulo-resena {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.texto-resena {
+    padding-right: 15px;
+    margin-right: 15px;
+    margin-left: 10px;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: scroll;
+
+}
+
+
+.imagen-resena {
+
+    grid-column-start: 2;
+    grid-column-end: 4;
+    flex: 3;
+    display: flex;
+    font-size: 12px;
+    color: #555;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    margin-left: 6px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+
+/* perfil */
+.perfil {
+    padding: 20px;
+    border-radius: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 20% 80%;
+}
+
+.NombrePerfil {
+    margin-bottom: 20px;
+    color: #ffffff;
+    padding-bottom: 15px;
+}
+
+.foto-perfil {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    width: 100px;
+    height: 100px;
+    background-color: #222;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.serie-img-perfil {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+    border-radius: 50%;
+    background-color: #222;
+    
+}
+
+.serie-img-perfil:hover {
+    filter: blur(3px);
+}
+
+.descripcion {
+    color: white;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: scroll;
+}
+
+/* secciones */
+.seccion {
+
+    margin: 0;
+    margin-top: 0px;
+    padding: 20px;
+    border-radius: 10px;
+    white-space: nowrap;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.contenedor-series {
+    display: flex;
+    gap: 10px;
+}
+
+.serie {
+    background-color: #000000;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.serie .info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.serie-img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.serie:hover .serie-img {
+    filter: blur(3px);
+}
+
+.serie:hover .info {
+    opacity: 1;
+}
+
+/*Escribir una reseña*/
+.nueva-resena {
+    grid-row-start: 6;
+    grid-row-end: 7;
+
+}
+
+.form {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form .titulo {
+    color: #00c6ff;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form input {
+    border: 1px solid #8c00ff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    width: 90%;
+}
+
+.form textarea {
+    border-radius: 8px;
+    height: 100%;
+    width: 90%;
+    resize: none;
+    outline: 0;
+    padding: 8px 14px;
+    border: 1px solid #8c00ff;
+}
+
+.form button {
+    align-self: flex-end;
+    padding: 8px;
+    outline: 0;
+    border: 0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #00c6ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.aceptar:hover {
+    background: #8c00ff;
+}
+
+/*peliculas favoritas*/
+.favoritas {
+    grid-row-start: 6;
+    grid-row-end: 9;
+    margin: 0;
+    padding: 45px;
+    border-radius: 10px;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 10px;
+}
+
+.contenedor-series-fav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fav {
+    text-align: center;
+}
+
+/*reseñas recientes*/
+.resenas-recientes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.resena {
+
+    display: grid;
+    grid-template-columns: 70% 15% 15%;
+    grid-template-rows: 10% 90%;
+    background-color: rgb(214, 212, 212);
+    border-radius: 10px;
+    padding: 15px;
+    width: 93%;
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.titulo-resena {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.texto-resena {
+    padding-right: 15px;
+    margin-right: 15px;
+    margin-left: 10px;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: scroll;
+
+}
+
+.imagen-resena {
+
+    grid-column-start: 2;
+    grid-column-end: 4;
+    flex: 3;
+    display: flex;
+    font-size: 12px;
+    color: #555;
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    margin-left: 6px;
+    overflow: hidden;
+    border-radius: 15px;
+}

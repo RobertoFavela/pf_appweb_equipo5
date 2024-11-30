@@ -9,9 +9,11 @@ public interface INormalDAO {
     
     public List<Normal> buscarTodos();
     
-    public Normal buscarPorId(Integer id);
-            
+    public List<Normal> buscarPorCorreo(String correo);
+    
+    public Normal buscarPorNombre(String nombre);
+           
     public void actualizar(Normal normal);
     
-    public void eliminar(Integer id) ;
+    public void eliminar(String nombre) ;
 }

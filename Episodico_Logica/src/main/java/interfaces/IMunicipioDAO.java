@@ -15,5 +15,5 @@ public interface IMunicipioDAO {
             
     public void actualizar(Municipio municipio);
     
-    public void eliminar(Integer id) ;
+    public void eliminar(String nombre) ;
 }

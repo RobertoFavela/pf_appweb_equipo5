@@ -15,5 +15,5 @@ public interface IEstadoDAO {
 
     public void actualizar(Estado estado);
 
-    public void eliminar(Integer id);
+    public void eliminar(String nombre);
 }

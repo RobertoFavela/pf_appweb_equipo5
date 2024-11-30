@@ -9,9 +9,11 @@ public interface IAdminDAO {
     
     public List<Admin> buscarTodos();
     
-    public Admin buscarPorId(Integer id);
+    public List<Admin> buscarPorCorreo(String correo);
+    
+    public Admin buscarPorNombre(String nombre);
     
     public void actualizar(Admin admin);
     
-    public void eliminar(Integer id) ;
+    public void eliminar(String nombre) ;
 }

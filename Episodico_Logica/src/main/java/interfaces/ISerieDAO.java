@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package interfaces;
 
 import java.util.List;
 
 import EntidadesSQL.Serie;
+import java.util.Date;
 
 /**
  *
@@ -25,5 +22,7 @@ public interface ISerieDAO {
     
     public void actualizar(Serie serie);
     
-    public void eliminar(Integer id) ;
+    public List<Serie> buscarSeriesPorPeriodoDeTiempo(Date fechaInicio, Date fechaFin);
+    
+    public void eliminar(String nombre) ;
 }

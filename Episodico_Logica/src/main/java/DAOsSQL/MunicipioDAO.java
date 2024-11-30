@@ -59,9 +59,9 @@ public class MunicipioDAO implements IMunicipioDAO{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(String nombre) {
         entityManager.getTransaction().begin();
-        Municipio municipio = buscarPorId(id);
+        Municipio municipio = buscarPorNombre(nombre);
         if (municipio != null) {
             entityManager.remove(municipio);
         }

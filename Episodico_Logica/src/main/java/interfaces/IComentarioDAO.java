@@ -9,9 +9,15 @@ public interface IComentarioDAO {
 
     public List<Comentario> buscarTodos();
 
-    public Comentario buscarPorId(Integer id);
+    public Comentario buscarPorContenido(String contenido);
 
     public void actualizar(Comentario comentario);
 
-    public void eliminar(Integer id);
+    public void eliminar(String nombre);
+    
+    public List<Comentario> buscarPorPostID(Integer id);
+    
+    public List<Comentario> buscarPorComentarioID(Integer id);
+    
+    public List<Comentario> buscarPorUsuarioID(Integer id);
 }

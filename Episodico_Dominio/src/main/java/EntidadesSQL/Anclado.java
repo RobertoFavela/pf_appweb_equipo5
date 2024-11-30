@@ -5,15 +5,11 @@
 package EntidadesSQL;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
+import java.util.Date;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -22,82 +18,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "anclado")
-@NamedQueries({
-    @NamedQuery(name = "Anclado.findAll", query = "SELECT a FROM Anclado a"),
-    @NamedQuery(name = "Anclado.findById", query = "SELECT a FROM Anclado a WHERE a.id = :id")})
-public class Anclado implements Serializable {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("anclado")
+public class Anclado extends Post implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @JoinColumn(name = "Admin_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Admin adminid;
-    @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Post post;
 
     public Anclado() {
     }
 
-    public Anclado(Admin adminid, Post post) {
-        this.adminid = adminid;
-        this.post = post;
+    public Anclado(Date fechaHoraCreacion, String titulo, String contenido, Serie serieId, Usuario usuarioId) {
+        super(fechaHoraCreacion, titulo, contenido,serieId, usuarioId);
     }
-
-    public Anclado(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Admin getAdminid() {
-        return adminid;
-    }
-
-    public void setAdminid(Admin adminid) {
-        this.adminid = adminid;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Anclado)) {
-            return false;
-        }
-        Anclado other = (Anclado) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "EntidadesSQL.Anclado[ id=" + id + " ]";
-    }
+    
     
 }

@@ -9,9 +9,10 @@ public interface IComunDAO {
 
     public List<Comun> buscarTodos();
 
-    public Comun buscarPorId(Integer id);
+    public Comun buscarPorTitulo(String nombre);
 
     public void actualizar(Comun comun);
 
-    public void eliminar(Integer id);
+    public void eliminar(String nombre);
+    
 }

@@ -18,14 +18,15 @@ public class ConexionDB {
 
     private ConexionDB() {
         try {
-            entityManagerFactory = Persistence.createEntityManagerFactory("SeriesDB");
+            entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
+
             this.entityManager = entityManagerFactory.createEntityManager();
         } catch (Exception e) {
             throw new RuntimeException("Error al conectar con la base de datos", e);
         }
     }
 
-    public static ConexionDB getInstancia() {
+    public static synchronized ConexionDB getInstancia() {
         if (instancia == null) {
             instancia = new ConexionDB();
         }
