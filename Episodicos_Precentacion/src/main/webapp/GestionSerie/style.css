@@ -285,13 +285,12 @@ label{
 
 .mod-btn {
    
-    background: linear-gradient(to right, #00c6ff, #8c00ff);
-    
+    background-color: #e9d4fa;
+    color: #222;
 }
 
 .mod-btn:hover {
-    
-    background: linear-gradient(to right, #8c00ff, #00c6ff);
+    background-color: #d4ecfa;
 }
 
 .ele-btn {
@@ -301,6 +300,12 @@ label{
 .ele-btn:hover {
     background-color: #400074;
 }
+
+.agregar-btn:active, .ele-btn:active , .mod-btn:active{
+
+    background-color: goldenrod;
+}
+
 
 .gestionar-serie label {
     font-weight: bold;

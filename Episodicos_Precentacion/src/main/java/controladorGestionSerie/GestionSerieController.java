@@ -96,6 +96,7 @@ public class GestionSerieController extends HttpServlet {
                 serieBean.eliminar(nuevaSerie.getTitulo());
                 break;
         }
+        
         request.getRequestDispatcher(url).forward(request, response);
 
     }

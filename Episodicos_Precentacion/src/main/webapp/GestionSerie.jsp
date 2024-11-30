@@ -76,7 +76,10 @@
                     </form>
                 </nav>
             </header>
-            <h2>Gestionar serie</h2>
+            <div id="titulo">
+                <h2 name="titulo">Gestionar serie</h2>
+            </div>
+            
             <section class="gestionar-serie">
                 <div class="botones">
                     <button class="btn agregar-btn" id="btn-agregar">

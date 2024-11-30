@@ -57,7 +57,7 @@ public class Serie implements Serializable {
     private Collection<Post> postCollection;
 
     @Lob
-    @Column
+    @Column(name = "imagen")
     private byte[] imagen;
     
     public Serie() {

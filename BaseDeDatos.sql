@@ -1,3 +1,4 @@
+
 CREATE DATABASE SeriesDB;
 USE SeriesDB;
 
@@ -44,7 +45,7 @@ CREATE TABLE Serie (
     descripcion TEXT NOT NULL,
     fechaEstreno DATE NOT NULL,
     genero VARCHAR(100) NOT NULL, 
-    imagen BLOB NOT NULL
+    imagen LONGBLOB NOT NULL
 );
 
 CREATE TABLE Post (
@@ -56,7 +57,8 @@ CREATE TABLE Post (
     usuario_id INT NOT NULL,
     serie_id INT NOT NULL, 
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id) ON DELETE CASCADE,
-    FOREIGN KEY (serie_id) REFERENCES Serie(id) ON DELETE CASCADE
+    FOREIGN KEY (serie_id) REFERENCES Serie(id) ON DELETE CASCADE,
+    DTYPE VARCHAR(31)
 );
 /*
 CREATE TABLE Anclado (
