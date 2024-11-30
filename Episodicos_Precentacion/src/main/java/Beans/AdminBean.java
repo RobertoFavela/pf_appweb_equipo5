@@ -13,6 +13,7 @@ public class AdminBean {
 
      private static AdminBean instancia;
      private IAdminDAO adminDAO;
+     private Admin adminEnSesion;
 
      public static synchronized AdminBean getInstancia() {
           if (instancia == null) {
@@ -23,6 +24,14 @@ public class AdminBean {
 
      private AdminBean() {
           adminDAO = new AdminDAO();
+     }
+     
+     public void setAdminEnSesion(Admin admin) {
+          this.adminEnSesion = admin;
+     }
+     
+     public Admin getAdminEnSesion() {
+          return adminEnSesion;
      }
 
      public void guardar(Admin admin) {

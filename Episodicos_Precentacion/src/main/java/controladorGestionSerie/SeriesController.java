@@ -2,26 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controladorRegistro;
+package controladorGestionSerie;
 
 import Beans.AdminBean;
 import Beans.NormalBean;
-import EntidadesSQL.Admin;
-import EntidadesSQL.Normal;
-import EntidadesSQL.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author tacot
+ * @author favel
  */
-public class RegisterController extends HttpServlet {
+public class SeriesController extends HttpServlet {
+
+     private NormalBean normalBean;
+     private AdminBean adminBean;
+
+     public SeriesController() {
+          normalBean = NormalBean.getInstancia();
+          adminBean = AdminBean.getInstancia();
+     }
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
@@ -35,7 +39,12 @@ public class RegisterController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          
+
+          boolean esAdmin = adminBean.getAdminEnSesion() != null;
+
+          request.setAttribute("esAdmin", esAdmin);
+
+          request.getRequestDispatcher("/Series.jsp").forward(request, response);
      }
 
      /**
@@ -49,26 +58,7 @@ public class RegisterController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String url = "/LogInView.jsp";
-          String accion = request.getParameter("accion"); 
 
-          if ("RegistrarUsuario".equalsIgnoreCase(accion)) {
-               String correo = request.getParameter("txtCorreo");
-               String nombre = request.getParameter("txtUsuario");
-               String contra = request.getParameter("txtContra");
-
-               try {
-                    Normal normal = new Normal(nombre, correo, contra); 
-                    NormalBean normalBean = NormalBean.getInstancia();
-                    normalBean.guardar(normal);
-
-                    request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
-                    url = "/LogInView.jsp";
-               } catch (Exception e) {
-                    request.setAttribute("errorMensaje", "Error al registrar usuario: " + e.getMessage());
-               }
-          }
-          this.getServletContext().getRequestDispatcher(url).forward(request, response);
      }
 
      /**
