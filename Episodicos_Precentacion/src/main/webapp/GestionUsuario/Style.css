@@ -11,13 +11,9 @@ body {
     border-radius: 10px;
 }
 
-h2 {
-    color: #00c6ff;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 header {
+    grid-column-start: 1;
+    grid-column-end: 3;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,21 +23,11 @@ header {
     height: 4vh;
     border-radius: 10px;
     padding-bottom: 1cm;
-    width: 95.7%;
-}
-
-.seccion {
-    display: flex;
-    overflow-x: scroll;
-    padding: 20px;
-    border-radius: 10px;
-    white-space: nowrap;
-    box-shadow: inset 0 0 20px #ffffff42;
+    width: 90%;
 }
 
 nav {
     display: flex;
-    height: 60px;
     border-radius: 40px;
     align-items: center;
     justify-content: center;
@@ -53,20 +39,65 @@ nav {
 }
 
 .ul {
-    width: 100%;
+    width: 90%;
     background-color: transparent;
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .ul .li {
-    display: inline-block;
-    background: none;
-    border: none;
+    display: inline-block
 }
 
-button {
+.ul {
+    align-items: center;
+    background-image: linear-gradient(144deg, #00DDEB, #5B42F3 50%, #AF40FF );
+    border: 0;
+    border-radius: 5px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 80px;
+}
+
+.ul active,
+.ul:hover {
+    outline: 0;
+}
+
+.ul span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    height: 100%;
+    transition: 300ms;
+}
+
+.ul:hover span {
+    background: none;
+}
+
+@media (min-width: 0) {
+    .ul {
+        font-size: 24px;
+        min-width: 160px;
+    }
+}
+
+.ul {
     border: none;
 }
 
@@ -75,11 +106,16 @@ button {
 }
 
 .imgNav {
-    width: 100%;
-    height: 100%;
+    width: 50px;
+    height: 50px;
     opacity: 80%;
     cursor: pointer;
+    padding: 13px 20px;
     transition: 0.2s;
+}
+
+button:hover {
+    opacity: 100%;
 }
 
 .li:hover {
@@ -87,7 +123,6 @@ button {
     color: #8c00ff;
     position: relative;
     margin-top: -4px;
-    opacity: 100%;
 }
 
 .checked+.li .imgNav {
@@ -95,8 +130,12 @@ button {
     fill-rule: evenodd;
 }
 
+h2 {
+    color: white;
+    margin-bottom: 10px;
+}
 
-form {
+.formulario {
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -124,7 +163,7 @@ form select {
     border: 1px solid #8c00ff;
     padding: 8px 14px;
     border-radius: 8px;
-    width: 100%;
+    width: 90%;
 }
 
 

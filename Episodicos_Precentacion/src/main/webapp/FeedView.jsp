@@ -93,7 +93,6 @@
                 </div>
             </section>
 
-
             <h2>Todas las series</h2>
             <section class="seccion">
                 <div class="contenedor-series">
