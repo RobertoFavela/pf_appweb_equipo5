@@ -63,7 +63,7 @@ public class LogInController extends HttpServlet {
                if (admin != null) {
                     request.getSession().setAttribute("usuario", admin);
                     //falta agregar un admin en sesion
-                    response.sendRedirect("FeedView.jsp");
+                    response.sendRedirect("FeedController");
                } else if (normal != null) {
                     request.getSession().setAttribute("usuario", normal);
                     normalBean.setUsuarioEnSesion(usuario);

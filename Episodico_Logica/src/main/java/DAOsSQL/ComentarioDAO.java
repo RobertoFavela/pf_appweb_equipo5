@@ -68,16 +68,25 @@ public class ComentarioDAO implements IComentarioDAO {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comentario> query = cb.createQuery(Comentario.class);
         Root<Comentario> root = query.from(Comentario.class);
-        query.select(root).where(cb.equal(root.get("usuario_id"), id));
+        query.select(root).where(cb.equal(root.get("post_id"), id));
         return entityManager.createQuery(query).getResultList();
     }
 
+    @Override
+    public List<Comentario> buscarPorComentarioID(Integer id) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Comentario> query = cb.createQuery(Comentario.class);
+        Root<Comentario> root = query.from(Comentario.class);
+        query.select(root).where(cb.equal(root.get("comentario_padre_id"), id));
+        return entityManager.createQuery(query).getResultList();
+    }
+    
     @Override
     public List<Comentario> buscarPorUsuarioID(Integer id) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Comentario> query = cb.createQuery(Comentario.class);
         Root<Comentario> root = query.from(Comentario.class);
-        query.select(root).where(cb.equal(root.get("post_id"), id));
+        query.select(root).where(cb.equal(root.get("usuario_id"), id));
         return entityManager.createQuery(query).getResultList();
     }
 }

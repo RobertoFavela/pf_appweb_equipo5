@@ -24,8 +24,8 @@ public class Comun extends Post implements Serializable {
     public Comun() {
     }
 
-    public Comun(Date fechaHoraCreacion, String titulo, String contenido, String tipo, Serie serieId, Usuario usuarioId) {
-        super(fechaHoraCreacion, titulo, contenido, tipo, serieId, usuarioId);
+    public Comun(Date fechaHoraCreacion, String titulo, String contenido, Serie serieId, Usuario usuarioId) {
+        super(fechaHoraCreacion, titulo, contenido, serieId, usuarioId);
     }
     
     

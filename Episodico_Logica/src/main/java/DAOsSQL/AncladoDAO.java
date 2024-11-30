@@ -67,4 +67,14 @@ public class AncladoDAO implements IAncladoDAO {
         query.select(root).where(cb.equal(root.get("nombreCompleto"), nombre));
         return entityManager.createQuery(query).getSingleResult();
     }
+    
+    @Override
+    public Anclado buscarPorSerie(int id) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Anclado> query = cb.createQuery(Anclado.class);
+        Root<Anclado> root = query.from(Anclado.class);
+        query.select(root).where(cb.equal(root.get("serie_id"), id));
+        return entityManager.createQuery(query).getSingleResult();
+    }
+    
 }

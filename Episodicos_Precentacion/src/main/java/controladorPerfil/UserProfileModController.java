@@ -22,8 +22,6 @@ import jakarta.servlet.http.HttpSession;
 public class UserProfileModController extends HttpServlet {
 
      private NormalBean normalBean;
-     String telefono;
-     String nombreCompleto;
 
      public UserProfileModController() {
           normalBean = NormalBean.getInstancia();
@@ -47,6 +45,7 @@ public class UserProfileModController extends HttpServlet {
 
           if (usuarioActual != null) {
                String nombreCompleto = usuarioActual.getNombreCompleto();
+               System.out.println(nombreCompleto);
                request.setAttribute("nombreCompleto", usuarioActual.getNombreCompleto());
                request.setAttribute("telefono", usuarioActual.getTelefono());
                request.setAttribute("ciudad", usuarioActual.getCiudad());
@@ -105,3 +104,4 @@ public class UserProfileModController extends HttpServlet {
      }// </editor-fold>
 
 }
+

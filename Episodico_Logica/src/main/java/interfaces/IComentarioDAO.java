@@ -17,5 +17,7 @@ public interface IComentarioDAO {
     
     public List<Comentario> buscarPorPostID(Integer id);
     
+    public List<Comentario> buscarPorComentarioID(Integer id);
+    
     public List<Comentario> buscarPorUsuarioID(Integer id);
 }

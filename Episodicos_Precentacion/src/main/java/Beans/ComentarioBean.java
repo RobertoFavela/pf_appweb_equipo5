@@ -48,4 +48,8 @@ public class ComentarioBean {
     public List<Comentario> buscarPorUsuarioID(Integer id) {
         return comentarioDAO.buscarPorUsuarioID(id);
     }
+    
+    public List<Comentario> buscarPorComentarioID(Integer id) {
+        return comentarioDAO.buscarPorComentarioID(id);
+    }
 }

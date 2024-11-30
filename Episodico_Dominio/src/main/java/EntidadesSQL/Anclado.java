@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "anclado")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("anclado")
 public class Anclado extends Post implements Serializable {
 
@@ -24,8 +27,8 @@ public class Anclado extends Post implements Serializable {
     public Anclado() {
     }
 
-    public Anclado(Date fechaHoraCreacion, String titulo, String contenido, String tipo, Serie serieId, Usuario usuarioId) {
-        super(fechaHoraCreacion, titulo, contenido, tipo, serieId, usuarioId);
+    public Anclado(Date fechaHoraCreacion, String titulo, String contenido, Serie serieId, Usuario usuarioId) {
+        super(fechaHoraCreacion, titulo, contenido,serieId, usuarioId);
     }
     
     

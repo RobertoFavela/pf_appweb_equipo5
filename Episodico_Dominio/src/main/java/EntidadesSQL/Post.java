@@ -60,9 +60,6 @@ public class Post implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraEdicion;
     
-    @Basic(optional = false)
-    @Column(name = "tipo")
-    private String tipo;
     
     @JoinColumn(name = "serie_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -78,11 +75,10 @@ public class Post implements Serializable {
     public Post() {
     }
     
-    public Post(Date fechaHoraCreacion, String titulo, String contenido, String tipo, Serie serieId, Usuario usuarioId) {
+    public Post(Date fechaHoraCreacion, String titulo, String contenido, Serie serieId, Usuario usuarioId) {
         this.fechaHoraCreacion = fechaHoraCreacion;
         this.titulo = titulo;
         this.contenido = contenido;
-        this.tipo = tipo;
         this.serieId = serieId;
         this.usuarioId = usuarioId;
     }
@@ -127,13 +123,6 @@ public class Post implements Serializable {
         this.fechaHoraEdicion = fechaHoraEdicion;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     public Serie getSerieId() {
         return serieId;

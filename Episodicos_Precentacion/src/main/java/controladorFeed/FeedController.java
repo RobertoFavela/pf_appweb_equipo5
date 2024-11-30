@@ -1,7 +1,14 @@
 package controladorFeed;
 
+import Beans.AncladoBean;
+import Beans.ComentarioBean;
+import Beans.ComunBean;
 import Beans.NormalBean;
 import Beans.SerieBean;
+import EntidadesSQL.Anclado;
+import EntidadesSQL.Comentario;
+import EntidadesSQL.Comun;
+import EntidadesSQL.Post;
 import EntidadesSQL.Serie;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +27,10 @@ import java.util.List;
  */
 public class FeedController extends HttpServlet {
 
-     private final SerieBean serieBean;
+     private SerieBean serieBean;
+     private AncladoBean ancladoBean;
+     private ComentarioBean comentarioBean;
+     private ComunBean comunBean;
 
      public FeedController() {
           serieBean = SerieBean.getInstancia();
@@ -37,6 +48,41 @@ public class FeedController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+
+          ancladoBean = AncladoBean.getInstancia();
+          comentarioBean = ComentarioBean.getInstancia();
+          comunBean = ComunBean.getInstancia();
+          serieBean = SerieBean.getInstancia();
+
+          List<Anclado> postsA = ancladoBean.buscarTodos();
+
+          for (Anclado post : postsA) {
+               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
+               post.setComentarioCollection(comentarios);
+          }
+
+          List<Comun> postsC = comunBean.buscarTodos();
+
+          for (Comun post : postsC) {
+               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
+               post.setComentarioCollection(comentarios);
+
+               for (Comentario comentario : comentarios) {
+                    List<Comentario> comentariosDeComentarios = comentarioBean.buscarPorComentarioID(comentario.getId());
+                    comentario.setComentarioCollection(comentariosDeComentarios);
+               }
+          }
+
+          List<Post> posts = new ArrayList<>();
+
+          posts.addAll(postsA);
+          posts.addAll(postsC);
+
+          request.setAttribute("posts", posts != null ? posts : new ArrayList<>());
+
+          List<Serie> series = serieBean.buscarTodas();
+
+          request.setAttribute("series", series != null ? series : new ArrayList<>());
 
           this.getServletContext().getRequestDispatcher("/FeedView.jsp").forward(request, response);
 

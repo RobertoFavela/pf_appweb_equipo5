@@ -97,7 +97,7 @@ public class GestionSerieController extends HttpServlet {
                 break;
         }
         
-        request.getRequestDispatcher(url).forward(request, response);
+        response.sendRedirect("FeedController");
 
     }
 
