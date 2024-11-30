@@ -26,6 +26,7 @@ public class AdminDAO implements IAdminDAO {
           entityManager.getTransaction().begin();
           entityManager.persist(admin);
           entityManager.getTransaction().commit();
+          System.out.println("");
      }
 
      @Override
