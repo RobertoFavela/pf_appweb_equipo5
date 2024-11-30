@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 
     <head>
@@ -73,7 +73,7 @@
 
             <section class="Admin">
                 <c:if test="${esAdmin}">
-                    <form action="SeriesController" method="post">
+                    <form action="" method="post">
                         <button class="btn" type="submit">
                             <h2>Gestor de series</h2>
                         </button>

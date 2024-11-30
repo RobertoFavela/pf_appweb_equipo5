@@ -45,7 +45,7 @@ public class RegisterController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          request.getRequestDispatcher("/LogInView.jsp").forward(request, response);
+          processRequest(request, response);
      }
 
      /**
@@ -68,12 +68,11 @@ public class RegisterController extends HttpServlet {
                String contra = request.getParameter("txtContra");
 
                try {
-                    
                     Normal normal = new Normal(nombre, correo, contra);
                     NormalBean normalBean = NormalBean.getInstancia();
                     normalBean.guardar(normal);
                     
-//                    Lineas para registrar un admin, pero esto no sera posible en el programa
+                    // Para guardar admin, pero no se usara, ya que esto solo podra ser manual desde la base de datos
 //                    Admin admin = new Admin(nombre, correo, contra);
 //                    AdminBean adminBean = AdminBean.getInstancia();
 //                    adminBean.guardar(admin);
