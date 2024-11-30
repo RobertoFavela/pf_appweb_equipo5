@@ -42,7 +42,7 @@
                     </form>
 
                     <!-- Favoritas -->
-                    <form action="#" method="post">
+                    <form action="SeriesController" method="get">
                         <input type="hidden" name="rad" value="favoritas" class="radio">
                         <button type="submit" title="Favoritas" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -82,6 +82,10 @@
                 <label for="nombreCompleto">Nombre Completo:</label>
                 <input type="text" id="nombreCompleto" name="nombreCompleto"  value="${nombreCompleto}" required>
 
+                <!-- Descripcion  -->
+                <label for="descripcion">Descripcion</label>
+                <input type="text" id="descripcion" name="descripcion"  value="${descripcion}" required>
+                
                 <!-- Tel�fono -->
                 <label for="telefono">Tel�fono:</label>
                 <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}"  value="${telefono}" required>

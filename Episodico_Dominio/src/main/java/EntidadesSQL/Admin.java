@@ -28,8 +28,8 @@ public class Admin extends Usuario {
         super(nombreCompleto, correo, contrasenia);
     }
 
-    public Admin(String nombreCompleto, String correo, String contrasenia, String telefono, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
-        super(nombreCompleto, correo, contrasenia, telefono, ciudad, fechaNacimiento, genero, municipioId);
+    public Admin(String nombreCompleto, String descripcion, String correo, String contrasenia, String telefono, String ciudad, Date fechaNacimiento, String genero, Municipio municipioId) {
+        super(nombreCompleto, descripcion, correo, contrasenia, telefono, ciudad, fechaNacimiento, genero, municipioId);
     }
 
 }

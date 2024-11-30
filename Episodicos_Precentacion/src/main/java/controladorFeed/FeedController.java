@@ -84,7 +84,7 @@ public class FeedController extends HttpServlet {
 
           request.setAttribute("series", series != null ? series : new ArrayList<>());
 
-          this.getServletContext().getRequestDispatcher("/FeedView.jsp").forward(request, response);
+          response.sendRedirect("FeedController");
 
      }
 
