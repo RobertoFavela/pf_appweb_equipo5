@@ -4,9 +4,7 @@
  */
 package controladorRegistro;
 
-import Beans.AdminBean;
 import Beans.NormalBean;
-import EntidadesSQL.Admin;
 import EntidadesSQL.Normal;
 import EntidadesSQL.Usuario;
 import java.io.IOException;
@@ -21,7 +19,21 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author tacot
  */
+@WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
+
+     /**
+      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+      * methods.
+      *
+      * @param request servlet request
+      * @param response servlet response
+      * @throws ServletException if a servlet-specific error occurs
+      * @throws IOException if an I/O error occurs
+      */
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
+     }
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
@@ -35,7 +47,7 @@ public class RegisterController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          
+          processRequest(request, response);
      }
 
      /**

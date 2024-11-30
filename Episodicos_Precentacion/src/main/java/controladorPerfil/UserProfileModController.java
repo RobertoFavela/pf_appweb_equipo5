@@ -4,9 +4,7 @@
  */
 package controladorPerfil;
 
-import Beans.AdminBean;
 import Beans.NormalBean;
-import EntidadesSQL.Admin;
 import EntidadesSQL.Normal;
 import EntidadesSQL.Usuario;
 import java.io.IOException;
@@ -24,11 +22,9 @@ import jakarta.servlet.http.HttpSession;
 public class UserProfileModController extends HttpServlet {
 
      private NormalBean normalBean;
-     private AdminBean adminBean;
 
      public UserProfileModController() {
           normalBean = NormalBean.getInstancia();
-          adminBean = AdminBean.getInstancia();
      }
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -44,25 +40,16 @@ public class UserProfileModController extends HttpServlet {
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
 
-          Normal normalActual = normalBean.getUsuarioEnSesion();
-          Admin adminActual = adminBean.getAdminEnSesion();
+          Normal usuarioActual = normalBean.getUsuarioEnSesion();
 
-          if (normalActual != null) {
-               request.setAttribute("nombreCompleto", normalActual.getNombreCompleto());
-               request.setAttribute("telefono", normalActual.getTelefono());
-               request.setAttribute("ciudad", normalActual.getCiudad());
-               request.setAttribute("genero", normalActual.getGenero());
-               request.setAttribute("fechaNacimiento", normalActual.getFechaNacimiento());
-               request.setAttribute("municipioId", normalActual.getMunicipioId());
-          } else if (adminActual != null) {
-               request.setAttribute("nombreCompleto", adminActual.getNombreCompleto());
-               request.setAttribute("telefono", adminActual.getTelefono());
-               request.setAttribute("ciudad", adminActual.getCiudad());
-               request.setAttribute("genero", adminActual.getGenero());
-               request.setAttribute("fechaNacimiento", adminActual.getFechaNacimiento());
-               request.setAttribute("municipioId", adminActual.getMunicipioId());
+          if (usuarioActual != null) {
+               request.setAttribute("nombreCompleto", usuarioActual.getNombreCompleto());
+               request.setAttribute("telefono", usuarioActual.getTelefono());
+               request.setAttribute("ciudad", usuarioActual.getCiudad());
+               request.setAttribute("genero", usuarioActual.getGenero());
+               request.setAttribute("fechaNacimiento", usuarioActual.getFechaNacimiento());
+               request.setAttribute("municipioId", usuarioActual.getMunicipioId());
           }
-          
           request.getRequestDispatcher("/UserProfileModView.jsp").forward(request, response);
      }
 

@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-    <servlet-mapping>
-        <servlet-name>jsp</servlet-name>
-        <url-pattern>/jsp</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SeriesController</servlet-name>
-        <url-pattern>/SeriesController</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <servlet>
         <servlet-name>LogInController</servlet-name>
         <servlet-class>controladoInicioSesion.LogInController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>jsp</servlet-name>
-        <servlet-class>SeriesController.jsp</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SeriesController</servlet-name>
-        <servlet-class>controladorGestionSerie.SeriesController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogInController</servlet-name>
         <url-pattern>/LogInController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>FeedController</servlet-name>
         <servlet-class>controladorFeed.FeedController</servlet-class>
@@ -37,6 +23,7 @@
         <servlet-name>FeedController</servlet-name>
         <url-pattern>/FeedController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>GestionSerieController</servlet-name>
         <servlet-class>controladorGestionSerie.GestionSerieController</servlet-class>
@@ -45,6 +32,7 @@
         <servlet-name>GestionSerieController</servlet-name>
         <url-pattern>/GestionSerieController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>UserProfileController</servlet-name>
         <servlet-class>controladorPerfil.UserProfileController</servlet-class>
@@ -53,6 +41,7 @@
         <servlet-name>UserProfileController</servlet-name>
         <url-pattern>/UserProfileController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>UserProfileModController</servlet-name>
         <servlet-class>controladorPerfil.UserProfileModController</servlet-class>
@@ -61,6 +50,7 @@
         <servlet-name>UserProfileModController</servlet-name>
         <url-pattern>/UserProfileModController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>controladorRegistro.RegisterController</servlet-class>
@@ -69,4 +59,5 @@
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/RegisterController</url-pattern>
     </servlet-mapping>
+    
 </web-app>

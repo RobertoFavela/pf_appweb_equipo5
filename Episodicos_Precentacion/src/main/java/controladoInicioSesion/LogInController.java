@@ -39,7 +39,7 @@ public class LogInController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-           request.getRequestDispatcher("/LogInView.jsp").forward(request, response);
+          processRequest(request, response);
      }
 
      @Override
@@ -52,17 +52,23 @@ public class LogInController extends HttpServlet {
                String correo = request.getParameter("txtUsuario");
                String contrasena = request.getParameter("txtContrasena");
 
-               Admin adminEnSesion = AdminBean.getInstancia().buscarPorCredenciales(correo, contrasena);
-               Normal normalEnSesion = NormalBean.getInstancia().buscarPorCredenciales(correo, contrasena);
+               AdminBean adminBean = AdminBean.getInstancia();
+               NormalBean normalBean = NormalBean.getInstancia();
 
-               if (adminEnSesion != null) {
-                    request.getSession().setAttribute("usuario", adminEnSesion);
-                    adminBean.setAdminEnSesion(adminEnSesion);
-                    System.out.println(adminBean.getAdminEnSesion());
+               Admin admin = adminBean.buscarPorCredenciales(correo, contrasena);
+               Normal normal = normalBean.buscarPorCredenciales(correo, contrasena);
+
+               Normal usuario = normalBean.buscarPorCredenciales(correo, contrasena);
+
+               if (admin != null) {
+                    request.getSession().setAttribute("usuario", admin);
+                    //falta agregar un admin en sesion
                     response.sendRedirect("FeedController");
-               } else if (normalEnSesion != null) {
-                    request.getSession().setAttribute("usuario", normalEnSesion);
-                    normalBean.setUsuarioEnSesion(normalEnSesion);
+               } else if (normal != null) {
+                    request.getSession().setAttribute("usuario", normal);
+                    normalBean.setUsuarioEnSesion(usuario);
+                    System.out.println("Usuario en sesión: " + normalBean.getUsuarioEnSesion());
+//                    response.sendRedirect("FeedView.jsp");
                     response.sendRedirect("FeedController");
                } else {
                     request.setAttribute("error", "Correo o contraseña incorrectos.");
