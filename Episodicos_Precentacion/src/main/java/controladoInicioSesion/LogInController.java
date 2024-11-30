@@ -59,7 +59,7 @@ public class LogInController extends HttpServlet {
                Normal normal = normalBean.buscarPorCredenciales(correo, contrasena);
 
                Normal usuario = normalBean.buscarPorCredenciales(correo, contrasena);
-               
+
                if (admin != null) {
                     request.getSession().setAttribute("usuario", admin);
                     //falta agregar un admin en sesion
@@ -68,7 +68,8 @@ public class LogInController extends HttpServlet {
                     request.getSession().setAttribute("usuario", normal);
                     normalBean.setUsuarioEnSesion(usuario);
                     System.out.println("Usuario en sesión: " + normalBean.getUsuarioEnSesion());
-                    response.sendRedirect("FeedView.jsp");
+//                    response.sendRedirect("FeedView.jsp");
+                    response.sendRedirect("FeedController");
                } else {
                     request.setAttribute("error", "Correo o contraseña incorrectos.");
                     this.getServletContext().getRequestDispatcher(url).forward(request, response);

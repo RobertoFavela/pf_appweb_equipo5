@@ -5,6 +5,7 @@
             30
         </session-timeout>
     </session-config>
+    
     <servlet>
         <servlet-name>LogInController</servlet-name>
         <servlet-class>controladoInicioSesion.LogInController</servlet-class>
@@ -13,6 +14,7 @@
         <servlet-name>LogInController</servlet-name>
         <url-pattern>/LogInController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>FeedController</servlet-name>
         <servlet-class>controladorFeed.FeedController</servlet-class>
@@ -21,60 +23,41 @@
         <servlet-name>FeedController</servlet-name>
         <url-pattern>/FeedController</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>InicioRController</servlet-name>
-        <servlet-class>controladorFeed.InicioRController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>InicioRController</servlet-name>
-        <url-pattern>/InicioRController</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>UserRController</servlet-name>
-        <servlet-class>controladorFeed.UserRController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UserRController</servlet-name>
-        <url-pattern>/UserRController</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>gestionPerfilController</servlet-name>
-        <servlet-class>controladorGestionPerfil.gestionPerfilController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>gestionPerfilController</servlet-name>
-        <url-pattern>/gestionPerfilController</url-pattern>
-    </servlet-mapping>
+    
     <servlet>
         <servlet-name>GestionSerieController</servlet-name>
         <servlet-class>controladorGestionSerie.GestionSerieController</servlet-class>
-        <servlet>
-            <servlet-name>gestionPerfilController</servlet-name>
-            <servlet-class>controladorGestionPerfil.gestionPerfilController</servlet-class>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>gestionPerfilController</servlet-name>
-            <url-pattern>/gestionPerfilController</url-pattern>
-        </servlet-mapping>
     </servlet>
     <servlet-mapping>
         <servlet-name>GestionSerieController</servlet-name>
         <url-pattern>/GestionSerieController</url-pattern>
-        <servlet>
-            <servlet-name>gestionPerfilController</servlet-name>
-            <servlet-class>controladorGestionPerfil.gestionPerfilController</servlet-class>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>gestionPerfilController</servlet-name>
-            <url-pattern>/gestionPerfilController</url-pattern>
-        </servlet-mapping>
     </servlet-mapping>
+    
     <servlet>
-        <servlet-name>controladorPerfil</servlet-name>
-        <servlet-class>controladorGestionPerfil.gestionPerfilRController</servlet-class>
+        <servlet-name>UserProfileController</servlet-name>
+        <servlet-class>controladorPerfil.UserProfileController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>controladorPerfil</servlet-name>
-        <url-pattern>/controladorPerfil</url-pattern>
+        <servlet-name>UserProfileController</servlet-name>
+        <url-pattern>/UserProfileController</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UserProfileModController</servlet-name>
+        <servlet-class>controladorPerfil.UserProfileModController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserProfileModController</servlet-name>
+        <url-pattern>/UserProfileModController</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>controladorRegistro.RegisterController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/RegisterController</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

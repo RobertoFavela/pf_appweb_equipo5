@@ -16,7 +16,7 @@
                 <header>
                     <nav class="nav">
                         <!-- Inicio -->
-                        <form action="InicioRController" method="post">
+                        <form action="FeedController" method="get">
                             <input type="hidden" name="Inicio" value="Inicio" class="radio checked">
                             <button type="submit" title="Inicio" class="ul li">
                                 <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -59,7 +59,7 @@
                         </form>
 
                         <!-- Perfil -->
-                        <form action="UserRController" method="post">
+                        <form action="UserProfileController" method="get">
                             <input type="hidden" name="perfil" value="perfil" class="radio">
                             <button type="submit" title="perfil" class="ul li">
                                 <svg viewBox="0 0 24 24" fill="none" height="24" width="24"

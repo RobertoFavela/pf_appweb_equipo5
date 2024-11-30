@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controladorGestionPerfil;
+package controladorPerfil;
 
 import Beans.NormalBean;
 import EntidadesSQL.Normal;
@@ -19,13 +19,13 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author favel
  */
-public class gestionPerfilController extends HttpServlet {
+public class UserProfileModController extends HttpServlet {
 
      private NormalBean normalBean;
      String telefono;
      String nombreCompleto;
 
-     public gestionPerfilController() {
+     public UserProfileModController() {
           normalBean = NormalBean.getInstancia();
      }
 
@@ -41,6 +41,7 @@ public class gestionPerfilController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+          request.getRequestDispatcher("/UserProfileModView.jsp").forward(request, response);
           Normal usuarioActual = normalBean.getUsuarioEnSesion();
           System.out.println("Usuario en sesión: " + usuarioActual);
 
@@ -53,7 +54,6 @@ public class gestionPerfilController extends HttpServlet {
                request.setAttribute("fechaNacimiento", usuarioActual.getFechaNacimiento());
                request.setAttribute("municipioId", usuarioActual.getMunicipioId());
           }
-          request.getRequestDispatcher("/GestionPerfil.jsp").forward(request, response);
      }
 
      /**

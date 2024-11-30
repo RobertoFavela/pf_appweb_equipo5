@@ -1,5 +1,6 @@
 package controladorFeed;
 
+import Beans.NormalBean;
 import Beans.SerieBean;
 import EntidadesSQL.Serie;
 import java.io.IOException;
@@ -18,93 +19,74 @@ import java.util.List;
  */
 public class FeedController extends HttpServlet {
 
-      private final SerieBean serieBean;
+     private final SerieBean serieBean;
 
-      public FeedController() {
-            serieBean = SerieBean.getInstancia();
-      }
+     public FeedController() {
+          serieBean = SerieBean.getInstancia();
+     }
 
-      /**
-       * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-       * methods.
-       *
-       * @param request servlet request
-       * @param response servlet response
-       * @throws ServletException if a servlet-specific error occurs
-       * @throws IOException if an I/O error occurs
-       */
-      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-              throws ServletException, IOException {
-            processRequest(request, response);
-      }
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+     /**
+      * Handles the HTTP <code>GET</code> method.
+      *
+      * @param request servlet request
+      * @param response servlet response
+      * @throws ServletException if a servlet-specific error occurs
+      * @throws IOException if an I/O error occurs
+      */
+     @Override
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
 
-      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-      /**
-       * Handles the HTTP <code>GET</code> method.
-       *
-       * @param request servlet request
-       * @param response servlet response
-       * @throws ServletException if a servlet-specific error occurs
-       * @throws IOException if an I/O error occurs
-       */
-      @Override
-      protected void doGet(HttpServletRequest request, HttpServletResponse response)
-              throws ServletException, IOException {
-            processRequest(request, response);
+          this.getServletContext().getRequestDispatcher("/FeedView.jsp").forward(request, response);
 
-        List<Serie> seriesRecientes = serieBean.buscarTodas();
-        
-        request.setAttribute("seriesRecientes", seriesRecientes);
+     }
 
-        this.getServletContext().getRequestDispatcher("/FeedView.jsp").forward(request, response);
+     /**
+      * Handles the HTTP <code>POST</code> method.
+      *
+      * @param request servlet request
+      * @param response servlet response
+      * @throws ServletException if a servlet-specific error occurs
+      * @throws IOException if an I/O error occurs
+      */
+     @Override
+     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
+          String selectedId = request.getParameter("rad");
 
-      }
+          if (selectedId == null) {
+               response.getWriter().write("No se seleccionó ninguna opción.");
+               return;
+          }
 
-      /**
-       * Handles the HTTP <code>POST</code> method.
-       *
-       * @param request servlet request
-       * @param response servlet response
-       * @throws ServletException if a servlet-specific error occurs
-       * @throws IOException if an I/O error occurs
-       */
-      @Override
-      protected void doPost(HttpServletRequest request, HttpServletResponse response)
-              throws ServletException, IOException {
-            String selectedId = request.getParameter("rad");
+          switch (selectedId) {
+               case "Inicio":
+                    response.sendRedirect("FeedController");
+                    break;
+               case "buscar":
+                    response.sendRedirect("BuscarView.jsp");
+                    break;
+               case "favoritas":
+                    response.sendRedirect("FavoritasView.jsp");
+                    break;
+               case "perfil":
+                    response.sendRedirect("UserProfileController");
+                    break;
+               default:
+                    response.getWriter().write("Opción seleccionada no es válida.");
+                    break;
+          }
+     }
 
-            if (selectedId == null) {
-                  response.getWriter().write("No se seleccionó ninguna opción.");
-                  return;
-            }
-
-            switch (selectedId) {
-                  case "Inicio":
-                        response.sendRedirect("FeedView.jsp");
-                        break;
-                  case "buscar":
-                        response.sendRedirect("BuscarView.jsp");
-                        break;
-                  case "favoritas":
-                        response.sendRedirect("FavoritasView.jsp");
-                        break;
-                  case "perfil":
-                        response.sendRedirect("UserProfileView.jsp");
-                        break;
-                  default:
-                        response.getWriter().write("Opción seleccionada no es válida.");
-                        break;
-            }
-      }
-
-      /**
-       * Returns a short description of the servlet.
-       *
-       * @return a String containing servlet description
-       */
-      @Override
-      public String getServletInfo() {
-            return "Short description";
-      }// </editor-fold>
+     /**
+      * Returns a short description of the servlet.
+      *
+      * @return a String containing servlet description
+      */
+     @Override
+     public String getServletInfo() {
+          return "Short description";
+     }// </editor-fold>
 
 }
