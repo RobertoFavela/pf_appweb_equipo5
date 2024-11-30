@@ -6,11 +6,8 @@ package controladorRegistro;
 
 import Beans.NormalBean;
 import EntidadesSQL.Normal;
-import EntidadesSQL.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +16,6 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author tacot
  */
-@WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 
      /**
