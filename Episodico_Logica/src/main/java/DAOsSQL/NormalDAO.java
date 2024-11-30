@@ -24,19 +24,16 @@ public class NormalDAO implements INormalDAO {
 
      @Override
      public void guardar(Normal normal) {
-          entityManager.getTransaction().begin();
-          Usuario usuario = new Usuario(
-                  normal.getNombreCompleto(),
-                  normal.getCorreo(),
-                  normal.getContrasenia(),
-                  normal.getTelefono(),
-                  normal.getCiudad(),
-                  normal.getFechaNacimiento(),
-                  normal.getGenero(),
-                  normal.getMunicipioId()
-          );
-          entityManager.persist(usuario);
-          entityManager.getTransaction().commit();
+          try {
+               entityManager.getTransaction().begin();
+               entityManager.persist(normal); 
+               entityManager.getTransaction().commit();
+          } catch (Exception e) {
+               if (entityManager.getTransaction().isActive()) {
+                    entityManager.getTransaction().rollback();
+               }
+               throw new RuntimeException("Error al guardar el usuario: " + e.getMessage());
+          }
      }
 
      @Override

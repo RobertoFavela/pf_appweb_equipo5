@@ -62,26 +62,24 @@ public class RegisterController extends HttpServlet {
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
           String url = "/LogInView.jsp";
-          
-          NormalBean normalBean = NormalBean.getInstancia();
-          String accion = request.getParameter("RegistrarUsuario");
+          String accion = request.getParameter("accion"); 
 
-          
           if ("RegistrarUsuario".equalsIgnoreCase(accion)) {
                String correo = request.getParameter("txtCorreo");
                String nombre = request.getParameter("txtUsuario");
                String contra = request.getParameter("txtContra");
 
                try {
-                    Normal normal = new Normal(nombre, correo, contra);
+                    Normal normal = new Normal(nombre, correo, contra); 
+                    NormalBean normalBean = NormalBean.getInstancia();
                     normalBean.guardar(normal);
+
                     request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
-                    url = "/InicioSesion.jsp";
+                    url = "/LogInView.jsp";
                } catch (Exception e) {
                     request.setAttribute("errorMensaje", "Error al registrar usuario: " + e.getMessage());
                }
           }
-
           this.getServletContext().getRequestDispatcher(url).forward(request, response);
      }
 

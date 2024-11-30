@@ -37,7 +37,7 @@
                 <!-- Formulario de registro -->
                 <form id="formulario-registro" class="formulario" action="RegisterController" method="POST">
                     <h2>Registrarse</h2>
-                    <input type="hidden" name="RegistrarUsuario" value="Registrarse">
+                    <input type="hidden" name="accion" value="RegistrarUsuario">
                     <label for="email-registro">E-mail:</label>
                     <input type="email" name="txtCorreo" id="email-registro" placeholder="Correo electrónico" required>
                     <label for="nombre-registro">Nombre de usuario:</label>

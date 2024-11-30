@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -15,7 +17,7 @@ import javax.persistence.Table;
  * @author tacot
  */
 @Entity
-@Table(name = "Normal")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorValue("Normal")
 public class Normal extends Usuario {
 
