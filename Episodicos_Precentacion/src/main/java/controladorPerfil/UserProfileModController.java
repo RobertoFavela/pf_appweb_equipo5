@@ -24,9 +24,11 @@ import jakarta.servlet.http.HttpSession;
 public class UserProfileModController extends HttpServlet {
 
      private NormalBean normalBean;
+     private AdminBean adminBean;
 
      public UserProfileModController() {
-
+          normalBean = NormalBean.getInstancia();
+          adminBean = AdminBean.getInstancia();
      }
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -41,8 +43,9 @@ public class UserProfileModController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          normalBean = NormalBean.getInstancia();
+
           Normal normalActual = normalBean.getUsuarioEnSesion();
+          Admin adminActual = adminBean.getAdminEnSesion();
 
           if (normalActual != null) {
                request.setAttribute("nombreCompleto", normalActual.getNombreCompleto());
@@ -52,8 +55,16 @@ public class UserProfileModController extends HttpServlet {
                request.setAttribute("genero", normalActual.getGenero());
                request.setAttribute("fechaNacimiento", normalActual.getFechaNacimiento());
                request.setAttribute("municipioId", normalActual.getMunicipioId());
+          } else if (adminActual != null) {
+               request.setAttribute("nombreCompleto", adminActual.getNombreCompleto());
+               request.setAttribute("descripcion", adminActual.getDescripcion());
+               request.setAttribute("telefono", adminActual.getTelefono());
+               request.setAttribute("ciudad", adminActual.getCiudad());
+               request.setAttribute("genero", adminActual.getGenero());
+               request.setAttribute("fechaNacimiento", adminActual.getFechaNacimiento());
+               request.setAttribute("municipioId", adminActual.getMunicipioId());
           }
-          response.sendRedirect("/UserProfileModView.jsp");
+         response.sendRedirect("/UserProfileModView.jsp");
      }
 
      /**
@@ -80,6 +91,7 @@ public class UserProfileModController extends HttpServlet {
                String fechaNacimiento = request.getParameter("fechaNacimiento");
 
                Normal normalActual = normalBean.getUsuarioEnSesion();
+               Admin adminActual = adminBean.getAdminEnSesion();
 
                if (normalActual != null) {
                     normalActual.setNombreCompleto(nombreCompleto);
@@ -91,8 +103,18 @@ public class UserProfileModController extends HttpServlet {
 
                     normalBean.actualizar(normalActual);
                     normalBean.setUsuarioEnSesion(normalActual);
+               } else if (adminActual != null) {
+                    adminActual.setNombreCompleto(nombreCompleto);
+                    adminActual.setDescripcion(descripcion);
+                    adminActual.setTelefono(telefono);
+                    adminActual.setCiudad(ciudad);
+                    adminActual.setGenero(genero);
+                    adminActual.setFechaNacimiento(java.sql.Date.valueOf(fechaNacimiento));
+
+                    adminBean.actualizar(adminActual);
+                    adminBean.setAdminEnSesion(adminActual);
                }
-               response.sendRedirect("UserProfileController");
+               response.sendRedirect("FeedController");
           }
      }
 

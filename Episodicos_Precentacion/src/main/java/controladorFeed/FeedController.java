@@ -36,8 +36,6 @@ public class FeedController extends HttpServlet {
           serieBean = SerieBean.getInstancia();
      }
 
-     
-     
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
       * Handles the HTTP <code>GET</code> method.
@@ -50,41 +48,41 @@ public class FeedController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-//
-//          ancladoBean = AncladoBean.getInstancia();
-//          comentarioBean = ComentarioBean.getInstancia();
-//          comunBean = ComunBean.getInstancia();
-//          serieBean = SerieBean.getInstancia();
-//
-//          List<Anclado> postsA = ancladoBean.buscarTodos();
-//
-//          for (Anclado post : postsA) {
-//               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
-//               post.setComentarioCollection(comentarios);
-//          }
-//
-//          List<Comun> postsC = comunBean.buscarTodos();
-//
-//          for (Comun post : postsC) {
-//               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
-//               post.setComentarioCollection(comentarios);
-//
-//               for (Comentario comentario : comentarios) {
-//                    List<Comentario> comentariosDeComentarios = comentarioBean.buscarPorComentarioID(comentario.getId());
-//                    comentario.setComentarioCollection(comentariosDeComentarios);
-//               }
-//          }
-//
-//          List<Post> posts = new ArrayList<>();
-//
-//          posts.addAll(postsA);
-//          posts.addAll(postsC);
-//
-//          request.setAttribute("posts", posts != null ? posts : new ArrayList<>());
-//
-//          List<Serie> series = serieBean.buscarTodas();
-//
-//          request.setAttribute("series", series != null ? series : new ArrayList<>());
+
+          ancladoBean = AncladoBean.getInstancia();
+          comentarioBean = ComentarioBean.getInstancia();
+          comunBean = ComunBean.getInstancia();
+          serieBean = SerieBean.getInstancia();
+
+          List<Anclado> postsA = ancladoBean.buscarTodos();
+
+          for (Anclado post : postsA) {
+               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
+               post.setComentarioCollection(comentarios);
+          }
+
+          List<Comun> postsC = comunBean.buscarTodos();
+
+          for (Comun post : postsC) {
+               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
+               post.setComentarioCollection(comentarios);
+
+               for (Comentario comentario : comentarios) {
+                    List<Comentario> comentariosDeComentarios = comentarioBean.buscarPorComentarioID(comentario.getId());
+                    comentario.setComentarioCollection(comentariosDeComentarios);
+               }
+          }
+
+          List<Post> posts = new ArrayList<>();
+
+          posts.addAll(postsA);
+          posts.addAll(postsC);
+
+          request.setAttribute("posts", posts != null ? posts : new ArrayList<>());
+
+          List<Serie> series = serieBean.buscarTodas();
+
+          request.setAttribute("series", series != null ? series : new ArrayList<>());
 
           response.sendRedirect("/FeedView.jsp");
 

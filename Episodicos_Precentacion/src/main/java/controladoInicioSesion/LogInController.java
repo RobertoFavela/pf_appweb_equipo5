@@ -39,7 +39,7 @@ public class LogInController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
+        String url = "/LogInView.jsp";
         String accion = request.getParameter("AccionIniciarSesion");
 
         if (accion != null && accion.equalsIgnoreCase("IniciarSesion")) {
