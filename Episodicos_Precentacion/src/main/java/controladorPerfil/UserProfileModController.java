@@ -53,7 +53,7 @@ public class UserProfileModController extends HttpServlet {
                request.setAttribute("fechaNacimiento", normalActual.getFechaNacimiento());
                request.setAttribute("municipioId", normalActual.getMunicipioId());
           }
-          response.sendRedirect("/UserProfileModView.jsp");
+          request.getRequestDispatcher("/UserProfileModView.jsp").forward(request, response);
      }
 
      /**

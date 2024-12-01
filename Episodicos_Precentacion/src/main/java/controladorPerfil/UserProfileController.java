@@ -53,7 +53,7 @@ public class UserProfileController extends HttpServlet {
                request.setAttribute("descripcion", adminActual.getDescripcion());
           }
           
-          this.getServletContext().getRequestDispatcher("/UserProfileView.jsp").forward(request, response);
+          request.getRequestDispatcher("/UserProfileView.jsp").forward(request, response);
      }
 
      /**

@@ -73,7 +73,7 @@
 
             <section class="Admin">
                 <c:if test="${esAdmin}">
-                    <form action="" method="post">
+                    <form action="GestionSerieController" method="get">
                         <button class="btn" type="submit">
                             <h2>Gestor de series</h2>
                         </button>

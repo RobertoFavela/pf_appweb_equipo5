@@ -36,7 +36,7 @@ public class GestionSerieController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.sendRedirect("/GestionSerie.jsp");
+         request.getRequestDispatcher("/GestionSerie.jsp").forward(request, response);
     }
 
     @Override
