@@ -1,6 +1,8 @@
 <%-- Document : UserProfileView Created on : 28 oct 2024, 11:58:31 p.m. Author : favel --%>
 
     <%@page contentType="text/html" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
         <!DOCTYPE html>
         <html lang="en">
 
@@ -31,7 +33,7 @@
                         </form>
 
                         <!-- Buscar -->
-                        <form action="#" method="post">
+                        <form action="SeriesController" method="get">
                             <input type="hidden" name="rad" value="buscar " class="radio">
                             <button type="submit" title="Buscar" class="ul li">
                                 <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -44,7 +46,7 @@
                         </form>
 
                         <!-- Favoritas -->
-                        <form action="SeriesController" method="get">
+                        <form action="" method="get">
                             <input type="hidden" name="rad" value="favoritas" class="radio">
                             <button type="submit" title="Favoritas" class="ul li">
                                 <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -83,24 +85,10 @@
                         </button>
                     </form>
                     <div class="NombrePerfil">
-                        <h2>Perfil de persona</h2>
+                        <h2>${nombreCompleto}</h2>
                     </div>
                     <div class="descripcion">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum optio dignissimos provident
-                            ad
-                            repellendus, repellat odit quis, id, labore eos nostrum. Dolorum adipisci nostrum et quia
-                            suscipit
-                            quidem optio assumenda fugit illo praesentium, commodi aut repudiandae nemo voluptatibus,
-                            est
-                            maxime! Cum dolores illum amet in quae, enim tenetur dignissimos quidem possimus laudantium
-                            aliquam
-                            voluptates consequatur ab blanditiis porro quibusdam. Accusamus est similique repellat fugit
-                            qui
-                            consequatur nam natus enim fugiat. Laudantium, distinctio porro, possimus cumque quibusdam
-                            sed et
-                            similique itaque atque quidem saepe. Dicta esse officia molestiae. Vero nostrum illum,
-                            laboriosam
-                            deserunt est doloremque nulla ipsam sint maiores, tenetur voluptates?
+                        <p>${descripcion}
                         </p>
                     </div>
                 </div>

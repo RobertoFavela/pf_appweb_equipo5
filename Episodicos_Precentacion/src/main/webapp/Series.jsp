@@ -28,7 +28,7 @@
                     </form>
 
                     <!-- Buscar -->
-                    <form action="#" method="post">
+                    <form action="SeriesController" method="get">
                         <input type="hidden" name="rad" value="buscar " class="radio">
                         <button type="submit" title="Buscar" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
                     </form>
 
                     <!-- Series -->
-                    <form action="SeriesController" method="get">
+                    <form action="" method="get">
                         <input type="hidden" name="rad" value="Series" class="radio">
                         <button type="submit" title="Series" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg"
@@ -79,6 +79,15 @@
                         </button>
                     </form>
                 </c:if>
+            </section>
+
+
+            <!-- Barra de busqueda -->
+            <section class="busqueda">
+                <form action="SeriesController" method="post">
+                    <input type="text" name="titulo" placeholder="Buscar por titulo..." required>
+                    <button type="submit">Buscar</button>
+                </form>
             </section>
 
 

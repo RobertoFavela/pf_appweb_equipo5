@@ -5,6 +5,7 @@
 package controladorGestionSerie;
 
 import Beans.AdminBean;
+import Beans.SerieBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,8 +21,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SeriesController extends HttpServlet {
 
      private AdminBean adminBean;
+     private SerieBean serieBean;
 
      public SeriesController() {
+          serieBean = SerieBean.getInstancia();
           adminBean = AdminBean.getInstancia();
      }
 
