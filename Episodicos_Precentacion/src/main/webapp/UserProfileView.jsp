@@ -105,17 +105,22 @@
 
             <h2>Escribe una reseña</h2>
             <div class="nueva-resena">
-                <form class="form" id="form-reseña" enctype="application/x-www-form-urlencoded">
+                <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+
+
                     <div class="titulo">Título</div>
-                    <input type="text" placeholder="Título de la película" class="input" name="titulo" required>
+                    <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
 
                     <div class="titulo">Nombre de serie</div>
-                    <input type="text" placeholder="Nombre de la serie" class="input" name="nombre" required>
+                    <input type="text" name="txtNombre" id="nombre-reseña" placeholder="Nombre de la serie" class="input" required>
 
                     <div class="titulo">Reseña</div>
-                    <textarea type="text" placeholder="Tu reseña" name="contenido" required></textarea>
+                    <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+
                     <br>
+
                     <button type="submit" class="aceptar">Aceptar</button>
+
                 </form>
             </div>
 

@@ -33,26 +33,23 @@ public class ResenaController extends HttpServlet {
           comunBean = ComunBean.getInstancia();
      }
 
-     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-     /**
-      * Handles the HTTP <code>GET</code> method.
-      *
-      * @param request servlet request
-      * @param response servlet response
-      * @throws ServletException if a servlet-specific error occurs
-      * @throws IOException if an I/O error occurs
-      */
+     @Override
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
+          request.getRequestDispatcher("/UserProfileView.jsp").forward(request, response);
+     }
+     
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          try {
-               String titulo = request.getParameter("titulo");
-               String contenido = request.getParameter("contenido");
-               String nombreSerie = request.getParameter("nombre");
+          response.setContentType("application/json");
+          response.setCharacterEncoding("UTF-8");
 
-               System.out.println("Titulo: " + titulo); // Verifica que el título se recibe
-               System.out.println("Contenido: " + contenido); // Verifica que el contenido se recibe
-               System.out.println("Nombre Serie: " + nombreSerie); // Verifica que el nombre de la serie se recibe
+          String titulo = request.getParameter("txtTitulo");
+          String contenido = request.getParameter("txtContenido");
+          String nombreSerie = request.getParameter("txtNombre");
+
+          try {
 
                Comun comun = new Comun();
                comun.setTitulo(titulo);
@@ -63,10 +60,12 @@ public class ResenaController extends HttpServlet {
 
                comunBean.guardar(comun);
 
-               response.getWriter().write("Reseña guardada correctamente");
+               response.setStatus(HttpServletResponse.SC_OK);
+               response.getWriter().write("{\"message\": \"Post registrado exitosamente.\"}");
           } catch (Exception e) {
                e.printStackTrace();
-               response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al guardar la reseña.");
+               response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+               response.getWriter().write("{\"error\": \"Error al registrar el post: " + e.getMessage() + "\"}");
           }
      }
 

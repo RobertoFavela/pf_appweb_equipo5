@@ -38,12 +38,16 @@
                 <!-- Formulario de registro -->
                 <form id="formulario-registro" class="formulario" enctype="application/x-www-form-urlencoded">
                     <h2>Registrarse</h2>
+                    
                     <label for="email-registro">E-mail:</label>
                     <input type="email" name="txtCorreo" id="email-registro" placeholder="Correo electrónico" required>
+                    
                     <label for="nombre-registro">Nombre de usuario:</label>
                     <input type="text" name="txtUsuario" id="nombre-registro" placeholder="Nombre de usuario" required>
+                    
                     <label for="password-registro">Contraseña:</label>
                     <input type="password" name="txtContra" id="password-registro" placeholder="Contraseña" required>
+                    
                     <button type="submit">Aceptar</button>
                     <p id="textoEspecial">¿Ya tienes cuenta? <span id="mostrar-inicio">Inicia sesión</span></p>
                     
