@@ -50,7 +50,7 @@ CREATE TABLE Post (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fechaHoraCreacion DATETIME,
     titulo VARCHAR(255) NOT NULL,
-    contenido TEXT NOT NULL,
+    contenido TEXT,
     fechaHoraEdicion DATETIME,
     usuario_id INT,
     serie_id INT, 

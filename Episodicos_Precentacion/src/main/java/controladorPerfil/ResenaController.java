@@ -5,7 +5,10 @@
 package controladorPerfil;
 
 import Beans.ComunBean;
+import Beans.NormalBean;
 import EntidadesSQL.Comun;
+import EntidadesSQL.Serie;
+import EntidadesSQL.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -20,10 +24,12 @@ import java.time.LocalDateTime;
  */
 public class ResenaController extends HttpServlet {
 
+     private NormalBean normalBean;
      private ComunBean comunBean;
 
      @Override
      public void init() throws ServletException {
+          normalBean = NormalBean.getInstancia();
           comunBean = ComunBean.getInstancia();
      }
 
@@ -39,21 +45,29 @@ public class ResenaController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          // Obtener los datos del formulario
-          String titulo = request.getParameter("titulo");
-          String contenido = request.getParameter("contenido");
+          try {
+               String titulo = request.getParameter("titulo");
+               String contenido = request.getParameter("contenido");
+               String nombreSerie = request.getParameter("nombre");
 
-          // Crear la instancia de Comun
-          Comun comun = new Comun();
-          comun.setTitulo(titulo);
-          comun.setContenido(contenido);
+               System.out.println("Titulo: " + titulo); // Verifica que el título se recibe
+               System.out.println("Contenido: " + contenido); // Verifica que el contenido se recibe
+               System.out.println("Nombre Serie: " + nombreSerie); // Verifica que el nombre de la serie se recibe
 
-          // Guardar en la base de datos
-          ComunBean comunBean = ComunBean.getInstancia();
-          comunBean.guardar(comun);
+               Comun comun = new Comun();
+               comun.setTitulo(titulo);
+               comun.setContenido(contenido);
+               comun.setFechaHoraCreacion(new Date());
+               Usuario usuario = normalBean.getUsuarioEnSesion();
+               comun.setUsuarioId(usuario);
 
-          // Respuesta
-          response.getWriter().write("Reseña guardada correctamente");
+               comunBean.guardar(comun);
+
+               response.getWriter().write("Reseña guardada correctamente");
+          } catch (Exception e) {
+               e.printStackTrace();
+               response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al guardar la reseña.");
+          }
      }
 
      /**

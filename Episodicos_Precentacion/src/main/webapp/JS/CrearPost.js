@@ -1,6 +1,3 @@
-
-// este era una prueba, no srive para nada aun
-
 document.getElementById('form-reseña').addEventListener('submit', async function (event) {
     event.preventDefault();
 

@@ -35,43 +35,6 @@ public class RegisterController extends HttpServlet {
           request.getRequestDispatcher("/LogInView.jsp").forward(request, response);
      }
 
-     /**
-      * Handles the HTTP <code>POST</code> method.
-      *
-      * @param request servlet request
-      * @param response servlet response
-      * @throws ServletException if a servlet-specific error occurs
-      * @throws IOException if an I/O error occurs
-      */
-//     @Override
-//     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//             throws ServletException, IOException {
-//          String url = "/LogInView.jsp";
-//          String accion = request.getParameter("accion"); 
-//
-//          if ("RegistrarUsuario".equalsIgnoreCase(accion)) {
-//               String correo = request.getParameter("txtCorreo");
-//               String nombre = request.getParameter("txtUsuario");
-//               String contra = request.getParameter("txtContra");
-//
-//               try {
-//                    Normal normal = new Normal(nombre, correo, contra);
-//                    NormalBean normalBean = NormalBean.getInstancia();
-//                    normalBean.guardar(normal);
-//                    
-//                    // Para guardar admin, pero no se usara, ya que esto solo podra ser manual desde la base de datos
-////                    Admin admin = new Admin(nombre, correo, contra);
-////                    AdminBean adminBean = AdminBean.getInstancia();
-////                    adminBean.guardar(admin);
-//
-//                    request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
-//                    url = "/LogInView.jsp";
-//               } catch (Exception e) {
-//                    request.setAttribute("errorMensaje", "Error al registrar usuario: " + e.getMessage());
-//               }
-//          }
-//          this.getServletContext().getRequestDispatcher(url).forward(request, response);
-//     }
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
