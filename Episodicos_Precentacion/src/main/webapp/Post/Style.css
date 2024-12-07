@@ -5,6 +5,7 @@
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #8c00ff, #00c6ff);
+    text-align: center;
 }
 
 .Feed {
@@ -15,8 +16,8 @@ body {
     border-radius: 10px;
     height: auto;
 }
-/* barra de navegación*/
 
+/* barra de navegación*/
 header {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -58,7 +59,7 @@ nav {
 
 .ul {
     align-items: center;
-    background-image: linear-gradient(144deg, #00DDEB, #5B42F3 50%, #AF40FF );
+    background-image: linear-gradient(144deg, #00DDEB, #5B42F3 50%, #AF40FF);
     border: 0;
     border-radius: 5px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
@@ -136,14 +137,14 @@ button:hover {
     fill-rule: evenodd;
 }
 
+
 h2 {
     color: white;
     margin-bottom: 10px;
 }
 
 /* Secciones */
-.seccion,
-.resenas-recientes {
+.seccion {
 
     display: block;
     padding: 20px;
@@ -151,69 +152,17 @@ h2 {
     white-space: nowrap;
     box-shadow: inset 0 0 20px #ffffff42;
     overflow: hidden;
-}
-
-.seccion {
-
     display: flex;
-    overflow-x: auto; 
-    flex-wrap: nowrap;
-}
-
-.resenas-recientes {
-    display: flex;
-    flex-direction: column;
     overflow-y: auto;
-    height: 230px;
+    overflow-x: hidden;
 }
 
-/* scroll a un lado */
-.contenedor-series {
-    display: flex;
-    gap: 10px;
-}
-
-.serie {
-    background-color: #f0f0f0;
-    width: 100px;
-    height: 150px;
-    border-radius: 10px;
+form {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.serie .info {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 14px;
-    color: rgb(255, 255, 255);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-}
-
-.serie-img {
-
-    width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: filter 0.3s ease;
-}
-
-
-.serie:hover .serie-img {
-    filter: blur(3px);
-}
-
-.serie:hover .info {
-    opacity: 1;
+    width: 100%;
 }
 
 /* scroll hacia a un abajo*/
@@ -230,6 +179,7 @@ h2 {
     height: 400px;
     flex: 1;
     margin-top: 15px;
+    overflow: hidden;
 }
 
 
@@ -243,13 +193,15 @@ h2 {
     width: 100%;
 }
 
-.tipo, .nombre, .titulo{
+.tipo,
+.nombre,
+.titulo {
     grid-column-start: 1;
     grid-column-end: 2;
     color: #222;
 }
 
-.fecha{
+.fecha {
 
     grid-column-start: 2;
     grid-column-end: 3;
@@ -269,7 +221,7 @@ h2 {
 
 }
 
-.texto-resena2{
+.texto-resena2 {
     margin-top: 40px;
     padding-right: 15px;
     margin-right: 15px;
@@ -297,7 +249,7 @@ h2 {
     margin-top: 120px;
 }
 
-.comentar{
+.comentar {
 
     width: 120px;
     height: 40px;
@@ -308,13 +260,13 @@ h2 {
     font-weight: 700;
 }
 
-.comentar:hover{
+.comentar:hover {
 
     background-color: rgb(184, 43, 43);
     color: #ffffff;
 }
 
-.comentar2{
+.comentar2 {
 
     width: 120px;
     height: 40px;
@@ -325,14 +277,25 @@ h2 {
     font-weight: 700;
 }
 
-.comentar2:hover{
+.comentar2:hover {
 
     background-color: rgb(184, 43, 43);
     color: #ffffff;
 }
 
-.id{
+.id {
     background-color: rgb(214, 212, 212);
     border: none;
     color: rgb(214, 212, 212);
+}
+
+.comentario {
+
+    width: 85%;
+    margin-left: 10%;
+}
+
+.comentarioDecomentario {
+    width: 70%;
+    margin-left: 25%;
 }
