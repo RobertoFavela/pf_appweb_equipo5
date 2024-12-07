@@ -30,7 +30,7 @@ import javax.persistence.TemporalType;
  * @author tacot
  */
 @Entity
-@Table(name = "post")
+@Table(name = "Post")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Post implements Serializable {
 

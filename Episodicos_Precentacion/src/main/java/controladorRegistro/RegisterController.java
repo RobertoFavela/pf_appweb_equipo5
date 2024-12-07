@@ -20,19 +20,6 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class RegisterController extends HttpServlet {
 
-     /**
-      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-      * methods.
-      *
-      * @param request servlet request
-      * @param response servlet response
-      * @throws ServletException if a servlet-specific error occurs
-      * @throws IOException if an I/O error occurs
-      */
-     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-             throws ServletException, IOException {
-     }
-
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
       * Handles the HTTP <code>GET</code> method.
@@ -56,34 +43,56 @@ public class RegisterController extends HttpServlet {
       * @throws ServletException if a servlet-specific error occurs
       * @throws IOException if an I/O error occurs
       */
+//     @Override
+//     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//             throws ServletException, IOException {
+//          String url = "/LogInView.jsp";
+//          String accion = request.getParameter("accion"); 
+//
+//          if ("RegistrarUsuario".equalsIgnoreCase(accion)) {
+//               String correo = request.getParameter("txtCorreo");
+//               String nombre = request.getParameter("txtUsuario");
+//               String contra = request.getParameter("txtContra");
+//
+//               try {
+//                    Normal normal = new Normal(nombre, correo, contra);
+//                    NormalBean normalBean = NormalBean.getInstancia();
+//                    normalBean.guardar(normal);
+//                    
+//                    // Para guardar admin, pero no se usara, ya que esto solo podra ser manual desde la base de datos
+////                    Admin admin = new Admin(nombre, correo, contra);
+////                    AdminBean adminBean = AdminBean.getInstancia();
+////                    adminBean.guardar(admin);
+//
+//                    request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
+//                    url = "/LogInView.jsp";
+//               } catch (Exception e) {
+//                    request.setAttribute("errorMensaje", "Error al registrar usuario: " + e.getMessage());
+//               }
+//          }
+//          this.getServletContext().getRequestDispatcher(url).forward(request, response);
+//     }
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String url = "/LogInView.jsp";
-          String accion = request.getParameter("accion"); 
+          response.setContentType("application/json");
+          response.setCharacterEncoding("UTF-8");
 
-          if ("RegistrarUsuario".equalsIgnoreCase(accion)) {
-               String correo = request.getParameter("txtCorreo");
-               String nombre = request.getParameter("txtUsuario");
-               String contra = request.getParameter("txtContra");
+          String correo = request.getParameter("txtCorreo");
+          String nombre = request.getParameter("txtUsuario");
+          String contra = request.getParameter("txtContra");
 
-               try {
-                    Normal normal = new Normal(nombre, correo, contra);
-                    NormalBean normalBean = NormalBean.getInstancia();
-                    normalBean.guardar(normal);
-                    
-                    // Para guardar admin, pero no se usara, ya que esto solo podra ser manual desde la base de datos
-//                    Admin admin = new Admin(nombre, correo, contra);
-//                    AdminBean adminBean = AdminBean.getInstancia();
-//                    adminBean.guardar(admin);
+          try {
+               Normal normal = new Normal(nombre, correo, contra);
+               NormalBean normalBean = NormalBean.getInstancia();
+               normalBean.guardar(normal);
 
-                    request.setAttribute("exitoMensaje", "Usuario registrado exitosamente.");
-                    url = "/LogInView.jsp";
-               } catch (Exception e) {
-                    request.setAttribute("errorMensaje", "Error al registrar usuario: " + e.getMessage());
-               }
+               response.setStatus(HttpServletResponse.SC_OK);
+               response.getWriter().write("{\"message\": \"Usuario registrado exitosamente.\"}");
+          } catch (Exception e) {
+               response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+               response.getWriter().write("{\"error\": \"Error al registrar usuario: " + e.getMessage() + "\"}");
           }
-          this.getServletContext().getRequestDispatcher(url).forward(request, response);
      }
 
      /**
