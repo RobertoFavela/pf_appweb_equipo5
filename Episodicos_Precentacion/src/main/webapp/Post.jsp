@@ -78,7 +78,7 @@
                 </nav>
             </header>
 
-            
+
             <h2>Nuestras Reseñas</h2>
             <section class="resenas-recientes">
                 <c:if test="${not empty posts}">
@@ -89,19 +89,25 @@
                                 <input type="text" name="id" id="id" class="id" value="${post.id}" readonly>
                                 <h2 class="tipo">Post</h2>
                                 <h2 class="titulo">${post.titulo}</h2>
-                                <h4 class="nombre">${post.nombreCompleto}</h4>
+                                <!-- Usar el mapa para obtener el nombre del usuario -->
+                                <h4 class="nombre">${usuariosPorId[post.usuarioId]}</h4>
                                 <h4 class="fecha">${post.fechaHoraCreacion}</h4>
                             </div>
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
                             </div>
-                            <form action="" method="post">
-                                <div class="imagen-resena">
-                                    <img src="${post.imagen}" class="serie-img" alt="${post.titulo}">
-                                </div>
-                                <button class="comentar">Comentar</button>
-                            </form>
                         </div>
+
+                        <!-- 
+                        <form action="" method="post">
+                            
+                            <div class="imagen-resena">
+                                <img src="{post.imagen}" class="serie-img" alt="{post.titulo}">
+                            </div>
+                            <button class="comentar">Comentar</button>
+                        </form>
+                    </div>
+                        --->
 
                         <c:if test="${not empty post.comentarioCollection}">
                             <!-- Comentarios del Post -->
@@ -141,7 +147,7 @@
                                     </c:forEach>
                                 </c:if>
                             </c:forEach>
-                        </c:if>
+                        </c:if> 
                     </c:forEach>
                 </c:if>
             </section>

@@ -4,12 +4,19 @@
  */
 package controladorPost;
 
+import Beans.ComunBean;
+import Beans.NormalBean;
+import EntidadesSQL.Comun;
+import EntidadesSQL.Normal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -17,6 +24,8 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class Postcontroller extends HttpServlet {
 
+     private ComunBean comunBean;
+     private NormalBean normalBean;
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
@@ -30,6 +39,22 @@ public class Postcontroller extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+          comunBean = ComunBean.getInstancia();
+          normalBean = NormalBean.getInstancia();
+
+          // Obtener todas las reseñas
+          List<Comun> posts = comunBean.buscarTodos();
+
+          // Obtener todos los usuarios para mapear idUsuario a nombreCompleto
+          List<Normal> usuarios = normalBean.buscarTodos();
+          Map<Integer, String> usuariosPorId = usuarios.stream()
+                  .collect(Collectors.toMap(Normal::getId, Normal::getNombreCompleto));
+
+          // Pasar los datos al JSP
+          request.setAttribute("posts", posts);
+          request.setAttribute("usuariosPorId", usuariosPorId);
+
+          // Redirigir al JSP de reseñas
           request.getRequestDispatcher("/Post.jsp").forward(request, response);
      }
 
