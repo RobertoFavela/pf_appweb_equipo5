@@ -6,6 +6,7 @@ package controladorPerfil;
 
 import Beans.ComunBean;
 import Beans.NormalBean;
+import Beans.SerieBean;
 import EntidadesSQL.Comun;
 import EntidadesSQL.Serie;
 import EntidadesSQL.Usuario;
@@ -25,10 +26,12 @@ import java.util.Date;
 public class ResenaController extends HttpServlet {
 
      private NormalBean normalBean;
+     private SerieBean serieBean;
      private ComunBean comunBean;
 
      @Override
      public void init() throws ServletException {
+          serieBean = SerieBean.getInstancia();
           normalBean = NormalBean.getInstancia();
           comunBean = ComunBean.getInstancia();
      }
@@ -55,6 +58,11 @@ public class ResenaController extends HttpServlet {
                comun.setTitulo(titulo);
                comun.setContenido(contenido);
                comun.setFechaHoraCreacion(new Date());
+               
+               Serie serie = serieBean.buscarPorTitulo(nombreSerie);
+               int serieId = serie.getId();
+               comun.setSerieId(serie);
+               
                Usuario usuario = normalBean.getUsuarioEnSesion();
                comun.setUsuarioId(usuario);
 
