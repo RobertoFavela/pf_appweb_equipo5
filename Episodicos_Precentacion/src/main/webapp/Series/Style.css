@@ -249,3 +249,30 @@ form{
 .serie:hover .info {
     opacity: 1;
 }
+
+
+form input {
+    border: 1px solid #8c00ff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    width: 90%;
+    height: 25px;
+}
+
+form button {
+    align-self: flex-end;
+    padding: 8px;
+    outline: 0;
+    border: 0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #00c6ff;
+    color: #fff;
+    cursor: pointer;
+    height: 45px;
+}
+
+.aceptar:hover {
+    background: #8c00ff;
+}
