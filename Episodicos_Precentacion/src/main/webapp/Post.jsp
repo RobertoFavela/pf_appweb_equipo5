@@ -10,7 +10,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Feed/Style.css">
+        <link rel="stylesheet" href="Post/Style.css">
         <title>Página Principal</title>
     </head>
 
@@ -78,38 +78,8 @@
                 </nav>
             </header>
 
-            <h2>Agregadas recientemente</h2>
-            <section class="seccion">
-                <div class="contenedor-series">
-                    <c:if test="${not empty series}">
-                        <c:forEach var="serie" items="${series}">
-                            <form action="" method="post" class="serie">
-                                <button class="serie">
-                                    <img src="imagenSerie?imagen=${serie.imagen}" class="serie-img">
-                                </button>
-                            </form>
-                        </c:forEach>
-                    </c:if>
-                </div>
-            </section>
-
-            <h2>Todas las series</h2>
-            <section class="seccion">
-                <div class="contenedor-series">
-                    <c:if test="${not empty series}">
-                        <c:forEach var="serie" items="${series}">
-                            <form action="" method="post" class="serie">
-                                <button class="serie">
-                                    <img src="imagenSerie?imagen=${serie.imagen}" class="serie-img">
-                                </button>
-                            </form>
-                        </c:forEach>
-                    </c:if>
-                </div>
-            </section>
-
-
-            <h2>Reseñas recientes</h2>
+            
+            <h2>Nuestras Reseñas</h2>
             <section class="resenas-recientes">
                 <c:if test="${not empty posts}">
                     <c:forEach var="post" items="${posts}">
@@ -136,7 +106,7 @@
                         <c:if test="${not empty post.comentarioCollection}">
                             <!-- Comentarios del Post -->
                             <c:forEach var="comentario" items="${post.comentarioCollection}">
-                                <div class="resena">
+                                <div class="resena comentario">
                                     <div class="titulo-resena">
                                         <input type="text" name="id" id="id" class="id" value="${comentario.id}" readonly>
                                         <h2 class="tipo">Comentario</h2>
@@ -154,7 +124,7 @@
                                 <c:if test="${not empty comentario.comentarioCollection}">
                                     <!-- Comentarios de Comentarios -->
                                     <c:forEach var="subComentario" items="${comentario.comentarioCollection}">
-                                        <div class="resena">
+                                        <div class="resena comentarioDecomentario">
                                             <div class="titulo-resena">
                                                 <input type="text" name="id" id="id" class="id" value="${subComentario.id}" readonly>
                                                 <h2 class="tipo">Comentario de Comentario</h2>
