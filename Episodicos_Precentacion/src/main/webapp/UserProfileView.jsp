@@ -46,7 +46,7 @@
                     </form>
 
                     <!-- Favoritas -->
-                    <form action="" method="get">
+                    <form action="Postcontroller" method="get">
                         <input type="hidden" name="rad" value="favoritas" class="radio">
                         <button type="submit" title="Favoritas" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -103,27 +103,28 @@
                     </div>
             </section>
 
-            <h2>Escribe una reseña</h2>
-            <div class="nueva-resena">
-                <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+            <c:if test="${!esAdmin}">
+                <h2>Escribe una reseña</h2>
+                <div class="nueva-resena">
+                    <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
 
 
-                    <div class="titulo">Título</div>
-                    <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+                        <div class="titulo">Título</div>
+                        <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
 
-                    <div class="titulo">Nombre de serie</div>
-                    <input type="text" name="txtNombre" id="nombre-reseña" placeholder="Nombre de la serie" class="input" required>
+                        <div class="titulo">Nombre de serie</div>
+                        <input type="text" name="txtNombre" id="nombre-reseña" placeholder="Nombre de la serie" class="input" required>
 
-                    <div class="titulo">Reseña</div>
-                    <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+                        <div class="titulo">Reseña</div>
+                        <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
 
-                    <br>
+                        <br>
 
-                    <button type="submit" class="aceptar">Aceptar</button>
+                        <button type="submit" class="aceptar">Aceptar</button>
 
-                </form>
-            </div>
-
+                    </form>
+                </div>
+            </c:if>
 
             <h2 class="fav">Favoritas</h2>
             <section class="favoritas">
@@ -138,35 +139,33 @@
                 </div>
             </section>
 
-            <h2>Tus Reseñas</h2>
-            <section class="resenas-recientes">
+            <c:if test="${!esAdmin}">
+                <h2>Tus Reseñas</h2>
+                <section class="resenas-recientes">
+                    <c:if test="${not empty comunDelUsuario}">
+                        <c:forEach var="comun" items="${comunDelUsuario}">
+                            <div class="resena">
+                                <div class="titulo-resena">📄 ${comun.titulo}</div>
+                                <div class="texto-resena">
+                                    <p>${comun.contenido}</p>
+                                </div>
+                                <!-- Imagen opcional si es relevante -->
+                                <!-- 
+                                <div class="imagen-resena">
+                                    <img src="Posters/{comun.nombreSerie}.jpeg" class="serie-img">
+                                </div>
+                                -->
+                            </div>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${empty comunDelUsuario}">
+                        <p>No has escrito ninguna reseña todavía.</p>
+                    </c:if>
+                </section>
+            </c:if>
 
-                <div class="resena">
-                    <div class="titulo-resena">📄 Título de reseña</div>
-                    <div class="texto-resena">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere vero
-                            voluptate
-                            doloremque dignissimos consectetur repellendus enim maiores adipisci, amet est dolor
-                            incidunt
-                            inventore recusandae placeat reiciendis? Distinctio aspernatur veniam, incidunt rerum,
-                            nobis
-                            ipsum placeat totam magnam iusto blanditiis voluptas a doloremque inventore ducimus.
-                            Cupiditate
-                            soluta quibusdam nemo qui laboriosam! Cumque nobis aliquid officiis recusandae
-                            accusantium cum
-                            rerum perferendis aut provident deserunt amet ullam eaque nam quasi est maxime sunt a
-                            deleniti,
-                            consectetur tempora similique. Deleniti cupiditate minima unde officia fugiat dolore
-                            ipsum
-                            deserunt, voluptatibus corrupti tenetur atque ut ullam dignissimos, quis porro magni
-                            maxime
-                            voluptatum totam. Provident, commodi ea.</p>
-                    </div>
-                    <div class="imagen-resena">
-                        <img src="Posters/daredevil.jpeg" class="serie-img">
-                    </div>
-                </div>
-            </section>
+
+
         </div>
         <script src="JS/CrearPost.js" type="application/javascript"></script>
     </body>

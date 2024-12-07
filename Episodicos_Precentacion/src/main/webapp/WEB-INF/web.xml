@@ -4,6 +4,10 @@
         <servlet-name>ResenaController</servlet-name>
         <url-pattern>/ResenaController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Postcontroller</servlet-name>
+        <url-pattern>/Postcontroller</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -16,6 +20,10 @@
     <servlet>
         <servlet-name>ResenaController</servlet-name>
         <servlet-class>controladorPerfil.ResenaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Postcontroller</servlet-name>
+        <servlet-class>controladorPost.Postcontroller</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogInController</servlet-name>
