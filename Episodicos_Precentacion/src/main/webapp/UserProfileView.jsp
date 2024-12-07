@@ -162,6 +162,7 @@
                     </div>
                 </section>
             </div>
+                        <script src="JS/CrearPost.js" type="application/javascript"></script>
         </body>
 
         </html>
