@@ -130,7 +130,7 @@
 
 
                     <div class="titulo">Título</div>
-                    <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película"
+                    <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la reseña"
                            class="input" required>
                     <input type="hidden" name="txtNombre" value="${serie.titulo}">
                     <br>
@@ -174,6 +174,11 @@
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
                             </div>
+                            <form action="Postcontroller" method="post">
+                                <input type="hidden" name="accion" value="eliminar">
+                                <input type="hidden" name="id" value="${post.id}">
+                                <button type="submit" class="comentar2">Anclar</button>
+                            </form>
                         </div>
                     </c:forEach>
                 </c:if>

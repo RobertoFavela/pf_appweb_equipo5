@@ -107,7 +107,6 @@
                                     </form>
 
                                 </c:if>
-
                             </form>
 
                             <!-- Nueva reseña -->
