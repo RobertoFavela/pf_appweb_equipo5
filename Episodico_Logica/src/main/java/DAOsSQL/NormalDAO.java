@@ -81,4 +81,27 @@ public class NormalDAO implements INormalDAO {
           }
           entityManager.getTransaction().commit();
      }
+
+     @Override
+     public void agregarSerieFavorita(Normal normal, Integer serieId) {
+          entityManager.getTransaction().begin();
+          normal.addSerieFavorita(serieId);
+          entityManager.merge(normal);
+          entityManager.getTransaction().commit();
+     }
+
+     @Override
+     public void eliminarSerieFavorita(Normal normal, Integer serieId) {
+          entityManager.getTransaction().begin();
+          normal.removeSerieFavorita(serieId);
+          entityManager.merge(normal);
+          entityManager.getTransaction().commit();
+     }
+
+     @Override
+     public List<Integer> obtenerSeriesFavoritas(Normal normal) {
+          return normal.getSeriesFavoritasList();
+     }
+     
+     
 }

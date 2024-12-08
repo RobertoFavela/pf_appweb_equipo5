@@ -16,4 +16,10 @@ public interface INormalDAO {
     public void actualizar(Normal normal);
     
     public void eliminar(String nombre) ;
+    
+       public void agregarSerieFavorita(Normal normal, Integer serieId);
+
+     public void eliminarSerieFavorita(Normal normal, Integer serieId);
+
+     public List<Integer> obtenerSeriesFavoritas(Normal normal);
 }

@@ -102,6 +102,8 @@
                         <a href="/PerfilSerie/perfilSerie.html"></a>
                     </div>
             </section>
+            
+            
 
             <c:if test="${!esAdmin}">
                 <h2>Escribe una reseña</h2>
