@@ -129,7 +129,7 @@
                                 <form action="SerieProfileController" method="get">
                                     <input type="hidden" name="id" value="${serie.id}">
                                     <button class="serie">
-                                        <img src="ImagenServlet?id=${serie.id}" class="serie-img-perfil">
+                                        <img src="ImagenServlet?id=${serie.id}" class="serie-img">
                                     </button>
                                 </form>
                             </div>

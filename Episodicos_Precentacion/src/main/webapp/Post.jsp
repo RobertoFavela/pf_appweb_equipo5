@@ -99,33 +99,24 @@
                             </div>
 
                             <!-- Botón para eliminar reseña si es admin -->
-                                <c:if test="${esAdmin}">
-                                    <form action="Postcontroller" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?');">
-                                        <input type="hidden" name="accion" value="eliminar">
-                                        <input type="hidden" name="id" value="${post.id}">
-                                        <button type="submit" class="comentar">Eliminar</button>
-                                    </form>
+                            <c:if test="${esAdmin}"> 
+                                <button class="eliminar-post comentar2" data-id="${post.id}">Eliminar</button>
+                            </c:if>
 
-                                </c:if>
-                            </form>
+                                <!-- Nueva reseña -->
+                                <form class="form" id="form-reseña" action="ComentarioController" method="POST" enctype="application/x-www-form-urlencoded">
+                                    <div class="titulo">Título</div>
+                                    <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
 
-                            <!-- Nueva reseña -->
-                            <form class="form" id="form-reseña" action="ComentarioController" method="POST" enctype="application/x-www-form-urlencoded">
-                                <div class="titulo">Título</div>
-                                <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+                                    <div class="titulo">Reseña</div>
+                                    <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
 
-                                <div class="titulo">Reseña</div>
-                                <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
-
-                                <!-- Hidden field to pass post ID -->
-                                <input type="hidden" name="postId" value="${post.id}">
+                                    <!-- Hidden field to pass post ID -->
+                                    <input type="hidden" name="postId" value="${post.id}">
 
                                 <button type="submit" class="comentar">Comentar</button>
                             </form>
-
-
                         </div>
-
                         <c:if test="${not empty comentarioCollection}">
                             <!-- Comentarios del Post -->
                             <c:forEach var="comentario" items="${comentarioCollection}">
@@ -173,7 +164,6 @@
                                             </form>
                                         </div>
                                     </c:forEach>
-
                                 </c:if>
                             </c:forEach>
                         </c:if>

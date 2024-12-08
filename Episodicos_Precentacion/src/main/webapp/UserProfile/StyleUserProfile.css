@@ -247,10 +247,12 @@ h2 {
 }
 
 .serie-img {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 250px;
     object-fit: cover;
     transition: filter 0.3s ease;
+    border-radius: 10%;
+    background-color: #222;
 }
 
 .serie:hover .serie-img {
