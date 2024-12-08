@@ -24,13 +24,13 @@ public class NormalBean {
      }
 
      public void setUsuarioEnSesion(Normal normal) {
-        this.usuarioEnSesion = normal;
-    }
+          this.usuarioEnSesion = normal;
+     }
 
-    public Normal getUsuarioEnSesion() {
-        return usuarioEnSesion;
-    }
-     
+     public Normal getUsuarioEnSesion() {
+          return usuarioEnSesion;
+     }
+
      public void guardar(Normal normal) {
           normalDAO.guardar(normal);
      }
@@ -59,5 +59,30 @@ public class NormalBean {
 
      public void eliminar(String nombre) {
           normalDAO.eliminar(nombre);
+     }
+
+     // Métodos para gestionar series favoritas
+     public void agregarSerieFavorita(Integer serieId) {
+          if (usuarioEnSesion != null) {
+               normalDAO.agregarSerieFavorita(usuarioEnSesion, serieId);
+          } else {
+               throw new IllegalStateException("No hay un usuario en sesión.");
+          }
+     }
+
+     public void eliminarSerieFavorita(Integer serieId) {
+          if (usuarioEnSesion != null) {
+               normalDAO.eliminarSerieFavorita(usuarioEnSesion, serieId);
+          } else {
+               throw new IllegalStateException("No hay un usuario en sesión.");
+          }
+     }
+
+     public List<Integer> obtenerSeriesFavoritas() {
+          if (usuarioEnSesion != null) {
+               return normalDAO.obtenerSeriesFavoritas(usuarioEnSesion);
+          } else {
+               throw new IllegalStateException("No hay un usuario en sesión.");
+          }
      }
 }

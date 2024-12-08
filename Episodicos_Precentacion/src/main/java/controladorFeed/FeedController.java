@@ -1,5 +1,6 @@
 package controladorFeed;
 
+import Beans.AdminBean;
 import Beans.AncladoBean;
 import Beans.ComentarioBean;
 import Beans.ComunBean;
@@ -10,6 +11,7 @@ import EntidadesSQL.Comentario;
 import EntidadesSQL.Comun;
 import EntidadesSQL.Post;
 import EntidadesSQL.Serie;
+import EntidadesSQL.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,6 +20,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,13 +30,16 @@ import java.util.List;
  */
 public class FeedController extends HttpServlet {
 
+     private NormalBean normalBean;
+     private AdminBean adminBean;
      private SerieBean serieBean;
-     private AncladoBean ancladoBean;
-     private ComentarioBean comentarioBean;
      private ComunBean comunBean;
+     
+     private Usuario usuario;
 
      public FeedController() {
           serieBean = SerieBean.getInstancia();
+          comunBean = ComunBean.getInstancia();
      }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,43 +55,34 @@ public class FeedController extends HttpServlet {
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
 
-          ancladoBean = AncladoBean.getInstancia();
-          comentarioBean = ComentarioBean.getInstancia();
-          comunBean = ComunBean.getInstancia();
-          serieBean = SerieBean.getInstancia();
+          normalBean = NormalBean.getInstancia();
+          normalBean.getUsuarioEnSesion();
+          
+          adminBean = AdminBean.getInstancia();
+          
+          if (adminBean.getAdminEnSesion() != null) {
+               usuario = adminBean.getAdminEnSesion();
+          } else if (normalBean.getUsuarioEnSesion() != null) {
+               usuario = normalBean.getUsuarioEnSesion();
+          } 
+          
+          
+          
+          List<Serie> series = serieBean.buscarTodas();
+          List<Comun> posts = comunBean.buscarTodos();
 
-          List<Anclado> postsA = ancladoBean.buscarTodos();
-
-          for (Anclado post : postsA) {
-               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
-               post.setComentarioCollection(comentarios);
-          }
-
-          List<Comun> postsC = comunBean.buscarTodos();
-
-          for (Comun post : postsC) {
-               List<Comentario> comentarios = comentarioBean.buscarPorPostID(post.getId());
-               post.setComentarioCollection(comentarios);
-
-               for (Comentario comentario : comentarios) {
-                    List<Comentario> comentariosDeComentarios = comentarioBean.buscarPorComentarioID(comentario.getId());
-                    comentario.setComentarioCollection(comentariosDeComentarios);
+          for (Serie serie : series) {
+               if (serie.getId() != null) {
+                    // Generar una URL para la imagen de cada serie
+                    String imageUrl = "getSerieImage?id=" + serie.getId();
+                    request.setAttribute("imageUrl_" + serie.getId(), imageUrl);
                }
           }
 
-          List<Post> posts = new ArrayList<>();
+          request.setAttribute("series", series);
+          request.setAttribute("posts", posts);
 
-          posts.addAll(postsA);
-          posts.addAll(postsC);
-
-          request.setAttribute("posts", posts != null ? posts : new ArrayList<>());
-
-          List<Serie> series = serieBean.buscarTodas();
-
-          request.setAttribute("series", series != null ? series : new ArrayList<>());
-
-          this.getServletContext().getRequestDispatcher("/FeedView.jsp").forward(request, response);
-
+          request.getRequestDispatcher("/FeedView.jsp").forward(request, response);
      }
 
      /**
@@ -99,30 +96,23 @@ public class FeedController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String selectedId = request.getParameter("rad");
 
-          if (selectedId == null) {
-               response.getWriter().write("No se seleccionó ninguna opción.");
-               return;
-          }
+          String contenido = request.getParameter("comentarioContenido");
+          Integer postId = Integer.valueOf(request.getParameter("postId"));
+          Integer usuarioId = Integer.valueOf(request.getParameter("usuarioId"));
 
-          switch (selectedId) {
-               case "Inicio":
-                    response.sendRedirect("FeedController");
-                    break;
-               case "buscar":
-                    response.sendRedirect("BuscarView.jsp");
-                    break;
-               case "favoritas":
-                    response.sendRedirect("FavoritasView.jsp");
-                    break;
-               case "perfil":
-                    response.sendRedirect("UserProfileController");
-                    break;
-               default:
-                    response.getWriter().write("Opción seleccionada no es válida.");
-                    break;
-          }
+          // Crear el objeto Comentario
+          Comentario comentario = new Comentario();
+          comentario.setFechaHora(new Date());
+          comentario.setContenido(contenido);
+
+          // Guardar el comentario usando ComentarioBean
+          ComentarioBean comentarioBean = ComentarioBean.getInstancia();
+          comentarioBean.guardar(comentario);
+
+          // Redirigir al feed para actualizar los comentarios
+          response.sendRedirect("FeedController");
+
      }
 
      /**

@@ -25,13 +25,16 @@ public class NormalDAO implements INormalDAO {
      @Override
      public void guardar(Normal normal) {
           try {
+               System.out.println("Iniciando transacción...");
                entityManager.getTransaction().begin();
-               entityManager.persist(normal); 
+               entityManager.persist(normal);
                entityManager.getTransaction().commit();
+               System.out.println("Usuario guardado exitosamente.");
           } catch (Exception e) {
                if (entityManager.getTransaction().isActive()) {
                     entityManager.getTransaction().rollback();
                }
+               System.err.println("Error al guardar usuario: " + e.getMessage());
                throw new RuntimeException("Error al guardar el usuario: " + e.getMessage());
           }
      }
@@ -78,4 +81,27 @@ public class NormalDAO implements INormalDAO {
           }
           entityManager.getTransaction().commit();
      }
+
+     @Override
+     public void agregarSerieFavorita(Normal normal, Integer serieId) {
+          entityManager.getTransaction().begin();
+          normal.addSerieFavorita(serieId);
+          entityManager.merge(normal);
+          entityManager.getTransaction().commit();
+     }
+
+     @Override
+     public void eliminarSerieFavorita(Normal normal, Integer serieId) {
+          entityManager.getTransaction().begin();
+          normal.removeSerieFavorita(serieId);
+          entityManager.merge(normal);
+          entityManager.getTransaction().commit();
+     }
+
+     @Override
+     public List<Integer> obtenerSeriesFavoritas(Normal normal) {
+          return normal.getSeriesFavoritasList();
+     }
+     
+     
 }

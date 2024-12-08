@@ -52,4 +52,5 @@ public class ComentarioBean {
     public List<Comentario> buscarPorComentarioID(Integer id) {
         return comentarioDAO.buscarPorComentarioID(id);
     }
+    
 }

@@ -2,35 +2,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controladorGestionSerie;
+package controladorPost;
 
 import Beans.AdminBean;
-import Beans.SerieBean;
+import Beans.ComentarioBean;
+import Beans.ComunBean;
+import Beans.NormalBean;
+import EntidadesSQL.Comentario;
 import EntidadesSQL.Comun;
-import EntidadesSQL.Serie;
+import EntidadesSQL.Normal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
- * @author tacot
+ * @author favel
  */
-public class SeriesController extends HttpServlet {
+public class Postcontroller extends HttpServlet {
 
      private AdminBean adminBean;
-     private SerieBean serieBean;
 
-     public SeriesController() {
-          serieBean = SerieBean.getInstancia();
-          adminBean = AdminBean.getInstancia();
-     }
+     private NormalBean normalBean;
+
+     private ComunBean comunBean;
+     private ComentarioBean comentarioBean;
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
@@ -45,25 +47,28 @@ public class SeriesController extends HttpServlet {
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
 
+          // Verificar si es admin
           adminBean = AdminBean.getInstancia();
-
           boolean esAdmin = adminBean.getAdminEnSesion() != null;
-
           request.setAttribute("esAdmin", esAdmin);
 
-          List<Serie> series = serieBean.buscarTodas();
+          comunBean = ComunBean.getInstancia();
+          normalBean = NormalBean.getInstancia();
+          comentarioBean = ComentarioBean.getInstancia();
 
-          for (Serie serie : series) {
-               if (serie.getId() != null) {
-                    // Generar una URL para la imagen de cada serie
-                    String imageUrl = "getSerieImage?id=" + serie.getId();
-                    request.setAttribute("imageUrl_" + serie.getId(), imageUrl);
-               }
-          }
+          // Obtener todas las reseñas
+          List<Comun> posts = comunBean.buscarTodos();
 
-          request.setAttribute("series", series);
+          // Mapear comentarios por post ID
+          List<Comentario>comentarioCollection =  comentarioBean.buscarTodos();
 
-          request.getRequestDispatcher("/Series.jsp").forward(request, response);
+          // Pasar los datos al JSP
+          request.setAttribute("posts", posts);
+          request.setAttribute("comentariosPorPost", comentarioCollection);
+
+          
+          // Redirigir al JSP de reseñas
+          request.getRequestDispatcher("/Post.jsp").forward(request, response);
      }
 
      /**
@@ -77,18 +82,26 @@ public class SeriesController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String titulo = request.getParameter("titulo");
-          Serie serie = serieBean.buscarPorTitulo(titulo); 
+          String accion = request.getParameter("accion");
 
-          // No sabia que el buscar por titulo solo retornaba una serie, asi que la meti a una lista a fuerzas
-          List<Serie> seriesFiltradas = new ArrayList<>();
-          if (serie != null) {
-               seriesFiltradas.add(serie);
+          if ("eliminar".equals(accion)) {
+               int postId = Integer.parseInt(request.getParameter("id"));
+
+               // Verificar si el usuario en sesión es admin
+               adminBean = AdminBean.getInstancia();
+               if (adminBean.getAdminEnSesion() == null) {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    return;
+               }
+
+               // Lógica para eliminar el post
+               comunBean = ComunBean.getInstancia();
+               boolean eliminado = comunBean.eliminarPost(postId);
+
+               response.setContentType("application/json");
+
+               request.getRequestDispatcher("/Post.jsp").forward(request, response);
           }
-
-          request.setAttribute("series", seriesFiltradas);
-
-          request.getRequestDispatcher("/Series.jsp").forward(request, response);
      }
 
      /**

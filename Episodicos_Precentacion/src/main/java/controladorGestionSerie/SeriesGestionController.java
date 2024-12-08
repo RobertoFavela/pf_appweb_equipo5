@@ -24,40 +24,26 @@ import java.util.Date;
  * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales Ronjas - 00000245335
  */
 @MultipartConfig
-public class GestionSerieController extends HttpServlet {
+public class SeriesGestionController extends HttpServlet {
 
     private SerieBean serieBean;
 
-    public GestionSerieController() {
-    }
-
-    /**
-     * Procesa las solicitudes HTTP GET y POST.
-     *
-     * @param request solicitud HTTP
-     * @param response respuesta HTTP
-     * @throws ServletException si ocurre un error específico de servlets
-     * @throws IOException si ocurre un error de entrada/salida
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    public SeriesGestionController() {
+         serieBean = SerieBean.getInstancia();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Métodos HTTP GET y POST">
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         request.getRequestDispatcher("/SeriesGestion.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String url = "/FeedView.jsp";
         
-        serieBean = SerieBean.getInstancia();
 
         String accion = request.getParameter("accion");
 
