@@ -81,4 +81,17 @@ public class ComunDAO implements IComunDAO {
           return false;
      }
 
+     @Override
+     public List<Comun> buscarPorSerieId(int serieId) {
+          CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+          CriteriaQuery<Comun> query = cb.createQuery(Comun.class);
+          Root<Comun> root = query.from(Comun.class);
+
+          // Construir la condición de filtro por serieId
+          query.select(root).where(cb.equal(root.get("serieId"), serieId));
+
+          // Ejecutar la consulta y devolver los resultados
+          return entityManager.createQuery(query).getResultList();
+     }
+
 }

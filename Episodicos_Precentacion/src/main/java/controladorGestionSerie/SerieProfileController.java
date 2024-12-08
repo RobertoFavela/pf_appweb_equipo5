@@ -72,13 +72,8 @@ public class SerieProfileController extends HttpServlet {
                }
 
                comunBean = ComunBean.getInstancia();
-               List<Comun> todosLosPosts = comunBean.buscarTodos(); 
+               List<Comun> posts = comunBean.buscarTodos();
 
-               List<Post> posts = todosLosPosts.stream()
-                       .filter(post -> post.getTitulo().equalsIgnoreCase(serie.getTitulo())) 
-                       .collect(Collectors.toList());
-
-               
                List<Serie> seriesSimilares = serieBean.buscarPorGeneros(serie.getGenero()); 
                
                request.setAttribute("serie", serie);
