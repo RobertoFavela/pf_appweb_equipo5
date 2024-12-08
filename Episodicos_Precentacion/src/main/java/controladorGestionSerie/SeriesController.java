@@ -6,8 +6,6 @@ package controladorGestionSerie;
 
 import Beans.AdminBean;
 import Beans.SerieBean;
-import EntidadesSQL.Comun;
-import EntidadesSQL.Serie;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,8 +13,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -51,18 +47,6 @@ public class SeriesController extends HttpServlet {
 
           request.setAttribute("esAdmin", esAdmin);
 
-          List<Serie> series = serieBean.buscarTodas();
-
-          for (Serie serie : series) {
-               if (serie.getId() != null) {
-                    // Generar una URL para la imagen de cada serie
-                    String imageUrl = "getSerieImage?id=" + serie.getId();
-                    request.setAttribute("imageUrl_" + serie.getId(), imageUrl);
-               }
-          }
-
-          request.setAttribute("series", series);
-
           request.getRequestDispatcher("/Series.jsp").forward(request, response);
      }
 
@@ -77,18 +61,7 @@ public class SeriesController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String titulo = request.getParameter("titulo");
-          Serie serie = serieBean.buscarPorTitulo(titulo); 
 
-          // No sabia que el buscar por titulo solo retornaba una serie, asi que la meti a una lista a fuerzas
-          List<Serie> seriesFiltradas = new ArrayList<>();
-          if (serie != null) {
-               seriesFiltradas.add(serie);
-          }
-
-          request.setAttribute("series", seriesFiltradas);
-
-          request.getRequestDispatcher("/Series.jsp").forward(request, response);
      }
 
      /**
