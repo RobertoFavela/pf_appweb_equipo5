@@ -89,7 +89,39 @@ public class SerieProfileController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+          String serieId = request.getParameter("id");
+          String accion = request.getParameter("accion"); // para agregar o eliminar
 
+          normalBean = NormalBean.getInstancia();
+          Normal normalActual = normalBean.getUsuarioEnSesion();
+
+          if (normalActual == null) {
+               response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Debe iniciar sesión para agregar una serie a favoritas."); // este es porque no le puedo meter el if al jsp, no le quiero mover mas al front
+               return;
+          }
+
+          if (serieId == null || serieId.isEmpty()) {
+               response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Falta el parámetro 'id' de la serie.");
+               return;
+          }
+
+          try {
+
+               int id = Integer.parseInt(serieId);
+
+               if ("agregar".equals(accion)) {
+                    normalBean.agregarSerieFavorita(id);  // Llamamos al método para agregar la serie a favoritas
+               } else if ("eliminar".equals(accion)) {
+                    normalBean.eliminarSerieFavorita(id);  // Llamamos al método para eliminarla de favoritas
+               } else {
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Acción no válida.");
+                    return;
+               }
+
+          } catch (NumberFormatException e) {
+               // Manejo de error en caso de que el ID de la serie no sea un número válido
+               response.sendError(HttpServletResponse.SC_BAD_REQUEST, "El parámetro 'id' debe ser un número entero.");
+          }
      }
 
      /**
