@@ -11,14 +11,14 @@
         <title>Perfil de Serie</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Series/styleSerieGestion.css">
+        <link rel="stylesheet" href="GestionSerie/style.css">
     </head>
     <body>
         <div class="Feed">
             <header>
                 <nav class="nav">
                     <!-- Inicio -->
-                    <form action="FeedController" method="get">
+                    <form action="InicioRController" method="post">
                         <input type="hidden" name="Inicio" value="Inicio" class="radio" >
                         <button type="submit" title="Inicio" class="ul li " >
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -33,7 +33,7 @@
                     </form>
 
                     <!-- Buscar -->
-                    <form action="SeriesController" method="get">
+                    <form action="#" method="post">
                         <input type="hidden" name="rad" value="buscar " class="radio" >
                         <button type="submit" title="Buscar" class="ul li" >
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -46,7 +46,7 @@
                     </form>
 
                     <!-- Favoritas -->
-                    <form action="" method="get">
+                    <form action="#" method="post">
                         <input type="hidden" name="rad" value="favoritas" class="radio" >
                         <button type="submit" title="Favoritas" class="ul li" >
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -61,7 +61,7 @@
                     </form>
 
                     <!-- Perfil -->
-                    <form action="UserProfileController" method="get">
+                    <form action="UserRController" method="post">
                         <input type="hidden" name="perfil" value="perfil" class="radio" >
                         <button type="submit" title="Perfil" class="ul li" >
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -130,7 +130,7 @@
             </section>
         </div>
 
-        <script src="Series/scriptSerieGestion.js"></script>
+        <script src="GestionSerie/script.js"></script>
 
     </div>
 </body>

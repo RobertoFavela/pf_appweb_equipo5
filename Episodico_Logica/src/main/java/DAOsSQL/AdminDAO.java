@@ -71,25 +71,4 @@ public class AdminDAO implements IAdminDAO {
           }
           entityManager.getTransaction().commit();
      }
-
-     @Override
-     public void agregarSerieFavorita(Admin admin, Integer serieId) {
-          entityManager.getTransaction().begin();
-          admin.addSerieFavorita(serieId);
-          entityManager.merge(admin);
-          entityManager.getTransaction().commit();
-     }
-
-     @Override
-     public void eliminarSerieFavorita(Admin admin, Integer serieId) {
-          entityManager.getTransaction().begin();
-          admin.removeSerieFavorita(serieId);
-          entityManager.merge(admin);
-          entityManager.getTransaction().commit();
-     }
-
-     @Override
-     public List<Integer> obtenerSeriesFavoritas(Admin admin) {
-          return admin.getSeriesFavoritasList();
-     }
 }

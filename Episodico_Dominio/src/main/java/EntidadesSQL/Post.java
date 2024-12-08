@@ -10,8 +10,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,9 +30,8 @@ import javax.persistence.TemporalType;
  * @author tacot
  */
 @Entity
-@Table(name = "Post")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "dtype", discriminatorType = DiscriminatorType.STRING)
+@Table(name = "post")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Post implements Serializable {
 
     private static final long serialVersionUID = 1L;

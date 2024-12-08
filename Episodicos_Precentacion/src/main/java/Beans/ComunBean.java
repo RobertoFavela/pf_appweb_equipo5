@@ -5,7 +5,6 @@
 package Beans;
 
 import DAOsSQL.ComunDAO;
-import EntidadesSQL.Anclado;
 import EntidadesSQL.Comun;
 import interfaces.IComunDAO;
 import java.util.List;
@@ -50,15 +49,4 @@ public class ComunBean {
           comunDAO.eliminar(nombre);
      }
 
-     public boolean eliminarPost(int postId) {
-          return comunDAO.eliminarPost(postId);
-     }
-     
-     public List<Comun> buscarPorSerieId(int id) {
-          return comunDAO.buscarPorSerieId(id);
-     }
-     
-     public Comun buscarPorId(int id) {
-          return comunDAO.buscarPorId(id);
-     }
 }

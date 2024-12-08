@@ -26,10 +26,8 @@ CREATE TABLE Usuario (
     genero ENUM('Masculino', 'Femenino', 'Otro'),
     municipio_id INT,
     FOREIGN KEY (municipio_id) REFERENCES Municipio(id),
-    DTYPE VARCHAR(31),
-    seriesFavoritas TEXT -- IDs de las series favoritas separadas por comas
+    DTYPE VARCHAR(31)
 );
-
 CREATE TABLE Normal (
     id INT PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES Usuario(id) ON DELETE CASCADE
@@ -50,12 +48,12 @@ CREATE TABLE Serie (
 
 CREATE TABLE Post (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    fechaHoraCreacion DATETIME,
+    fechaHoraCreacion DATETIME NOT NULL,
     titulo VARCHAR(255) NOT NULL,
-    contenido TEXT,
+    contenido TEXT NOT NULL,
     fechaHoraEdicion DATETIME,
-    usuario_id INT,
-    serie_id INT, 
+    usuario_id INT NOT NULL,
+    serie_id INT NOT NULL, 
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id) ON DELETE CASCADE,
     FOREIGN KEY (serie_id) REFERENCES Serie(id) ON DELETE CASCADE,
     DTYPE VARCHAR(31)

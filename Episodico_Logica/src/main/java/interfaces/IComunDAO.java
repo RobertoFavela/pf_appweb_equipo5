@@ -15,9 +15,4 @@ public interface IComunDAO {
 
     public void eliminar(String nombre);
     
-    public boolean eliminarPost(int postId);
-    
-    public List<Comun> buscarPorSerieId(int serieId);
-    
-    public Comun buscarPorId(int postId);
 }

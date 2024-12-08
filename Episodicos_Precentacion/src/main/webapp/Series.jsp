@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Series/StyleSeries.css">
+        <link rel="stylesheet" href="Series/Style.css">
         <title>Document</title>
     </head>
 
@@ -28,7 +27,7 @@
                     </form>
 
                     <!-- Buscar -->
-                    <form action="SeriesController" method="get">
+                    <form action="#" method="post">
                         <input type="hidden" name="rad" value="buscar " class="radio">
                         <button type="submit" title="Buscar" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +40,7 @@
                     </form>
 
                     <!-- Series -->
-                    <form action="Postcontroller" method="get">
+                    <form action="SeriesController" method="post">
                         <input type="hidden" name="rad" value="Series" class="radio">
                         <button type="submit" title="Series" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +72,7 @@
 
             <section class="Admin">
                 <c:if test="${esAdmin}">
-                    <form action="GestionSerieController" method="get">
+                    <form action="" method="post">
                         <button class="btn" type="submit">
                             <h2>Gestor de series</h2>
                         </button>
@@ -82,30 +81,22 @@
             </section>
 
 
-            <!-- Barra de busqueda -->
-            <section>
-                <form action="SeriesController" method="post">
-                    <input type="text" name="titulo" placeholder="Buscar por título..." required>
-                    <button type="submit" class="aceptar">Buscar</button>
-                </form>
-            </section>
-
-            <!-- Sección Todas las Series -->
             <h2>Todas las series</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:if test="${not empty series}">
                         <c:forEach var="serie" items="${series}">
-                            <form action="SerieProfileController" method="get" class="serie">
-                                <input type="hidden" name="id" value="${serie.id}">
+                            <form action="" method="post" class="serie">
                                 <button class="serie">
-                                    <img src="ImagenServlet?id=${serie.id}" class="serie-img-perfil">
+                                    <img src="imagenSerie?imagen=${serie.imagen}" class="serie-img">
                                 </button>
                             </form>
                         </c:forEach>
                     </c:if>
                 </div>
             </section>
+
         </div>
     </body>
+
 </html>

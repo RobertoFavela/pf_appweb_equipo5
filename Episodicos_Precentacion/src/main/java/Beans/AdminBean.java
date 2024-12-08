@@ -55,36 +55,12 @@ public class AdminBean {
      public void actualizar(Admin admin) {
           adminDAO.actualizar(admin);
      }
-
+     
      public void setAdminEnSesion(Admin admin) {
           this.adminEnSesion = admin;
      }
-
+     
      public Admin getAdminEnSesion() {
           return adminEnSesion;
-     }
-
-     public void agregarSerieFavorita(Integer serieId) {
-          if (adminEnSesion != null) {
-               adminDAO.agregarSerieFavorita(adminEnSesion, serieId);
-          } else {
-               throw new IllegalStateException("No hay un administrador en sesión.");
-          }
-     }
-
-     public void eliminarSerieFavorita(Integer serieId) {
-          if (adminEnSesion != null) {
-               adminDAO.eliminarSerieFavorita(adminEnSesion, serieId);
-          } else {
-               throw new IllegalStateException("No hay un administrador en sesión.");
-          }
-     }
-
-     public List<Integer> obtenerSeriesFavoritas() {
-          if (adminEnSesion != null) {
-               return adminDAO.obtenerSeriesFavoritas(adminEnSesion);
-          } else {
-               throw new IllegalStateException("No hay un administrador en sesión.");
-          }
      }
 }

@@ -6,7 +6,6 @@ package Beans;
 
 import DAOsSQL.AncladoDAO;
 import EntidadesSQL.Anclado;
-import EntidadesSQL.Post;
 import interfaces.IAncladoDAO;
 import java.util.List;
 
@@ -47,6 +46,5 @@ public class AncladoBean {
         ancladoDAO.actualizar(anclado);
         
     }
-    
     
 }

@@ -29,4 +29,5 @@ document.addEventListener("DOMContentLoaded", () => {
         titulo.querySelector('h2[name="titulo"]').textContent  = "Eliminar Serie";
         extraFields.style.display = "none";
     });
+
 });

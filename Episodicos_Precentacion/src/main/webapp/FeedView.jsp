@@ -34,7 +34,7 @@
                     </form>
 
                     <!-- Buscar -->
-                    <form action="SeriesController" method="get">
+                    <form action="#" method="post">
                         <input type="hidden" name="rad" value="buscar " class="radio">
                         <button type="submit" title="Buscar" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -47,7 +47,7 @@
                     </form>
 
                     <!-- serie -->
-                    <form action="Postcontroller" method="get">
+                    <form action="SeriesController" method="post">
                         <input type="hidden" name="rad" value="serie" class="radio">
                         <button type="submit" title="serie" class="ul li">
                             <svg viewBox="0 0 24 24" fill="none" height="24" width="24"
@@ -78,16 +78,14 @@
                 </nav>
             </header>
 
-            <!-- Sección Agregadas Recientemente -->
             <h2>Agregadas recientemente</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:if test="${not empty series}">
                         <c:forEach var="serie" items="${series}">
-                            <form action="SerieProfileController" method="get" class="serie">
-                                <input type="hidden" name="id" value="${serie.id}">
+                            <form action="" method="post" class="serie">
                                 <button class="serie">
-                                    <img src="ImagenServlet?id=${serie.id}" class="serie-img-perfil">
+                                    <img src="imagenSerie?imagen=${serie.imagen}" class="serie-img">
                                 </button>
                             </form>
                         </c:forEach>
@@ -95,16 +93,14 @@
                 </div>
             </section>
 
-            <!-- Sección Todas las Series -->
             <h2>Todas las series</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:if test="${not empty series}">
                         <c:forEach var="serie" items="${series}">
-                            <form action="SerieProfileController" method="get" class="serie">
-                                <input type="hidden" name="id" value="${serie.id}">
+                            <form action="" method="post" class="serie">
                                 <button class="serie">
-                                    <img src="ImagenServlet?id=${serie.id}" class="serie-img-perfil">
+                                    <img src="imagenSerie?imagen=${serie.imagen}" class="serie-img">
                                 </button>
                             </form>
                         </c:forEach>
@@ -117,17 +113,66 @@
             <section class="resenas-recientes">
                 <c:if test="${not empty posts}">
                     <c:forEach var="post" items="${posts}">
+
                         <div class="resena">
                             <div class="titulo-resena">
                                 <input type="text" name="id" id="id" class="id" value="${post.id}" readonly>
                                 <h2 class="tipo">Post</h2>
                                 <h2 class="titulo">${post.titulo}</h2>
+                                <h4 class="nombre">${post.nombreCompleto}</h4>
                                 <h4 class="fecha">${post.fechaHoraCreacion}</h4>
                             </div>
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
                             </div>
+                            <form action="" method="post">
+                                <div class="imagen-resena">
+                                    <img src="${post.imagen}" class="serie-img" alt="${post.titulo}">
+                                </div>
+                                <button class="comentar">Comentar</button>
+                            </form>
                         </div>
+
+                        <c:if test="${not empty post.comentarioCollection}">
+                            <!-- Comentarios del Post -->
+                            <c:forEach var="comentario" items="${post.comentarioCollection}">
+                                <div class="resena">
+                                    <div class="titulo-resena">
+                                        <input type="text" name="id" id="id" class="id" value="${comentario.id}" readonly>
+                                        <h2 class="tipo">Comentario</h2>
+                                        <h4 class="nombre">${comentario.nombreUsuario}</h4>
+                                        <h4 class="fecha">${comentario.fechaHora}</h4>
+                                    </div>
+                                    <div class="texto-resena2">
+                                        <p>${comentario.contenido}</p>
+                                    </div>
+                                    <form action="" method="post">
+                                        <button class="comentar2">Comentar</button>
+                                    </form>
+                                </div>
+
+                                <c:if test="${not empty comentario.comentarioCollection}">
+                                    <!-- Comentarios de Comentarios -->
+                                    <c:forEach var="subComentario" items="${comentario.comentarioCollection}">
+                                        <div class="resena">
+                                            <div class="titulo-resena">
+                                                <input type="text" name="id" id="id" class="id" value="${subComentario.id}" readonly>
+                                                <h2 class="tipo">Comentario de Comentario</h2>
+                                                <h4 class="nombre">${subComentario.nombreUsuario}</h4>
+                                                <h4 class="fecha">${subComentario.fechaHora}</h4>
+                                            </div>
+                                            <div class="texto-resena2">
+                                                <p>${subComentario.contenido}</p>
+                                            </div>
+                                            <form action="" method="post">
+                                                <button class="comentar2">Comentar</button>
+                                            </form>
+                                        </div>
+
+                                    </c:forEach>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
                     </c:forEach>
                 </c:if>
             </section>
