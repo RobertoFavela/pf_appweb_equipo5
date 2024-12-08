@@ -350,7 +350,6 @@ button {
 /* Recent Reviews */
 .resenas-recientes {
     display: flex;
-    flex-direction: column;
     overflow-y: scroll;
     height: 100%;
 
@@ -434,10 +433,9 @@ button {
 }
 
 .comentar{
-
     width: 120px;
     height: 40px;
-    margin-top: 30px;
+    margin-top: 70px;
     border-radius: 20pc;
     background-color: goldenrod;
     color: #222;
