@@ -134,7 +134,6 @@
                                     <div class="titulo-resena">
                                         <input type="text" name="id" id="id" class="id" value="${comentario.id}" readonly>
                                         <h2 class="tipo">Comentario</h2>
-                                        <!-- <h4 class="nombre">{comentario.nombreUsuario}</h4> -->
                                         <h4 class="fecha">${comentario.fechaHora}</h4>
 
 

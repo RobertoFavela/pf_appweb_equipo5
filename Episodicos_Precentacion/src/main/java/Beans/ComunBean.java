@@ -53,4 +53,8 @@ public class ComunBean {
           return comunDAO.eliminarPost(postId);
      }
      
+     public List<Comun> buscarPorSerieId(int id) {
+          return comunDAO.buscarPorSerieId(id);
+     }
+     
 }
