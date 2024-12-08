@@ -99,13 +99,13 @@
                             </div>
 
                             <!-- Botón para eliminar reseña si es admin -->
-                            <form action="" method="post">
                                 <c:if test="${esAdmin}">
-                                    <form action="Postcontroller" method="post">
+                                    <form action="Postcontroller" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?');">
                                         <input type="hidden" name="accion" value="eliminar">
                                         <input type="hidden" name="id" value="${post.id}">
                                         <button type="submit" class="comentar">Eliminar</button>
                                     </form>
+
                                 </c:if>
 
                             </form>
@@ -151,7 +151,7 @@
                                 </div>
 
                                 <c:if test="${not empty comentario.comentarioCollection}">
-                                    
+
                                     <!-- Comentarios de Comentarios -->
                                     <c:forEach var="subComentario" items="${comentario.comentarioCollection}">
                                         <div class="resena comentarioDecomentario">
@@ -174,7 +174,7 @@
                                             </form>
                                         </div>
                                     </c:forEach>
-                                    
+
                                 </c:if>
                             </c:forEach>
                         </c:if>
