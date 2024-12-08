@@ -57,6 +57,7 @@ public class ResenaController extends HttpServlet {
              throws ServletException, IOException {
           response.setContentType("application/json");
           response.setCharacterEncoding("UTF-8");
+          
 
           String titulo = request.getParameter("txtTitulo");
           String contenido = request.getParameter("txtContenido");
@@ -111,7 +112,6 @@ public class ResenaController extends HttpServlet {
                }
 
                response.setStatus(HttpServletResponse.SC_OK);
-               response.getWriter().write("{\"message\": \"Post registrado exitosamente.\"}");
           } catch (Exception e) {
                e.printStackTrace();
                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

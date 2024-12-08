@@ -21,6 +21,5 @@ document.getElementById('form-reseña').addEventListener('submit', async functio
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Hubo un error al comunicarse con el servidor.');
     }
 });

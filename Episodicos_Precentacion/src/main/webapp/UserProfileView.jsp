@@ -192,7 +192,7 @@
                         </c:if>
                     </section>
                 </div>
-                <script src="JS/CrearPost.js" type="application/javascript"></script>
+                <script src="Post/CrearPost.js" type="application/javascript"></script>
             </body>
 
             </html>
