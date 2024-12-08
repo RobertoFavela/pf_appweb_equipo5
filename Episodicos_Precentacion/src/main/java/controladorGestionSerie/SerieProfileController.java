@@ -27,6 +27,7 @@ public class SerieProfileController extends HttpServlet {
      NormalBean normalBean;
      AdminBean adminBean;
 
+     
      ComunBean comunBean;
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -94,7 +95,9 @@ public class SerieProfileController extends HttpServlet {
 
           normalBean = NormalBean.getInstancia();
           Normal normalActual = normalBean.getUsuarioEnSesion();
-
+          adminBean = AdminBean.getInstancia();
+          Admin adminActual = adminBean.getAdminEnSesion();
+          
           if (normalActual == null) {
                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Debe iniciar sesión para agregar una serie a favoritas."); // este es porque no le puedo meter el if al jsp, no le quiero mover mas al front
                return;
@@ -106,7 +109,6 @@ public class SerieProfileController extends HttpServlet {
           }
 
           try {
-
                int id = Integer.parseInt(serieId);
 
                if ("agregar".equals(accion)) {

@@ -46,13 +46,13 @@ public class RegisterController extends HttpServlet {
           String contra = request.getParameter("txtContra");
 
           try {
-//               Normal normal = new Normal(nombre, correo, contra);
-//               NormalBean normalBean = NormalBean.getInstancia();
-//               normalBean.guardar(normal);
+               Normal normal = new Normal(nombre, correo, contra);
+               NormalBean normalBean = NormalBean.getInstancia();
+               normalBean.guardar(normal);
                
-               Admin admin = new Admin(nombre, correo, contra);
-               AdminBean adminbean = AdminBean.getInstancia();
-               adminbean.guardar(admin);
+//               Admin admin = new Admin(nombre, correo, contra);
+//               AdminBean adminbean = AdminBean.getInstancia();
+//               adminbean.guardar(admin);
 
                response.setStatus(HttpServletResponse.SC_OK);
                response.getWriter().write("{\"message\": \"Usuario registrado exitosamente.\"}");

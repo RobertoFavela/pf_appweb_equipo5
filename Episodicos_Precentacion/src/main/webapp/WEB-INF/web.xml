@@ -23,7 +23,7 @@
     </servlet>
     <servlet>
         <servlet-name>ResenaController</servlet-name>
-        <servlet-class>controladorPerfil.ResenaController</servlet-class>
+        <servlet-class>controladorPost.ResenaController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Postcontroller</servlet-name>
