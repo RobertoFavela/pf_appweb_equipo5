@@ -115,21 +115,22 @@
                 </form>
             </div>
 
-            <h2 class="fav">Similares</h2>
+            <h2>Similares</h2>
             <section class="favoritas">
-
-                <div class="contenedor-series-fav">
-                    <div class="serie">
-                        <div class="info">Daredevil</div>
-                        <img src="Posters/daredevil.jpeg" class="serie-img">
-                        <a href="/PerfilSerie/perfilSerie.html"></a>
+                <c:forEach var="serieSimil" items="${seriesSimilares}">
+                    <div class="contenedor-series-fav">
+                        <div class="serie">
+                            <div class="info">${serieSimil.titulo}</div>
+                            <a href="SerieProfileView.jsp?id=${serieSimil.id}"></a> <!-- Enlace a la vista de la serie -->
+                        </div>
                     </div>
-
-                </div>
+                </c:forEach>
             </section>
+
 
             <h2>Tus Reseñas</h2>
             <section class="resenas-recientes">
+
                 <c:if test="${not empty posts}">
                     <c:forEach var="post" items="${posts}">
                         <div class="resena">

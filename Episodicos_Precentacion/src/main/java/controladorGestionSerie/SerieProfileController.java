@@ -9,7 +9,9 @@ import Beans.ComunBean;
 import Beans.NormalBean;
 import Beans.SerieBean;
 import EntidadesSQL.Admin;
+import EntidadesSQL.Comun;
 import EntidadesSQL.Normal;
+import EntidadesSQL.Post;
 import EntidadesSQL.Serie;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,6 +19,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -26,8 +30,8 @@ public class SerieProfileController extends HttpServlet {
 
      NormalBean normalBean;
      AdminBean adminBean;
+     SerieBean serieBean;
 
-     
      ComunBean comunBean;
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -44,40 +48,50 @@ public class SerieProfileController extends HttpServlet {
              throws ServletException, IOException {
           String serieId = request.getParameter("id");
 
+          serieBean = SerieBean.getInstancia();
           adminBean = AdminBean.getInstancia();
           Admin adminActual = adminBean.getAdminEnSesion();
-
           normalBean = NormalBean.getInstancia();
           Normal normalActual = normalBean.getUsuarioEnSesion();
 
           boolean esAdmin = adminBean.getAdminEnSesion() != null;
           request.setAttribute("esAdmin", esAdmin);
 
-          // Validar que el parámetro no sea nulo o vacío
           if (serieId == null || serieId.isEmpty()) {
                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Falta el parámetro 'id' de la serie.");
                return;
           }
 
           try {
-               // Convertir el parámetro a entero y buscar la serie
                int id = Integer.parseInt(serieId);
-               Serie serie = SerieBean.getInstancia().buscarPorId(id);
+               Serie serie = serieBean.buscarPorId(id);
 
-               // Verificar si la serie existe
                if (serie == null) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Serie no encontrada.");
                     return;
                }
 
+               // Obtener todas las reseñas con buscarTodos
+               comunBean = ComunBean.getInstancia();
+               List<Comun> todosLosPosts = comunBean.buscarTodos(); // Obtener todas las reseñas
+
+               // Filtrar las reseñas que coincidan con el título de la serie
+               List<Post> posts = todosLosPosts.stream()
+                       .filter(post -> post.getTitulo().equalsIgnoreCase(serie.getTitulo())) // Filtrar por título de la serie
+                       .collect(Collectors.toList());
+
                
-               // Pasar los datos de la serie al JSP
+               // Obtener series similares basadas en el género de la serie
+               List<Serie> seriesSimilares = serieBean.buscarPorGeneros(serie.getGenero()); // Buscar series por el mismo género
+               
+               // Pasar los datos al JSP
                request.setAttribute("serie", serie);
-               
-               
+               request.setAttribute("posts", posts); // Lista de reseñas filtradas por título
+               request.setAttribute("seriesSimilares", seriesSimilares); // Lista de series similares
+
                request.getRequestDispatcher("/SeriesProfileView.jsp").forward(request, response);
+
           } catch (NumberFormatException e) {
-               // Manejo de error en caso de formato incorrecto
                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "El parámetro 'id' debe ser un número entero.");
           }
      }
@@ -100,7 +114,7 @@ public class SerieProfileController extends HttpServlet {
           Normal normalActual = normalBean.getUsuarioEnSesion();
           adminBean = AdminBean.getInstancia();
           Admin adminActual = adminBean.getAdminEnSesion();
-          
+
           if (normalActual == null) {
                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Debe iniciar sesión para agregar una serie a favoritas."); // este es porque no le puedo meter el if al jsp, no le quiero mover mas al front
                return;
