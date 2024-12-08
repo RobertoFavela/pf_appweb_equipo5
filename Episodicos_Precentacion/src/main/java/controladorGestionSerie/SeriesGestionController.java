@@ -24,11 +24,11 @@ import java.util.Date;
  * @authors Luis Roberto Favela Castro - 00000246853 Jesus Alberto Morales Ronjas - 00000245335
  */
 @MultipartConfig
-public class GestionSerieController extends HttpServlet {
+public class SeriesGestionController extends HttpServlet {
 
     private SerieBean serieBean;
 
-    public GestionSerieController() {
+    public SeriesGestionController() {
          serieBean = SerieBean.getInstancia();
     }
 
@@ -36,7 +36,7 @@ public class GestionSerieController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.getRequestDispatcher("/GestionSerie.jsp").forward(request, response);
+         request.getRequestDispatcher("/SeriesGestion.jsp").forward(request, response);
     }
 
     @Override

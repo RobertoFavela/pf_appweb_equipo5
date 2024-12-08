@@ -8,6 +8,10 @@
         <servlet-name>Postcontroller</servlet-name>
         <url-pattern>/Postcontroller</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SerieProfileController</servlet-name>
+        <url-pattern>/SerieProfileController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -25,6 +29,10 @@
         <servlet-name>Postcontroller</servlet-name>
         <servlet-class>controladorPost.Postcontroller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SerieProfileController</servlet-name>
+        <servlet-class>controladorGestionSerie.SerieProfileController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogInController</servlet-name>
         <url-pattern>/LogInController</url-pattern>
@@ -39,7 +47,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>GestionSerieController</servlet-name>
-        <servlet-class>controladorGestionSerie.GestionSerieController</servlet-class>
+        <servlet-class>controladorGestionSerie.SeriesGestionController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GestionSerieController</servlet-name>

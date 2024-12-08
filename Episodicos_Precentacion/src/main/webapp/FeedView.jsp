@@ -78,15 +78,17 @@
                 </nav>
             </header>
 
+            <!-- Sección Agregadas Recientemente -->
             <h2>Agregadas recientemente</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:if test="${not empty series}">
                         <c:forEach var="serie" items="${series}">
-                            <form action="PerfilSerieController" method="get" class="serie">
+                            <form action="SerieProfileController" method="get" class="serie">
+                                <input type="hidden" name="id" value="${serie.id}">
                                 <button class="serie">
-                                    <img src="${pageContext.request.contextPath}/getSerieImage?id=${serie.id}" alt="Imagen de ${serie.title}" />
-                                    <%-- <h3 class="serie-titulo">${serie.titulo}</h3>--%>
+                                    <!-- <img src="{pageContext.request.contextPath}/getSerieImage?id={serie.id}" alt="{serie.titulo}" /> -->
+                                    <h3 class="serie-titulo">${serie.titulo}</h3>
                                 </button>
                             </form>
                         </c:forEach>
@@ -94,15 +96,17 @@
                 </div>
             </section>
 
+            <!-- Sección Todas las Series -->
             <h2>Todas las series</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:if test="${not empty series}">
                         <c:forEach var="serie" items="${series}">
-                            <form action="PerfilSerieController" method="get" class="serie">
+                            <form action="SerieProfileController" method="get" class="serie">
+                                <input type="hidden" name="id" value="${serie.id}">
                                 <button class="serie">
-                                    <img src="${pageContext.request.contextPath}/getSerieImage?id=${serie.id}" alt="Imagen de ${serie.title}" />
-                                   <!--  <h3 class="serie-titulo">${serie.titulo}</h3>  Mostramos el título en lugar de la imagen -->
+                                    <!-- <img src="{pageContext.request.contextPath}/getSerieImage?id={serie.id}" alt="{serie.titulo}" />-->
+                                    <h3 class="serie-titulo">${serie.titulo}</h3>
                                 </button>
                             </form>
                         </c:forEach>
@@ -125,31 +129,7 @@
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
                             </div>
-                            <form action="" method="post">
-                                <div class="imagen-resena">
-                                    <img src="${pageContext.request.contextPath}/getSerieImage?id=${serie.id}" alt="Imagen de ${serie.title}" />
-                               <!--     <h3 class="serie-titulo">${serie.titulo}</h3>-->
-                                </div>
-                                <button class="comentar">Comentar</button>
-                            </form>
                         </div>
-                        <c:if test="${not empty post.comentarioCollection}">
-                            <c:forEach var="comentario" items="${post.comentarioCollection}">
-                                <div class="resena">
-                                    <div class="titulo-resena">
-                                        <input type="text" name="id" id="id" class="id" value="${comentario.id}" readonly>
-                                        <h2 class="tipo">Comentario</h2>
-                                        <h4 class="fecha">${comentario.fechaHora}</h4>
-                                    </div>
-                                    <div class="texto-resena2">
-                                        <p>${comentario.contenido}</p>
-                                    </div>
-                                    <form action="" method="post">
-                                        <button class="comentar2">Comentar</button>
-                                    </form>
-                                </div>
-                            </c:forEach>
-                        </c:if>
                     </c:forEach>
                 </c:if>
             </section>

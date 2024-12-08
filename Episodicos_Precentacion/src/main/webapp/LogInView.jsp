@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login y Registro</title>
-        <link rel="stylesheet" href="LogIn/Style.css">
+        <link rel="stylesheet" href="LogIn/StyleLogIn.css">
     </head>
     <body>
         <div class="contenedor" id="contenedor">
@@ -56,6 +56,6 @@
             </div>
         </div>
         <script src="LogIn/scriptMovimiento.js"></script>
-        <script src="JS/RegistrarUsuario.js"></script>
+        <script src="LogIn/RegistrarUsuario.js"></script>
     </body>
 </html>

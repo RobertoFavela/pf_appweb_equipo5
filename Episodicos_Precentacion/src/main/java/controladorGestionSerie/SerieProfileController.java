@@ -5,32 +5,29 @@
 package controladorGestionSerie;
 
 import Beans.AdminBean;
+import Beans.ComunBean;
+import Beans.NormalBean;
 import Beans.SerieBean;
-import EntidadesSQL.Comun;
+import EntidadesSQL.Admin;
+import EntidadesSQL.Normal;
 import EntidadesSQL.Serie;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
- * @author tacot
+ * @author favel
  */
-public class SeriesController extends HttpServlet {
+public class SerieProfileController extends HttpServlet {
 
-     private AdminBean adminBean;
-     private SerieBean serieBean;
+     NormalBean normalBean;
+     AdminBean adminBean;
 
-     public SeriesController() {
-          serieBean = SerieBean.getInstancia();
-          adminBean = AdminBean.getInstancia();
-     }
+     ComunBean comunBean;
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
@@ -44,26 +41,41 @@ public class SeriesController extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+          String serieId = request.getParameter("id");
 
           adminBean = AdminBean.getInstancia();
+          Admin adminActual = adminBean.getAdminEnSesion();
+
+          normalBean = NormalBean.getInstancia();
+          Normal normalActual = normalBean.getUsuarioEnSesion();
 
           boolean esAdmin = adminBean.getAdminEnSesion() != null;
-
           request.setAttribute("esAdmin", esAdmin);
 
-          List<Serie> series = serieBean.buscarTodas();
-
-          for (Serie serie : series) {
-               if (serie.getId() != null) {
-                    // Generar una URL para la imagen de cada serie
-                    String imageUrl = "getSerieImage?id=" + serie.getId();
-                    request.setAttribute("imageUrl_" + serie.getId(), imageUrl);
-               }
+          // Validar que el parámetro no sea nulo o vacío
+          if (serieId == null || serieId.isEmpty()) {
+               response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Falta el parámetro 'id' de la serie.");
+               return;
           }
 
-          request.setAttribute("series", series);
+          try {
+               // Convertir el parámetro a entero y buscar la serie
+               int id = Integer.parseInt(serieId);
+               Serie serie = SerieBean.getInstancia().buscarPorId(id);
 
-          request.getRequestDispatcher("/Series.jsp").forward(request, response);
+               // Verificar si la serie existe
+               if (serie == null) {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "Serie no encontrada.");
+                    return;
+               }
+
+               // Pasar los datos de la serie al JSP
+               request.setAttribute("serie", serie);
+               request.getRequestDispatcher("/SeriesProfileView.jsp").forward(request, response);
+          } catch (NumberFormatException e) {
+               // Manejo de error en caso de formato incorrecto
+               response.sendError(HttpServletResponse.SC_BAD_REQUEST, "El parámetro 'id' debe ser un número entero.");
+          }
      }
 
      /**
@@ -77,18 +89,7 @@ public class SeriesController extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
-          String titulo = request.getParameter("titulo");
-          Serie serie = serieBean.buscarPorTitulo(titulo); 
 
-          // No sabia que el buscar por titulo solo retornaba una serie, asi que la meti a una lista a fuerzas
-          List<Serie> seriesFiltradas = new ArrayList<>();
-          if (serie != null) {
-               seriesFiltradas.add(serie);
-          }
-
-          request.setAttribute("series", seriesFiltradas);
-
-          request.getRequestDispatcher("/Series.jsp").forward(request, response);
      }
 
      /**

@@ -1,6 +1,7 @@
 <%-- Document : SeriesProfile Created on : 29 oct 2024, 12:00:19 a.m. Author : favel --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
         <title>Perfil de Serie</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="SeriesProfile/Style.css">
+        <link rel="stylesheet" href="Series/StyleSeriesProfile.css">
     </head>
 
     <body>
@@ -77,92 +78,82 @@
                 </nav>
             </header>
 
-            <div class="perfil">
-                <div class="foto-perfil">
-                    <img src="Posters/daredevil.jpeg" class="serie-img-perfil">
-                </div>
-                <div class="NombrePerfil">
-                    <h2>Perfil de Serie</h2>
-                </div>
-                <div class="descripcion">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum optio dignissimos provident
-                        ad
-                        repellendus, repellat odit quis, id, labore eos nostrum. Dolorum adipisci nostrum et quia
-                        suscipit
-                        quidem optio assumenda fugit illo praesentium, commodi aut repudiandae nemo voluptatibus,
-                        est
-                        maxime! Cum dolores illum amet in quae, enim tenetur dignissimos quidem possimus laudantium
-                        aliquam
-                        voluptates consequatur ab blanditiis porro quibusdam. Accusamus est similique repellat fugit
-                        qui
-                        consequatur nam natus enim fugiat. Laudantium, distinctio porro, possimus cumque quibusdam
-                        sed et
-                        similique itaque atque quidem saepe. Dicta esse officia molestiae. Vero nostrum illum,
-                        laboriosam
-                        deserunt est doloremque nulla ipsam sint maiores, tenetur voluptates?
-                    </p>
+            <body>
+
+                <div class="Feed">
+
+
+                    <!-- Información principal de la serie -->
+                    <div class="perfil">
+                        <div class="foto-perfil">
+                            <!-- <img src="{serie.imagenUrl}" alt="{serie.titulo}" class="serie-img-perfil"> -->
+                        </div>
+                        <div class="NombrePerfil">
+                            <h2>${serie.titulo}</h2> <!-- Título dinámico -->
+                        </div>
+                        <div class="descripcion">
+                            <p>${serie.descripcion}</p> <!-- Descripción dinámica -->
+                        </div>
+                    </div>
+
+                    <c:if test="${!esAdmin}">
+                        <h2>Escribe una reseña</h2>
+                        <div class="nueva-resena">
+                            <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+
+
+                                <div class="titulo">Título</div>
+                                <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+
+                                <div class="titulo">Nombre de serie</div>
+                                <input type="text" name="txtNombre" id="nombre-reseña" placeholder="Nombre de la serie" class="input" required>
+
+                                <div class="titulo">Reseña</div>
+                                <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+
+                                <br>
+
+                                <button type="submit" class="aceptar">Aceptar</button>
+
+                            </form>
+                        </div>
+                    </c:if>
+
+                    <!-- Series similares 
+                    <h2 class="fav">Similares</h2>
+                    <section class="favoritas">
+                        <div class="contenedor-series-fav">
+                            <:forEach var="similar" items="{serie.similares}">
+                                <div class="serie">
+                                    <div class="info">{similar.titulo}</div>
+                                     <img src="{similar.imagenUrl}" alt="{similar.titulo}" class="serie-img"> 
+                                    <form action="SerieProfileController" method="get">
+                                        <input type="hidden" name="id" value="{similar.id}">
+                                        <button type="submit">Ver Perfil</button>
+                                    </form>
+                                </div>
+                            </:forEach>
+                        </div>
+                    </section>
+
+                    
+                    <!-- Reseñas de usuarios 
+                    <h2>Reseñas</h2>
+                    <section class="resenas-recientes">
+                        <:forEach var="resena" items="{serie.resenas}">
+                            <div class="resena">
+                                <div class="titulo-resena">📄 {resena.titulo}</div>
+                                <div class="texto-resena">
+                                    <p>{resena.contenido}</p>
+                                </div>
+                                <div class="imagen-resena">
+                    <!-- <img src="{serie.imagenUrl}" alt="{serie.titulo}" class="serie-img"> 
                 </div>
             </div>
-
-            <h2>Escribe una reseña</h2>
-            <div class="nueva-resena">
-                <form id="form-reseña" class="form" action="ResenaController" method="post">
-                    <div class="titulo">Título</div>
-                    <input type="text" name="titulo" placeholder="Título de tu reseña" required>
-                    <br>
-                    <div class="titulo">Reseña</div>
-                    <textarea name="contenido" placeholder="Tu reseña" required></textarea>
-                    <br>
-                    <button type="submit">Aceptar</button>
-                </form>
-                    <script src="JS/CrearPost.js" type="application/javascript"></script>
-
-            </div>
-
-
-            <h2 class="fav">Similares</h2>
-            <section class="favoritas">
-
-                <div class="contenedor-series-fav">
-                    <div class="serie">
-                        <div class="info">Daredevil</div>
-                        <img src="Posters/daredevil.jpeg" class="serie-img">
-                        <a href="/PerfilSerie/perfilSerie.html"></a>
-                    </div>
-
+        </:forEach>
+    </section>
+                    -->
                 </div>
-            </section>
-
-            <h2>Reseñas</h2>
-            <section class="resenas-recientes">
-
-                <div class="resena">
-                    <div class="titulo-resena">📄 Título de reseña</div>
-                    <div class="texto-resena">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere vero
-                            voluptate
-                            doloremque dignissimos consectetur repellendus enim maiores adipisci, amet est dolor
-                            incidunt
-                            inventore recusandae placeat reiciendis? Distinctio aspernatur veniam, incidunt rerum,
-                            nobis
-                            ipsum placeat totam magnam iusto blanditiis voluptas a doloremque inventore ducimus.
-                            Cupiditate
-                            soluta quibusdam nemo qui laboriosam! Cumque nobis aliquid officiis recusandae
-                            accusantium cum
-                            rerum perferendis aut provident deserunt amet ullam eaque nam quasi est maxime sunt a
-                            deleniti,
-                            consectetur tempora similique. Deleniti cupiditate minima unde officia fugiat dolore
-                            ipsum
-                            deserunt, voluptatibus corrupti tenetur atque ut ullam dignissimos, quis porro magni
-                            maxime
-                            voluptatum totam. Provident, commodi ea.</p>
-                    </div>
-                    <div class="imagen-resena">
-                        <img src="Posters/daredevil.jpeg" class="serie-img">
-                    </div>
-                </div>
-            </section>
-        </div>
-    </body>
+            </body>
 
 </html>

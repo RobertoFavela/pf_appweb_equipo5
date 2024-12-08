@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Series/Style.css">
+        <link rel="stylesheet" href="Series/StyleSeries.css">
         <title>Document</title>
     </head>
 
@@ -85,19 +85,22 @@
             <!-- Barra de busqueda -->
             <section>
                 <form action="SeriesController" method="post">
-                    <input type="text" name="titulo" placeholder="Buscar por titulo..." required class=>
+                    <input type="text" name="titulo" placeholder="Buscar por título..." required>
                     <button type="submit" class="aceptar">Buscar</button>
                 </form>
             </section>
 
+            <!-- Sección Todas las Series -->
             <h2>Todas las series</h2>
             <section class="seccion">
                 <div class="contenedor-series">
                     <c:if test="${not empty series}">
                         <c:forEach var="serie" items="${series}">
-                            <form action="" method="post" class="serie">
+                            <form action="SerieProfileController" method="get" class="serie">
+                                <input type="hidden" name="id" value="${serie.id}">
                                 <button class="serie">
-                                    <img src="imagenSerie?imagen=${serie.imagen}" class="serie-img">
+                                    <!-- <img src="{pageContext.request.contextPath}/getSerieImage?id={serie.id}" alt="{serie.titulo}" />-->
+                                    <h3 class="serie-titulo">${serie.titulo}</h3>
                                 </button>
                             </form>
                         </c:forEach>
