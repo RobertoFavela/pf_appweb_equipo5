@@ -12,6 +12,10 @@
         <servlet-name>SerieProfileController</servlet-name>
         <url-pattern>/SerieProfileController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComentarioController</servlet-name>
+        <url-pattern>/ComentarioController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -32,6 +36,10 @@
     <servlet>
         <servlet-name>SerieProfileController</servlet-name>
         <servlet-class>controladorGestionSerie.SerieProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComentarioController</servlet-name>
+        <servlet-class>controladorPost.ComentarioController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogInController</servlet-name>
