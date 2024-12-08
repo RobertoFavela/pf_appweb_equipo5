@@ -85,8 +85,7 @@
                         <c:forEach var="serie" items="${series}">
                             <form action="PerfilSerieController" method="get" class="serie">
                                 <button class="serie">
-                                    <img src="${pageContext.request.contextPath}/getSerieImage?id=${serie.id}" alt="Imagen de ${serie.title}" />
-                                    <%-- <h3 class="serie-titulo">${serie.titulo}</h3>--%>
+                                    <h3 class="serie-titulo">${serie.titulo}</h3> <!-- Mostramos el título en lugar de la imagen -->
                                 </button>
                             </form>
                         </c:forEach>
@@ -101,8 +100,7 @@
                         <c:forEach var="serie" items="${series}">
                             <form action="PerfilSerieController" method="get" class="serie">
                                 <button class="serie">
-                                    <img src="${pageContext.request.contextPath}/getSerieImage?id=${serie.id}" alt="Imagen de ${serie.title}" />
-                                   <!--  <h3 class="serie-titulo">${serie.titulo}</h3>  Mostramos el título en lugar de la imagen -->
+                                    <h3 class="serie-titulo">${serie.titulo}</h3> <!-- Mostramos el título en lugar de la imagen -->
                                 </button>
                             </form>
                         </c:forEach>
@@ -127,8 +125,7 @@
                             </div>
                             <form action="" method="post">
                                 <div class="imagen-resena">
-                                    <img src="${pageContext.request.contextPath}/getSerieImage?id=${serie.id}" alt="Imagen de ${serie.title}" />
-                               <!--     <h3 class="serie-titulo">${serie.titulo}</h3>-->
+                                    <h3 class="serie-titulo">${serie.titulo}</h3>
                                 </div>
                                 <button class="comentar">Comentar</button>
                             </form>
