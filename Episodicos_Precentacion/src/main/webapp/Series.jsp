@@ -83,10 +83,10 @@
 
 
             <!-- Barra de busqueda -->
-            <section>
+            <section class="busqueda">
                 <form action="SeriesController" method="post">
-                    <input type="text" name="titulo" placeholder="Buscar por titulo..." required class=>
-                    <button type="submit" class="aceptar">Buscar</button>
+                    <input type="text" name="titulo" placeholder="Buscar por titulo..." required>
+                    <button type="submit">Buscar</button>
                 </form>
             </section>
 
