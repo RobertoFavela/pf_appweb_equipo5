@@ -126,9 +126,9 @@
 
                         </div>
 
-                        <c:if test="${not empty post.comentarioCollection}">
+                        <c:if test="${not empty comentarioCollection}">
                             <!-- Comentarios del Post -->
-                            <c:forEach var="comentario" items="${post.comentarioCollection}">
+                            <c:forEach var="comentario" items="${comentarioCollection}">
                                 <div class="resena comentario">
                                     <div class="titulo-resena">
                                         <input type="text" name="id" id="id" class="id" value="${comentario.id}" readonly>

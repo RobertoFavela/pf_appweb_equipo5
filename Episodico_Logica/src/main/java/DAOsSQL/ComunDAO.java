@@ -94,4 +94,9 @@ public class ComunDAO implements IComunDAO {
           return entityManager.createQuery(query).getResultList();
      }
 
+     @Override
+     public Comun buscarPorId(int postId) {
+          return entityManager.find(Comun.class, postId);
+     }
+
 }

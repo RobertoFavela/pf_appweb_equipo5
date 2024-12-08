@@ -5,10 +5,12 @@
 package controladorGestionSerie;
 
 import Beans.AdminBean;
+import Beans.AncladoBean;
 import Beans.ComunBean;
 import Beans.NormalBean;
 import Beans.SerieBean;
 import EntidadesSQL.Admin;
+import EntidadesSQL.Anclado;
 import EntidadesSQL.Comun;
 import EntidadesSQL.Normal;
 import EntidadesSQL.Post;
@@ -33,6 +35,7 @@ public class SerieProfileController extends HttpServlet {
      SerieBean serieBean;
 
      ComunBean comunBean;
+     AncladoBean ancladoBean;
 
      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
      /**
@@ -85,17 +88,17 @@ public class SerieProfileController extends HttpServlet {
                boolean liked = seriesFavoritas.contains(id);
                request.setAttribute("liked", liked);
 
+               ancladoBean = AncladoBean.getInstancia();
+               List<Anclado> postsAnclados = ancladoBean.buscarTodos();
                comunBean = ComunBean.getInstancia();
-               List<Comun> todosLosPosts = comunBean.buscarTodos();
-
-               List<Post> posts = todosLosPosts.stream()
-                       .filter(post -> post.getTitulo().equalsIgnoreCase(serie.getTitulo()))
-                       .collect(Collectors.toList());
+               List<Comun> postsComunes = comunBean.buscarTodos();
+               
 
                List<Serie> seriesSimilares = serieBean.buscarPorGeneros(serie.getGenero());
 
                request.setAttribute("serie", serie);
-               request.setAttribute("posts", posts);
+               request.setAttribute("postsAnclados", postsAnclados);
+               request.setAttribute("postsComunes", postsComunes);
                request.setAttribute("seriesSimilares", seriesSimilares);
 
                request.getRequestDispatcher("/SeriesProfileView.jsp").forward(request, response);
@@ -145,6 +148,8 @@ public class SerieProfileController extends HttpServlet {
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Acción no válida.");
                     return;
                }
+
+               response.sendRedirect(request.getRequestURI() + "?id=" + serieId);
 
           } catch (NumberFormatException e) {
                // Manejo de error en caso de que el ID de la serie no sea un número válido

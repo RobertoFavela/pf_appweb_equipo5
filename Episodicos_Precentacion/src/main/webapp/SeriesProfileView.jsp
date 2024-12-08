@@ -162,8 +162,26 @@
 
             <h2>Reseñas recientes</h2>
             <section class="resenas-recientes">
-                <c:if test="${not empty posts}">
-                    <c:forEach var="post" items="${posts}">
+                <h3>Anclados</h3>
+                <c:if test="${not empty postsAnclados}">
+                    <c:forEach var="post" items="${postsAnclados}">
+                        <div class="resena">
+                            <div class="titulo-resena">
+                                <input type="text" name="id" id="id" class="id" value="${post.id}" readonly>
+                                <h2 class="tipo">Anclado</h2>
+                                <h2 class="titulo">${post.titulo}</h2>
+                                <h4 class="fecha">${post.fechaHoraCreacion}</h4>
+                            </div>
+                            <div class="texto-resena">
+                                <p>${post.contenido}</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:if>
+
+                <h3>Comunes</h3>
+                <c:if test="${not empty postsComunes}">
+                    <c:forEach var="post" items="${postsComunes}">
                         <div class="resena">
                             <div class="titulo-resena">
                                 <input type="text" name="id" id="id" class="id" value="${post.id}" readonly>
@@ -174,8 +192,7 @@
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
                             </div>
-                            <form action="Postcontroller" method="post">
-                                <input type="hidden" name="accion" value="eliminar">
+                            <form action="ConvertirAAnclado" method="post">
                                 <input type="hidden" name="id" value="${post.id}">
                                 <button type="submit" class="comentar2">Anclar</button>
                             </form>
@@ -183,6 +200,7 @@
                     </c:forEach>
                 </c:if>
             </section>
+
         </div>
         <script src="Post/CrearPost.js" type="application/javascript"></script>
     </body>

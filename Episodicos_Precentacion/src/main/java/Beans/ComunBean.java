@@ -5,6 +5,7 @@
 package Beans;
 
 import DAOsSQL.ComunDAO;
+import EntidadesSQL.Anclado;
 import EntidadesSQL.Comun;
 import interfaces.IComunDAO;
 import java.util.List;
@@ -57,4 +58,7 @@ public class ComunBean {
           return comunDAO.buscarPorSerieId(id);
      }
      
+     public Comun buscarPorId(int id) {
+          return comunDAO.buscarPorId(id);
+     }
 }

@@ -214,8 +214,12 @@ public class Usuario implements Serializable {
      }
 
      public void removeSerieFavorita(Integer serieId) {
-          List<Integer> favoritas = getSeriesFavoritasList();
+          // Obtener la lista de series favoritas
+          List<Integer> favoritas = new ArrayList<>(getSeriesFavoritasList());
+
+          // Eliminar el serieId de la lista
           if (favoritas.remove(serieId)) {
+               // Convertir la lista a un String con las series favoritas
                this.seriesFavoritas = String.join(",", favoritas.stream().map(String::valueOf).toList());
           }
      }
