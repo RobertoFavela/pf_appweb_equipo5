@@ -205,5 +205,4 @@
         </div>
         <script src="Post/CrearPost.js" type="application/javascript"></script>
     </body>
-
 </html>

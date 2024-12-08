@@ -181,7 +181,7 @@ button{
     transition: filter 0.3s ease;
     border-radius: 50%;
     background-color: #222;
-    
+
 }
 
 .serie-img-perfil:hover {
@@ -330,11 +330,11 @@ button {
     margin: 0;
     padding: 45px;
     border-radius: 10px;
-    white-space: normal; 
+    white-space: normal;
     display: flex;
-    flex-direction: column; 
-    overflow-y: scroll; 
-    gap: 10px; 
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 10px;
 }
 
 .contenedor-series-fav {
@@ -471,4 +471,3 @@ button {
     border: none;
     color: rgb(214, 212, 212);
 }
-

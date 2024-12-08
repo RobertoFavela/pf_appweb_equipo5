@@ -90,6 +90,7 @@ public class UserProfileController extends HttpServlet {
                   .filter(serie -> seriesFavoritasIds.contains(serie.getId()))
                   .collect(Collectors.toList());
 
+          
           // Pasar la lista de series favoritas como atributo a la JSP
           request.setAttribute("seriesFavoritas", seriesFavoritas);
 
