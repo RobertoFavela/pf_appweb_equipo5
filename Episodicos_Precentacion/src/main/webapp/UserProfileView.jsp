@@ -156,49 +156,7 @@
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
                             </div>
-                            <form action="" method="post">
-                                <div class="imagen-resena">
-                                    <h3 class="serie-titulo">${serie.titulo}</h3>
-                                </div>
-                                <button class="comentar">Comentar</button>
-                            </form>
                         </div>
-                        <c:if test="${not empty post.comentarioCollection}">
-                            <c:forEach var="comentario" items="${post.comentarioCollection}">
-                                <div class="resena">
-                                    <div class="titulo-resena">
-                                        <input type="text" name="id" id="id" class="id" value="${comentario.id}"
-                                               readonly>
-                                        <h2 class="tipo">Comentario</h2>
-                                        <h4 class="fecha">${comentario.fechaHora}</h4>
-                                    </div>
-                                    <div class="texto-resena2">
-                                        <p>${comentario.contenido}</p>
-                                    </div>
-                                    <form action="" method="post">
-                                        <button class="comentar2">Comentar</button>
-                                    </form>
-                                </div>
-                            </c:forEach>
-                        </c:if>
-
-                        <c:if test="${not empty comentario.comentarioCollection}">
-                            <!-- Comentarios de Comentarios -->
-                            <c:forEach var="subComentario" items="${comentario.comentarioCollection}">
-                                <div class="resena comentarioDecomentario">
-                                    <div class="titulo-resena">
-                                        <input type="text" name="id" id="id" class="id"
-                                               value="${subComentario.id}" readonly>
-                                        <h2 class="tipo">Comentario de Comentario</h2>
-                                        <h4 class="nombre">${subComentario.nombreUsuario}</h4>
-                                        <h4 class="fecha">${subComentario.fechaHora}</h4>
-                                    </div>
-                                    <div class="texto-resena2">
-                                        <p>${subComentario.contenido}</p>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </c:if>
                     </c:forEach>
                 </c:if>
             </section>
