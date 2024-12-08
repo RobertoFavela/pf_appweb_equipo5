@@ -194,9 +194,8 @@ button{
     overflow-wrap: break-word;
     white-space: normal;
     overflow-y: scroll;
-
     grid-column-start: 2;
-    grid-column-end: 4;
+    background-color: #00c6ff;
 }
 
 /* secciones */
