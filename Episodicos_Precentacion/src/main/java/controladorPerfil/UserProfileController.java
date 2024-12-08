@@ -49,13 +49,12 @@ public class UserProfileController extends HttpServlet {
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
 
-          // Obtener la sesion y rellenar los campos
+          // Obtener la sesión y rellenar los campos
           adminBean = AdminBean.getInstancia();
           Admin adminActual = adminBean.getAdminEnSesion();
           normalBean = NormalBean.getInstancia();
           Normal normalActual = normalBean.getUsuarioEnSesion();
           serieBean = SerieBean.getInstancia();
-          
 
           // Verificar si es admin
           boolean esAdmin = adminBean.getAdminEnSesion() != null;
@@ -69,19 +68,24 @@ public class UserProfileController extends HttpServlet {
                request.setAttribute("descripcion", adminActual.getDescripcion());
           }
 
-          // Buscar todos los objetos para los post
+          // Buscar todos los objetos para los posts
           comunBean = ComunBean.getInstancia();
           List<Comun> todosLosComun = comunBean.buscarTodos();
 
-          // Filtrar post del usuario en sesión
+          // Filtrar los posts del usuario en sesión
           int usuarioId = (normalActual != null) ? normalActual.getId() : adminActual.getId();
           List<Comun> comunDelUsuario = todosLosComun.stream()
                   .filter(comun -> comun.getId() == usuarioId)
-                  .toList();
+                  .collect(Collectors.toList());
 
-          List<Integer> seriesFavoritasIds = normalBean.obtenerSeriesFavoritas();
+          List<Integer> seriesFavoritasIds;
+          if (esAdmin) {
+               seriesFavoritasIds = adminBean.obtenerSeriesFavoritas(); // Obtener series favoritas del admin
+          } else {
+               seriesFavoritasIds = normalBean.obtenerSeriesFavoritas(); // Obtener series favoritas del normal
+          }
+
           List<Serie> todasLasSeries = serieBean.buscarTodas();
-
           List<Serie> seriesFavoritas = todasLasSeries.stream()
                   .filter(serie -> seriesFavoritasIds.contains(serie.getId()))
                   .collect(Collectors.toList());
