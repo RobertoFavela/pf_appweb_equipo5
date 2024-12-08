@@ -84,7 +84,7 @@
                     <h2 name="txtNombre" >${serie.titulo}</h2>
                 </div>
                 <div>
-                    <c:if test="${sda}">
+                    <c:if test="${liked}">
                         <form action="" method="post">
                             <form action="" method="post">
                                 <div class="imagen-resena">
@@ -98,7 +98,7 @@
                             </form>
                         </form>
                     </c:if>
-                    <c:if test="${asd}">
+                    <c:if test="${!liked}">
                         <form action="" method="post">
                             <div class="imagen-resena">
                                 <h3 class="serie-titulo">${serie.titulo}</h3>
@@ -110,6 +110,7 @@
                         </form>
                     </c:if>
                 </div>
+                <!-- sadsadas -->
                 
                 <div class="descripcion">
                     <c:if test="${not empty serie.descripcion}">
