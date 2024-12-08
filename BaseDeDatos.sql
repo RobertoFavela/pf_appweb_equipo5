@@ -26,8 +26,10 @@ CREATE TABLE Usuario (
     genero ENUM('Masculino', 'Femenino', 'Otro'),
     municipio_id INT,
     FOREIGN KEY (municipio_id) REFERENCES Municipio(id),
-    DTYPE VARCHAR(31)
+    DTYPE VARCHAR(31),
+    seriesFavoritas TEXT -- IDs de las series favoritas separadas por comas
 );
+
 CREATE TABLE Normal (
     id INT PRIMARY KEY,
     FOREIGN KEY (id) REFERENCES Usuario(id) ON DELETE CASCADE
