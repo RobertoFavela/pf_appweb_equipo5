@@ -107,7 +107,6 @@
                                         <button type="submit" class="comentar">Eliminar</button>
                                     </form>
                                 </c:if>
-
                             </form>
 
                             <!-- Nueva reseña -->

@@ -433,29 +433,10 @@ button {
     margin-top: 120px;
 }
 
-.comentar{
-
-    width: 120px;
-    height: 40px;
-    margin-top: 30px;
-    border-radius: 20pc;
-    background-color: goldenrod;
-    color: #222;
-    font-weight: 700;
-}
-
-.comentar:hover{
-
-    background-color: rgb(184, 43, 43);
-    color: #ffffff;
-}
-
 .comentar2{
-
-    margin-top: 600px;
+    grid-column-start: 3;
     width: 120px;
     height: 40px;
-    margin-top: 70px;
     border-radius: 20pc;
     background-color: goldenrod;
     color: #222;
