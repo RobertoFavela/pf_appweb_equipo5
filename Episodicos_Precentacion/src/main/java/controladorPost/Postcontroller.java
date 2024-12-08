@@ -87,7 +87,6 @@ public class Postcontroller extends HttpServlet {
                adminBean = AdminBean.getInstancia();
                if (adminBean.getAdminEnSesion() == null) {
                     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                    response.getWriter().write("{\"success\": false, \"message\": \"No autorizado\"}");
                     return;
                }
 
@@ -96,11 +95,8 @@ public class Postcontroller extends HttpServlet {
                boolean eliminado = comunBean.eliminarPost(postId);
 
                response.setContentType("application/json");
-               if (eliminado) {
-                    response.getWriter().write("{\"success\": true}");
-               } else {
-                    response.getWriter().write("{\"success\": false, \"message\": \"No se pudo eliminar el post\"}");
-               }
+
+               request.getRequestDispatcher("/Post.jsp").forward(request, response);
           }
      }
 
