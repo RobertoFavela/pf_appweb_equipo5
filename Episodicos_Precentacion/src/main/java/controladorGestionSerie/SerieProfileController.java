@@ -71,23 +71,19 @@ public class SerieProfileController extends HttpServlet {
                     return;
                }
 
-               // Obtener todas las reseñas con buscarTodos
                comunBean = ComunBean.getInstancia();
-               List<Comun> todosLosPosts = comunBean.buscarTodos(); // Obtener todas las reseñas
+               List<Comun> todosLosPosts = comunBean.buscarTodos(); 
 
-               // Filtrar las reseñas que coincidan con el título de la serie
                List<Post> posts = todosLosPosts.stream()
-                       .filter(post -> post.getTitulo().equalsIgnoreCase(serie.getTitulo())) // Filtrar por título de la serie
+                       .filter(post -> post.getTitulo().equalsIgnoreCase(serie.getTitulo())) 
                        .collect(Collectors.toList());
 
                
-               // Obtener series similares basadas en el género de la serie
-               List<Serie> seriesSimilares = serieBean.buscarPorGeneros(serie.getGenero()); // Buscar series por el mismo género
+               List<Serie> seriesSimilares = serieBean.buscarPorGeneros(serie.getGenero()); 
                
-               // Pasar los datos al JSP
                request.setAttribute("serie", serie);
-               request.setAttribute("posts", posts); // Lista de reseñas filtradas por título
-               request.setAttribute("seriesSimilares", seriesSimilares); // Lista de series similares
+               request.setAttribute("posts", posts);
+               request.setAttribute("seriesSimilares", seriesSimilares); 
 
                request.getRequestDispatcher("/SeriesProfileView.jsp").forward(request, response);
 

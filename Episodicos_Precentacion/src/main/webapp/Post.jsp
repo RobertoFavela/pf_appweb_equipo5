@@ -83,31 +83,40 @@
                 <c:if test="${not empty posts}">
                     <c:forEach var="post" items="${posts}">
 
-                        <div class="resena ">
-                            <div class="titulo-resena">
-                                <input type="text" name="id" id="id" class="id" value="${post.id}" readonly>
-                                <h2 class="tipo">Post</h2>
-                                <h2 class="titulo">${post.titulo}</h2>
-                                <!-- Usar el mapa para obtener el nombre del usuario -->
-                                <h4 class="nombre">${usuariosPorId[post.usuarioId]}</h4>
-                                <h4 class="fecha">${post.fechaHoraCreacion}</h4>
-
-
-                            </div>
-                            <div class="texto-resena">
-                                <p>${post.contenido}</p>
-                                <p></p>
-
-
-                            </div>
-                            <form action="" method="post">
-                                <c:if test="${esAdmin}">
-                                    <button class="comentar">Eliminar</button>
-                                </c:if>
-                                <button class="comentar">Comentar</button>
-
-                            </form>
+                    <div class="resena">
+                        <!-- Título de la reseña -->
+                        <div class="titulo-resena">
+                            <input type="text" name="id" id="id" class="id" value="${post.id}" readonly>
+                            <h2 class="tipo">Post</h2>
+                            <h2 class="titulo">${post.titulo}</h2>
+                            <h4 class="nombre">${usuariosPorId[post.usuarioId]}</h4>
+                            <h4 class="fecha">${post.fechaHoraCreacion}</h4>
                         </div>
+                    
+                        <!-- Texto de la reseña -->
+                        <div class="texto-resena">
+                            <p>${post.contenido}</p>
+                        </div>
+                    
+                        <!-- Botón para eliminar reseña si es admin -->
+                        <form action="" method="post">
+                            <c:if test="${esAdmin}">
+                                <button class="comentar">Eliminar</button>
+                                
+                            </c:if>
+                        </form>
+                    
+                        <!-- Nueva reseña -->
+                            <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+                                <div class="titulo">Título</div>
+                                <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+                                <div class="titulo">Reseña</div>
+                                <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+                                <button type="submit" class="comentar">Comentar</button>
+                            </form>
+                            
+                    </div>
+                        
                         <c:if test="${not empty post.comentarioCollection}">
                             <!-- Comentarios del Post -->
                             <c:forEach var="comentario" items="${post.comentarioCollection}">
@@ -125,6 +134,13 @@
                                     </div>
                                     <form action="" method="post">
                                         <button class="comentar2">Comentar</button>
+                                    </form>
+                                    <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+                                        <div class="titulo">Título</div>
+                                        <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+                                        <div class="titulo">Reseña</div>
+                                        <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+                                        <button type="submit" class="comentar">Comentar</button>
                                     </form>
                                 </div>
 
@@ -144,6 +160,13 @@
                                             </div>
                                             <form action="" method="post">
                                                 <button class="comentar2">Comentar</button>
+                                            </form>
+                                            <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+                                                <div class="titulo">Título</div>
+                                                <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+                                                <div class="titulo">Reseña</div>
+                                                <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+                                                <button type="submit" class="comentar">Comentar</button>
                                             </form>
                                         </div>
                                     </c:forEach>
