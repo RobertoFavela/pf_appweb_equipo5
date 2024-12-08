@@ -111,13 +111,19 @@
                             </form>
 
                             <!-- Nueva reseña -->
-                            <form class="form" id="form-reseña" action="ResenaController" method="POST" enctype="application/x-www-form-urlencoded">
+                            <form class="form" id="form-reseña" action="ComentarioController" method="POST" enctype="application/x-www-form-urlencoded">
                                 <div class="titulo">Título</div>
                                 <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la película" class="input" required>
+
                                 <div class="titulo">Reseña</div>
                                 <textarea name="txtContenido" placeholder="Tu reseña" required></textarea>
+
+                                <!-- Hidden field to pass post ID -->
+                                <input type="hidden" name="postId" value="${post.id}">
+
                                 <button type="submit" class="comentar">Comentar</button>
                             </form>
+
 
                         </div>
 
@@ -128,7 +134,7 @@
                                     <div class="titulo-resena">
                                         <input type="text" name="id" id="id" class="id" value="${comentario.id}" readonly>
                                         <h2 class="tipo">Comentario</h2>
-                                        <h4 class="nombre">${comentario.nombreUsuario}</h4>
+                                        <!-- <h4 class="nombre">{comentario.nombreUsuario}</h4> -->
                                         <h4 class="fecha">${comentario.fechaHora}</h4>
 
 
@@ -146,6 +152,7 @@
                                 </div>
 
                                 <c:if test="${not empty comentario.comentarioCollection}">
+                                    
                                     <!-- Comentarios de Comentarios -->
                                     <c:forEach var="subComentario" items="${comentario.comentarioCollection}">
                                         <div class="resena comentarioDecomentario">
@@ -168,6 +175,7 @@
                                             </form>
                                         </div>
                                     </c:forEach>
+                                    
                                 </c:if>
                             </c:forEach>
                         </c:if>
