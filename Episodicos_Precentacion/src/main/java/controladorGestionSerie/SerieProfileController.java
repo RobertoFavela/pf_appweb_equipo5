@@ -70,8 +70,11 @@ public class SerieProfileController extends HttpServlet {
                     return;
                }
 
+               
                // Pasar los datos de la serie al JSP
                request.setAttribute("serie", serie);
+               
+               
                request.getRequestDispatcher("/SeriesProfileView.jsp").forward(request, response);
           } catch (NumberFormatException e) {
                // Manejo de error en caso de formato incorrecto
