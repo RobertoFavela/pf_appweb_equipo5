@@ -99,8 +99,7 @@
                             <form action="SerieProfileController" method="get" class="serie">
                                 <input type="hidden" name="id" value="${serie.id}">
                                 <button class="serie">
-                                    <!-- <img src="{pageContext.request.contextPath}/getSerieImage?id={serie.id}" alt="{serie.titulo}" />-->
-                                    <h3 class="serie-titulo">${serie.titulo}</h3>
+                                    <img src="ImagenServlet?id=${serie.id}" class="serie-img-perfil">
                                 </button>
                             </form>
                         </c:forEach>

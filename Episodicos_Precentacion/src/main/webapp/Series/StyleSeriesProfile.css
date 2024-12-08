@@ -15,7 +15,7 @@ body {
 .Feed {
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: 100px 300px 48px 300px 60px 340px;
+    grid-template-rows: 100px 400px 48px 300px 60px 340px;
     background-color: #222;
     margin: 0px 50vh;
     overflow: hidden;
@@ -169,7 +169,7 @@ button{
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 2;
     width: 100px;
     height: 100px;
     background-color: #222;
@@ -195,7 +195,6 @@ button{
     white-space: normal;
     overflow-y: scroll;
     grid-column-start: 2;
-    background-color: #00c6ff;
 }
 
 /* secciones */
@@ -475,3 +474,84 @@ button {
     color: rgb(214, 212, 212);
 }
 
+/*boton de megusta*/
+.meGusta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 22px 20px 22px;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #222;
+    border-color: #222;
+    border-style: solid;
+    border-width: 9px;
+    border-radius: 35px;
+    transition: transform 400ms cubic-bezier(.68,-0.55,.27,2.5), 
+    border-color 400ms ease-in-out,
+    background-color 400ms ease-in-out;
+    word-spacing: -2px;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+  
+  @keyframes movingBorders {
+    0% {
+      border-color: #202020;
+    }
+  
+    50% {
+      border-color: #181818;
+    }
+  
+    90% {
+      border-color: #16161618;
+    }
+  }
+  
+  .meGusta:hover {
+    background-color: #33a8c9;
+    transform: scale(105%);
+    animation: movingBorders 3s infinite;
+  }
+  
+  .filled,
+  .empty {
+    fill: rgb(255, 110, 110);
+    transition: opacity 100ms ease-in-out;
+  }
+  
+  .filled {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  @keyframes beatingHeart {
+    0% {
+      transform: scale(1);
+    }
+  
+    15% {
+      transform: scale(1.15);
+    }
+  
+    30% {
+      transform: scale(1);
+    }
+  
+    45% {
+      transform: scale(1.15);
+    }
+  
+    60% {
+      transform: scale(1);
+    }
+  }
+  
+  .meGusta:hover .empty {
+    opacity: 0;
+  }
+  
+  .meGusta:hover .filled {
+    opacity: 1;
+    animation: beatingHeart 1.2s infinite;
+  }
