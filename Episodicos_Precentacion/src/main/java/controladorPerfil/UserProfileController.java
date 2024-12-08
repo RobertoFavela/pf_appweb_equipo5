@@ -70,13 +70,11 @@ public class UserProfileController extends HttpServlet {
 
           // Buscar todos los objetos para los posts
           comunBean = ComunBean.getInstancia();
-          List<Comun> todosLosComun = comunBean.buscarTodos();
 
           // Filtrar los posts del usuario en sesión
           int usuarioId = (normalActual != null) ? normalActual.getId() : adminActual.getId();
-          List<Comun> post = todosLosComun.stream()
-                  .filter(comun -> comun.getId() == usuarioId)
-                  .collect(Collectors.toList());
+
+          List<Comun> posts = comunBean.buscarTodos();
 
           List<Integer> seriesFavoritasIds;
           if (esAdmin) {
@@ -90,12 +88,11 @@ public class UserProfileController extends HttpServlet {
                   .filter(serie -> seriesFavoritasIds.contains(serie.getId()))
                   .collect(Collectors.toList());
 
-          
           // Pasar la lista de series favoritas como atributo a la JSP
           request.setAttribute("seriesFavoritas", seriesFavoritas);
 
           // Pasar la lista completa de Comun como atributo a la JSP
-          request.setAttribute("comunDelUsuario", post);
+          request.setAttribute("posts", posts);
 
           // Redirigir a la vista JSP
           request.getRequestDispatcher("/UserProfileView.jsp").forward(request, response);
