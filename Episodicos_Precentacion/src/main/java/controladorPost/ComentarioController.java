@@ -74,7 +74,7 @@ public class ComentarioController extends HttpServlet {
 
           String tituloPost = request.getParameter("txtTitulo");
           String contenido = request.getParameter("txtContenido");
-          String postId = request.getParameter("postId");
+          String postId = request.getParameter("postId");  // Ahora estamos usando el postId
 
           try {
                Usuario usuario = null;
@@ -91,7 +91,11 @@ public class ComentarioController extends HttpServlet {
                     return;
                }
 
-               Comun post = comunBean.buscarPorTitulo(tituloPost);
+               // Utilizar postId para buscar el post
+               Comun post = comunBean.buscarTodos().stream()
+                       .filter(p -> p.getId() == Integer.parseInt(postId)) // Suponiendo que postId es un número entero
+                       .findFirst()
+                       .orElse(null);  // Si no se encuentra el post, se devuelve null
 
                if (post == null) {
                     response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -103,7 +107,7 @@ public class ComentarioController extends HttpServlet {
                Comentario comentario = new Comentario();
                comentario.setContenido(contenido);
                comentario.setFechaHora(new Date());
-               comentario.setPostId(post);
+               comentario.setPostId(post);  // Asocia el comentario con el post encontrado
                comentario.setUsuarioId(usuario);
 
                comentarioBean.guardar(comentario);
@@ -116,7 +120,6 @@ public class ComentarioController extends HttpServlet {
                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                response.getWriter().write("{\"error\": \"Error al registrar el comentario: " + e.getMessage() + "\"}");
           }
-
      }
 
      /**
