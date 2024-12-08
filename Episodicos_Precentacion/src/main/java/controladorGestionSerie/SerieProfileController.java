@@ -92,7 +92,6 @@ public class SerieProfileController extends HttpServlet {
                List<Anclado> postsAnclados = ancladoBean.buscarTodos();
                comunBean = ComunBean.getInstancia();
                List<Comun> postsComunes = comunBean.buscarTodos();
-               
 
                List<Serie> seriesSimilares = serieBean.buscarPorGeneros(serie.getGenero());
 
@@ -127,7 +126,7 @@ public class SerieProfileController extends HttpServlet {
           adminBean = AdminBean.getInstancia();
           Admin adminActual = adminBean.getAdminEnSesion();
 
-          if (normalActual == null) {
+          if (normalActual == null && adminActual == null)  {
                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Debe iniciar sesión para agregar una serie a favoritas."); // este es porque no le puedo meter el if al jsp, no le quiero mover mas al front
                return;
           }
@@ -140,13 +139,25 @@ public class SerieProfileController extends HttpServlet {
           try {
                int id = Integer.parseInt(serieId);
 
-               if ("agregar".equals(accion)) {
-                    normalBean.agregarSerieFavorita(id);  // Llamamos al método para agregar la serie a favoritas
-               } else if ("eliminar".equals(accion)) {
-                    normalBean.eliminarSerieFavorita(id);  // Llamamos al método para eliminarla de favoritas
-               } else {
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Acción no válida.");
-                    return;
+               if (adminActual != null) {
+                    if ("agregar".equals(accion)) {
+                         adminBean.agregarSerieFavorita(id);  // Llamamos al método para agregar la serie a favoritas
+                    } else if ("eliminar".equals(accion)) {
+                         adminBean.eliminarSerieFavorita(id);  // Llamamos al método para eliminarla de favoritas
+                    } else {
+                         response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Acción no válida.");
+                         return;
+                    }
+               } else if (normalActual != null) {
+
+                    if ("agregar".equals(accion)) {
+                         normalBean.agregarSerieFavorita(id);  // Llamamos al método para agregar la serie a favoritas
+                    } else if ("eliminar".equals(accion)) {
+                         normalBean.eliminarSerieFavorita(id);  // Llamamos al método para eliminarla de favoritas
+                    } else {
+                         response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Acción no válida.");
+                         return;
+                    }
                }
 
                response.sendRedirect(request.getRequestURI() + "?id=" + serieId);
