@@ -49,4 +49,8 @@ public class ComunBean {
           comunDAO.eliminar(nombre);
      }
 
+     public boolean eliminarPost(int postId) {
+          return comunDAO.eliminarPost(postId);
+     }
+     
 }

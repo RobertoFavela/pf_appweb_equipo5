@@ -4,6 +4,7 @@
  */
 package controladorPost;
 
+import Beans.AdminBean;
 import Beans.ComunBean;
 import Beans.NormalBean;
 import EntidadesSQL.Comun;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
  */
 public class Postcontroller extends HttpServlet {
 
+     private AdminBean adminBean;
+
      private ComunBean comunBean;
      private NormalBean normalBean;
 
@@ -39,6 +42,12 @@ public class Postcontroller extends HttpServlet {
      @Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+
+          // Para verificar si es admin
+          adminBean = AdminBean.getInstancia();
+          boolean esAdmin = adminBean.getAdminEnSesion() != null;
+          request.setAttribute("esAdmin", esAdmin);
+
           comunBean = ComunBean.getInstancia();
           normalBean = NormalBean.getInstancia();
 
@@ -69,6 +78,30 @@ public class Postcontroller extends HttpServlet {
      @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response)
              throws ServletException, IOException {
+          String accion = request.getParameter("accion");
+
+          if ("eliminar".equals(accion)) {
+               int postId = Integer.parseInt(request.getParameter("id"));
+
+               // Verificar si el usuario en sesión es admin
+               adminBean = AdminBean.getInstancia();
+               if (adminBean.getAdminEnSesion() == null) {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.getWriter().write("{\"success\": false, \"message\": \"No autorizado\"}");
+                    return;
+               }
+
+               // Lógica para eliminar el post
+               comunBean = ComunBean.getInstancia();
+               boolean eliminado = comunBean.eliminarPost(postId);
+
+               response.setContentType("application/json");
+               if (eliminado) {
+                    response.getWriter().write("{\"success\": true}");
+               } else {
+                    response.getWriter().write("{\"success\": false, \"message\": \"No se pudo eliminar el post\"}");
+               }
+          }
      }
 
      /**

@@ -92,6 +92,15 @@
                                 <!-- Usar el mapa para obtener el nombre del usuario -->
                                 <h4 class="nombre">${usuariosPorId[post.usuarioId]}</h4>
                                 <h4 class="fecha">${post.fechaHoraCreacion}</h4>
+                                <c:if test="${esAdmin}">
+                                    <form action="Postcontroller" method="post" enctype="application/x-www-form-urlencoded">
+                                        <input type="hidden" name="accion" value="eliminar">
+                                        <input type="hidden" name="id" value="${post.id}">
+                                        <button type="submit">Eliminar</button>
+                                    </form>
+
+
+                                </c:if>
                             </div>
                             <div class="texto-resena">
                                 <p>${post.contenido}</p>
@@ -118,6 +127,8 @@
                                         <h2 class="tipo">Comentario</h2>
                                         <h4 class="nombre">${comentario.nombreUsuario}</h4>
                                         <h4 class="fecha">${comentario.fechaHora}</h4>
+
+
                                     </div>
                                     <div class="texto-resena2">
                                         <p>${comentario.contenido}</p>
@@ -153,4 +164,5 @@
             </section>
         </div>
     </body>
+    <script src="Post/EliminarPost.js"></script>
 </html>

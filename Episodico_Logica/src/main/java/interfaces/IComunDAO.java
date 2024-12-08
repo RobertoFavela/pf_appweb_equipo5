@@ -15,4 +15,6 @@ public interface IComunDAO {
 
     public void eliminar(String nombre);
     
+    public boolean eliminarPost(int postId);
+    
 }
