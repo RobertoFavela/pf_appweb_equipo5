@@ -74,7 +74,7 @@ public class UserProfileController extends HttpServlet {
 
           // Filtrar los posts del usuario en sesión
           int usuarioId = (normalActual != null) ? normalActual.getId() : adminActual.getId();
-          List<Comun> comunDelUsuario = todosLosComun.stream()
+          List<Comun> post = todosLosComun.stream()
                   .filter(comun -> comun.getId() == usuarioId)
                   .collect(Collectors.toList());
 
@@ -94,7 +94,7 @@ public class UserProfileController extends HttpServlet {
           request.setAttribute("seriesFavoritas", seriesFavoritas);
 
           // Pasar la lista completa de Comun como atributo a la JSP
-          request.setAttribute("comunDelUsuario", comunDelUsuario);
+          request.setAttribute("comunDelUsuario", post);
 
           // Redirigir a la vista JSP
           request.getRequestDispatcher("/UserProfileView.jsp").forward(request, response);
