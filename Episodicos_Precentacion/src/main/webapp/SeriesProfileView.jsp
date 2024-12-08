@@ -119,13 +119,16 @@
             <section class="favoritas">
                 <c:forEach var="serieSimil" items="${seriesSimilares}">
                     <div class="contenedor-series-fav">
-                        <div class="serie">
-                            <div class="info">${serieSimil.titulo}</div>
-                            <a href="SerieProfileView.jsp?id=${serieSimil.id}"></a> <!-- Enlace a la vista de la serie -->
-                        </div>
+                        <form action="SerieProfileController" method="get" class="serie">
+                            <input type="hidden" name="id" value="${serieSimil.id}">
+                            <button class="serie">
+                                <h3 class="serie-titulo">${serieSimil.titulo}</h3>
+                            </button>
+                        </form>
                     </div>
                 </c:forEach>
             </section>
+
 
 
             <h2>Tus Reseñas</h2>
