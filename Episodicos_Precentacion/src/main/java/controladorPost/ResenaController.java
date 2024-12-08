@@ -5,10 +5,12 @@
 package controladorPost;
 
 import Beans.AdminBean;
+import Beans.AncladoBean;
 import Beans.ComunBean;
 import Beans.NormalBean;
 import Beans.SerieBean;
 import EntidadesSQL.Admin;
+import EntidadesSQL.Anclado;
 import EntidadesSQL.Comun;
 import EntidadesSQL.Normal;
 import EntidadesSQL.Serie;
@@ -30,17 +32,17 @@ public class ResenaController extends HttpServlet {
 
      private NormalBean normalBean;
      private AdminBean adminBean;
-     
+
      private SerieBean serieBean;
      private ComunBean comunBean;
 
      @Override
      public void init() throws ServletException {
           serieBean = SerieBean.getInstancia();
-          
+
           normalBean = NormalBean.getInstancia();
           adminBean = AdminBean.getInstancia();
-          
+
           comunBean = ComunBean.getInstancia();
      }
 
@@ -59,6 +61,7 @@ public class ResenaController extends HttpServlet {
           String titulo = request.getParameter("txtTitulo");
           String contenido = request.getParameter("txtContenido");
           String nombreSerie = request.getParameter("txtNombre");
+          String esAnclado = request.getParameter("chkAnclado");
 
           try {
 
@@ -93,6 +96,19 @@ public class ResenaController extends HttpServlet {
 
                // Guardar el post
                comunBean.guardar(comun);
+
+               // Si es un post anclado y el usuario es admin, se guarda como anclado
+               if ("on".equals(esAnclado) && adminActual != null) {
+                    Anclado anclado = new Anclado();
+                    anclado.setTitulo(titulo);
+                    anclado.setContenido(contenido);
+                    anclado.setFechaHoraCreacion(new Date());
+                    anclado.setSerieId(serie); // Establecer la serie asociada
+                    anclado.setUsuarioId(adminActual); // Establecer el admin como usuario
+
+                    // Guardar el post anclado
+                    AncladoBean.getInstancia().guardar(anclado);
+               }
 
                response.setStatus(HttpServletResponse.SC_OK);
                response.getWriter().write("{\"message\": \"Post registrado exitosamente.\"}");
