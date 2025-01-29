@@ -61,7 +61,7 @@ public class ConvertirAAnclado extends HttpServlet {
                ancladoBean.guardar(anclado);
 
                // Eliminar el post común de la base de datos
-               comunBean.eliminarPost(postComun.getId());
+//               comunBean.eliminarPost(postComun.getId());
           }
 
           // Redirigir al feed o página de anclados después de la conversión

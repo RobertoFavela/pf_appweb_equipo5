@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,20 +47,18 @@ public class Comentario implements Serializable {
     @Lob
     @Column(name = "contenido")
     private String contenido;
-    
-    @OneToMany(mappedBy = "comentarioPadreId")
-    private List<Comentario> comentarioCollection;
+
+    @OneToMany(mappedBy = "comentarioPadreId", fetch = FetchType.EAGER) 
+    private List<Comentario> comentarioCollection; 
     
     @JoinColumn(name = "comentario_padre_id", referencedColumnName = "id")
-    @ManyToOne
-    private Comentario comentarioPadreId;
-    
-    @JoinColumn(name = "post_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER) private Comentario comentarioPadreId; 
+    @JoinColumn(name = "post_id", referencedColumnName = "id") 
+    @ManyToOne(optional = false, fetch = FetchType.EAGER) 
     private Post postId;
     
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id") 
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Usuario usuarioId;
 
     public Comentario() {

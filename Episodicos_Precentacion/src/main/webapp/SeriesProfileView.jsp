@@ -128,7 +128,6 @@
                 <form class="form" id="form-reseña" action="ResenaController" method="POST"
                       enctype="application/x-www-form-urlencoded">
 
-
                     <div class="titulo">Título</div>
                     <input type="text" name="txtTitulo" id="titulo-reseña" placeholder="Título de la reseña"
                            class="input" required>
@@ -157,8 +156,6 @@
                     </div>
                 </c:forEach>
             </section>
-
-
 
             <h2>Reseñas recientes</h2>
             <section class="resenas-recientes">
@@ -200,9 +197,7 @@
                     </c:forEach>
                 </c:if>
             </section>
-
         </div>
         <script src="Post/CrearPost.js" type="application/javascript"></script>
     </body>
-
 </html>

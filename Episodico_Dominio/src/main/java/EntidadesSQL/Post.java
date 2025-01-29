@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -64,15 +65,15 @@ public class Post implements Serializable {
     private Date fechaHoraEdicion;
     
     
-    @JoinColumn(name = "serie_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Serie serieId;
+    @JoinColumn(name = "serie_id", referencedColumnName = "id") 
+    @ManyToOne(optional = false, fetch = FetchType.EAGER) 
+    private Serie serieId; 
     
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Usuario usuarioId;
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id") 
+    @ManyToOne(optional = false, fetch = FetchType.EAGER) 
+    private Usuario usuarioId; 
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId", fetch = FetchType.EAGER) 
     private Collection<Comentario> comentarioCollection;
 
     public Post() {
